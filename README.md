@@ -16,23 +16,26 @@ you conflicted with. If you can't decide between the two of you, call
 in rest of team.
 
 
-
+<br>
 GIT COMMAND WORKFLOW
 
-Create branch -
+Create branch - <br>
 `git checkout -b {branch-name}`
 
-switch branches -
+Switch branches - <br>
 `git checkout {branch-name}`
 
-Add code to commit -
-`git add {file-name or "." for all changes in current file}`
+Add code to commit - <br>
+`git add {file-name}`<br>
+or to add all changed files in current directory<br>
+`git add .`
 
-commit code -
-`git commit`
+commit code (open VIM for commit message)-<br>
+`git commit`<br>
+or to add commit message in command-<br>
 `git commit -m '{message}'`
 
-push code to specified branch-
+push code to specified branch-<br>
 `git push {remote [origin]} {branch-name}`
 
 pull request on github
