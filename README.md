@@ -19,13 +19,38 @@ in rest of team.
 
 GIT COMMAND WORKFLOW
 
-Create branch - \n
-`git branch -b {branch-name}`
+Create branch -
+`git checkout -b {branch-name}`
 
-commit
+switch branches -
+`git checkout {branch-name}`
 
-push
+Add code to commit -
+`git add {file-name or "." for all changes in current file}`
 
-pull
+commit code -
+`git commit`
+`git commit -m '{message}'`
 
-merge
+push code to specified branch-
+`git push {remote [origin]} {branch-name}`
+
+pull request on github
+code review from peer
+
+--pulled directions from atlassian--
+
+merge main branch into your working branch->
+Preparing to merge
+Before performing a merge there are a couple of preparation steps to take to ensure the merge goes smoothly.
+
+Confirm the receiving branch
+Execute `git status` to ensure that `HEAD` is pointing to the correct merge-receiving branch. If needed, execute `git checkout` to switch to the receiving branch. In our case we will execute `git checkout main`.
+
+Fetch latest remote commits
+Make sure the receiving branch and the merging branch are up-to-date with the latest remote changes. Execute `git fetch` to pull the latest remote commits. Once the fetch is completed ensure the main branch has the latest updates by executing `git pull`.
+
+Merging
+Once the previously discussed "preparing to merge" steps have been taken a merge can be initiated by executing `git merge {branch-name]` where `{branch-name}` is the name of the branch that will be merged into the receiving branch.
+
+
