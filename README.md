@@ -43,7 +43,7 @@ code review from peer
 
 --pulled directions from atlassian--
 
-merge main branch into your working branch->
+merge main branch into your working branch-><br>
 Preparing to merge
 Before performing a merge there are a couple of preparation steps to take to ensure the merge goes smoothly.
 
@@ -56,4 +56,8 @@ Make sure the receiving branch and the merging branch are up-to-date with the la
 Merging
 Once the previously discussed "preparing to merge" steps have been taken a merge can be initiated by executing `git merge {branch-name]` where `{branch-name}` is the name of the branch that will be merged into the receiving branch.
 
+<br>
+USE WITH CAUTION:
 
+Delete branch - <br>
+`git push origin --delete {branch}`
