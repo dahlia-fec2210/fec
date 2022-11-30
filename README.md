@@ -19,4 +19,3 @@ in rest of team.
 
 GIT COMMAND WORKFLOW
 
-`Gjiao`
