@@ -19,7 +19,7 @@ in rest of team.
 
 GIT COMMAND WORKFLOW
 
-Create branch -
+Create branch - \n
 `git branch -b {branch-name}`
 
 commit
