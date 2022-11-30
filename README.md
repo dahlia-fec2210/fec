@@ -1,5 +1,4 @@
 # fec
-
 1. Add a feature in individual branch
 2. Push to individual github branch
 2. Make pull request to testing branch
@@ -19,3 +18,14 @@ in rest of team.
 
 
 GIT COMMAND WORKFLOW
+
+Create branch -
+`git branch -b {branch-name}`
+
+commit
+
+push
+
+pull
+
+merge
