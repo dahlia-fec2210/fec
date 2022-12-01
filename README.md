@@ -41,6 +41,12 @@ push code to specified branch-<br>
 pull request on github
 code review from peer
 
+To pull changes to development branch and merge with yours (use after someone in the group merges a feature into development)-<br>
+`git checkout development`
+`git pull origin development`
+`git checkout {yourBranchName}`
+`git merge development`
+
 --pulled directions from atlassian--
 
 merge main branch into your working branch-><br>
