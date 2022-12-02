@@ -134,7 +134,18 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 });
 
 app.post('/qa/questions', (req, res) => {
-  reviews.postQuestion(req.body)
+  questions.postQuestion(req.body)
+    .then((data) => {
+      // data will be the word 'Created'
+      res.status(201).send(data);
+    })
+    .catch((err) => {
+      res.status(404).send(err);
+    });
+});
+
+app.post('/qa/questions/:question_id/answers', (req, res) => {
+  questions.postAnswerToQuestion(req.params.question_id, req.body)
     .then((data) => {
       // data will be the word 'Created'
       res.status(201).send(data);
