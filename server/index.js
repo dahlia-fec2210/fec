@@ -4,11 +4,13 @@ const express = require('express');
 const path = require('path')
 const app = express();
 const cors = require('cors');
+const morgan = require('morgan');
 
 const controller = require('./controllers.js');
 
 
 app.use(cors());
+app.use(morgan('dev'));
 app.use(express.json());
 
 
@@ -17,7 +19,6 @@ app.get('/products', (req, res) => {
 
   controller.getDatabaseInfo()
     .then((data) => {
-      console.log(data);
       res.status(200).send(data);
     })
     .catch(err => {
