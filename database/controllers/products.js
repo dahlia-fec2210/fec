@@ -8,8 +8,8 @@ const headers = {
   },
 };
 
-function getAllProducts() {
-  return axios.get(path.join(process.env.DATABASE_URL, '/products'), headers)
+function getAllProducts(url) {
+  return axios.get(path.join(process.env.DATABASE_URL, url), headers)
     .then((response) => response.data);
 }
 
