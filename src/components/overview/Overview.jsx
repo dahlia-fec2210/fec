@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Overview = () => {
+function Overview() {
   return (
     <div>
-    <h1>Overview</h1>
+      <h1>Overview</h1>
     </div>
   );
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Reviews = () => {
+function Reviews() {
   return (
     <div>
-    <h4>Reviews</h4>
+      <h4>Reviews</h4>
     </div>
   );
 }
