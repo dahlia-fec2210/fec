@@ -17,10 +17,10 @@ app.use(express.json());
 
 // Routes go here:
 app.get('/products', (req, res) => {
-  console.log('GETS INTO THIS ROUTES FUNCTION');
+
   controller.getDatabaseInfo()
     .then((data) => {
-      console.log("DATA: ", data, "123");
+      console.log(data)
       res.send(JSON.stringify(data));
     })
     .catch(err => {

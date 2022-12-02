@@ -14,9 +14,11 @@ const App = () => {
 
   useEffect(() => {
     axios.get('http://localhost:3001/products')
-      .then((data) => {
-        console.log(data, "index.jsx");
+      .then((response) => {
+        console.log("hello!");
+        console.log(response.data, "index.jsx");
       })
+      .catch(err => console.log(err));
   }, [])
 
   return (
