@@ -2,13 +2,14 @@ require('dotenv').config();
 const axios = require('axios');
 const path = require('path');
 
-function getDatabaseInfo (callback) {
-  axios.get(path.join(process.env.DATABASE_URL, '/products'), { headers: {
+function getDatabaseInfo () {
+  console.log('hi')
+  return axios.get(path.join(process.env.DATABASE_URL, '/products'), { headers: {
     Authorization: `${process.env.TOKEN}`
   } })
-
     .then(response => {
-      callback(response.data);
+      console.log(response)
+      return response;
     });
 }
 
