@@ -18,7 +18,25 @@ function getReviewsMetadata(url) {
     .then((response) => response.data);
 }
 
+function postReview(review) {
+  return axios.post(path.join(process.env.DATABASE_URL, 'reviews'), review, headers)
+    .then((response) => response.data);
+}
+
+function markReviewHelpful(reviewId) {
+  return axios.put(path.join(process.env.DATABASE_URL, `/reviews/${reviewId}/helpful`), {}, headers)
+    .then((response) => response.data);
+}
+
+function reportReview(reviewId) {
+  return axios.put(path.join(process.env.DATABASE_URL, `/reviews/${reviewId}/report`), {}, headers)
+    .then((response) => response.data);
+}
+
 module.exports = {
   getAllReviews,
   getReviewsMetadata,
+  postReview,
+  markReviewHelpful,
+  reportReview,
 };
