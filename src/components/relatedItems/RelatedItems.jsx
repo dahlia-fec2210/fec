@@ -1,9 +1,9 @@
 import React from 'react';
 
-const RelatedItems = () => {
+function RelatedItems() {
   return (
     <div>
-    <h4>RelatedItems</h4>
+      <h4>RelatedItems</h4>
     </div>
   );
 }
