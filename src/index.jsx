@@ -14,11 +14,11 @@ const App = () => {
 
   useEffect(() => {
     axios.get('http://localhost:3001/products')
-      .then((response) => {
-        console.log("hello!");
-        console.log(response.data, "index.jsx");
+      .then(response => {
+        console.log(response.data);
+        setProducts(response.data);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
   }, [])
 
   return (
@@ -28,6 +28,7 @@ const App = () => {
         <Reviews />
         <Questions />
         <RelatedItems />
+
     </div>
   );
 }
