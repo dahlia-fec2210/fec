@@ -3,25 +3,22 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path')
 const app = express();
+const cors = require('cors');
 
 const controller = require('./controllers.js');
 
-// app.use(express.static(path.join(__dirname, '../public/index.html')));
 
+app.use(cors());
 app.use(express.json());
-// app.use(express(urlencoded({ extended: true })));
 
-// const bodyParser = require('body-parser');
-// app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(bodyParser.json())
 
 // Routes go here:
 app.get('/products', (req, res) => {
 
   controller.getDatabaseInfo()
     .then((data) => {
-      console.log(data)
-      res.send(JSON.stringify(data));
+      console.log(data);
+      res.status(200).send(data);
     })
     .catch(err => {
       console.log(err);
