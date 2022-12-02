@@ -61,10 +61,12 @@ app.get('/products/:product_id/related', (req, res) => {
 });
 
 app.get('/reviews', (req, res) => {
+  console.log('we are here hello nick');
+  // res.send('korea won');
   reviews.getAllReviews(req.originalUrl)
     .then((data) => {
-      console.log(data);
-      res.status(200).send(data);
+      console.log(data.data, '123');
+      res.status(200).send(data.data);
     })
     .catch((err) => {
       res.status(500).send(err);
@@ -79,6 +81,19 @@ app.get('/reviews/meta', (req, res) => {
     .catch((err) => {
       res.status(500).send(err);
     });
+});
+
+app.post('/reviews', (req, res) => {
+  console.log(req.body);
+  res.send('hi');
+  // reviews.postReview(req.body)
+  //   .then((data) => {
+  //     // NOTE for Aaron: do you want a get request back after posting
+  //     res.status(201).send(data);
+  //   })
+  //   .catch((err) => {
+  //     res.status(404).send(err);
+  //   });
 });
 
 app.listen(process.env.PORT);

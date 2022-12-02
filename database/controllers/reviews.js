@@ -9,8 +9,12 @@ const headers = {
 };
 
 function getAllReviews(url) {
-  return axios.get(path.join(process.env.DATABASE_URL, url), headers)
-    .then((response) => response.data);
+  console.log('something');
+  console.log(path.join(process.env.DATABASE_URL, url), headers);
+  return axios.get(path.join(process.env.DATABASE_URL, url), headers);
+  // .then((response) => {
+  //   console.log(response.data, '123');
+  // });
 }
 
 function getReviewsMetadata(url) {
@@ -18,7 +22,12 @@ function getReviewsMetadata(url) {
     .then((response) => response.data);
 }
 
+function postReview(review) {
+  console.log(review);
+}
+
 module.exports = {
   getAllReviews,
   getReviewsMetadata,
+  postReview,
 };
