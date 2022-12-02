@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import './index.css';
 
 import Overview from './components/overview/Overview.jsx';
 import Reviews from './components/reviews/Reviews.jsx';
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <div>
+      <h1 className="text-primary text-4xl font-bold text-amber-400">Hello world! I am using React</h1>
       <h1>Hello Dahlia</h1>
       <Overview />
       <Reviews />

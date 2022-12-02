@@ -1,5 +1,6 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -16,8 +17,8 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
     ],
   },
@@ -28,15 +29,21 @@ module.exports = {
   devtool: 'eval-cheap-module-source-map',
   // [devServer] configuration for the live server including port
   devServer: {
-  // [static] config for how what to serve
+    port: '3000',
     static: {
       directory: path.join(__dirname, 'public'),
     },
-    compress: true,
-    // [port] what port on our local machine to run the dev server
-    port: 3000,
+    open: true,
+    hot: true,
+    liveReload: true,
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
   },
   plugins: [
     new Dotenv(),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'public', 'index.html'),
+    }),
   ],
 };
