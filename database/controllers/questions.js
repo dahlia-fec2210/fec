@@ -23,8 +23,14 @@ function postQuestion(question) {
     .then((response) => response.data);
 }
 
+function postAnswerToQuestion(questionId, answer) {
+  return axios.post(path.join(process.env.DATABASE_URL, `qa/questions/${questionId}/answers`), answer, headers)
+    .then((response) => response.data);
+}
+
 module.exports = {
   getQuestionsForProduct,
   getAnswersForQuestion,
   postQuestion,
+  postAnswerToQuestion,
 };
