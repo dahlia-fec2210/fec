@@ -4,7 +4,7 @@ const path = require('path');
 
 function getDatabaseInfo () {
   return axios.get(path.join(process.env.DATABASE_URL, '/products'), { headers: {
-    Authorization: `${process.env.TOKEN}`
+    Authorization: `${process.env.TOKEN}`,
   } })
     .then(response => {
       return response.data;

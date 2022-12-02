@@ -17,7 +17,7 @@ app.use(express.json());
 
 // Routes go here:
 app.get('/products', (req, res) => {
-
+  res.header("Access-Control-Allow-Origin", "*");
   controller.getDatabaseInfo()
     .then((data) => {
       console.log(data)
