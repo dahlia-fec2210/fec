@@ -29,8 +29,22 @@ function postAnswerToQuestion(questionId, answer) {
 }
 
 function markQuestionHelpful(questionId) {
-  console.log(questionId, 'questionId');
   return axios.put(path.join(process.env.DATABASE_URL, `/qa/questions/${questionId}/helpful`), {}, headers)
+    .then((response) => response.data);
+}
+
+function markAnswerHelpful(answerId) {
+  return axios.put(path.join(process.env.DATABASE_URL, `/qa/answers/${answerId}/helpful`), {}, headers)
+    .then((response) => response.data);
+}
+
+function reportQuestion(questionId) {
+  return axios.put(path.join(process.env.DATABASE_URL, `/qa/questions/${questionId}/report`), {}, headers)
+    .then((response) => response.data);
+}
+
+function reportAnswer(answerId) {
+  return axios.put(path.join(process.env.DATABASE_URL, `qa/answers/${answerId}/report`), {}, headers)
     .then((response) => response.data);
 }
 
@@ -40,4 +54,7 @@ module.exports = {
   postQuestion,
   postAnswerToQuestion,
   markQuestionHelpful,
+  reportQuestion,
+  markAnswerHelpful,
+  reportAnswer,
 };

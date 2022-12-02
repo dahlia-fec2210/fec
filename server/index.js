@@ -165,5 +165,35 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
     });
 });
 
+app.put('/qa/answers/:answer_id/helpful', (req, res) => {
+  questions.markAnswerHelpful(req.params.answer_id)
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+});
+
+app.put('/qa/questions/:question_id/report', (req, res) => {
+  questions.reportQuestion(req.params.question_id)
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+});
+
+app.put('/qa/answers/:answer_id/report', (req, res) => {
+  questions.reportAnswer(req.params.answer_id)
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+});
+
 app.listen(process.env.PORT);
 console.log('Listening on port 3001');
