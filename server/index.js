@@ -155,5 +155,15 @@ app.post('/qa/questions/:question_id/answers', (req, res) => {
     });
 });
 
+app.put('/qa/questions/:question_id/helpful', (req, res) => {
+  questions.markQuestionHelpful(req.params.question_id)
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+});
+
 app.listen(process.env.PORT);
 console.log('Listening on port 3001');

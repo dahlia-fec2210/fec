@@ -28,9 +28,16 @@ function postAnswerToQuestion(questionId, answer) {
     .then((response) => response.data);
 }
 
+function markQuestionHelpful(questionId) {
+  console.log(questionId, 'questionId');
+  return axios.put(path.join(process.env.DATABASE_URL, `/qa/questions/${questionId}/helpful`), {}, headers)
+    .then((response) => response.data);
+}
+
 module.exports = {
   getQuestionsForProduct,
   getAnswersForQuestion,
   postQuestion,
   postAnswerToQuestion,
+  markQuestionHelpful,
 };
