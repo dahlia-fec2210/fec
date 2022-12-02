@@ -26,7 +26,11 @@ function App() {
 
   return (
     <div>
-      <h1 className="text-primary text-4xl font-bold text-amber-400">Hello world! I am using React</h1>
+      <h1
+        className="text-primary text-center text-2xl font-bold text-blue-400 animate-pulse"
+      >
+        Welcome to Tailwind!
+      </h1>
       <h1>Hello Dahlia</h1>
       <Overview />
       <Reviews />
