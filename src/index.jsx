@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import axios from 'axios';
 import './index.css';
 
@@ -8,15 +8,18 @@ import Overview from './components/overview/Overview.jsx';
 import Reviews from './components/reviews/Reviews.jsx';
 import Questions from './components/questions/Questions.jsx';
 import RelatedItems from './components/relatedItems/RelatedItems.jsx';
+import OutfitList from './components/relatedItems/OutfitList.jsx';
 import Star from './components/common/Star.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
+const container = document.getElementById('root');
+const root = createRoot(container);
 
 function App() {
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products`, { params: { count: 1000 } })
+    axios.get(`${serverRoute}/products`, { params: { count: 10 } })
       .then((response) => {
         console.log(response.data);
         setProducts(response.data);
@@ -35,10 +38,10 @@ function App() {
       <Overview />
       <Reviews />
       <Questions />
-      <RelatedItems />
-
+      <RelatedItems currentProduct={products[0]} />
+      <OutfitList />
     </div>
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+root.render(<App />);
