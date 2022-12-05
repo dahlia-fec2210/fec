@@ -27,19 +27,26 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
+  if (products.length > 0) {
+    return (
+      <div>
+        <h1
+          className="text-primary text-center text-2xl font-bold text-blue-400 animate-pulse"
+        >
+          Welcome to Tailwind!
+        </h1>
+        <h1>Hello Dahlia</h1>
+        <Overview />
+        <Reviews />
+        <Questions />
+        <RelatedItems currentProduct={products[0]} />
+        <OutfitList />
+      </div>
+    );
+  }
   return (
     <div>
-      <h1
-        className="text-primary text-center text-2xl font-bold text-blue-400 animate-pulse"
-      >
-        Welcome to Tailwind!
-      </h1>
-      <h1>Hello Dahlia</h1>
-      <Overview />
-      <Reviews />
-      <Questions />
-      <RelatedItems currentProduct={products[0]} />
-      <OutfitList />
+      Loading...
     </div>
   );
 }

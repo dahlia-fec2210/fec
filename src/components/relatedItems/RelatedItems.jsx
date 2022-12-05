@@ -4,7 +4,9 @@ import axios from 'axios';
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function RelatedItems({ currentProduct }) {
-  console.log(currentProduct);
+  if (currentProduct.id) {
+    console.log(currentProduct.id);
+  }
 
   return (
     <div>
