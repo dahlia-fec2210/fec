@@ -15,6 +15,7 @@ function App() {
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
+    console.log('hi')
     axios.get(`${serverRoute}/products`, { params: { count: 1000 } })
       .then((response) => {
         console.log(response.data);
