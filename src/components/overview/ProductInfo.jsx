@@ -8,6 +8,7 @@ function ProductInfo() {
       <h3>&gt; PRODUCT CATEGORY</h3>
       <h3>&gt; Product Name</h3>
       <h3>&gt; $0.00</h3>
+      <h3>&gt; Style Selector</h3>
     </div>
   );
 }
