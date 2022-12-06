@@ -2,7 +2,7 @@ import React from 'react';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 
-function ProductInfo({ info }) {
+function ProductInfo({ productInfo }) {
   return (
     <div>
       <h2>&gt; Product Info</h2>
