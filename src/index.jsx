@@ -15,13 +15,10 @@ const root = createRoot(container);
 
 function App() {
   const [currentProduct, setCurrentProduct] = useState(37317);
-
-  console.log('current product info:', currentProduct);
-
   return (
     <div>
       <h1>Hello Dahlia</h1>
-      <Overview productId={currentProduct} />
+      <Overview productId={currentProduct} serverRoute={serverRoute} />
       <Reviews />
       <Questions />
       { currentProduct.id === null ? <div>Loading...</div>
