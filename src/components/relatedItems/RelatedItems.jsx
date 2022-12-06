@@ -26,7 +26,6 @@ function RelatedItems({ currentProduct, setCurrentProduct }) {
     event.preventDefault();
     setLeft(left - 272);
   }
-
   return (
     <div className="related-container">
       <h4 className="related-heading">Related Products</h4>

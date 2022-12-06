@@ -64,7 +64,6 @@ app.get('/products/:product_id/related', (req, res) => {
 app.get('/reviews', (req, res) => {
   reviews.getAllReviews(req.originalUrl)
     .then((data) => {
-      console.log(data);
       res.status(200).send(data);
     })
     .catch((err) => {

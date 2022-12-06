@@ -1,7 +1,6 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import axios from 'axios';
 
 import Overview from './components/overview/Overview.jsx';
 import Reviews from './components/reviews/Reviews.jsx';
@@ -20,10 +19,11 @@ function App() {
     <div>
       <h1>Hello Dahlia</h1>
       <Overview />
-      <Reviews />
       <Questions />
-      { currentProduct.id === null ? <div>Loading...</div>
-        : <RelatedItems currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+      {/* { currentProduct === null ? <div>Loading...</div>
+        : <RelatedItems currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> } */}
+      { currentProduct === null ? <div>Loading...</div>
+        : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
     </div>
   );
 }
