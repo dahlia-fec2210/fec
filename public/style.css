@@ -1,3 +1,72 @@
 .reviews-list-item {
   border: 2px black solid;
 }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.related-container {
+  width: 1070px;
+  margin: 0 auto;
+}
+
+.related-heading {
+  text-transform: uppercase;
+}
+
+.related-carousel {
+  display: flex;
+  overflow: hidden;
+  gap: 20px;
+}
+
+.related-product-card {
+  border: 1px solid black;
+  border-radius: 4px;
+  min-width: 250px;
+  height: 350px;
+  position: relative;
+}
+
+.related-buttons {
+  display: flex;
+  padding: 0 10px;
+  justify-content: space-between;
+  position: relative;
+  top: -185px;
+}
+
+.related-photo {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 1px solid black;
+}
+
+.related-sale-price {
+  color: red;
+}
+
+.related-price-strike {
+  text-decoration: line-through;
+}
+
+.related-category {
+  text-transform: uppercase;
+  font-size: 12px;
+  opacity: .7;
+  margin: 5px;
+  letter-spacing: 0.07em;
+}
+
+.related-name {
+  margin: 5px;
+  font-weight: bold;
+}
+
+.related-price {
+  margin: 5px;
+  font-size: 12px;
+}

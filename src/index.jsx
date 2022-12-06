@@ -1,6 +1,5 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import axios from 'axios';
 
@@ -11,32 +10,22 @@ import RelatedItems from './components/relatedItems/RelatedItems.jsx';
 import Star from './components/common/Star.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
-
-function App() {
-  const [products, setProducts] = useState(null);
-
-  useEffect(() => {
-    axios.get(`${serverRoute}/products`, { params: { count: 10 } })
-      .then((response) => {
-        setProducts(response.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  if (products) {
-    return (
-      <div>
-        {/* <Overview /> */}
-        <Reviews currentProduct={products[0]} />
-        {/* <Questions />
-        <RelatedItems /> */}
-
-      </div>
-    );
-  }
-  return <div>Loading...</div>;
-}
-
 const container = document.getElementById('root');
 const root = createRoot(container);
+
+function App() {
+  const [currentProduct, setCurrentProduct] = useState(37317);
+
+  return (
+    <div>
+      <h1>Hello Dahlia</h1>
+      <Overview />
+      <Reviews />
+      <Questions />
+      { currentProduct.id === null ? <div>Loading...</div>
+        : <RelatedItems currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+    </div>
+  );
+}
+
 root.render(<App />);
