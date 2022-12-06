@@ -1,0 +1,10 @@
+.answer {
+  border-style: dotted;
+  border-color: red;
+  margin: 1px;
+}
+
+.question {
+  border-style: solid;
+  margin: 5px;
+}

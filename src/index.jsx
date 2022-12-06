@@ -12,7 +12,8 @@ import Star from './components/common/Star.jsx';
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function App() {
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState(37317);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products`, { params: { count: 1000 } })
@@ -28,7 +29,9 @@ function App() {
       <h1>Hello Dahlia</h1>
       <Overview />
       <Reviews />
-      <Questions />
+      {/* <Questions currentProducts={products[0]} /> */}
+      { currentProduct.id === null ? <div>Loading...</div>
+        : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
       <RelatedItems />
 
     </div>
