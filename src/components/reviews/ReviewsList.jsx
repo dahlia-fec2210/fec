@@ -1,11 +1,18 @@
 import React from 'react';
 import ReviewListItem from './review-list-item/ReviewListItem.jsx';
 
-function ReviewsList({ reviews }) {
+function ReviewsList({ reviews, reportReview }) {
   if (reviews.length > 0) {
     return (
       <div>
-        {reviews.map((review) => <ReviewListItem review={review} key={review.review_id} />)}
+        {reviews.map((review, index) => (
+          <ReviewListItem
+            review={review}
+            reportReview={reportReview}
+            key={review.review_id}
+            index={index}
+          />
+        ))}
       </div>
     );
   }

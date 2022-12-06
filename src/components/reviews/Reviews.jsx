@@ -25,23 +25,33 @@ function Reviews({ currentProduct }) {
     const newPageCount = pageCount + 1;
     setItemCount(itemCount + 2);
     setPageCount(newPageCount);
-    fetchReviews(currentProduct.id, newPageCount, 2, sortBy)
+    fetchReviews(currentProduct, newPageCount, 2, sortBy)
       .then((results) => {
         setAllReviews([...allReviews, ...results.data.results]);
       });
   };
+  const reportReview = (reviewId, index) => {
+    const route = `${serverRoute}/reviews/${reviewId}/report`;
+    axios.put(route)
+      .then(() => {
+        const newReviews = allReviews;
+        newReviews.splice(index, 1);
+        setAllReviews(newReviews);
+        setItemCount(itemCount - 1);
+      });
+  };
 
   useEffect(() => {
-    fetchReviews(currentProduct.id, pageCount, 2, sortBy)
+    fetchReviews(currentProduct, pageCount, 2, sortBy)
       .then((result) => {
         setAllReviews(result.data.results);
       });
-  }, []);
+  }, [currentProduct]);
 
   if (allReviews) {
     return (
       <>
-        <ReviewsList reviews={allReviews} />
+        <ReviewsList reviews={allReviews} reportReview={reportReview} />
         {itemCount > allReviews.length ? null : <MoreReviewsButton addTwoItems={addTwoItems} />}
         {/* need conditional rendering for button */}
       </>
