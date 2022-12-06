@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import axios from 'axios';
 
 import Overview from './components/overview/Overview.jsx';
@@ -10,18 +10,11 @@ import RelatedItems from './components/relatedItems/RelatedItems.jsx';
 import Star from './components/common/Star.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
+const container = document.getElementById('root');
+const root = createRoot(container);
 
 function App() {
-  const [products, setProducts] = useState(null);
-
-  useEffect(() => {
-    axios.get(`${serverRoute}/products`, { params: { count: 1000 } })
-      .then((response) => {
-        console.log(response.data);
-        setProducts(response.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const [currentProduct, setCurrentProduct] = useState(37317);
 
   return (
     <div>
@@ -29,10 +22,10 @@ function App() {
       <Overview />
       <Reviews />
       <Questions />
-      <RelatedItems />
-
+      { currentProduct.id === null ? <div>Loading...</div>
+        : <RelatedItems currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
     </div>
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+root.render(<App />);
