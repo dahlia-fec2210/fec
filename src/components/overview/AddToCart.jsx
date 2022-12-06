@@ -4,6 +4,9 @@ function AddToCart() {
   return (
     <div>
       <h3>&gt; Add to Cart</h3>
+      <select>
+        <option value="">SELECT SIZE</option>
+      </select>
     </div>
   );
 }
