@@ -35,7 +35,7 @@ function Overview({ productId, serverRoute }) {
     <div>
       <h1>Overview</h1>
       <Image image={productImage} />
-      <ProductInfo info={productInfo} />
+      <ProductInfo productInfo={productInfo} />
     </div>
   );
 }
