@@ -32,7 +32,16 @@ body {
   top: -185px;
 }
 
-.related-hidden {
-  display: none;
+.related-photo {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.related-sale-price {
   color: red;
+}
+
+.related-price-strike {
+  text-decoration: line-through;
 }
