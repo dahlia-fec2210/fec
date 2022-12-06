@@ -5,7 +5,8 @@ import ProductInfo from './ProductInfo.jsx';
 
 function Overview({ productId, serverRoute }) {
   const [productInfo, setProductInfo] = useState(null);
-  const [productStyles, setProductStyles] = useState(null);
+  const [productStyles, setProductStyles] = useState([]);
+  const [productImage, setProductImage] = useState(null);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
