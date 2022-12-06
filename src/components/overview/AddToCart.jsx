@@ -10,6 +10,7 @@ function AddToCart() {
       <select>
         <option value="">1</option>
       </select>
+      <button type="button">Add to Cart/Bag</button>
     </div>
   );
 }
