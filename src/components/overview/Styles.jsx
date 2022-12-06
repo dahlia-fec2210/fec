@@ -3,7 +3,7 @@ import React from 'react';
 function Styles() {
   return (
     <div>
-      <h3>&gt; Style Selector comp</h3>
+      <h4>&gt; Styles</h4>
     </div>
   );
 }
