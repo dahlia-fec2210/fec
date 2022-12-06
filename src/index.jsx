@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import axios from 'axios';
 
 import Overview from './components/overview/Overview.jsx';
@@ -15,24 +16,27 @@ function App() {
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products`, { params: { count: 1000 } })
+    axios.get(`${serverRoute}/products`, { params: { count: 10 } })
       .then((response) => {
-        console.log(response.data);
         setProducts(response.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  return (
-    <div>
-      <h1>Hello Dahlia</h1>
-      <Overview />
-      <Reviews />
-      <Questions />
-      <RelatedItems />
+  if (products) {
+    return (
+      <div>
+        {/* <Overview /> */}
+        <Reviews currentProduct={products[0]} />
+        {/* <Questions />
+        <RelatedItems /> */}
 
-    </div>
-  );
+      </div>
+    );
+  }
+  return <div>Loading...</div>;
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App />);
