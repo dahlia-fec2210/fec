@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RelatedProduct from './RelatedProduct.jsx';
