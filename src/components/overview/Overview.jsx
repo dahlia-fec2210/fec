@@ -37,7 +37,6 @@ function Overview({ productId, serverRoute }) {
 
   return (
     <div>
-      <h1>Overview</h1>
       <Image image={productImage} />
       <ProductInfo productCategory={productCategory} productName={productName} />
     </div>
