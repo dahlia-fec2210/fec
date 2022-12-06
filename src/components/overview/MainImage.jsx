@@ -1,9 +1,9 @@
 import React from 'react';
 
-function MainImage() {
+function MainImage({ mainImage }) {
   return (
     <div>
-      <h3>&gt; MainImage</h3>
+      <img src={mainImage} alt="" />
     </div>
   );
 }
