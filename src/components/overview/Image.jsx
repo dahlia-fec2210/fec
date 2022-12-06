@@ -1,9 +1,11 @@
 import React from 'react';
+import MainImage from './MainImage.jsx';
 
 function Image() {
   return (
     <div>
-      <h1>Image</h1>
+      <h2>&gt; Image</h2>
+      <MainImage />
     </div>
   );
 }
