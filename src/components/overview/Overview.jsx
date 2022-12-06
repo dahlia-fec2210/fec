@@ -9,12 +9,14 @@ function Overview({ productId, serverRoute }) {
   const [currentStyle, setCurrentStyle] = useState(null);
   const [productImage, setProductImage] = useState('');
   const [productCategory, setProductCategory] = useState('');
+  const [productName, setProductName] = useState('');
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
       .then((info) => {
         setProductInfo(info.data);
         setProductCategory(info.data.category);
+        setProductName(info.data.name);
       })
       .catch((err) => {
         console.log('Error getting product info\n', err);
@@ -33,13 +35,11 @@ function Overview({ productId, serverRoute }) {
       });
   }, []);
 
-  console.log('productInfo in Overview:', productInfo);
-
   return (
     <div>
       <h1>Overview</h1>
       <Image image={productImage} />
-      <ProductInfo productCategory={productCategory} />
+      <ProductInfo productCategory={productCategory} productName={productName} />
     </div>
   );
 }
