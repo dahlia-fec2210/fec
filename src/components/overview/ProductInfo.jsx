@@ -10,6 +10,7 @@ function ProductInfo() {
       <h3>&gt; $0.00</h3>
       <h3>&gt; Style Selector</h3>
       <h3>&gt; Add to Cart/Bag</h3>
+      <h3>&gt; Share on Social Media</h3>
     </div>
   );
 }
