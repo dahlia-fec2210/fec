@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.related-container {
+  width: 1070px;
+  margin: 0 auto;
+}
+
+.related-heading {
+  text-transform: uppercase;
+}
+
+.related-carousel {
+  display: flex;
+  overflow: hidden;
+  gap: 20px;
+}
+
+.related-product-card {
+  border: 1px solid black;
+  min-width: 250px;
+  height: 350px;
+  position: relative;
+}
+
+.related-buttons {
+  display: flex;
+  padding: 0 10px;
+  justify-content: space-between;
+  position: relative;
+  top: -185px;
+}
+
+.related-hidden {
+  display: none;
+  color: red;
+}

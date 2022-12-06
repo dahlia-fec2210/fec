@@ -15,10 +15,9 @@ function App() {
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
-    console.log('hi')
     axios.get(`${serverRoute}/products`, { params: { count: 1000 } })
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
         setProducts(response.data);
       })
       .catch((err) => console.log(err));
@@ -30,8 +29,7 @@ function App() {
       <Overview />
       <Reviews />
       <Questions />
-      <RelatedItems />
-
+      { products === null ? <div>Loading...</div> : <RelatedItems currentProduct={products[6]} /> }
     </div>
   );
 }
