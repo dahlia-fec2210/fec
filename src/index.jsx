@@ -16,10 +16,12 @@ const root = createRoot(container);
 function App() {
   const [currentProduct, setCurrentProduct] = useState(37317);
 
+  console.log('current product info:', currentProduct);
+
   return (
     <div>
       <h1>Hello Dahlia</h1>
-      <Overview />
+      <Overview product={currentProduct} />
       <Reviews />
       <Questions />
       { currentProduct.id === null ? <div>Loading...</div>
