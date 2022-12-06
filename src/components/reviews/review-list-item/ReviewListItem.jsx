@@ -34,6 +34,13 @@ function ReviewsListItem({ review, reportReview, index }) {
       <SubmissionInfo user={review.reviewer_name} date={review.date} />
       {review.summary ? <div>{review.summary}</div> : null}
       <div>{review.body}</div>
+      {review.recommend ? (
+        <div>
+          <i className="fa-solid fa-check" />
+          {' '}
+          I recommend this product
+        </div>
+      ) : null}
       {review.response ? <SellerResponse response={review.response} /> : null}
       <span>
         Helpful?&nbsp;&nbsp;

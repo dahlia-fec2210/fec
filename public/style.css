@@ -107,4 +107,14 @@ body {
 }
 
 
-/* ***************************************************** */
+/* **** Reviews ****************************************** */
+
+.reviews-container {
+  max-height: 100vh;
+  max-width: 100vw;
+}
+
+.reviews-list {
+  max-height: 80vh;
+  overflow-y: scroll;
+}
