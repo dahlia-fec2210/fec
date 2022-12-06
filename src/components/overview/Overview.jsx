@@ -6,7 +6,8 @@ import ProductInfo from './ProductInfo.jsx';
 function Overview({ productId, serverRoute }) {
   const [productInfo, setProductInfo] = useState(null);
   const [productStyles, setProductStyles] = useState([]);
-  const [productImage, setProductImage] = useState('https://static.wikia.nocookie.net/kingdom-keymasters-database/images/2/27/001Bulbasaur_XY_anime.png/revision/latest?cb=20160927122032');
+  const [currentStyle, setCurrentStyle] = useState(null);
+  const [productImage, setProductImage] = useState('https://images.halloweencostumes.com/products/66128/1-2/child-pokemon-classic-bulbasaur-costume.jpg');
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
@@ -21,14 +22,14 @@ function Overview({ productId, serverRoute }) {
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}/styles`)
       .then((styles) => {
-        setProductStyles(styles.data);
+        setProductStyles(styles.data.results);
+        setCurrentStyle(styles.data.results[0]);
+        setProductImage(styles.data.results[0].photos[0].url);
       })
       .catch((err) => {
         console.log('Error getting styles\n', err);
       });
   }, []);
-
-  console.log('product styles:', productStyles);
 
   return (
     <div>
