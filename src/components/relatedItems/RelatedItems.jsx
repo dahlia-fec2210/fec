@@ -6,16 +6,16 @@ import RelatedProduct from './RelatedProduct.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function RelatedItems({ currentProduct }) {
+function RelatedItems({ currentProduct, setCurrentProduct }) {
   const [left, setLeft] = useState(0);
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${currentProduct.id}/related`)
+    axios.get(`${serverRoute}/products/${currentProduct}/related`)
       .then((data) => {
         setRelatedProducts(data.data);
       });
-  }, []);
+  }, [currentProduct]);
 
   function moveRight(event) {
     event.preventDefault();
@@ -33,6 +33,8 @@ function RelatedItems({ currentProduct }) {
       <div className="related-carousel">
         {relatedProducts.map((product) => (
           <RelatedProduct
+            currentProduct={currentProduct}
+            setCurrentProduct={setCurrentProduct}
             left={left}
             key={product}
             product={product}

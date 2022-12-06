@@ -19,6 +19,7 @@ body {
 
 .related-product-card {
   border: 1px solid black;
+  border-radius: 4px;
   min-width: 250px;
   height: 350px;
   position: relative;
@@ -36,6 +37,8 @@ body {
   width: 250px;
   height: 250px;
   object-fit: cover;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 1px solid black;
 }
 
 .related-sale-price {
@@ -44,4 +47,22 @@ body {
 
 .related-price-strike {
   text-decoration: line-through;
+}
+
+.related-category {
+  text-transform: uppercase;
+  font-size: 12px;
+  opacity: .7;
+  margin: 5px;
+  letter-spacing: 0.07em;
+}
+
+.related-name {
+  margin: 5px;
+  font-weight: bold;
+}
+
+.related-price {
+  margin: 5px;
+  font-size: 12px;
 }
