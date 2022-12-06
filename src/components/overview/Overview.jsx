@@ -6,7 +6,7 @@ import ProductInfo from './ProductInfo.jsx';
 function Overview({ productId, serverRoute }) {
   const [productInfo, setProductInfo] = useState(null);
   const [productStyles, setProductStyles] = useState([]);
-  const [productImage, setProductImage] = useState(null);
+  const [productImage, setProductImage] = useState('https://static.wikia.nocookie.net/kingdom-keymasters-database/images/2/27/001Bulbasaur_XY_anime.png/revision/latest?cb=20160927122032');
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
@@ -33,7 +33,7 @@ function Overview({ productId, serverRoute }) {
   return (
     <div>
       <h1>Overview</h1>
-      <Image />
+      <Image image={productImage} />
       <ProductInfo />
     </div>
   );
