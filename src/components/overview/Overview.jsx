@@ -7,7 +7,7 @@ function Overview({ productId, serverRoute }) {
   const [productInfo, setProductInfo] = useState(null);
   const [productStyles, setProductStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState(null);
-  const [productImage, setProductImage] = useState('https://images.halloweencostumes.com/products/66128/1-2/child-pokemon-classic-bulbasaur-costume.jpg');
+  const [productImage, setProductImage] = useState('');
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
