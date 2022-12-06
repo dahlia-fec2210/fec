@@ -21,7 +21,7 @@ function App() {
   return (
     <div>
       <h1>Hello Dahlia</h1>
-      <Overview product_id={currentProduct} />
+      <Overview productId={currentProduct} />
       <Reviews />
       <Questions />
       { currentProduct.id === null ? <div>Loading...</div>
