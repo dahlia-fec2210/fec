@@ -7,6 +7,9 @@ function AddToCart() {
       <select>
         <option value="">SELECT SIZE</option>
       </select>
+      <select>
+        <option value="">1</option>
+      </select>
     </div>
   );
 }
