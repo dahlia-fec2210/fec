@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Price from './Price.jsx';
+import Star from '../common/Star.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
@@ -15,6 +16,7 @@ function RelatedProduct({
   const [photo, setPhoto] = useState('');
   const [price, setPrice] = useState(null);
   const [salesPrice, setSalesPrice] = useState(null);
+  const [average, setAverage] = useState(0);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${product}`)
@@ -30,6 +32,21 @@ function RelatedProduct({
         setPrice(data.data.results[0].original_price);
         setSalesPrice(data.data.results[0].sale_price);
         setPhoto(data.data.results[0].photos[0].url);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.get(`${serverRoute}/reviews/meta/?product_id=${product}`)
+      .then((data) => {
+        const reviews = data.data.ratings;
+        const keys = Object.keys(reviews);
+        let sum = 0;
+        let numReviews = 0;
+        keys.forEach((key) => {
+          sum += (key * reviews[key]);
+          numReviews += Number(reviews[key]);
+        });
+        setAverage(sum / numReviews);
       });
   }, []);
 
@@ -62,6 +79,10 @@ function RelatedProduct({
             <div className="related-category">{productInfo.category}</div>
             <div className="related-name">{productInfo.name}</div>
             <Price price={price} salesPrice={salesPrice} />
+            <div className="related-stars">
+              <Star percentage={(average / 5) * 100} />
+            </div>
+
           </div>
 
         </div>

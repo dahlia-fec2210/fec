@@ -130,6 +130,10 @@ body {
   margin-bottom: 15px;
 }
 
+.related-stars {
+  margin-left: 5px;
+}
+
 /* .related-modal-container {
   height: 100vh;
   width: 100vw;

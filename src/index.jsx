@@ -20,10 +20,10 @@ function App() {
       <h1>Hello Dahlia</h1>
       <Overview />
       <Questions />
-      {/* { currentProduct === null ? <div>Loading...</div>
-        : <RelatedItems currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> } */}
       { currentProduct === null ? <div>Loading...</div>
-        : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+        : <RelatedItems currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+      {/* { currentProduct === null ? <div>Loading...</div>
+        : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> } */}
     </div>
   );
 }
