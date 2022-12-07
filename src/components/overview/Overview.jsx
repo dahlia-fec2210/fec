@@ -32,6 +32,8 @@ function Overview({ productId, serverRoute }) {
         setProductStyles(styles.data.results);
         setCurrentStyle(styles.data.results[0]);
         setProductImage(styles.data.results[0].photos[0].url);
+        setOriginalPrice(styles.data.results[0].original_price);
+        setSalePrice(styles.data.results[0].sale_price);
       })
       .catch((err) => {
         console.log('Error getting styles\n', err);
@@ -53,10 +55,6 @@ function Overview({ productId, serverRoute }) {
       });
   }, []);
 
-  console.log('product info:', productInfo);
-  console.log('product styles:', productStyles);
-  console.log('current style:', currentStyle);
-
   return (
     <div>
       <Image image={productImage} />
@@ -64,6 +62,8 @@ function Overview({ productId, serverRoute }) {
         productCategory={productCategory}
         productName={productName}
         productRating={productRating}
+        originalPrice={originalPrice}
+        salePrice={salePrice}
       />
     </div>
   );
