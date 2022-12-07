@@ -7,12 +7,13 @@ function ProductInfo({ productCategory, productName, productRating }) {
   // const [productRating, setProductRating] = useState(''); // get from ???
   // const [productName, setProductName] = useState('');
   const [stylePrice, setStylePrice] = useState(''); // get from styles API
+  // setProductRating(Math.round(productRating));
 
   return (
     <div>
       <h2>&gt; Product Info</h2>
       <h3>{productRating}</h3>
-      <DisplayStar percentage={productRating} />
+      <DisplayStar percentage={(productRating / 5) * 100} />
       <h3>{productCategory}</h3>
       <h3>{productName}</h3>
       <h3>&gt; $0.00</h3>
