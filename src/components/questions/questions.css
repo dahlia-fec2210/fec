@@ -1,0 +1,14 @@
+.answer {
+  border-style: dotted;
+  border-color: red;
+  margin: 1px;
+  overflow-y: scroll;
+
+}
+
+.question {
+  border-style: solid;
+  margin: 5px;
+  /* height: 20px; */
+  /* overflow-y: scroll; */
+}

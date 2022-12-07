@@ -13,7 +13,7 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 function App() {
-  const [currentProduct, setCurrentProduct] = useState(37317);
+  const [currentProduct, setCurrentProduct] = useState(37314);
 
   return (
     <div>
@@ -21,7 +21,8 @@ function App() {
       <Overview />
       { currentProduct === null ? <div>Loading...</div>
         : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
-      <Questions />
+      { currentProduct === null ? <div>Loading...</div>
+        : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
       { currentProduct === null ? <div>Loading...</div>
         : <RelatedItems currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
     </div>

@@ -10,22 +10,34 @@ function Questions({ currentProduct }) {
   const [allQuestions, setAllQuestions] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(1);
-  const [count, setCount] = useState(2);
+  // const [page, setPage] = useState(1);
+  const [countNum, setCountNum] = useState(0);
 
-  let fetchQuestions = (productId, pageNumber, countNumber) => axios.get(`${serverRoute}/qa/questions`, {
-    params: {
-      product_id: productId,
-      page: pageNumber,
-      count: countNumber,
-    },
-  });
+  console.log(currentProduct, 'currentProduct');
+
+  let fetchQuestions = (allQuestionData, countInt) => {
+    // axios.get(`${serverRoute}/qa/questions`, {
+    //   params: {
+    //     product_id: productId,
+    //     page: pageNumber,
+    //     count: countNumber,
+    //   },
+    // });
+    let currentQuestions = [];
+    console.log(allQuestionData, countInt, 'fetchQuestions');
+    for (let i = 0; i < countInt; i++) {
+      currentQuestions.push(allQuestionData[i]);
+    }
+    console.log(currentQuestions, '010101010');
+    setQuestions(currentQuestions);
+  };
     // .then((result) => {
     //   console.log(result, '123123');
     // });
-
   const loadQuestions = () => {
-
+    console.log(allQuestions, 'loadQuestions');
+    setCountNum(countNum + 2);
+    fetchQuestions(allQuestions, countNum);
     // const newPage = page + 1;
     // setPage(newPage);
     // setCount(count + 2);
@@ -37,25 +49,20 @@ function Questions({ currentProduct }) {
   };
 
   useEffect(() => {
-    // console.log('testing inside', currentProduct);
+    // if (currentProduct !== null) {
+    console.log('first useeffect');
     axios.get(`${serverRoute}/qa/questions`, {
       params: {
         product_id: currentProduct,
       },
     })
       .then((response) => {
-        let questionArr = response.data.results;
-        setAllQuestions(questionArr);
-        console.log(questionArr, 'inside useEffect');
+        const questionsArr = response.data.results;
+        console.log(response, 'in response');
+        setAllQuestions(questionsArr);
+        setIsLoading(false);
       });
-
-    // fetchQuestions(currentProduct, page, count)
-    //   .then((response) => {
-    //     let questionsArr = response.data.results;
-    //     console.log(questionsArr, 'in response 2');
-    //     setQuestions(questionsArr);
-    //     setIsLoading(false);
-    //   });
+    // }
   }, []);
 
   let compareFn = (a, b) => {
@@ -69,7 +76,8 @@ function Questions({ currentProduct }) {
 
   useEffect(() => {
     allQuestions.sort(compareFn);
-    setQuestions(allQuestions);
+    loadQuestions(allQuestions);
+    // setQuestions(allQuestions);
     console.log(allQuestions, 'second useEffect');
   }, [allQuestions]);
 
@@ -86,7 +94,8 @@ function Questions({ currentProduct }) {
     <div>
       <h1>Questions</h1>
       {content}
-      <LoadQuestionButton handleClick={loadQuestions} />
+      {countNum > allQuestions.length ? null
+        : <LoadQuestionButton handleClick={loadQuestions} />}
     </div>
   );
 }

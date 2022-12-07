@@ -113,8 +113,10 @@ app.put('/reviews/:review_id/report', (req, res) => {
 });
 
 app.get('/qa/questions', (req, res) => {
+  console.log(req.originalUrl, 'inside app.get');
   questions.getQuestionsForProduct(req.originalUrl)
     .then((data) => {
+      console.log(data, 'is data printing');
       res.status(200).send(data);
     })
     .catch((err) => {
@@ -123,7 +125,7 @@ app.get('/qa/questions', (req, res) => {
 });
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  questions.getAnswersForQuestion(req.params.question_id)
+  questions.getAnswersForQuestion(req.originalUrl)
     .then((data) => {
       res.status(200).send(data);
     })
