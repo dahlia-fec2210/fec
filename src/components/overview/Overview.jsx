@@ -13,6 +13,7 @@ function Overview({ productId, serverRoute }) {
   const [productRating, setProductRating] = useState(0);
   const [originalPrice, setOriginalPrice] = useState(0);
   const [salePrice, setSalePrice] = useState(null);
+  const [currentStylePhotos, setCurrentStylePhotos] = useState([]);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
@@ -31,6 +32,7 @@ function Overview({ productId, serverRoute }) {
       .then((styles) => {
         setProductStyles(styles.data.results);
         setCurrentStyle(styles.data.results[0]);
+        setCurrentStylePhotos(styles.data.results[0].photos);
         setProductImage(styles.data.results[0].photos[0].url);
         setOriginalPrice(styles.data.results[0].original_price);
         setSalePrice(styles.data.results[0].sale_price);
@@ -56,10 +58,11 @@ function Overview({ productId, serverRoute }) {
   }, []);
 
   // console.log('product styles:', productStyles);
+  console.log('current style:', currentStyle);
 
   return (
     <div>
-      <Image image={productImage} />
+      <Image image={productImage} currentStylePhotos={currentStylePhotos} />
       <ProductInfo
         productCategory={productCategory}
         productName={productName}
