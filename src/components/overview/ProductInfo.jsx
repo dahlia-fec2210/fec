@@ -8,7 +8,6 @@ function ProductInfo({
 }) {
   return (
     <div>
-      <h2>&gt; Product Info</h2>
       <DisplayStar percentage={(productRating / 5) * 100} />
       <h3>{productCategory}</h3>
       <h3>{productName}</h3>
