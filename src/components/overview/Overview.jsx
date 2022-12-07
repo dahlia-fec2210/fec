@@ -11,6 +11,8 @@ function Overview({ productId, serverRoute }) {
   const [productCategory, setProductCategory] = useState('');
   const [productName, setProductName] = useState('');
   const [productRating, setProductRating] = useState(0);
+  const [originalPrice, setOriginalPrice] = useState(0);
+  const [salePrice, setSalePrice] = useState(null);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
@@ -50,6 +52,10 @@ function Overview({ productId, serverRoute }) {
         setProductRating(sum / numReviews);
       });
   }, []);
+
+  console.log('product info:', productInfo);
+  console.log('product styles:', productStyles);
+  console.log('current style:', currentStyle);
 
   return (
     <div>
