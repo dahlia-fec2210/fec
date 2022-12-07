@@ -15,9 +15,10 @@ function OutfitList({ currentProduct }) {
   const [outfit, setOutfit] = useState([]);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/outfit`)
+    axios.get(`${serverRoute}/outfit`, { withCredentials: true })
       .then((data) => {
         console.log(data);
+        setOutfit(data.data);
       });
   }, []);
 
@@ -40,9 +41,14 @@ function OutfitList({ currentProduct }) {
 
   function addProduct(event) {
     event.preventDefault();
+
     const newOutfit = [...outfit];
     let pieceExists = false;
     if (outfit.length === 0) {
+      axios.post(`${serverRoute}/piece`, productInfo, { withCredentials: true })
+        .then((data) => {
+          console.log(data);
+        });
       newOutfit.push(productInfo);
       setOutfit(newOutfit);
     } else {
@@ -52,13 +58,15 @@ function OutfitList({ currentProduct }) {
         }
       });
       if (pieceExists === false) {
+        axios.post(`${serverRoute}/piece`, productInfo, { withCredentials: true })
+          .then((data) => {
+            console.log(data);
+          });
         newOutfit.push(productInfo);
         setOutfit(newOutfit);
       }
     }
   }
-
-  console.log(outfit);
 
   return (
     <div>

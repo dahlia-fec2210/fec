@@ -43,6 +43,12 @@ function ClothingPiece({
 
   function removeFromOutfit(event) {
     event.preventDefault();
+
+    axios.post(`${serverRoute}/delete`, clothingPiece, { withCredentials: true })
+      .then((data) => {
+        console.log(data);
+      });
+
     const newOutfit = outfit.filter((piece) => piece.name !== clothingPiece.name);
     setOutfit(newOutfit);
   }

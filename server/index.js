@@ -14,7 +14,13 @@ const reviews = require('../database/controllers/reviews');
 const questions = require('../database/controllers/questions');
 const db = require('../database/index.js');
 
-app.use(cors());
+// app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true, // access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(sessionHandler);
 app.use(express.json());
@@ -23,14 +29,16 @@ app.use(express.json());
 
 // Outfit Routes:
 app.post('/piece', (req, res) => {
-  db.savePiece(req.body)
+  db.savePiece({
+    cookie: req.session_id, category: req.body.category, id: req.body.id, name: req.body.name,
+  })
     .then((response) => {
       res.send(response);
     });
 });
 
 app.get('/outfit', (req, res) => {
-  db.getOutfit()
+  db.getOutfit(req.session_id)
     .then((response) => {
       res.send(response);
     });

@@ -16,8 +16,8 @@ function savePiece(piece) {
     .then((response) => response);
 }
 
-function getOutfit() {
-  return Piece.find({})
+function getOutfit(sessionId) {
+  return Piece.find({ cookie: sessionId })
     .then((outfit) => outfit);
 }
 
