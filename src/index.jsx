@@ -14,17 +14,17 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [currentProduct, setCurrentProduct] = useState(37317);
+  // const [products, setProducts] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState(37311);
 
-  useEffect(() => {
-    axios.get(`${serverRoute}/products`, { params: { count: 1000 } })
-      .then((response) => {
-        console.log(response.data);
-        setProducts(response.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   axios.get(`${serverRoute}/products`, { params: { count: 1000 } })
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       setProducts(response.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   return (
     <div>

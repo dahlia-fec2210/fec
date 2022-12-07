@@ -124,7 +124,8 @@ app.get('/qa/questions', (req, res) => {
 });
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  questions.getAnswersForQuestion(req.params.question_id)
+  console.log(req.originalUrl, 'in here 123');
+  questions.getAnswersForQuestion(req.originalUrl)
     .then((data) => {
       res.status(200).send(data);
     })
@@ -186,6 +187,7 @@ app.put('/qa/questions/:question_id/report', (req, res) => {
 });
 
 app.put('/qa/answers/:answer_id/report', (req, res) => {
+  console.log('this has been reported');
   questions.reportAnswer(req.params.answer_id)
     .then((data) => {
       res.status(200).send(data);
