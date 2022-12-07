@@ -4,7 +4,7 @@ import AddToCart from './AddToCart.jsx';
 import DisplayStar from '../common/Star.jsx';
 
 function ProductInfo({
-  productCategory, productName, productRating, originalPrice, salePrice,
+  productCategory, productName, productRating, originalPrice, salePrice, productStyles,
 }) {
   return (
     <div>
@@ -19,7 +19,7 @@ function ProductInfo({
             <span style={{ color: 'red' }}>{salePrice}</span>
           </div>
         )}
-      <StyleSelector />
+      <StyleSelector productStyles={productStyles} />
       <AddToCart />
       <h3>Share on Social Media</h3>
       <button type="button">Facebook</button>
