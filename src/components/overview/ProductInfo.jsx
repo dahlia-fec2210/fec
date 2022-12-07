@@ -3,7 +3,9 @@ import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import DisplayStar from '../common/Star.jsx';
 
-function ProductInfo({ productCategory, productName, productRating }) {
+function ProductInfo({
+  productCategory, productName, productRating, originalPrice, salePrice,
+}) {
   // const [productRating, setProductRating] = useState(''); // get from ???
   // const [productName, setProductName] = useState('');
   const [stylePrice, setStylePrice] = useState(''); // get from styles API
