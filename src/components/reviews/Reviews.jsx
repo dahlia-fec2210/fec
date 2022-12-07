@@ -9,8 +9,8 @@ const { useState, useEffect } = React;
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function Reviews({ currentProduct }) {
-  const [allReviews, setAllReviews] = useState(null);
-  const [reviewsToList, setReviewsToList] = useState(null);
+  const [allReviews, setAllReviews] = useState([]);
+  const [reviewsToList, setReviewsToList] = useState([]);
   const [itemCount, setItemCount] = useState(2);
   const [sortBy, setSortBy] = useState('relevant');
   const [modal, setModal] = useState(false);
@@ -75,7 +75,7 @@ function Reviews({ currentProduct }) {
       });
   }, [currentProduct]);
 
-  if (reviewsToList) {
+  // if (reviewsToList) {
     return (
       <div className="reviews-container">
         <SortByDropdown
@@ -89,7 +89,7 @@ function Reviews({ currentProduct }) {
         {modal && <NewReviewModal toggleModal={toggleModal} />}
       </div>
     );
-  }
+  // }
 }
 
 export default Reviews;
