@@ -24,7 +24,7 @@ function ClothingPiece({
         setPrice(data.data.results[0].original_price);
         setSalesPrice(data.data.results[0].sale_price);
       });
-  }, []);
+  }, [outfit]);
 
   useEffect(() => {
     axios.get(`${serverRoute}/reviews/meta/?product_id=${clothingPiece.id}`)
@@ -45,12 +45,12 @@ function ClothingPiece({
     event.preventDefault();
 
     axios.post(`${serverRoute}/delete`, clothingPiece, { withCredentials: true })
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        axios.get(`${serverRoute}/outfit`, { withCredentials: true })
+          .then((data) => {
+            setOutfit(data.data);
+          });
       });
-
-    const newOutfit = outfit.filter((piece) => piece.name !== clothingPiece.name);
-    setOutfit(newOutfit);
   }
 
   if (clothingPiece !== null) {

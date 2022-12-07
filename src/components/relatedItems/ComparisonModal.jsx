@@ -16,7 +16,6 @@ function ComparisonModal({ modalProduct, currentProduct, setOpenModal }) {
   useEffect(() => {
     axios.get(`${serverRoute}/products/${currentProduct}`)
       .then((data) => {
-        console.log(data.data);
         setCurrentProductInfo(data.data);
         setCurrentFeatures(data.data.features);
       });
@@ -25,14 +24,10 @@ function ComparisonModal({ modalProduct, currentProduct, setOpenModal }) {
   useEffect(() => {
     axios.get(`${serverRoute}/products/${modalProduct}`)
       .then((data) => {
-        console.log(data.data);
         setModalProductInfo(data.data);
         setModalFeatures(data.data.features);
       });
   }, []);
-
-  console.log('CURRENT: ', currentFeatures);
-  console.log('MODAL: ', modalFeatures);
 
   if (currentProductInfo !== null && modalProductInfo !== null) {
     const allFeatures = {};
@@ -57,7 +52,6 @@ function ComparisonModal({ modalProduct, currentProduct, setOpenModal }) {
       }
     });
     const allFeaturesKeys = Object.keys(allFeatures);
-    console.log(allFeaturesKeys);
 
     return (
       <div className="related-comparison-modal">
@@ -83,7 +77,6 @@ function ComparisonModal({ modalProduct, currentProduct, setOpenModal }) {
             <tbody>
               {allFeaturesKeys.map((key) => {
                 if (allFeatures[key].includes('modal') && allFeatures[key].includes('current')) {
-                  console.log(key, 'MODAL');
                   return (
                     <tr key={key}>
                       <td>✅</td>

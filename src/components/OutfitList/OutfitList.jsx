@@ -17,7 +17,6 @@ function OutfitList({ currentProduct }) {
   useEffect(() => {
     axios.get(`${serverRoute}/outfit`, { withCredentials: true })
       .then((data) => {
-        console.log(data);
         setOutfit(data.data);
       });
   }, []);
@@ -47,7 +46,7 @@ function OutfitList({ currentProduct }) {
     if (outfit.length === 0) {
       axios.post(`${serverRoute}/piece`, productInfo, { withCredentials: true })
         .then((data) => {
-          console.log(data);
+          console.log(data.data);
         });
       newOutfit.push(productInfo);
       setOutfit(newOutfit);
