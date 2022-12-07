@@ -1,10 +1,8 @@
 import React from 'react';
 
-function Styles() {
+function Styles({ style }) {
   return (
-    <div>
-      <h4>&gt; Styles</h4>
-    </div>
+    <h3>{style.name}</h3>
   );
 }
 
