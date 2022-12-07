@@ -19,7 +19,6 @@ function ProductInfo({
             <span style={{ color: 'red' }}>{salePrice}</span>
           </div>
         )}
-      <h3>&gt; $0.00</h3>
       <StyleSelector />
       <AddToCart />
       <h3>Share on Social Media</h3>
