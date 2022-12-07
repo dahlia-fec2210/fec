@@ -66,12 +66,7 @@ app.get('/reviews', (req, res) => {
   // res.send('korea won');
   reviews.getAllReviews(req.originalUrl)
     .then((data) => {
-<<<<<<< HEAD
       res.status(200).send(data);
-=======
-      console.log(data.data, '123');
-      res.status(200).send(data.data);
->>>>>>> 3ea9d5dca6960cd4d6b92ea4e59c72178e09af87
     })
     .catch((err) => {
       res.status(500).send(err);
@@ -151,7 +146,6 @@ app.post('/qa/questions', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
 app.post('/qa/questions/:question_id/answers', (req, res) => {
   questions.postAnswerToQuestion(req.params.question_id, req.body)
     .then((data) => {
@@ -163,8 +157,6 @@ app.post('/qa/questions/:question_id/answers', (req, res) => {
     });
 });
 
-=======
->>>>>>> 3ea9d5dca6960cd4d6b92ea4e59c72178e09af87
 app.put('/qa/questions/:question_id/helpful', (req, res) => {
   questions.markQuestionHelpful(req.params.question_id)
     .then((data) => {
@@ -175,7 +167,6 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
   questions.markAnswerHelpful(req.params.answer_id)
     .then((data) => {
@@ -207,7 +198,5 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
     });
 });
 
-=======
->>>>>>> 3ea9d5dca6960cd4d6b92ea4e59c72178e09af87
 app.listen(process.env.PORT);
 console.log('Listening on port 3001');

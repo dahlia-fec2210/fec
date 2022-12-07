@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
+import axios from 'axios';
 
 import Overview from './components/overview/Overview.jsx';
 import Reviews from './components/reviews/Reviews.jsx';
@@ -14,7 +15,7 @@ const root = createRoot(container);
 
 function App() {
   // const [products, setProducts] = useState([]);
-  const [currentProduct, setCurrentProduct] = useState(37311);
+  const [currentProduct, setCurrentProduct] = useState(37319);
 
   // useEffect(() => {
   //   axios.get(`${serverRoute}/products`, { params: { count: 1000 } })
