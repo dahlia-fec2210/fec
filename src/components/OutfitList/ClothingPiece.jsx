@@ -4,38 +4,30 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Price from './Price.jsx';
+import Price from '../relatedItems/Price.jsx';
 import Star from '../common/Star.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function RelatedProduct({
-  product, left, setCurrentProduct, setOpenModal, setModalProduct,
+function ClothingPiece({
+  clothingPiece, left, outfit, setOutfit,
 }) {
-  const [productInfo, setProductInfo] = useState(null);
-  const [photo, setPhoto] = useState('');
+  const [photo, setPhoto] = useState(null);
   const [price, setPrice] = useState(null);
   const [salesPrice, setSalesPrice] = useState(null);
   const [average, setAverage] = useState(0);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${product}`)
+    axios.get(`${serverRoute}/products/${clothingPiece.id}/styles`)
       .then((data) => {
-        setProductInfo(data.data);
-      });
-  }, []);
-
-  useEffect(() => {
-    axios.get(`${serverRoute}/products/${product}/styles`)
-      .then((data) => {
+        setPhoto(data.data.results[0].photos[0].url);
         setPrice(data.data.results[0].original_price);
         setSalesPrice(data.data.results[0].sale_price);
-        setPhoto(data.data.results[0].photos[0].url);
       });
   }, []);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/reviews/meta/?product_id=${product}`)
+    axios.get(`${serverRoute}/reviews/meta/?product_id=${clothingPiece.id}`)
       .then((data) => {
         const reviews = data.data.ratings;
         const keys = Object.keys(reviews);
@@ -49,41 +41,31 @@ function RelatedProduct({
       });
   }, []);
 
-  function changeProduct(event) {
+  function removeFromOutfit(event) {
     event.preventDefault();
-    setCurrentProduct(product);
+    const newOutfit = outfit.filter((piece) => piece.name !== clothingPiece.name);
+    setOutfit(newOutfit);
   }
 
-  function openModal(event) {
-    event.preventDefault();
-    setOpenModal(true);
-    setModalProduct(product);
-  }
-
-  if (productInfo !== null) {
+  if (clothingPiece !== null) {
     return (
       <div>
         <div className="related-product-card" style={{ left }}>
-          <div
-            className="related-stack"
-            onClick={openModal}
-          >
+          <div className="related-stack" onClick={removeFromOutfit}>
             <div className="fa-stack" style={{ verticalAlign: 'top' }}>
               <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
-              <i className="related-star fa-solid fa-star fa-stack-1x" />
+              <i className="related-star fa-solid fa-x fa-stack-1x" />
             </div>
           </div>
-          <div onClick={changeProduct}>
-            <img className="related-photo" src={photo || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={productInfo.name} />
-            <div className="related-category">{productInfo.category}</div>
-            <div className="related-name">{productInfo.name}</div>
+          <div>
+            <img className="related-photo" src={photo || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={clothingPiece.name} />
+            <div className="related-category">{clothingPiece.category}</div>
+            <div className="related-name">{clothingPiece.name}</div>
             <Price price={price} salesPrice={salesPrice} />
             <div className="related-stars">
               <Star percentage={(average / 5) * 100} />
             </div>
-
           </div>
-
         </div>
       </div>
     );
@@ -93,4 +75,4 @@ function RelatedProduct({
   );
 }
 
-export default RelatedProduct;
+export default ClothingPiece;

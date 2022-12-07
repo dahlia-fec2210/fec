@@ -25,6 +25,7 @@ body {
   border: 1px solid black;
   border-radius: 4px;
   min-width: 250px;
+  max-width: 250px;
   height: 350px;
   position: relative;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -132,6 +133,22 @@ body {
 
 .related-stars {
   margin-left: 5px;
+}
+
+.related-description {
+  font-size: 12px;
+  opacity: .7;
+  margin: 5px;
+  height: 42px;
+  overflow-y: scroll;
+}
+
+.related-add-outfit-heading {
+  font-size: 24px;
+  text-align: center;
+  line-height: 350px;
+  text-transform: uppercase;
+  opacity: .7;
 }
 
 /* .related-modal-container {
