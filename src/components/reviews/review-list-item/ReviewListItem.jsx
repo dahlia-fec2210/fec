@@ -4,6 +4,7 @@ import axios from 'axios';
 import SellerResponse from './SellerResponse.jsx';
 import SubmissionInfo from './SubmissionInfo.jsx';
 import DisplayStar from '../../common/Star.jsx';
+import ReviewPhotos from './ReviewPhotos.jsx';
 
 const { useState } = React;
 const serverRoute = `http://localhost:${process.env.PORT}`;
@@ -28,6 +29,7 @@ function ReviewsListItem({ review, reportReview, index }) {
   const handleReportClick = () => {
     reportReview(review.review_id, index);
   };
+  console.log(review);
 
   return (
     <div className="reviews-list-item">
@@ -42,6 +44,7 @@ function ReviewsListItem({ review, reportReview, index }) {
           I recommend this product
         </div>
       ) : null}
+      {review.photos.length > 0 ? <ReviewPhotos photos={review.photos} /> : null}
       {review.response ? <SellerResponse response={review.response} /> : null}
       <span>
         Helpful?&nbsp;&nbsp;

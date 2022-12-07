@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import ReviewsList from './ReviewsList.jsx';
 import MoreReviewsButton from './MoreReviewsButton.jsx';
-import SortByDropdown from './SortByDropdown.jsx';
+import SortByDropdown from './sort-dropdown/SortByDropdown.jsx';
 
 const { useState, useEffect } = React;
 const serverRoute = `http://localhost:${process.env.PORT}`;
@@ -55,7 +55,7 @@ function Reviews({ currentProduct }) {
   };
 
   useEffect(() => {
-    fetchReviews(currentProduct, pageNumber, pageItemCount, sortBy)
+    fetchReviews(currentProduct, pageNumber, pageItemCount, 'relevant')
       .then((result) => {
         setItemCount(2);
         setAllReviews(result.data.results);
@@ -66,7 +66,11 @@ function Reviews({ currentProduct }) {
   if (reviewsToList) {
     return (
       <div className="reviews-container">
-        <SortByDropdown reviewsListLength={allReviews.length} changeSortOrder={changeSortOrder} />
+        <SortByDropdown
+          reviewsListLength={allReviews.length}
+          changeSortOrder={changeSortOrder}
+          currentProduct={currentProduct}
+        />
         <ReviewsList reviews={reviewsToList} reportReview={reportReview} />
         {itemCount > reviewsToList.length ? null : <MoreReviewsButton addTwoItems={addTwoItems} />}
         {/* need conditional rendering for button */}

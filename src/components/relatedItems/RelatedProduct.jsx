@@ -24,7 +24,6 @@ function RelatedProduct({
   useEffect(() => {
     axios.get(`${serverRoute}/products/${product}/styles`)
       .then((data) => {
-        console.log(data.data);
         setPrice(data.data.results[0].original_price);
         setSalesPrice(data.data.results[0].sale_price);
         setPhoto(data.data.results[0].photos[0].url);
