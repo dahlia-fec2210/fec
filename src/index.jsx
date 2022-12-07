@@ -14,7 +14,7 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 function App() {
-  const [currentProduct, setCurrentProduct] = useState(37317);
+  const [currentProduct, setCurrentProduct] = useState(37311);
   return (
     <div>
       <h1>Hello Dahlia</h1>
