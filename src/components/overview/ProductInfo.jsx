@@ -16,7 +16,10 @@ function ProductInfo({ productCategory, productName }) {
       <h3>&gt; $0.00</h3>
       <StyleSelector />
       <AddToCart />
-      <h3>&gt; Share on Social Media</h3>
+      <h3>Share on Social Media</h3>
+      <button type="button">Facebook</button>
+      <button type="button">Twitter</button>
+      <button type="button">Pinterest</button>
     </div>
   );
 }
