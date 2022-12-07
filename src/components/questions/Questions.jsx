@@ -25,14 +25,15 @@ function Questions({ currentProduct }) {
     // });
 
   const loadQuestions = () => {
-    const newPage = page + 1;
-    setPage(newPage);
-    setCount(count + 2);
-    fetchQuestions(currentProduct, newPage, 2)
-      .then((results) => {
-        console.log(results.data.results, 'testing in line 32');
-        setQuestions([...questions, ...results.data.results]);
-      });
+
+    // const newPage = page + 1;
+    // setPage(newPage);
+    // setCount(count + 2);
+    // fetchQuestions(currentProduct, newPage, 2)
+    //   .then((results) => {
+    //     console.log(results.data.results, 'testing in line 32');
+    //     setQuestions([...questions, ...results.data.results]);
+    //   });
   };
 
   useEffect(() => {
@@ -68,6 +69,7 @@ function Questions({ currentProduct }) {
 
   useEffect(() => {
     allQuestions.sort(compareFn);
+    setQuestions(allQuestions);
     console.log(allQuestions, 'second useEffect');
   }, [allQuestions]);
 
