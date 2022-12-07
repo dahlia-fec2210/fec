@@ -15,6 +15,13 @@ function OutfitList({ currentProduct }) {
   const [outfit, setOutfit] = useState([]);
 
   useEffect(() => {
+    axios.get(`${serverRoute}/outfit`)
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
+
+  useEffect(() => {
     axios.get(`${serverRoute}/products/${currentProduct}`)
       .then((data) => {
         setProductInfo(data.data);
@@ -33,7 +40,6 @@ function OutfitList({ currentProduct }) {
 
   function addProduct(event) {
     event.preventDefault();
-    console.log(outfit.length);
     const newOutfit = [...outfit];
     let pieceExists = false;
     if (outfit.length === 0) {
@@ -51,6 +57,8 @@ function OutfitList({ currentProduct }) {
       }
     }
   }
+
+  console.log(outfit);
 
   return (
     <div>
@@ -85,6 +93,13 @@ function OutfitList({ currentProduct }) {
         <div onClick={moveRight}>{ left === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
         <div onClick={moveLeft}>{ outfit.length <= 3 || left <= ((outfit.length - 3) * -272) ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
       </div>
+      <p>
+        <code>
+          Page Cookie:
+          {' '}
+          {JSON.stringify(document.cookie, undefined, '\t')}
+        </code>
+      </p>
     </div>
 
   );

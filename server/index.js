@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 require('dotenv').config();
 
 const express = require('express');
@@ -6,19 +7,41 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 const morgan = require('morgan');
-// const bodyParser = require('body-parser');
+const sessionHandler = require('./session-handler');
 
 const products = require('../database/controllers/products');
 const reviews = require('../database/controllers/reviews');
 const questions = require('../database/controllers/questions');
+const db = require('../database/index.js');
 
 app.use(cors());
 app.use(morgan('dev'));
+app.use(sessionHandler);
 app.use(express.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
 
 // Routes go here:
+
+// Outfit Routes:
+app.post('/piece', (req, res) => {
+  db.savePiece(req.body)
+    .then((response) => {
+      res.send(response);
+    });
+});
+
+app.get('/outfit', (req, res) => {
+  db.getOutfit()
+    .then((response) => {
+      res.send(response);
+    });
+});
+
+app.post('/delete', (req, res) => {
+  db.deletePiece(req.body.id)
+    .then((outfit) => {
+      res.send(outfit);
+    });
+});
 
 // Product routes:
 app.get('/products', (req, res) => {
