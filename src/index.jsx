@@ -23,9 +23,9 @@ function App() {
       <Questions />
       { currentProduct === null ? <div>Loading...</div>
         : <RelatedItems currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
-      {/* { currentProduct === null ? <div>Loading...</div>
-        : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> } */}
       <OutfitList currentProduct={currentProduct} />
+      { currentProduct === null ? <div>Loading...</div>
+        : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
     </div>
   );
 }

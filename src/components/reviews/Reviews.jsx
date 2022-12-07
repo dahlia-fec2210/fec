@@ -3,6 +3,7 @@ import axios from 'axios';
 import ReviewsList from './ReviewsList.jsx';
 import MoreReviewsButton from './MoreReviewsButton.jsx';
 import SortByDropdown from './sort-dropdown/SortByDropdown.jsx';
+import NewReviewModal from './new-review-modal/NewReviewModal.jsx';
 
 const { useState, useEffect } = React;
 const serverRoute = `http://localhost:${process.env.PORT}`;
@@ -12,6 +13,8 @@ function Reviews({ currentProduct }) {
   const [reviewsToList, setReviewsToList] = useState(null);
   const [itemCount, setItemCount] = useState(2);
   const [sortBy, setSortBy] = useState('relevant');
+  const [modal, setModal] = useState(false);
+
   const pageNumber = 1;
   const pageItemCount = 1000;
 
@@ -54,8 +57,17 @@ function Reviews({ currentProduct }) {
       });
   };
 
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  const handleAddClick = (e) => {
+    e.preventDefault();
+    toggleModal();
+  };
+
   useEffect(() => {
-    fetchReviews(currentProduct, pageNumber, pageItemCount, 'relevant')
+    fetchReviews(currentProduct, pageNumber, pageItemCount, sortBy)
       .then((result) => {
         setItemCount(2);
         setAllReviews(result.data.results);
@@ -73,7 +85,8 @@ function Reviews({ currentProduct }) {
         />
         <ReviewsList reviews={reviewsToList} reportReview={reportReview} />
         {itemCount > reviewsToList.length ? null : <MoreReviewsButton addTwoItems={addTwoItems} />}
-        {/* need conditional rendering for button */}
+        <button onClick={handleAddClick}>Add New Review</button>
+        {modal && <NewReviewModal toggleModal={toggleModal} />}
       </div>
     );
   }

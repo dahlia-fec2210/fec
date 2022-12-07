@@ -100,13 +100,6 @@ function OutfitList({ currentProduct }) {
         <div onClick={moveRight}>{ left === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
         <div onClick={moveLeft}>{ outfit.length <= 3 || left <= ((outfit.length - 3) * -272) ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
       </div>
-      <p>
-        <code>
-          Page Cookie:
-          {' '}
-          {JSON.stringify(document.cookie, undefined, '\t')}
-        </code>
-      </p>
     </div>
 
   );

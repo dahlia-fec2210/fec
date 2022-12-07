@@ -29,7 +29,6 @@ function ReviewsListItem({ review, reportReview, index }) {
   const handleReportClick = () => {
     reportReview(review.review_id, index);
   };
-  console.log(review);
 
   return (
     <div className="reviews-list-item">
