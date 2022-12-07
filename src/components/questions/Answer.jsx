@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import HelpfulLink from './HelpfulLink.jsx';
-import ReportLink from './ReportLink.jsx';
 import './questions.css';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function Answer({ answer }) {
-  // console.log(answer, 'answer');
+  console.log(answer, 'answer');
 
   return (
     <div className="answer">
       A:
-      {' '}
-      {answer.body}
+      <div>
+        {answer.body}
+      </div>
       <div>
         By
         {' '}
@@ -22,8 +21,12 @@ function Answer({ answer }) {
         {' '}
         {answer.date}
       </div>
-      <HelpfulLink answer={answer} />
-      <ReportLink answer={answer} />
+      <div>
+        Helpful?
+        {' '}
+        {answer.helpfulness}
+      </div>
+      {/* <img src={answer.photos[0].url} /> */}
     </div>
   );
 }

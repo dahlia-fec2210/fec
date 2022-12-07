@@ -13,8 +13,8 @@ function getQuestionsForProduct(url) {
     .then((response) => response.data);
 }
 
-function getAnswersForQuestion(url) {
-  return axios.get(path.join(process.env.DATABASE_URL, url), headers)
+function getAnswersForQuestion(questionId) {
+  return axios.get(path.join(process.env.DATABASE_URL, `/qa/questions/${questionId}/answers`), headers)
     .then((response) => response.data);
 }
 

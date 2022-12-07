@@ -14,17 +14,22 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 function App() {
+<<<<<<< HEAD
   // const [products, setProducts] = useState([]);
   const [currentProduct, setCurrentProduct] = useState(37319);
+=======
+  const [products, setProducts] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState(37317);
+>>>>>>> parent of f84abd5 (currently working on buttons)
 
-  // useEffect(() => {
-  //   axios.get(`${serverRoute}/products`, { params: { count: 1000 } })
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       setProducts(response.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
+  useEffect(() => {
+    axios.get(`${serverRoute}/products`, { params: { count: 1000 } })
+      .then((response) => {
+        console.log(response.data);
+        setProducts(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div>

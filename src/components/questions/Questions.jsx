@@ -1,18 +1,14 @@
-/* eslint-disable prefer-const */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import QuestionEntry from './QuestionEntry.jsx';
-import LoadQuestionButton from './LoadQuestionButton.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function Questions({ currentProduct }) {
-  const [allQuestions, setAllQuestions] = useState([]);
   const [questions, setQuestions] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(1);
-  const [count, setCount] = useState(2);
+  const [isLoading, setLoading] = useState(true);
 
+<<<<<<< HEAD
   let fetchQuestions = (productId, pageNumber, countNumber) => axios.get(`${serverRoute}/qa/questions`, {
     params: {
       product_id: productId,
@@ -35,29 +31,27 @@ function Questions({ currentProduct }) {
     //     setQuestions([...questions, ...results.data.results]);
     //   });
   };
+=======
+  // console.log(currentProducts, 'outside useEffect');
+>>>>>>> parent of f84abd5 (currently working on buttons)
 
   useEffect(() => {
-    // console.log('testing inside', currentProduct);
+    // if (currentProduct !== null) {
     axios.get(`${serverRoute}/qa/questions`, {
       params: {
         product_id: currentProduct,
       },
     })
       .then((response) => {
-        let questionArr = response.data.results;
-        setAllQuestions(questionArr);
-        console.log(questionArr, 'inside useEffect');
+        const questionsArr = response.data.results;
+        console.log(response, 'in response');
+        setQuestions(questionsArr);
+        setLoading(false);
       });
-
-    // fetchQuestions(currentProduct, page, count)
-    //   .then((response) => {
-    //     let questionsArr = response.data.results;
-    //     console.log(questionsArr, 'in response 2');
-    //     setQuestions(questionsArr);
-    //     setIsLoading(false);
-    //   });
+    // }
   }, []);
 
+<<<<<<< HEAD
   let compareFn = (a, b) => {
     if (a.question_helpfulness > b.question_helpfulness) {
       return -1;
@@ -73,6 +67,8 @@ function Questions({ currentProduct }) {
     console.log(allQuestions, 'second useEffect');
   }, [allQuestions]);
 
+=======
+>>>>>>> parent of f84abd5 (currently working on buttons)
   let content;
   if (isLoading) {
     content = <div className="QuestionLoading">Loading...</div>;
@@ -86,7 +82,6 @@ function Questions({ currentProduct }) {
     <div>
       <h1>Questions</h1>
       {content}
-      <LoadQuestionButton handleClick={loadQuestions} />
     </div>
   );
 }
