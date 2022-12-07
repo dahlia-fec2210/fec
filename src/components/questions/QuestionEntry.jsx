@@ -10,59 +10,18 @@ const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function QuestionEntry({ question }) {
   const [allAnswers, setAllAnswers] = useState([]);
-  const [answers, setAnswers] = useState([]);
+  const [answersList, setAnswersList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [page, setPage] = useState(1);
-  const [countNum, setCountNum] = useState(0);
+  const [listCount, setListCount] = useState(0);
 
   console.log(question.question_id);
 
-  let fetchAnswers = (allAnswerData, countInt) => {
-    // axios.get(`${serverRoute}/qa/questions/${question.question_id}/answers`, {
-    // params: {
-    //   page: pageNumber,
-    //   count: countNumber,
-    // },
-  // });
-    let currentAnswers = [];
-    for (let i = 0; i < countInt; i++) {
-      currentAnswers.push(allAnswerData[i]);
-    }
-    setAnswers(currentAnswers);
+  const addTwoQuestions = () => {
+    const newItemCount = listCount + 2;
+    setListCount(newItemCount);
+    const newAnswerSet = allAnswers.slice(0, newItemCount);
+    setAnswersList(newAnswerSet);
   };
-
-  const loadAnswers = () => {
-    console.log(allAnswers, 'loadAnswers2');
-    setCountNum(countNum + 2);
-    fetchAnswers(allAnswers, countNum);
-    // const newPage = page + 1;
-    // setPage(newPage);
-    // setCount(count + 2);
-    // fetchAnswers(newPage, count)
-    //   .then((results) => {
-    //     console.log(results.data.results, 'testing in line of questionEntry');
-    //     setAnswers([...answers, ...results.data.results]);
-    //   });
-  };
-
-  useEffect(() => {
-    axios.get(`${serverRoute}/qa/questions/${question.question_id}/answers`)
-      .then((response) => {
-        const answersArr = response.data.results;
-        console.log(answersArr, 'useEffect QuestionEntry');
-        setAllAnswers(answersArr);
-        setIsLoading(false);
-      });
-    // // console.log('in here');
-    // fetchAnswers(1, 2)
-    //   .then((response) => {
-    //     // console.log(response, 'in line 17 QE');
-    //     let answersArr = response.data.results;
-    //     // console.log(answersArr, 'in questionEntry.jsx');
-    //     setAnswers(answersArr);
-    //     setIsLoading(false);
-    //   });
-  }, []);
 
   let compareFn = (a, b) => {
     if (a.answer_helpfulness > b.answer_helpfulness) {
@@ -73,19 +32,21 @@ function QuestionEntry({ question }) {
     return 0;
   };
 
-  useEffect(() => {
-    allAnswers.sort(compareFn);
-    loadAnswers(allAnswers);
-  }, [allAnswers]);
+  const fetchAllAnswers = () => axios.get(`${serverRoute}/qa/questions/${question.question_id}/answers`)
+    .then((response) => {
+      const answersArr = [...response.data.results].sort(compareFn);
+      setAllAnswers(answersArr);
+      setIsLoading(false);
+      return answersArr;
+    });
 
-  let content;
-  if (isLoading) {
-    content = <div className="AnswerLoading">Loading...</div>;
-  } else {
-    content = (
-      answers.map((individualAnswers, index) => <Answer key={index} answer={individualAnswers} />)
-    );
-  }
+  useEffect(() => {
+    fetchAllAnswers()
+      .then((answersArr) => {
+        setAnswersList(answersArr.slice(0, 2));
+        setListCount(2);
+      });
+  }, []);
 
   return (
     <div className="question">
@@ -100,10 +61,8 @@ function QuestionEntry({ question }) {
           {question.question_helpfulness}
         </div>
       </div>
-      <div>
-        {content}
-      </div>
-      {countNum > allAnswers.length ? null : <LoadAnswerButton handleClick={loadAnswers} />}
+      {answersList && answersList.map((individualA, index) => <Answer key={index} answer={individualA} />)}
+      {listCount > allAnswers.length ? null : <LoadAnswerButton handleClick={addTwoQuestions} />}
     </div>
   );
 }
