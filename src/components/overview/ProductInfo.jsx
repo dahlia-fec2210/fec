@@ -12,6 +12,13 @@ function ProductInfo({
       <DisplayStar percentage={(productRating / 5) * 100} />
       <h3>{productCategory}</h3>
       <h3>{productName}</h3>
+      { !salePrice ? <p>{originalPrice}</p>
+        : (
+          <div>
+            <span><s>{originalPrice}</s></span>
+            <span style={{ color: 'red' }}>{salePrice}</span>
+          </div>
+        )}
       <h3>&gt; $0.00</h3>
       <StyleSelector />
       <AddToCart />
