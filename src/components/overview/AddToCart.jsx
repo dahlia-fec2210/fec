@@ -1,17 +1,21 @@
 import React from 'react';
 
 function AddToCart() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission
+  };
+
   return (
-    <div>
-      <h3>&gt; Add to Cart</h3>
+    <form onSubmit={handleSubmit}>
       <select>
         <option value="">SELECT SIZE</option>
       </select>
       <select>
         <option value="">1</option>
       </select>
-      <button type="button">Add to Cart/Bag</button>
-    </div>
+      <button type="submit">Add to Cart/Bag</button>
+    </form>
   );
 }
 
