@@ -10,6 +10,7 @@ function Overview({ productId, serverRoute }) {
   const [productImage, setProductImage] = useState('');
   const [productCategory, setProductCategory] = useState('');
   const [productName, setProductName] = useState('');
+  const [productRating, setProductRating] = useState(0);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
@@ -35,10 +36,29 @@ function Overview({ productId, serverRoute }) {
       });
   }, []);
 
+  useEffect(() => {
+    axios.get(`${serverRoute}/reviews/meta/?product_id=${productId}`)
+      .then((data) => {
+        const reviews = data.data.ratings;
+        const keys = Object.keys(reviews);
+        let sum = 0;
+        let numReviews = 0;
+        keys.forEach((key) => {
+          sum += (key * reviews[key]);
+          numReviews += Number(reviews[key]);
+        });
+        setProductRating(sum / numReviews);
+      });
+  }, []);
+
   return (
     <div>
       <Image image={productImage} />
-      <ProductInfo productCategory={productCategory} productName={productName} />
+      <ProductInfo
+        productCategory={productCategory}
+        productName={productName}
+        productRating={productRating}
+      />
     </div>
   );
 }
