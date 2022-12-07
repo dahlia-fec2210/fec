@@ -308,3 +308,8 @@ body {
   padding: 5px 7px;
   z-index: inherit;
 }
+
+.review-modal-image {
+  max-width: 70vw;
+  max-height: 70vh;
+}
