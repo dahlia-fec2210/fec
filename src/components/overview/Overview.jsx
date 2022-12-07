@@ -55,6 +55,8 @@ function Overview({ productId, serverRoute }) {
       });
   }, []);
 
+  // console.log('product styles:', productStyles);
+
   return (
     <div>
       <Image image={productImage} />
@@ -64,6 +66,7 @@ function Overview({ productId, serverRoute }) {
         productRating={productRating}
         originalPrice={originalPrice}
         salePrice={salePrice}
+        productStyles={productStyles}
       />
     </div>
   );
