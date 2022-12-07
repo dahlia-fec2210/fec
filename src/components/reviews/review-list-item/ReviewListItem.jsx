@@ -1,3 +1,4 @@
+// TODO: Implement SHOW PICTURE IN REVIEW
 import React from 'react';
 import axios from 'axios';
 import SellerResponse from './SellerResponse.jsx';

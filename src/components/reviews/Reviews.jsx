@@ -57,6 +57,7 @@ function Reviews({ currentProduct }) {
   useEffect(() => {
     fetchReviews(currentProduct, pageNumber, pageItemCount, sortBy)
       .then((result) => {
+        setItemCount(2);
         setAllReviews(result.data.results);
         setReviewsToList(result.data.results.slice(0, 2));
       });
@@ -65,7 +66,7 @@ function Reviews({ currentProduct }) {
   if (reviewsToList) {
     return (
       <div className="reviews-container">
-        <SortByDropdown changeSortOrder={changeSortOrder} />
+        <SortByDropdown reviewsListLength={allReviews.length} changeSortOrder={changeSortOrder} />
         <ReviewsList reviews={reviewsToList} reportReview={reportReview} />
         {itemCount > reviewsToList.length ? null : <MoreReviewsButton addTwoItems={addTwoItems} />}
         {/* need conditional rendering for button */}
