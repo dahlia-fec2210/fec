@@ -75,11 +75,13 @@ function Questions({ currentProduct }) {
   };
 
   useEffect(() => {
-    allQuestions.sort(compareFn);
-    loadQuestions(allQuestions);
+    let newAllQuestions = allQuestions.splice();
+    newAllQuestions.sort(compareFn);
+    setAllQuestions(newAllQuestions);
+    loadQuestions();
     // setQuestions(allQuestions);
     console.log(allQuestions, 'second useEffect');
-  }, [allQuestions]);
+  }, []);
 
   let content;
   if (isLoading) {
