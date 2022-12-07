@@ -1,10 +1,8 @@
 import React from 'react';
 
-function ImageSet() {
+function ImageSet({ photo }) {
   return (
-    <div>
-      <h3>&gt; Image Set</h3>
-    </div>
+    <img src={photo.thumbnail_url} alt="" />
   );
 }
 
