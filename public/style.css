@@ -176,10 +176,7 @@ body {
   overflow: hidden;
   color: #fde16d;
 }
-.empty-stars:before, .full-stars:before {
-  content:"\2605\2605\2605\2605\2605";
-  font-size: 14pt;
-}
+
 .empty-stars:before {
   -webkit-text-stroke: 1px #848484;
 }
@@ -312,4 +309,13 @@ body {
 .review-modal-image {
   max-width: 70vw;
   max-height: 70vh;
+}
+
+.select-overall-rating input[type="radio"] {
+  display: none;
+}
+
+.overall-star {
+  cursor: pointer;
+  transition: color 200ms;
 }

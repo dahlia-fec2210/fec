@@ -1,9 +1,14 @@
 import React from 'react';
 
-export default function CloudinaryWidget({ setImageUrls }) {
-  const urlList = [];
+const { useState, memo } = React;
+
+const CloudinaryWidget = memo(({ setImageUrls }) => {
+  const [thumbnailUrls, setThumbnailUrls] = useState([]);
+  let urlList = [];
+  let thumbnailList = [];
   const updateImageUrls = () => {
     setImageUrls(urlList);
+    setThumbnailUrls(thumbnailList);
   };
 
   const myWidget = cloudinary.createUploadWidget({
@@ -44,20 +49,35 @@ export default function CloudinaryWidget({ setImageUrls }) {
     },
   }, (error, result) => {
     if (!error && result && result.event === 'success') {
-      console.log('Done! Here is the image info: ', result.info.url);
       urlList.push(result.info.url);
+      thumbnailList.push(result.info.thumbnail_url);
       updateImageUrls();
     }
   });
 
   const handleClick = (e) => {
     e.preventDefault();
+    urlList = [];
+    thumbnailList = [];
     myWidget.open();
   };
 
   return (
     <div>
-      <button type="button" onClick={handleClick}>Upload Images</button>
+      <div className="reviews-uploaded-thumbnails">
+        {thumbnailUrls.map((url, index) => {
+          const alt = `uploaded image ${index + 1}`;
+          return (
+            <span key={url}>
+              <img src={url} alt={alt} />
+              {' '}
+            </span>
+          );
+        })}
+      </div>
+      <button className="review-upload-button" type="button" onClick={handleClick}>Upload Images</button>
     </div>
   );
-}
+});
+
+export default CloudinaryWidget;

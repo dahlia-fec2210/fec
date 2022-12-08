@@ -11,6 +11,7 @@ const serverRoute = `http://localhost:${process.env.PORT}`;
 function Reviews({ currentProduct }) {
   const [allReviews, setAllReviews] = useState(null);
   const [reviewsToList, setReviewsToList] = useState(null);
+  const [metaData, setMetaData] = useState({});
   const [itemCount, setItemCount] = useState(2);
   const [sortBy, setSortBy] = useState('relevant');
   const [modal, setModal] = useState(false);
@@ -24,6 +25,12 @@ function Reviews({ currentProduct }) {
       page,
       count,
       sort,
+    },
+  });
+
+  const fetchMetaData = (productId) => axios.get(`${serverRoute}/reviews/meta`, {
+    params: {
+      product_id: productId,
     },
   });
 
@@ -73,6 +80,10 @@ function Reviews({ currentProduct }) {
         setAllReviews(result.data.results);
         setReviewsToList(result.data.results.slice(0, 2));
       });
+    fetchMetaData(currentProduct)
+      .then((result) => {
+        setMetaData(result.data);
+      });
   }, [currentProduct]);
 
   if (reviewsToList) {
@@ -86,7 +97,7 @@ function Reviews({ currentProduct }) {
         <ReviewsList reviews={reviewsToList} reportReview={reportReview} />
         {itemCount > reviewsToList.length ? null : <MoreReviewsButton addTwoItems={addTwoItems} />}
         <button onClick={handleAddClick}>Add New Review</button>
-        {modal && <NewReviewModal toggleModal={toggleModal} />}
+        {modal && <NewReviewModal toggleModal={toggleModal} metaData={metaData} />}
       </div>
     );
   }
