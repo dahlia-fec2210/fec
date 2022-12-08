@@ -93,3 +93,12 @@ body {
 .full-stars:before {
   -webkit-text-stroke: 1px orange;
 }
+
+/* OVERVIEW *************************************/
+
+.styles {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
