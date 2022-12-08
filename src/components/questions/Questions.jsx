@@ -4,13 +4,18 @@ import axios from 'axios';
 import QuestionEntry from './QuestionEntry.jsx';
 import LoadQuestionButton from './LoadQuestionButton.jsx';
 
+import AddQuestionModal from './modals/AddQuestionModal.jsx';
+
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function Questions({ currentProduct }) {
   const [allQuestions, setAllQuestions] = useState(null);
   const [questionsList, setQuestionsList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [listCount, setListCount] = useState(null);
+  const [openAddQuestionModal, setOpenAddQuestionModal] = useState(false);
+
+  console.log('currentProduct is', currentProduct);
 
   const addTwoQuestions = () => {
     const newItemCount = listCount + 2;
@@ -31,12 +36,13 @@ function Questions({ currentProduct }) {
   const fetchAllQuestions = () => axios.get(`${serverRoute}/qa/questions`, {
     params: {
       product_id: currentProduct,
+      count: 1000,
     },
   })
     .then((response) => {
       const questionsArr = [...response.data.results].sort(compareFn);
       setAllQuestions(questionsArr);
-      setIsLoading(false);
+      // setIsLoading(false);
       return questionsArr;
     });
 
@@ -48,12 +54,28 @@ function Questions({ currentProduct }) {
       });
   }, [currentProduct]);
 
+  // const addQuestion = () => {
+  //   console.log('handling Add');
+  // };
+
   return (
     <div>
       <h1>Questions</h1>
-      {questionsList && questionsList.map((individualQ, index) => <QuestionEntry key={index} question={individualQ} />)}
+      {questionsList && questionsList.map((individualQ, index) => <QuestionEntry key={index} question={individualQ} currentProductId={currentProduct} />)}
       {listCount > questionsList.length ? null
         : <LoadQuestionButton handleClick={addTwoQuestions} />}
+      <div>
+        <button
+          className="openAddQuestionModalBtn"
+          onClick={() => {
+            setOpenAddQuestionModal(true);
+          }}
+        >
+          Add a Question
+
+        </button>
+        {openAddQuestionModal && <AddQuestionModal closeModal={setOpenAddQuestionModal} currentProductId={currentProduct} />}
+      </div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ function AnswerSubmitInfo({ answer }) {
     <div>
       By
       {' '}
-      {answer.answerer_name}
+      {answer.answerer_name === 'seller' ? <b>{answer.answerer_name}</b> : answer.answerer_name}
       ,
       {' '}
       {dateFormat(answer.date, 'mmmm d, yyyy ')}

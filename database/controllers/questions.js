@@ -19,7 +19,8 @@ function getAnswersForQuestion(url) {
 }
 
 function postQuestion(question) {
-  return axios.post(path.join(process.env.DATABASE_URL, 'qa', 'questions'), question, headers)
+  console.log(question, 'inside postQuestion');
+  return axios.post(path.join(process.env.DATABASE_URL, 'qa/questions'), question, headers)
     .then((response) => response.data);
 }
 
