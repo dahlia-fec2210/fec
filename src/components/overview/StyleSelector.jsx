@@ -5,9 +5,11 @@ function StyleSelector({ productStyles }) {
   return (
     <div>
       <h4>STYLE &gt; SELECTED STYLE</h4>
-      {productStyles.map((style, i) => (
-        <Styles key={i} style={style} />
-      ))}
+      <div className="styles-selector">
+        {productStyles.map((style, i) => (
+          <Styles key={i} style={style} />
+        ))}
+      </div>
     </div>
   );
 }
