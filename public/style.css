@@ -96,6 +96,46 @@ body {
 
 /* OVERVIEW *************************************/
 
+.main-carousel {
+  position: relative;
+  min-height: 700px;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fde16d;
+}
+
+.main-image {
+  width: 400px;
+  border-radius: 5px;
+}
+
+.left-arrow {
+  position: absolute;
+  left: 0;
+  color: turquoise;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.right-arrow {
+  position: absolute;
+  right: 0;
+  color: turquoise;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.slide {
+  transition-duration: 0.5s ease;
+}
+
+.slide-active {
+  transition-duration: 0.5s;
+  transform: scale(1.08);
+}
+
 .styles-selector {
   display: flex;
   flex-wrap: wrap;
