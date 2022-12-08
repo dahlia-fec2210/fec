@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CloudinaryWidget from './CloudinaryWidget.jsx';
+import CloudinaryWidget from '../../common/CloudinaryWidget.jsx';
 import NicknameInput from './input-fields/NicknameInput.jsx';
 import EmailInput from './input-fields/EmailInput.jsx';
 import SelectOverallRating from './input-fields/SelectOverallRating.jsx';
