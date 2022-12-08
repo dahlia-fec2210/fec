@@ -6,6 +6,7 @@ import Overview from './components/overview/Overview.jsx';
 import Reviews from './components/reviews/Reviews.jsx';
 import Questions from './components/questions/Questions.jsx';
 import RelatedItems from './components/relatedItems/RelatedItems.jsx';
+import OutfitList from './components/outfitList/OutfitList.jsx';
 import Star from './components/common/Star.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
@@ -17,8 +18,12 @@ function App() {
 
   return (
     <div>
-      <h1>Hello Dahlia</h1>
+      {/* <h1>Hello Dahlia</h1>
       <Overview />
+      <Questions />
+      { currentProduct === null ? <div>Loading...</div>
+        : <RelatedItems currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+      <OutfitList currentProduct={currentProduct} /> */}
       { currentProduct === null ? <div>Loading...</div>
         : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
       { currentProduct === null ? <div>Loading...</div>

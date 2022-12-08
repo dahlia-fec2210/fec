@@ -1,8 +1,10 @@
+// TODO: Implement SHOW PICTURE IN REVIEW
 import React from 'react';
 import axios from 'axios';
 import SellerResponse from './SellerResponse.jsx';
 import SubmissionInfo from './SubmissionInfo.jsx';
 import DisplayStar from '../../common/Star.jsx';
+import ReviewPhotos from './ReviewPhotos.jsx';
 
 const { useState } = React;
 const serverRoute = `http://localhost:${process.env.PORT}`;
@@ -34,6 +36,14 @@ function ReviewsListItem({ review, reportReview, index }) {
       <SubmissionInfo user={review.reviewer_name} date={review.date} />
       {review.summary ? <div>{review.summary}</div> : null}
       <div>{review.body}</div>
+      {review.recommend ? (
+        <div>
+          <i className="fa-solid fa-check" />
+          {' '}
+          I recommend this product
+        </div>
+      ) : null}
+      {review.photos.length > 0 ? <ReviewPhotos photos={review.photos} /> : null}
       {review.response ? <SellerResponse response={review.response} /> : null}
       <span>
         Helpful?&nbsp;&nbsp;
