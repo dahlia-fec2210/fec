@@ -1,10 +1,13 @@
 import React from 'react';
 import SortByButton from './SortByButton.jsx';
 import SortOptions from './SortOptions.jsx';
+import FiltersList from './FiltersList.jsx';
 
 const { useState, useEffect } = React;
 
-function SortByDropdown({ reviewsListLength, changeSortOrder, currentProduct }) {
+function SortByDropdown({
+  reviewsListLength, changeSortOrder, currentProduct, filters, removeFilter,
+}) {
   const [sortOption, setSortOption] = useState(null);
   const [showDropdown, setShowDropdown] = useState(null);
   const toggleDropdown = (e) => {
@@ -50,7 +53,7 @@ function SortByDropdown({ reviewsListLength, changeSortOrder, currentProduct }) 
   }, [currentProduct]);
 
   return (
-    <div>
+    <div className="sort-by">
       <span>
         {reviewsListLength}
         {' '}
@@ -64,6 +67,7 @@ function SortByDropdown({ reviewsListLength, changeSortOrder, currentProduct }) 
           : null }
 
       </div>
+      {filters.length > 0 ? <FiltersList filters={filters} removeFilter={removeFilter} /> : null}
     </div>
   );
 }

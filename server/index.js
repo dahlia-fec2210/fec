@@ -88,12 +88,14 @@ app.get('/reviews/meta', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
+  console.log(req.body);
   reviews.postReview(req.body)
     .then((data) => {
       // data will be the word 'Created'
       res.status(201).send(data);
     })
     .catch((err) => {
+      console.log(err);
       res.status(404).send(err);
     });
 });

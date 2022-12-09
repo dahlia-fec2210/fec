@@ -20,7 +20,7 @@ export default function EmailInput({ email, setEmail }) {
           onChange={handleChange}
         />
       </label>
-      <div className="email-input-tag">For authentication reasons only. You will not be emailed</div>
+      <div className="email-input-caption">For authentication reasons only. You will not be emailed</div>
     </div>
   );
 }

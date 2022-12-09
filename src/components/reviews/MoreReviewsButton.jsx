@@ -1,14 +1,21 @@
 import React from 'react';
 
-function MoreReviewsButton({ addTwoItems }) {
+const { useRef } = React;
+function MoreReviewsButton({ addTwoItems, bottomReviewsRef }) {
+  const buttonRef = useRef(null);
   const handleClick = (e) => {
     e.preventDefault();
     addTwoItems();
+    buttonRef.current.scrollIntoView({ behavior: 'smooth' });
+    bottomReviewsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
   return (
-    <button type="button" onClick={handleClick}>
-      More Reviews
-    </button>
+    <>
+      <button type="button" onClick={handleClick}>
+        More Reviews
+      </button>
+      <div ref={buttonRef} />
+    </>
   );
 }
 
