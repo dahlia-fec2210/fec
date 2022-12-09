@@ -12,7 +12,6 @@ const sessionHandler = require('./session-handler');
 const products = require('../database/controllers/products');
 const reviews = require('../database/controllers/reviews');
 const questions = require('../database/controllers/questions');
-const db = require('../database/index.js');
 
 // app.use(cors());
 const corsOptions = {
@@ -26,30 +25,6 @@ app.use(sessionHandler);
 app.use(express.json());
 
 // Routes go here:
-
-// Outfit Routes:
-app.post('/piece', (req, res) => {
-  db.savePiece({
-    cookie: req.session_id, category: req.body.category, id: req.body.id, name: req.body.name,
-  })
-    .then((response) => {
-      res.send(response);
-    });
-});
-
-app.get('/outfit', (req, res) => {
-  db.getOutfit(req.session_id)
-    .then((response) => {
-      res.send(response);
-    });
-});
-
-app.post('/delete', (req, res) => {
-  db.deletePiece(req.body.id)
-    .then((outfit) => {
-      res.send(outfit);
-    });
-});
 
 // Product routes:
 app.get('/products', (req, res) => {
