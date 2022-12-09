@@ -4,6 +4,7 @@ import ReviewsList from './ReviewsList.jsx';
 import MoreReviewsButton from './MoreReviewsButton.jsx';
 import SortByDropdown from './sort-dropdown/SortByDropdown.jsx';
 import NewReviewModal from './new-review-modal/NewReviewModal.jsx';
+import ProductBreakdown from './product-breakdown/ProductBreakdown.jsx';
 
 const { useState, useEffect } = React;
 const serverRoute = `http://localhost:${process.env.PORT}`;
@@ -89,6 +90,7 @@ function Reviews({ currentProduct }) {
   if (reviewsToList) {
     return (
       <div className="reviews-container">
+        <ProductBreakdown metaData={metaData} />
         <SortByDropdown
           reviewsListLength={allReviews.length}
           changeSortOrder={changeSortOrder}
@@ -97,7 +99,13 @@ function Reviews({ currentProduct }) {
         <ReviewsList reviews={reviewsToList} reportReview={reportReview} />
         {itemCount > reviewsToList.length ? null : <MoreReviewsButton addTwoItems={addTwoItems} />}
         <button onClick={handleAddClick}>Add New Review</button>
-        {modal && <NewReviewModal toggleModal={toggleModal} metaData={metaData} />}
+        {modal && (
+        <NewReviewModal
+          toggleModal={toggleModal}
+          metaData={metaData}
+          currentProduct={currentProduct}
+        />
+        )}
       </div>
     );
   }

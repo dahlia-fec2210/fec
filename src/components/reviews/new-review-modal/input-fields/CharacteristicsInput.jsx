@@ -19,7 +19,7 @@ export default function CharacteristicsInput({ characteristics, setCharacteristi
     if (id && value) {
       setCharacteristics({
         ...characteristics,
-        [id]: value,
+        [id]: Number(value),
 
       });
     }

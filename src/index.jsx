@@ -18,12 +18,12 @@ function App() {
 
   return (
     <div>
-      {/* <h1>Hello Dahlia</h1>
+      <h1>Hello Dahlia</h1>
       <Overview />
       <Questions />
       { currentProduct === null ? <div>Loading...</div>
         : <RelatedItems currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
-      <OutfitList currentProduct={currentProduct} /> */}
+      <OutfitList currentProduct={currentProduct} />
       { currentProduct === null ? <div>Loading...</div>
         : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
     </div>
