@@ -4,9 +4,10 @@ import Image from './Image.jsx';
 import ProductInfo from './ProductInfo.jsx';
 
 function Overview({ productId, serverRoute }) {
-  const [productInfo, setProductInfo] = useState(null);
+  const [productInfo, setProductInfo] = useState({});
   const [productStyles, setProductStyles] = useState([]);
-  const [currentStyle, setCurrentStyle] = useState(null);
+  const [currentStyle, setCurrentStyle] = useState({});
+  const [currentStyleSkus, setCurrentStyleSkus] = useState({});
   const [productImage, setProductImage] = useState('');
   const [productCategory, setProductCategory] = useState('');
   const [productName, setProductName] = useState('');
@@ -33,6 +34,7 @@ function Overview({ productId, serverRoute }) {
         setProductStyles(styles.data.results);
         setCurrentStyle(styles.data.results[0]);
         setCurrentStylePhotos(styles.data.results[0].photos);
+        setCurrentStyleSkus(styles.data.results[0].skus);
         setProductImage(styles.data.results[0].photos[0].url);
         setOriginalPrice(styles.data.results[0].original_price);
         setSalePrice(styles.data.results[0].sale_price);
@@ -70,8 +72,7 @@ function Overview({ productId, serverRoute }) {
         originalPrice={originalPrice}
         salePrice={salePrice}
         productStyles={productStyles}
-        currentStyle={currentStyle}
-        setCurrentStyle={setCurrentStyle}
+        currentStyleSkus={currentStyleSkus}
       />
     </div>
   );
