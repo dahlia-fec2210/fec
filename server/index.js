@@ -12,7 +12,6 @@ const sessionHandler = require('./session-handler');
 const products = require('../database/controllers/products');
 const reviews = require('../database/controllers/reviews');
 const questions = require('../database/controllers/questions');
-const db = require('../database/index.js');
 
 // app.use(cors());
 const corsOptions = {
