@@ -4,7 +4,8 @@ import AddToCart from './AddToCart.jsx';
 import DisplayStar from '../common/Star.jsx';
 
 function ProductInfo({
-  productCategory, productName, productRating, originalPrice, salePrice, productStyles,
+  productCategory, productName, productRating, originalPrice, salePrice,
+  productStyles, currentStyle, setCurrentStyle,
 }) {
   return (
     <div className="product-info-container">
@@ -20,7 +21,7 @@ function ProductInfo({
           </div>
         )}
       <StyleSelector productStyles={productStyles} />
-      <AddToCart />
+      <AddToCart currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} />
       <h3>Share on Social Media</h3>
       <button type="button">Facebook</button>
       <button type="button">Twitter</button>
