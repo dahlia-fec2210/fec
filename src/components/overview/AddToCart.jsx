@@ -1,6 +1,7 @@
 import React from 'react';
+import SizeOptions from './SizeOptions.jsx';
 
-function AddToCart({ currentStyle, setCurrentStyle }) {
+function AddToCart({ currentStyleSkus }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission
@@ -10,6 +11,9 @@ function AddToCart({ currentStyle, setCurrentStyle }) {
     <form onSubmit={handleSubmit}>
       <select>
         <option value="">SELECT SIZE</option>
+        {Object.values(currentStyleSkus).map((sku, i) => (
+          <SizeOptions key={i} size={sku.size} />
+        ))}
       </select>
       <select>
         <option value="">1</option>
