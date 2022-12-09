@@ -45,11 +45,25 @@ function Image({ image, currentStylePhotos }) {
     downArrow = null;
   }
 
+  let leftArrow;
+  if (currentMainImageIndex !== 0) {
+    leftArrow = <i className="arrow left-arrow fa-solid fa-chevron-left fa-2xl" onClick={prevImage} />;
+  } else {
+    leftArrow = null;
+  }
+
+  let rightArrow;
+  if (currentMainImageIndex !== length - 1) {
+    rightArrow = <i className="arrow right-arrow fa-solid fa-chevron-right fa-2xl" onClick={nextImage} />;
+  } else {
+    rightArrow = null;
+  }
+
   return (
     <div className="style-images">
       <div className="main-carousel">
         <div>
-          <i className="arrow left-arrow fa-solid fa-chevron-left fa-2xl" onClick={prevImage} />
+          {leftArrow}
         </div>
         {currentStylePhotos.map((photo, i) => (
           <div className={i === currentMainImageIndex ? 'slide-active' : 'slide'} key={i}>
@@ -59,7 +73,7 @@ function Image({ image, currentStylePhotos }) {
           </div>
         ))}
         <div>
-          <i className="arrow right-arrow fa-solid fa-chevron-right fa-2xl" onClick={nextImage} />
+          {rightArrow}
         </div>
       </div>
 
