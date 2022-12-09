@@ -74,6 +74,7 @@ function Overview({ productId, serverRoute }) {
         salePrice={salePrice}
         productStyles={productStyles}
         currentStyleSkus={currentStyleSkus}
+        setCurrentStylePhotos={setCurrentStylePhotos}
       />
     </div>
   );
