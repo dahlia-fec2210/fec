@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Styles({ style }) {
+function Styles({ style, setCurrentStylePhotos }) {
   const handleStyleClick = () => {
-    //
+    setCurrentStylePhotos(style.photos);
   };
 
   return (
