@@ -3,13 +3,7 @@ import ReviewListItem from './review-list-item/ReviewListItem.jsx';
 
 const { useEffect, useRef } = React;
 
-function ReviewsList({ reviews, reportReview }) {
-  const bottomRef = useRef(null);
-
-  useEffect(() => {
-    bottomRef.current.scrollIntoView({ behavior: 'smooth' });
-  }, [reviews]);
-
+function ReviewsList({ reviews, reportReview, bottomReviewsRef }) {
   if (reviews.length > 0) {
     return (
       <div className="reviews-list">
@@ -21,7 +15,7 @@ function ReviewsList({ reviews, reportReview }) {
             index={index}
           />
         ))}
-        <div ref={bottomRef} />
+        <div ref={bottomReviewsRef} />
       </div>
     );
   }
