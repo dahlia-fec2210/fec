@@ -62,19 +62,17 @@ function Image({ image, currentStylePhotos }) {
   return (
     <div className="style-images">
       <div className="main-carousel">
-        <div>
-          {leftArrow}
+        {leftArrow}
+        <div className="main-set">
+          {currentStylePhotos.map((photo, i) => (
+            <div className={i === currentMainImageIndex ? 'slide-active' : 'slide'} key={i}>
+              {i === currentMainImageIndex && (
+                <MainImage key={i} photo={photo} />
+              )}
+            </div>
+          ))}
         </div>
-        {currentStylePhotos.map((photo, i) => (
-          <div className={i === currentMainImageIndex ? 'slide-active' : 'slide'} key={i}>
-            {i === currentMainImageIndex && (
-              <MainImage key={i} photo={photo} />
-            )}
-          </div>
-        ))}
-        <div>
-          {rightArrow}
-        </div>
+        {rightArrow}
       </div>
 
       <div className="image-set">
