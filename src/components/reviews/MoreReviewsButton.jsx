@@ -6,8 +6,10 @@ function MoreReviewsButton({ addTwoItems, bottomReviewsRef }) {
   const handleClick = (e) => {
     e.preventDefault();
     addTwoItems();
-    buttonRef.current.scrollIntoView({ behavior: 'smooth' });
-    bottomReviewsRef.current.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      buttonRef.current.scrollIntoView({ behavior: 'smooth' });
+      bottomReviewsRef.current.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   };
   return (
     <>
