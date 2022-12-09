@@ -54,13 +54,13 @@
 .up-arrow {
   position: absolute;
   top: -20px;
-  left: 20px;
+  left: 17px;
 }
 
 .down-arrow {
   position: absolute;
   bottom: -20px;
-  left: 20px;
+  left: 17px;
 }
 
 .up-arrow-container {
@@ -83,12 +83,14 @@
 .image-set {
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: absolute;
+  top: 60px;
+  left: 50px;
 }
 
 .image-set img {
-  width: 75px;
-  height: 75px;
+  width: 65px;
+  height: 65px;
   border-radius: 4px;
   border: 1px solid white;
   object-fit: cover;
@@ -110,6 +112,7 @@
 }
 
 .style-images {
+  position: relative;
   width: 66%;
   margin: 0 auto;
 }
