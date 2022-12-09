@@ -6,7 +6,7 @@ function DisplayStar({ percentage }) {
     width: `${percentage}%`,
   };
   const displayFiveStars = () => (
-    [...Array(5)].map((star) => <IoStar size={20} />)
+    [1, 2, 3, 4, 5].map((star) => <IoStar size={20} key={star} />)
   );
   return (
     <div className="ratings">
