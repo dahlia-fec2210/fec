@@ -14,7 +14,7 @@ function OutfitList({
 
   useEffect(() => {
     console.log('OUTFIT LIST:', localStorage.getItem('outfit'));
-    setOutfit(JSON.parse(localStorage.getItem('outfit')));
+    // setOutfit(JSON.parse(localStorage.getItem('outfit')));
   }, []);
 
   function moveRight(event) {

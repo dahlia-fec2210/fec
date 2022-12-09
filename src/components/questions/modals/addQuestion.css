@@ -1,0 +1,33 @@
+.modalBackground {
+  width: 50vw;
+  height: 50vh;
+  /* background-color: rgba(200, 200, 200); */
+  /* position: fixed; */
+  display: flex;
+  justify-content: column;
+  align-items: center;
+}
+
+.modalContainer {
+  /* width: 500px;
+  height: 500px; */
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.titleCloseBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.titleCloseBtn button {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
