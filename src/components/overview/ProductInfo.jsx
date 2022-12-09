@@ -7,9 +7,10 @@ function ProductInfo({
   productCategory, productName, productRating, originalPrice, salePrice, productStyles,
 }) {
   return (
-    <div>
+    <div className="product-info-container">
       <DisplayStar percentage={(productRating / 5) * 100} />
-      <h3>{productCategory}</h3>
+      <span><small>Read all reviews</small></span>
+      <h3 className="overview-category">{productCategory}</h3>
       <h3>{productName}</h3>
       { !salePrice ? <p>{originalPrice}</p>
         : (
