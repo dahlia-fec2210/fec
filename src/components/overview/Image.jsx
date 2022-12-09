@@ -44,7 +44,7 @@ function Image({ image, currentStylePhotos }) {
       <div className="image-set">
         {currentStylePhotos.map((photo, i) => (
           <div key={i} onClick={() => handleImageSetClick(i)}>
-            <ImageSet key={i} photo={photo} setCurrentMainImage={setCurrentMainImage} />
+            <ImageSet key={i} photo={photo} />
           </div>
         ))}
       </div>
