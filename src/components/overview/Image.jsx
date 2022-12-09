@@ -13,7 +13,12 @@ function Image({ image, currentStylePhotos }) {
   // Create states for first and last images in carousel
 
   const prevImage = () => {
-    setCurrentMainImageIndex(currentMainImageIndex === 0 ? length - 1 : currentMainImageIndex - 1);
+    if (currentMainImageIndex === 0) {
+      //
+    } else {
+
+    }
+    setCurrentMainImageIndex(currentMainImageIndex - 1);
   };
 
   const nextImage = () => {
@@ -25,6 +30,20 @@ function Image({ image, currentStylePhotos }) {
   const handleImageSetClick = (index) => {
     setCurrentMainImageIndex(index);
   };
+
+  let upArrow;
+  if (currentMainImageIndex !== 0) {
+    upArrow = <i className="arrow up-arrow fa-solid fa-chevron-up fa-2xl" onClick={prevImage} />;
+  } else {
+    upArrow = null;
+  }
+
+  let downArrow;
+  if (currentMainImageIndex !== length - 1) {
+    downArrow = <i className="arrow down-arrow fa-solid fa-chevron-down fa-2xl" onClick={nextImage} />;
+  } else {
+    downArrow = null;
+  }
 
   return (
     <div className="style-images">
@@ -45,13 +64,13 @@ function Image({ image, currentStylePhotos }) {
       </div>
 
       <div className="image-set">
-        <i className="arrow up-arrow fa-solid fa-chevron-up fa-2xl" onClick={prevImage} />
+        {upArrow}
         {currentStylePhotos.map((photo, i) => (
           <div className="image-thumbnails" key={i} onClick={() => handleImageSetClick(i)}>
             <ImageSet key={i} photo={photo} />
           </div>
         ))}
-        <i className="arrow down-arrow fa-solid fa-chevron-down fa-2xl" onClick={nextImage} />
+        {downArrow}
       </div>
     </div>
   );
