@@ -5,21 +5,26 @@ import ImageSet from './ImageSet.jsx';
 function Image({ image, currentStylePhotos }) {
   // console.log('current style photos in Image comp:', currentStylePhotos);
 
-  const [currentMainImage, setCurrentMainImage] = useState(0);
+  const [currentMainImageIndex, setCurrentMainImageIndex] = useState(0);
+  const [currentMainImage, setCurrentMainImage] = useState({});
   const { length } = currentStylePhotos;
 
   // Refactor so that the carousel is not circular:
   // Create states for first and last images in carousel
 
   const prevImage = () => {
-    setCurrentMainImage(currentMainImage === 0 ? length - 1 : currentMainImage - 1);
+    setCurrentMainImageIndex(currentMainImageIndex === 0 ? length - 1 : currentMainImageIndex - 1);
   };
 
   const nextImage = () => {
-    setCurrentMainImage(currentMainImage === length - 1 ? 0 : currentMainImage + 1);
+    setCurrentMainImageIndex(currentMainImageIndex === length - 1 ? 0 : currentMainImageIndex + 1);
   };
 
-  // console.log('current main image index:', currentMainImage);
+  // console.log('current main image index:', currentMainImageIndex);
+
+  const handleImageSetClick = (index) => {
+    setCurrentMainImageIndex(index);
+  };
 
   return (
     <div className="style-images">
@@ -28,15 +33,19 @@ function Image({ image, currentStylePhotos }) {
         <i className="right-arrow fa-solid fa-chevron-right fa-2xl" onClick={nextImage} />
 
         {currentStylePhotos.map((photo, i) => (
-          <div className={i === currentMainImage ? 'slide-active' : 'slide'} key={i}>
-            {i === currentMainImage && <MainImage key={i} mainImage={image} photo={photo} />}
+          <div className={i === currentMainImageIndex ? 'slide-active' : 'slide'} key={i}>
+            {i === currentMainImageIndex && (
+              <MainImage key={i} photo={photo} />
+            )}
           </div>
         ))}
       </div>
 
       <div className="image-set">
         {currentStylePhotos.map((photo, i) => (
-          <ImageSet key={i} photo={photo} />
+          <div key={i} onClick={() => handleImageSetClick(i)}>
+            <ImageSet key={i} photo={photo} setCurrentMainImage={setCurrentMainImage} />
+          </div>
         ))}
       </div>
     </div>
