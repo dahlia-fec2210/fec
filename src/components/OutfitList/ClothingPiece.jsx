@@ -4,6 +4,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { RotatingLines } from 'react-loader-spinner';
 import Price from '../relatedItems/Price.jsx';
 import Star from '../common/Star.jsx';
 
@@ -12,24 +13,32 @@ const serverRoute = `http://localhost:${process.env.PORT}`;
 function ClothingPiece({
   clothingPiece, left, outfit, setOutfit,
 }) {
+  const [price, setPrice] = useState(0);
   const [photo, setPhoto] = useState(null);
-  const [price, setPrice] = useState(null);
-  const [salesPrice, setSalesPrice] = useState(null);
+  const [salePrice, setSalePrice] = useState(0);
+  const [productInfo, setProductInfo] = useState({});
   const [average, setAverage] = useState(0);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${clothingPiece.id}/styles`)
+    axios.get(`${serverRoute}/products/${clothingPiece}`)
       .then((data) => {
-        setPhoto(data.data.results[0].photos[0].url);
-        setPrice(data.data.results[0].original_price);
-        setSalesPrice(data.data.results[0].sale_price);
+        setProductInfo(data.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.get(`${serverRoute}/products/${clothingPiece}/styles`)
+      .then((response) => {
+        setPhoto(response.data.results[0].photos[0].url);
+        setPrice(response.data.results[0].original_price);
+        setSalePrice(response.data.results[0].sale_price);
       });
   }, [outfit]);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/reviews/meta/?product_id=${clothingPiece.id}`)
-      .then((data) => {
-        const reviews = data.data.ratings;
+    axios.get(`${serverRoute}/reviews/meta/?product_id=${clothingPiece}`)
+      .then((response) => {
+        const reviews = response.data.ratings;
         const keys = Object.keys(reviews);
         let sum = 0;
         let numReviews = 0;
@@ -43,17 +52,12 @@ function ClothingPiece({
 
   function removeFromOutfit(event) {
     event.preventDefault();
-
-    axios.post(`${serverRoute}/delete`, clothingPiece, { withCredentials: true })
-      .then(() => {
-        axios.get(`${serverRoute}/outfit`, { withCredentials: true })
-          .then((data) => {
-            setOutfit(data.data);
-          });
-      });
+    const newOutfit = outfit.filter((piece) => piece !== clothingPiece);
+    setOutfit(newOutfit);
+    localStorage.setItem('outfit', JSON.stringify(newOutfit));
   }
 
-  if (clothingPiece !== null) {
+  if (clothingPiece !== null && productInfo !== {}) {
     return (
       <div>
         <div className="related-product-card" style={{ left }}>
@@ -64,10 +68,13 @@ function ClothingPiece({
             </div>
           </div>
           <div>
-            <img className="related-photo" src={photo || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={clothingPiece.name} />
-            <div className="related-category">{clothingPiece.category}</div>
-            <div className="related-name">{clothingPiece.name}</div>
-            <Price price={price} salesPrice={salesPrice} />
+            <img className="related-photo" src={photo || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={clothingPiece} />
+            <div className="related-category">{productInfo.category}</div>
+            <div className="related-name">{productInfo.name}</div>
+            <Price
+              price={price}
+              salesPrices={salePrice}
+            />
             <div className="related-stars">
               <Star percentage={(average / 5) * 100} />
             </div>
@@ -77,7 +84,13 @@ function ClothingPiece({
     );
   }
   return (
-    <div>Loading...</div>
+    <RotatingLines
+      strokeColor="grey"
+      strokeWidth="5"
+      animationDuration="0.75"
+      width="96"
+      visible
+    />
   );
 }
 

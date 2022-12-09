@@ -8,6 +8,7 @@ function DisplayStar({ percentage }) {
   const displayFiveStars = () => (
     [...Array(5)].map((star) => <IoStar size={20} />)
   );
+
   return (
     <div className="ratings">
       <div className="empty-stars">{displayFiveStars()}</div>
