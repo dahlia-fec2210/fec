@@ -7,11 +7,12 @@ import axios from 'axios';
 import RelatedProduct from './RelatedProduct.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
 import OutfitList from '../outfitList/OutfitList.jsx';
+import './related.css';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function RelatedItems({
-  currentProduct, setCurrentProduct, productInfo,
+  currentProduct, setCurrentProduct,
 }) {
   const [left, setLeft] = useState(0);
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -26,7 +27,7 @@ function RelatedItems({
         const uniqueProducts = [];
         const products = data.data;
         products.forEach((product) => {
-          if (!uniqueProducts.includes(product)) {
+          if (!uniqueProducts.includes(product) && product !== currentProduct) {
             uniqueProducts.push(product);
           }
         });
@@ -63,7 +64,6 @@ function RelatedItems({
               setProductData={setProductData}
               averages={averages}
               setAverages={setAverages}
-              productInfo={productInfo}
             />
           ))}
         </div>
