@@ -9,7 +9,9 @@ import ClothingPiece from './ClothingPiece.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function OutfitList({ currentProduct }) {
+function OutfitList({
+  currentProduct, productData, setProductData, averages, setAverages,
+}) {
   const [left, setLeft] = useState(0);
   const [productInfo, setProductInfo] = useState(null);
   const [outfit, setOutfit] = useState([]);
@@ -40,7 +42,6 @@ function OutfitList({ currentProduct }) {
 
   function addProduct(event) {
     event.preventDefault();
-
     const newOutfit = [...outfit];
     let pieceExists = false;
     if (outfit.length === 0) {
@@ -57,10 +58,7 @@ function OutfitList({ currentProduct }) {
         }
       });
       if (pieceExists === false) {
-        axios.post(`${serverRoute}/piece`, productInfo, { withCredentials: true })
-          .then((data) => {
-            console.log(data);
-          });
+        axios.post(`${serverRoute}/piece`, productInfo, { withCredentials: true });
         newOutfit.push(productInfo);
         setOutfit(newOutfit);
       }
@@ -90,6 +88,10 @@ function OutfitList({ currentProduct }) {
                   left={left}
                   outfit={outfit}
                   setOutfit={setOutfit}
+                  productData={productData}
+                  setProductData={setProductData}
+                  averages={averages}
+                  setAverages={setAverages}
                 />
               ))
               : null

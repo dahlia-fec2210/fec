@@ -4,19 +4,19 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { RotatingLines } from 'react-loader-spinner';
+import Photo from './Photo.jsx';
 import Price from './Price.jsx';
 import Star from '../common/Star.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function RelatedProduct({
-  product, left, setCurrentProduct, setOpenModal, setModalProduct,
+  product, left, setCurrentProduct,
+  setOpenModal, setModalProduct, productData, setProductData,
+  averages, setAverages,
 }) {
-  const [productInfo, setProductInfo] = useState(null);
-  const [photo, setPhoto] = useState('');
-  const [price, setPrice] = useState(null);
-  const [salesPrice, setSalesPrice] = useState(null);
-  const [average, setAverage] = useState(0);
+  const [productInfo, setProductInfo] = useState({});
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${product}`)
@@ -26,27 +26,70 @@ function RelatedProduct({
   }, []);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${product}/styles`)
-      .then((data) => {
-        setPrice(data.data.results[0].original_price);
-        setSalesPrice(data.data.results[0].sale_price);
-        setPhoto(data.data.results[0].photos[0].url);
-      });
+    if (!productData[product]) {
+      axios.get(`${serverRoute}/getProduct/${product}`)
+        .then((data) => {
+          if (data.data.length > 0) {
+            const updatedProductData = productData;
+            updatedProductData[product] = {
+              photo: data.data[0].photo,
+              price: data.data[0].price,
+              salePrice: data.data[0].salePrice,
+            };
+            setProductData(updatedProductData);
+          } else {
+            axios.get(`${serverRoute}/products/${product}/styles`)
+              .then((data) => {
+                const updatedProductData = productData;
+                updatedProductData[product] = {
+                  photo: data.data.results[0].photos[0].url,
+                  price: data.data.results[0].original_price,
+                  salePrice: data.data.results[0].sale_price,
+                };
+                setProductData(updatedProductData);
+
+                axios.post(`${serverRoute}/productData`, {
+                  id: product,
+                  photo: data.data.results[0].photos[0].url,
+                  price: data.data.results[0].original_price,
+                  salePrice: data.data.results[0].sale_price,
+                });
+              });
+          }
+        });
+    }
   }, []);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/reviews/meta/?product_id=${product}`)
-      .then((data) => {
-        const reviews = data.data.ratings;
-        const keys = Object.keys(reviews);
-        let sum = 0;
-        let numReviews = 0;
-        keys.forEach((key) => {
-          sum += (key * reviews[key]);
-          numReviews += Number(reviews[key]);
+    if (!averages[product]) {
+      axios.get(`${serverRoute}/average/${product}`)
+        .then((data) => {
+          if (data.data.length > 0) {
+            const updatedAverages = averages;
+            updatedAverages[product] = data.data[0].average;
+            setAverages(updatedAverages);
+          } else {
+            axios.get(`${serverRoute}/reviews/meta/?product_id=${product}`)
+              .then((data) => {
+                const updatedAverages = averages;
+                const reviews = data.data.ratings;
+                const keys = Object.keys(reviews);
+                let sum = 0;
+                let numReviews = 0;
+                keys.forEach((key) => {
+                  sum += (key * reviews[key]);
+                  numReviews += Number(reviews[key]);
+                });
+                updatedAverages[product] = sum / numReviews;
+                setAverages(updatedAverages);
+                axios.post(`${serverRoute}/average`, {
+                  id: product,
+                  average: averages[product],
+                });
+              });
+          }
         });
-        setAverage(sum / numReviews);
-      });
+    }
   }, []);
 
   function changeProduct(event) {
@@ -60,7 +103,7 @@ function RelatedProduct({
     setModalProduct(product);
   }
 
-  if (productInfo !== null) {
+  if (productInfo && productData[product]) {
     return (
       <div>
         <div className="related-product-card" style={{ left }}>
@@ -74,12 +117,15 @@ function RelatedProduct({
             </div>
           </div>
           <div onClick={changeProduct}>
-            <img className="related-photo" src={photo || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={productInfo.name} />
+            <Photo product={product} productData={productData} />
             <div className="related-category">{productInfo.category}</div>
             <div className="related-name">{productInfo.name}</div>
-            <Price price={price} salesPrice={salesPrice} />
+            <Price
+              price={productData[product].price}
+              salesPrices={productData[product].salePrice}
+            />
             <div className="related-stars">
-              <Star percentage={(average / 5) * 100} />
+              <Star percentage={(averages[product] / 5) * 100} />
             </div>
 
           </div>
@@ -89,7 +135,15 @@ function RelatedProduct({
     );
   }
   return (
-    <div>Loading...</div>
+    <div>
+      <RotatingLines
+        strokeColor="grey"
+        strokeWidth="5"
+        animationDuration="0.75"
+        width="96"
+        visible
+      />
+    </div>
   );
 }
 

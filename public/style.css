@@ -99,10 +99,11 @@ body {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   width: 600px;
   padding: 20px;
-  position: relative;
+  position: absolute;
   background-color: white;
-  top: -310px;
   margin: 0 auto;
+  top: 310px;
+  left: 495px;
   z-index: 1;
 }
 
