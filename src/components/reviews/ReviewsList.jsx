@@ -4,7 +4,7 @@ import ReviewListItem from './review-list-item/ReviewListItem.jsx';
 function ReviewsList({ reviews, reportReview }) {
   if (reviews.length > 0) {
     return (
-      <div>
+      <div className="reviews-list">
         {reviews.map((review, index) => (
           <ReviewListItem
             review={review}
