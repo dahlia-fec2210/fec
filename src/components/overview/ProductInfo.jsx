@@ -11,7 +11,7 @@ function ProductInfo({
       <DisplayStar percentage={(productRating / 5) * 100} />
       <span><small>Read all reviews</small></span>
       <h3 className="overview-category">{productCategory}</h3>
-      <h3>{productName}</h3>
+      <h3 className="overview-name">{productName}</h3>
       { !salePrice ? <p>{originalPrice}</p>
         : (
           <div>
