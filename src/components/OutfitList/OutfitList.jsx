@@ -4,29 +4,18 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import ClothingPiece from './ClothingPiece.jsx';
 
-const serverRoute = `http://localhost:${process.env.PORT}`;
-
-function OutfitList({ currentProduct }) {
+function OutfitList({
+  currentProduct, averages, setAverages,
+}) {
   const [left, setLeft] = useState(0);
-  const [productInfo, setProductInfo] = useState(null);
   const [outfit, setOutfit] = useState([]);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/outfit`, { withCredentials: true })
-      .then((data) => {
-        setOutfit(data.data);
-      });
+    console.log('OUTFIT LIST:', localStorage.getItem('outfit'));
+    setOutfit(JSON.parse(localStorage.getItem('outfit')));
   }, []);
-
-  useEffect(() => {
-    axios.get(`${serverRoute}/products/${currentProduct}`)
-      .then((data) => {
-        setProductInfo(data.data);
-      });
-  }, [currentProduct]);
 
   function moveRight(event) {
     event.preventDefault();
@@ -40,31 +29,12 @@ function OutfitList({ currentProduct }) {
 
   function addProduct(event) {
     event.preventDefault();
-
     const newOutfit = [...outfit];
-    let pieceExists = false;
-    if (outfit.length === 0) {
-      axios.post(`${serverRoute}/piece`, productInfo, { withCredentials: true })
-        .then((data) => {
-          console.log(data.data);
-        });
-      newOutfit.push(productInfo);
-      setOutfit(newOutfit);
-    } else {
-      outfit.forEach((piece) => {
-        if (piece.name === productInfo.name) {
-          pieceExists = true;
-        }
-      });
-      if (pieceExists === false) {
-        axios.post(`${serverRoute}/piece`, productInfo, { withCredentials: true })
-          .then((data) => {
-            console.log(data);
-          });
-        newOutfit.push(productInfo);
-        setOutfit(newOutfit);
-      }
+    if (!newOutfit.includes(currentProduct)) {
+      newOutfit.push(currentProduct);
     }
+    setOutfit(newOutfit);
+    localStorage.setItem('outfit', JSON.stringify(newOutfit));
   }
 
   return (
@@ -90,6 +60,8 @@ function OutfitList({ currentProduct }) {
                   left={left}
                   outfit={outfit}
                   setOutfit={setOutfit}
+                  averages={averages}
+                  setAverages={setAverages}
                 />
               ))
               : null

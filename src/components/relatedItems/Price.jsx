@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Price({ price, salesPrice }) {
-  if (salesPrice === null) {
+function Price({ price, salePrice }) {
+  if (!salePrice) {
     return (
       <div className="related-price">
         $
@@ -13,7 +13,7 @@ function Price({ price, salesPrice }) {
     <div className="related-price">
       <span className="related-sale-price">
         $
-        {salesPrice}
+        {salePrice}
         {' '}
       </span>
       <span className="related-price-strike">
