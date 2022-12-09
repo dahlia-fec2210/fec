@@ -25,6 +25,7 @@ function postQuestion(question) {
 }
 
 function postAnswerToQuestion(questionId, answer) {
+  console.log(questionId, answer, 'inside postAnswerToQuestion');
   return axios.post(path.join(process.env.DATABASE_URL, `qa/questions/${questionId}/answers`), answer, headers)
     .then((response) => response.data);
 }

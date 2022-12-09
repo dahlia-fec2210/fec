@@ -2,9 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import QuestionEntry from './QuestionEntry.jsx';
-import LoadQuestionButton from './LoadQuestionButton.jsx';
-
+import LoadQuestionButton from './individual_questions/LoadQuestionButton.jsx';
+import CollapseQuestionButton from './individual_questions/CollapseQuestionButton.jsx';
 import AddQuestionModal from './modals/AddQuestionModal.jsx';
+import QuestionSearch from './QuestionSearch.jsx';
+import './questions.css';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
@@ -14,6 +16,7 @@ function Questions({ currentProduct }) {
   // const [isLoading, setIsLoading] = useState(true);
   const [listCount, setListCount] = useState(null);
   const [openAddQuestionModal, setOpenAddQuestionModal] = useState(false);
+  // const [searchingQuestion, setSearchingQuestion] = useState(null);
 
   console.log('currentProduct is', currentProduct);
 
@@ -58,11 +61,29 @@ function Questions({ currentProduct }) {
   //   console.log('handling Add');
   // };
 
+  const searchingQuestion = (searchedQuestion) => {
+    console.log(searchedQuestion, 'searchedQuestion coming into searchingQuestion');
+    let searchedQuestionArr = [];
+    console.log(allQuestions, 'allQuestionis?');
+    for (let i = 0; i < allQuestions.length; i++) {
+      let currentQuestion = allQuestions[i].question_body;
+      if (currentQuestion.toLowerCase().includes(searchedQuestion.toLowerCase())) {
+        searchedQuestionArr.push(allQuestions[i]);
+        console.log(searchedQuestionArr, 'searchedQuestionArr is?');
+      }
+    }
+    console.log('these questions are getting searched', searchedQuestionArr);
+    setQuestionsList(searchedQuestionArr);
+  };
+
   return (
     <div>
       <h1>Questions</h1>
-      {questionsList && questionsList.map((individualQ, index) => <QuestionEntry key={index} question={individualQ} currentProductId={currentProduct} />)}
-      {listCount > questionsList.length ? null
+      <div className="question-list">
+        <QuestionSearch handleSearch={searchingQuestion} />
+        {questionsList && questionsList.map((individualQ, index) => <QuestionEntry key={index} question={individualQ} currentProductId={currentProduct} />)}
+      </div>
+      {listCount > questionsList.length ? <CollapseQuestionButton />
         : <LoadQuestionButton handleClick={addTwoQuestions} />}
       <div>
         <button

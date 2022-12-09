@@ -5,6 +5,7 @@ import './questions.css';
 
 import Answer from './Answer.jsx';
 import LoadAnswerButton from './individual_questions/LoadAnswerButton.jsx';
+import CollapseAnswerButton from './individual_questions/CollapseAnswerButton.jsx';
 import HelpfulQuestionLink from './individual_questions/HelpfulQuestionLink.jsx';
 import AddAnswer from './individual_questions/AddAnswer.jsx';
 
@@ -39,7 +40,11 @@ function QuestionEntry({ question, currentProductId }) {
     return 0;
   };
 
-  const fetchAllAnswers = () => axios.get(`${serverRoute}/qa/questions/${question.question_id}/answers`)
+  const fetchAllAnswers = () => axios.get(`${serverRoute}/qa/questions/${question.question_id}/answers`, {
+    params: {
+      count: 1000,
+    },
+  })
     .then((response) => {
       const answersArr = [...response.data.results].sort(compareFn);
       setAllAnswers(answersArr);
@@ -68,7 +73,7 @@ function QuestionEntry({ question, currentProductId }) {
         <HelpfulQuestionLink question={question} />
       </div>
       {answersList && answersList.map((individualA, index) => <Answer key={index} answer={individualA} />)}
-      {listCount > allAnswers.length ? null : <LoadAnswerButton handleClick={addTwoQuestions} />}
+      {listCount > allAnswers.length ? <CollapseAnswerButton /> : <LoadAnswerButton handleClick={addTwoQuestions} />}
     </div>
   );
 }

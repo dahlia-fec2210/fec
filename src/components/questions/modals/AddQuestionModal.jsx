@@ -65,7 +65,7 @@ function AddQuestionModal({ closeModal, currentProductId }) {
           <small>For authentication reasons, you will not be emailed</small>
           <label>
             Email:
-            <input name="email" type="text" maxLength="60" placeholder="example@example.com" required="" value={newQuestion.email} onChange={typing} />
+            <input name="email" type="email" maxLength="60" placeholder="example@example.com" required="" value={newQuestion.email} onChange={typing} />
           </label>
           <button>Submit</button>
         </form>
