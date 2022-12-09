@@ -2,9 +2,10 @@ import React from 'react';
 import { RotatingLines } from 'react-loader-spinner';
 
 function Photo({ product, productData }) {
+  console.log(productData);
   if (productData) {
     return (
-      <img className="related-photo" src={productData[product].photo || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={product} />
+      <img className="related-photo" src={productData[product].photos[0] || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={product} />
     );
   }
   return (

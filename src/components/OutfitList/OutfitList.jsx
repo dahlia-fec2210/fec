@@ -45,10 +45,7 @@ function OutfitList({
     const newOutfit = [...outfit];
     let pieceExists = false;
     if (outfit.length === 0) {
-      axios.post(`${serverRoute}/piece`, productInfo, { withCredentials: true })
-        .then((data) => {
-          console.log(data.data);
-        });
+      axios.post(`${serverRoute}/piece`, productInfo, { withCredentials: true });
       newOutfit.push(productInfo);
       setOutfit(newOutfit);
     } else {

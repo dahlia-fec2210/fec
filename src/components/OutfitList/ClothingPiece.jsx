@@ -59,9 +59,9 @@ function ClothingPiece({
             setAverages(updatedAverages);
           } else {
             axios.get(`${serverRoute}/reviews/meta/?product_id=${clothingPiece}`)
-              .then((data) => {
+              .then((response) => {
                 const updatedAverages = averages;
-                const reviews = data.data.ratings;
+                const reviews = response.data.ratings;
                 const keys = Object.keys(reviews);
                 let sum = 0;
                 let numReviews = 0;
@@ -83,7 +83,6 @@ function ClothingPiece({
 
   function removeFromOutfit(event) {
     event.preventDefault();
-
     axios.post(`${serverRoute}/delete`, clothingPiece, { withCredentials: true })
       .then(() => {
         axios.get(`${serverRoute}/outfit`, { withCredentials: true })
@@ -112,7 +111,7 @@ function ClothingPiece({
               salesPrices={productData[clothingPiece].salePrice}
             />
             <div className="related-stars">
-              <Star percentage={(average / 5) * 100} />
+              <Star percentage={(averages[clothingPiece] / 5) * 100} />
             </div>
           </div>
         </div>

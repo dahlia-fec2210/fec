@@ -12,7 +12,8 @@ const clothingPieceSchema = mongoose.Schema({
 const Piece = mongoose.model('Piece', clothingPieceSchema);
 
 const productSchema = mongoose.Schema({
-  photo: String,
+  photos: [String],
+  thumbnails: [String],
   id: Number,
   price: String,
   salePrice: String,

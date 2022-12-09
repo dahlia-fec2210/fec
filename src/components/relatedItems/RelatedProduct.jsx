@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable import/extensions */
@@ -29,10 +30,12 @@ function RelatedProduct({
     if (!productData[product]) {
       axios.get(`${serverRoute}/getProduct/${product}`)
         .then((data) => {
+          console.log(data.data);
           if (data.data.length > 0) {
             const updatedProductData = productData;
             updatedProductData[product] = {
-              photo: data.data[0].photo,
+              photos: data.data[0].photos,
+              thumbnails: data.data[0].thumbnails,
               price: data.data[0].price,
               salePrice: data.data[0].salePrice,
             };
@@ -40,9 +43,22 @@ function RelatedProduct({
           } else {
             axios.get(`${serverRoute}/products/${product}/styles`)
               .then((data) => {
+                const styles = data.data.results;
+                console.log(styles);
+                const photos = [];
+                const thumbnails = [];
+                styles.forEach((style) => {
+                  for (let i = 0; i < style.photos.length; i++) {
+                    if (!photos.includes(style.photos[i].url)) { photos.push(style.photos[i].url); }
+                    if (!thumbnails.includes(style.photos[i].thumbnail_url)) {
+                      thumbnails.push(style.photos[i].thumbnail_url);
+                    }
+                  }
+                });
                 const updatedProductData = productData;
                 updatedProductData[product] = {
-                  photo: data.data.results[0].photos[0].url,
+                  photos,
+                  thumbnails,
                   price: data.data.results[0].original_price,
                   salePrice: data.data.results[0].sale_price,
                 };
@@ -50,7 +66,8 @@ function RelatedProduct({
 
                 axios.post(`${serverRoute}/productData`, {
                   id: product,
-                  photo: data.data.results[0].photos[0].url,
+                  photos,
+                  thumbnails,
                   price: data.data.results[0].original_price,
                   salePrice: data.data.results[0].sale_price,
                 });
