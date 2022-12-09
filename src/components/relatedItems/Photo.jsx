@@ -14,7 +14,6 @@ function Photo({ product, productData, changeProduct }) {
   function shiftUp(event) {
     event.preventDefault();
     const newCarousel = carousel.map((index) => index + 1);
-    console.log(newCarousel);
     setCarousel(newCarousel);
   }
 
@@ -66,8 +65,24 @@ function Photo({ product, productData, changeProduct }) {
         { productData.thumbnails[0] !== null
           ? (
             <div className="related-photo-buttons">
-              <div onClick={shiftDown}><i className="related-icon fa-solid fa-chevron-left fa-2xl" /></div>
-              <div onClick={shiftUp}><i className="related-icon fa-solid fa-chevron-right fa-2xl" /></div>
+              <div onClick={shiftDown}>
+                {carousel[0] === 0 ? null : (
+                  <div className="fa-stack" style={{ verticalAlign: 'top' }}>
+                    <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
+                    <i className="related-star fa-solid fa-chevron-left fa-stack-1x" />
+                  </div>
+                )}
+
+              </div>
+              <div onClick={shiftUp}>
+                {carousel[3] < productData.thumbnails.length - 1 ? (
+                  <div className="fa-stack" style={{ verticalAlign: 'top' }}>
+                    <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
+                    <i className="related-star fa-solid fa-chevron-right fa-stack-1x" />
+                  </div>
+                ) : null}
+
+              </div>
             </div>
           )
           : null}
