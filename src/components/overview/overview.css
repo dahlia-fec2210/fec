@@ -34,6 +34,8 @@
 .main-image {
   width: 300px;
   border-radius: 5px;
+  position: relative;
+  margin-left: 100px;
 }
 
 .arrow {
@@ -44,12 +46,12 @@
 }
 
 .left-arrow {
-  left: 0;
+  position: absolute;
 }
 
-.right-arrow {
+/* .right-arrow {
   right: 0;
-}
+} */
 
 .up-arrow {
   position: absolute;
@@ -73,11 +75,13 @@
 
 .slide {
   transition-duration: 0.5s ease;
+  position: relative;
 }
 
 .slide-active {
   transition-duration: 0.5s;
   transform: scale(1.08);
+  position: relative;
 }
 
 .image-set {
@@ -115,4 +119,5 @@
   position: relative;
   width: 66%;
   margin: 0 auto;
+  display: flex;
 }
