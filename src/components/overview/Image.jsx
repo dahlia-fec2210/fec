@@ -29,8 +29,8 @@ function Image({ image, currentStylePhotos }) {
   return (
     <div className="style-images">
       <div className="main-carousel">
-        <i className="left-arrow fa-solid fa-chevron-left fa-2xl" onClick={prevImage} />
-        <i className="right-arrow fa-solid fa-chevron-right fa-2xl" onClick={nextImage} />
+        <i className="arrow left-arrow fa-solid fa-chevron-left fa-2xl" onClick={prevImage} />
+        <i className="arrow right-arrow fa-solid fa-chevron-right fa-2xl" onClick={nextImage} />
 
         {currentStylePhotos.map((photo, i) => (
           <div className={i === currentMainImageIndex ? 'slide-active' : 'slide'} key={i}>
@@ -42,11 +42,13 @@ function Image({ image, currentStylePhotos }) {
       </div>
 
       <div className="image-set">
+        <i className="arrow up-arrow fa-solid fa-chevron-up fa-2xl" onClick={prevImage} />
         {currentStylePhotos.map((photo, i) => (
-          <div key={i} onClick={() => handleImageSetClick(i)}>
+          <div className="image-thumbnails" key={i} onClick={() => handleImageSetClick(i)}>
             <ImageSet key={i} photo={photo} />
           </div>
         ))}
+        <i className="arrow down-arrow fa-solid fa-chevron-down fa-2xl" onClick={nextImage} />
       </div>
     </div>
   );
