@@ -4,7 +4,7 @@
   "description": "1. Add a feature in individual branch 2. Push to individual github branch 2. Make pull request to testing branch 3. Get a code review from 1 person 4. Merge testing and notify others to pull down    updated testing branch",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack --mode=development",
     "build": "webpack --mode=production",
     "dev": "webpack serve --open",
@@ -24,16 +24,20 @@
   "dependencies": {
     "axios": "^1.2.0",
     "cors": "^2.8.5",
+    "dateformat": "^5.0.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "mongoose": "^6.8.0",
     "morgan": "^1.10.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
+    "@testing-library/react": "^13.4.0",
     "babel-loader": "^9.1.0",
     "babel-preset-airbnb": "^5.0.0",
     "css-loader": "^6.7.2",
@@ -44,7 +48,9 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^29.3.1",
     "nodemon": "^2.0.20",
+    "react-shallow-renderer": "^16.15.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0",

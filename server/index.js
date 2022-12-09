@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 require('dotenv').config();
 
 const express = require('express');
@@ -6,19 +7,49 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 const morgan = require('morgan');
-// const bodyParser = require('body-parser');
+const sessionHandler = require('./session-handler');
 
 const products = require('../database/controllers/products');
 const reviews = require('../database/controllers/reviews');
 const questions = require('../database/controllers/questions');
+const db = require('../database/index.js');
 
-app.use(cors());
+// app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true, // access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.use(morgan('dev'));
+app.use(sessionHandler);
 app.use(express.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
 
 // Routes go here:
+
+// Outfit Routes:
+app.post('/piece', (req, res) => {
+  db.savePiece({
+    cookie: req.session_id, category: req.body.category, id: req.body.id, name: req.body.name,
+  })
+    .then((response) => {
+      res.send(response);
+    });
+});
+
+app.get('/outfit', (req, res) => {
+  db.getOutfit(req.session_id)
+    .then((response) => {
+      res.send(response);
+    });
+});
+
+app.post('/delete', (req, res) => {
+  db.deletePiece(req.body.id)
+    .then((outfit) => {
+      res.send(outfit);
+    });
+});
 
 // Product routes:
 app.get('/products', (req, res) => {
@@ -64,7 +95,6 @@ app.get('/products/:product_id/related', (req, res) => {
 app.get('/reviews', (req, res) => {
   reviews.getAllReviews(req.originalUrl)
     .then((data) => {
-      console.log(data);
       res.status(200).send(data);
     })
     .catch((err) => {
