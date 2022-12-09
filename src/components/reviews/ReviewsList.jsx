@@ -6,9 +6,9 @@ const { useEffect, useRef } = React;
 function ReviewsList({ reviews, reportReview }) {
   const bottomRef = useRef(null);
 
-  useEffect(() => {
-    bottomRef.current.scrollIntoView({ behavior: 'smooth' });
-  }, [reviews]);
+  // useEffect(() => {
+  //   bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+  // }, [reviews]);
 
   if (reviews.length > 0) {
     return (

@@ -38,10 +38,24 @@ function Reviews({ currentProduct }) {
     },
   });
 
+  const filterReviews = (newFilters, unfilteredList) => {
+    if (newFilters.length === 0) {
+      setFilteredReviews(allReviews);
+      setListedReviews(allReviews.slice(0, itemCount));
+      return;
+    }
+    const newFiltered = unfilteredList.filter((review) => {
+      const rating = String(review.rating);
+      return newFilters.includes(rating);
+    });
+    setFilteredReviews(newFiltered);
+    setListedReviews(newFiltered.slice(0, itemCount));
+  };
+
   const addTwoItems = () => {
     const newItemCount = itemCount + 2;
     setItemCount(newItemCount);
-    const newReviewSet = allReviews.slice(0, newItemCount);
+    const newReviewSet = filteredReviews.slice(0, newItemCount);
     setListedReviews(newReviewSet);
   };
 
@@ -65,28 +79,28 @@ function Reviews({ currentProduct }) {
       .then((result) => {
         setAllReviews(result.data.results);
         setListedReviews(result.data.results.slice(0, newItemCount));
+        filterReviews(filters, result.data.results);
       });
   };
 
   const addFilter = (newFilter) => {
     if (!filters.includes(newFilter)) {
-      setFilters([...filters, newFilter]);
+      const newFilters = [...filters, newFilter];
+      setFilters(newFilters);
+      filterReviews(newFilters, allReviews);
     }
   };
 
   const removeFilter = (filterToRemove) => {
     if (filterToRemove === 'clear') {
       setFilters([]);
+      setFilteredReviews(allReviews);
+      filterReviews([], allReviews);
       return;
     }
     const newFilters = filters.filter((filter) => filter !== filterToRemove);
     setFilters(newFilters);
-  };
-
-  const filterReviews = () => {
-    const newFiltered = allReviews.filter((review) => {
-      const rating = 'blah';
-    });
+    filterReviews(newFilters, allReviews);
   };
 
   const toggleModal = () => {
