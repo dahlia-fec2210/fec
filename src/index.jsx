@@ -6,7 +6,7 @@ import Overview from './components/overview/Overview.jsx';
 import Reviews from './components/reviews/Reviews.jsx';
 import Questions from './components/questions/Questions.jsx';
 import RelatedItems from './components/relatedItems/RelatedItems.jsx';
-import OutfitList from './components/outfitList/OutfitList.jsx';
+import OutfitList from './components/OutfitList/OutfitList.jsx';
 import Star from './components/common/Star.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
