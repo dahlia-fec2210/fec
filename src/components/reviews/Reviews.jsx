@@ -5,17 +5,20 @@ import MoreReviewsButton from './MoreReviewsButton.jsx';
 import SortByDropdown from './sort-dropdown/SortByDropdown.jsx';
 import NewReviewModal from './new-review-modal/NewReviewModal.jsx';
 import ProductBreakdown from './product-breakdown/ProductBreakdown.jsx';
+import './reviews.css';
 
 const { useState, useEffect } = React;
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function Reviews({ currentProduct }) {
   const [allReviews, setAllReviews] = useState(null);
-  const [reviewsToList, setReviewsToList] = useState(null);
-  const [metaData, setMetaData] = useState({});
+  const [listedReviews, setListedReviews] = useState(null);
+  const [metaData, setMetaData] = useState(null);
   const [itemCount, setItemCount] = useState(2);
   const [sortBy, setSortBy] = useState('relevant');
   const [modal, setModal] = useState(false);
+  const [filters, setFilters] = useState([]);
+  const [filteredReviews, setFilteredReviews] = useState(null);
 
   const pageNumber = 1;
   const pageItemCount = 1000;
@@ -39,16 +42,16 @@ function Reviews({ currentProduct }) {
     const newItemCount = itemCount + 2;
     setItemCount(newItemCount);
     const newReviewSet = allReviews.slice(0, newItemCount);
-    setReviewsToList(newReviewSet);
+    setListedReviews(newReviewSet);
   };
 
   const reportReview = (reviewId, index) => {
     const route = `${serverRoute}/reviews/${reviewId}/report`;
     axios.put(route)
       .then(() => {
-        const newReviewsToList = reviewsToList;
-        newReviewsToList.splice(index, 1);
-        setReviewsToList(newReviewsToList);
+        const newlistedReviews = listedReviews;
+        newlistedReviews.splice(index, 1);
+        setListedReviews(newlistedReviews);
         setItemCount(itemCount - 1);
         setAllReviews(allReviews.filter((review) => review.reveiw_id !== reviewId));
       });
@@ -61,8 +64,29 @@ function Reviews({ currentProduct }) {
     fetchReviews(currentProduct, pageNumber, pageItemCount, newSortOrder)
       .then((result) => {
         setAllReviews(result.data.results);
-        setReviewsToList(result.data.results.slice(0, newItemCount));
+        setListedReviews(result.data.results.slice(0, newItemCount));
       });
+  };
+
+  const addFilter = (newFilter) => {
+    if (!filters.includes(newFilter)) {
+      setFilters([...filters, newFilter]);
+    }
+  };
+
+  const removeFilter = (filterToRemove) => {
+    if (filterToRemove === 'clear') {
+      setFilters([]);
+      return;
+    }
+    const newFilters = filters.filter((filter) => filter !== filterToRemove);
+    setFilters(newFilters);
+  };
+
+  const filterReviews = () => {
+    const newFiltered = allReviews.filter((review) => {
+      const rating = 'blah';
+    });
   };
 
   const toggleModal = () => {
@@ -79,7 +103,8 @@ function Reviews({ currentProduct }) {
       .then((result) => {
         setItemCount(2);
         setAllReviews(result.data.results);
-        setReviewsToList(result.data.results.slice(0, 2));
+        setFilteredReviews(result.data.results);
+        setListedReviews(result.data.results.slice(0, 2));
       });
     fetchMetaData(currentProduct)
       .then((result) => {
@@ -87,25 +112,33 @@ function Reviews({ currentProduct }) {
       });
   }, [currentProduct]);
 
-  if (reviewsToList) {
+  if (listedReviews) {
     return (
       <div className="reviews-container">
-        <ProductBreakdown metaData={metaData} />
-        <SortByDropdown
-          reviewsListLength={allReviews.length}
-          changeSortOrder={changeSortOrder}
-          currentProduct={currentProduct}
-        />
-        <ReviewsList reviews={reviewsToList} reportReview={reportReview} />
-        {itemCount > reviewsToList.length ? null : <MoreReviewsButton addTwoItems={addTwoItems} />}
-        <button onClick={handleAddClick}>Add New Review</button>
-        {modal && (
-        <NewReviewModal
-          toggleModal={toggleModal}
-          metaData={metaData}
-          currentProduct={currentProduct}
-        />
-        )}
+        {metaData && <ProductBreakdown metaData={metaData} addFilter={addFilter} />}
+        <div className="review-list-container">
+          <SortByDropdown
+            reviewsListLength={allReviews.length}
+            changeSortOrder={changeSortOrder}
+            currentProduct={currentProduct}
+            filters={filters}
+            removeFilter={removeFilter}
+          />
+          <ReviewsList reviews={listedReviews} reportReview={reportReview} />
+          {itemCount > listedReviews.length
+            ? null
+            : (
+              <MoreReviewsButton addTwoItems={addTwoItems} />
+            )}
+          <button onClick={handleAddClick}>Add New Review</button>
+          {modal && (
+          <NewReviewModal
+            toggleModal={toggleModal}
+            metaData={metaData}
+            currentProduct={currentProduct}
+          />
+          )}
+        </div>
       </div>
     );
   }

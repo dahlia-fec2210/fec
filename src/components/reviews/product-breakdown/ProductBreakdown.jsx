@@ -1,8 +1,13 @@
 import React from 'react';
+import RatingRecommend from './RatingRecommend.jsx';
+import RatingBreakdown from './RatingBreakdown.jsx';
 
-export default function ProductBreakdown({ metaData }) {
+export default function ProductBreakdown({ metaData, addFilter }) {
   return (
-    <div>InProductBreakdown</div>
+    <div className="review-pb-container">
+      <RatingRecommend metaData={metaData} />
+      <RatingBreakdown ratings={metaData.ratings} addFilter={addFilter} />
+    </div>
   );
 }
 
