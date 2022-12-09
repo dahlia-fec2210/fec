@@ -18,8 +18,8 @@ function getReviewsMetadata(url) {
     .then((response) => response.data);
 }
 
-function postReview(review) {
-  return axios.post(path.join(process.env.DATABASE_URL, 'reviews'), review, headers)
+function postReview(data) {
+  return axios.post(path.join(process.env.DATABASE_URL, '/reviews'), data, headers)
     .then((response) => response.data);
 }
 
