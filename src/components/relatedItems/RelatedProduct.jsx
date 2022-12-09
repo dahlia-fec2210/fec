@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable no-plusplus */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -15,10 +16,10 @@ const serverRoute = `http://localhost:${process.env.PORT}`;
 function RelatedProduct({
   product, left, setCurrentProduct,
   setOpenModal, setModalProduct,
-  averages, setAverages,
 }) {
   const [productData, setProductData] = useState({});
   const [productInfo, setProductInfo] = useState({});
+  const [average, setAverage] = useState(0);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${product}/styles`)
@@ -54,7 +55,6 @@ function RelatedProduct({
   useEffect(() => {
     axios.get(`${serverRoute}/reviews/meta/?product_id=${product}`)
       .then((data) => {
-        const updatedAverages = averages;
         const reviews = data.data.ratings;
         const keys = Object.keys(reviews);
         let sum = 0;
@@ -63,12 +63,7 @@ function RelatedProduct({
           sum += (key * reviews[key]);
           numReviews += Number(reviews[key]);
         });
-        updatedAverages[product] = sum / numReviews;
-        setAverages(updatedAverages);
-        axios.post(`${serverRoute}/average`, {
-          id: product,
-          average: averages[product],
-        });
+        setAverage(sum / numReviews);
       });
   }, []);
 
@@ -82,8 +77,6 @@ function RelatedProduct({
     setOpenModal(true);
     setModalProduct(product);
   }
-
-  console.log(productData);
 
   if (productData.price) {
     return (
@@ -106,9 +99,9 @@ function RelatedProduct({
               price={productData.price}
               salesPrices={productData.salePrice}
             />
-            {/* <div className="related-stars">
-              <Star percentage={(averages[product] / 5) * 100} />
-            </div> */}
+            <div className="related-stars">
+              <Star percentage={(average / 5) * 100} />
+            </div>
 
           </div>
 

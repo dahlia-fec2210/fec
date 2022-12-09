@@ -45,8 +45,6 @@ function RelatedItems({
     setLeft(left - 272);
   }
 
-  console.log('PRODUCT INFO: ', productInfo);
-
   return (
     <div>
       <div className="related-container">

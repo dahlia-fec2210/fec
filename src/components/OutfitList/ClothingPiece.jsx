@@ -6,18 +6,18 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { RotatingLines } from 'react-loader-spinner';
 import Price from '../relatedItems/Price.jsx';
-import Photo from '../relatedItems/Photo.jsx';
 import Star from '../common/Star.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function ClothingPiece({
-  clothingPiece, left, outfit, setOutfit, averages, setAverages,
+  clothingPiece, left, outfit, setOutfit,
 }) {
   const [price, setPrice] = useState(0);
   const [photo, setPhoto] = useState(null);
   const [salePrice, setSalePrice] = useState(0);
   const [productInfo, setProductInfo] = useState({});
+  const [average, setAverage] = useState(0);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${clothingPiece}`)
@@ -38,7 +38,6 @@ function ClothingPiece({
   useEffect(() => {
     axios.get(`${serverRoute}/reviews/meta/?product_id=${clothingPiece}`)
       .then((response) => {
-        const updatedAverages = averages;
         const reviews = response.data.ratings;
         const keys = Object.keys(reviews);
         let sum = 0;
@@ -47,8 +46,7 @@ function ClothingPiece({
           sum += (key * reviews[key]);
           numReviews += Number(reviews[key]);
         });
-        updatedAverages[clothingPiece] = sum / numReviews;
-        setAverages(updatedAverages);
+        setAverage(sum / numReviews);
       });
   }, []);
 
@@ -56,6 +54,7 @@ function ClothingPiece({
     event.preventDefault();
     const newOutfit = outfit.filter((piece) => piece !== clothingPiece);
     setOutfit(newOutfit);
+    localStorage.setItem('outfit', JSON.stringify(newOutfit));
   }
 
   if (clothingPiece !== null && productInfo !== {}) {
@@ -77,7 +76,7 @@ function ClothingPiece({
               salesPrices={salePrice}
             />
             <div className="related-stars">
-              <Star percentage={(averages[clothingPiece] / 5) * 100} />
+              <Star percentage={(average / 5) * 100} />
             </div>
           </div>
         </div>

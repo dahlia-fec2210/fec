@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ClothingPiece from './ClothingPiece.jsx';
 
 function OutfitList({
@@ -11,6 +11,11 @@ function OutfitList({
 }) {
   const [left, setLeft] = useState(0);
   const [outfit, setOutfit] = useState([]);
+
+  useEffect(() => {
+    console.log('OUTFIT LIST:', localStorage.getItem('outfit'));
+    setOutfit(JSON.parse(localStorage.getItem('outfit')));
+  }, []);
 
   function moveRight(event) {
     event.preventDefault();
@@ -29,6 +34,7 @@ function OutfitList({
       newOutfit.push(currentProduct);
     }
     setOutfit(newOutfit);
+    localStorage.setItem('outfit', JSON.stringify(newOutfit));
   }
 
   return (
