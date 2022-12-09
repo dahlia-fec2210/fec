@@ -51,6 +51,30 @@
   right: 0;
 }
 
+.up-arrow {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  /* margin-bottom: 20px; */
+}
+
+.down-arrow {
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  /* margin: 0 auto; */
+  /* margin: 20px 10px; */
+  /* margin-top: 20px; */
+}
+
+.up-arrow-container {
+  position: relative;
+}
+
+.down-arrow-container {
+  position: relative;
+}
+
 .slide {
   transition-duration: 0.5s ease;
 }
@@ -58,6 +82,12 @@
 .slide-active {
   transition-duration: 0.5s;
   transform: scale(1.08);
+}
+
+.image-set {
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .image-set img {
