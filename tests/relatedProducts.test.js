@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import ShallowRenderer from 'react-shallow-renderer';
 import RelatedItems from '../src/components/relatedItems/RelatedItems.jsx';
