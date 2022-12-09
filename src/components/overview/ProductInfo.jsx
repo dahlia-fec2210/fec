@@ -5,8 +5,9 @@ import DisplayStar from '../common/Star.jsx';
 
 function ProductInfo({
   productCategory, productName, productRating, originalPrice, salePrice,
-  productStyles, currentStyleSkus,
+  productStyles, currentStyleSkus, setCurrentStylePhotos,
 }) {
+  console.log('productStyles in ProductInfo:', productStyles);
   return (
     <div className="product-info-container">
       <DisplayStar percentage={(productRating / 5) * 100} />
@@ -20,7 +21,10 @@ function ProductInfo({
             <span style={{ color: 'red' }}>{salePrice}</span>
           </div>
         )}
-      <StyleSelector productStyles={productStyles} />
+      <StyleSelector
+        productStyles={productStyles}
+        setCurrentStylePhotos={setCurrentStylePhotos}
+      />
       <AddToCart currentStyleSkus={currentStyleSkus} />
       <h3>Share on Social Media</h3>
       <button type="button">Facebook</button>
