@@ -111,6 +111,10 @@ body {
   font-weight: 100;
 }
 
+.overview-name {
+  font-size: xx-large;
+}
+
 .main-carousel {
   position: relative;
   height: 550px;
