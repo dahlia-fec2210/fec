@@ -65,7 +65,7 @@ function Overview({ productId, serverRoute }) {
 
   return (
     <div className="overview-container">
-      <Image image={productImage} currentStylePhotos={currentStylePhotos} />
+      <Image currentStylePhotos={currentStylePhotos} />
       <ProductInfo
         productCategory={productCategory}
         productName={productName}
