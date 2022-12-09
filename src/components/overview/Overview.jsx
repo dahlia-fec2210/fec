@@ -58,10 +58,10 @@ function Overview({ productId, serverRoute }) {
   }, []);
 
   // console.log('product styles:', productStyles);
-  console.log('current style:', currentStyle);
+  // console.log('current style:', currentStyle);
 
   return (
-    <div>
+    <div className="overview-container">
       <Image image={productImage} currentStylePhotos={currentStylePhotos} />
       <ProductInfo
         productCategory={productCategory}
