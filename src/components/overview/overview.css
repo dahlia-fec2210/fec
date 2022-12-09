@@ -31,11 +31,16 @@
   margin: 0 auto;
 }
 
+.main-set {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin-left: 100px;
+}
+
 .main-image {
   width: 300px;
   border-radius: 5px;
-  position: relative;
-  margin-left: 100px;
 }
 
 .arrow {
@@ -47,11 +52,15 @@
 
 .left-arrow {
   position: absolute;
+  left: 150px;
+  top: 270px;
 }
 
-/* .right-arrow {
-  right: 0;
-} */
+.right-arrow {
+  position: absolute;
+  right: 50px;
+  top: 270px;
+}
 
 .up-arrow {
   position: absolute;
