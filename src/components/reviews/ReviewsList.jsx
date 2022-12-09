@@ -1,7 +1,9 @@
 import React from 'react';
 import ReviewListItem from './review-list-item/ReviewListItem.jsx';
 
-function ReviewsList({ reviews, reportReview }) {
+const { useEffect, useRef } = React;
+
+function ReviewsList({ reviews, reportReview, bottomReviewsRef }) {
   if (reviews.length > 0) {
     return (
       <div className="reviews-list">
@@ -13,6 +15,7 @@ function ReviewsList({ reviews, reportReview }) {
             index={index}
           />
         ))}
+        <div ref={bottomReviewsRef} />
       </div>
     );
   }
