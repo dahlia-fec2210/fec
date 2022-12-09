@@ -19,7 +19,7 @@ function App() {
   return (
     <div>
       <h1>Hello Dahlia</h1>
-      <Overview />
+      <Overview productId={currentProduct} serverRoute={serverRoute} />
       { currentProduct === null ? <div>Loading...</div>
         : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
       { currentProduct === {} ? (
