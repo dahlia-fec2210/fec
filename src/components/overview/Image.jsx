@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import MainImage from './MainImage.jsx';
 import ImageSet from './ImageSet.jsx';
 
-function Image({ image, currentStylePhotos }) {
-  // console.log('current style photos in Image comp:', currentStylePhotos);
+function Image({ currentStylePhotos }) {
+  console.log('current style photos in Image comp:', currentStylePhotos);
 
   const [currentMainImageIndex, setCurrentMainImageIndex] = useState(0);
-  const [currentMainImage, setCurrentMainImage] = useState({});
   const { length } = currentStylePhotos;
 
   // Refactor so that the carousel is not circular:
@@ -14,9 +13,7 @@ function Image({ image, currentStylePhotos }) {
 
   const prevImage = () => {
     if (currentMainImageIndex === 0) {
-      //
-    } else {
-
+      // do nothing
     }
     setCurrentMainImageIndex(currentMainImageIndex - 1);
   };
