@@ -14,10 +14,35 @@ const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function RelatedProduct({
   product, left, setCurrentProduct,
-  setOpenModal, setModalProduct, productData, setProductData,
+  setOpenModal, setModalProduct,
   averages, setAverages,
 }) {
+  const [productData, setProductData] = useState({});
   const [productInfo, setProductInfo] = useState({});
+
+  useEffect(() => {
+    axios.get(`${serverRoute}/products/${product}/styles`)
+      .then((data) => {
+        const styles = data.data.results;
+        const photos = [];
+        const thumbnails = [];
+        styles.forEach((style) => {
+          for (let i = 0; i < style.photos.length; i++) {
+            if (!photos.includes(style.photos[i].url)) { photos.push(style.photos[i].url); }
+            if (!thumbnails.includes(style.photos[i].thumbnail_url)) {
+              thumbnails.push(style.photos[i].thumbnail_url);
+            }
+          }
+        });
+
+        setProductData({
+          photos,
+          thumbnails,
+          price: data.data.results[0].original_price,
+          salePrice: data.data.results[0].sale_price,
+        });
+      });
+  }, []);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${product}`)
@@ -27,84 +52,24 @@ function RelatedProduct({
   }, []);
 
   useEffect(() => {
-    if (!productData[product]) {
-      axios.get(`${serverRoute}/getProduct/${product}`)
-        .then((data) => {
-          if (data.data.length > 0) {
-            const updatedProductData = productData;
-            updatedProductData[product] = {
-              photos: data.data[0].photos,
-              thumbnails: data.data[0].thumbnails,
-              price: data.data[0].price,
-              salePrice: data.data[0].salePrice,
-            };
-            setProductData(updatedProductData);
-          } else {
-            axios.get(`${serverRoute}/products/${product}/styles`)
-              .then((data) => {
-                const styles = data.data.results;
-                const photos = [];
-                const thumbnails = [];
-                styles.forEach((style) => {
-                  for (let i = 0; i < style.photos.length; i++) {
-                    if (!photos.includes(style.photos[i].url)) { photos.push(style.photos[i].url); }
-                    if (!thumbnails.includes(style.photos[i].thumbnail_url)) {
-                      thumbnails.push(style.photos[i].thumbnail_url);
-                    }
-                  }
-                });
-                const updatedProductData = productData;
-                updatedProductData[product] = {
-                  photos,
-                  thumbnails,
-                  price: data.data.results[0].original_price,
-                  salePrice: data.data.results[0].sale_price,
-                };
-                setProductData(updatedProductData);
-
-                axios.post(`${serverRoute}/productData`, {
-                  id: product,
-                  photos,
-                  thumbnails,
-                  price: data.data.results[0].original_price,
-                  salePrice: data.data.results[0].sale_price,
-                });
-              });
-          }
+    axios.get(`${serverRoute}/reviews/meta/?product_id=${product}`)
+      .then((data) => {
+        const updatedAverages = averages;
+        const reviews = data.data.ratings;
+        const keys = Object.keys(reviews);
+        let sum = 0;
+        let numReviews = 0;
+        keys.forEach((key) => {
+          sum += (key * reviews[key]);
+          numReviews += Number(reviews[key]);
         });
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!averages[product]) {
-      axios.get(`${serverRoute}/average/${product}`)
-        .then((data) => {
-          if (data.data.length > 0) {
-            const updatedAverages = averages;
-            updatedAverages[product] = data.data[0].average;
-            setAverages(updatedAverages);
-          } else {
-            axios.get(`${serverRoute}/reviews/meta/?product_id=${product}`)
-              .then((data) => {
-                const updatedAverages = averages;
-                const reviews = data.data.ratings;
-                const keys = Object.keys(reviews);
-                let sum = 0;
-                let numReviews = 0;
-                keys.forEach((key) => {
-                  sum += (key * reviews[key]);
-                  numReviews += Number(reviews[key]);
-                });
-                updatedAverages[product] = sum / numReviews;
-                setAverages(updatedAverages);
-                axios.post(`${serverRoute}/average`, {
-                  id: product,
-                  average: averages[product],
-                });
-              });
-          }
+        updatedAverages[product] = sum / numReviews;
+        setAverages(updatedAverages);
+        axios.post(`${serverRoute}/average`, {
+          id: product,
+          average: averages[product],
         });
-    }
+      });
   }, []);
 
   function changeProduct(event) {
@@ -118,7 +83,9 @@ function RelatedProduct({
     setModalProduct(product);
   }
 
-  if (productInfo && productData[product]) {
+  console.log(productData);
+
+  if (productData.price) {
     return (
       <div>
         <div className="related-product-card" style={{ left }}>
@@ -131,17 +98,17 @@ function RelatedProduct({
               <i className="related-star fa-solid fa-star fa-stack-1x" />
             </div>
           </div>
-          <div onClick={changeProduct}>
-            <Photo product={product} productData={productData} />
+          <div>
+            <Photo changeProduct={changeProduct} product={product} productData={productData} />
             <div className="related-category">{productInfo.category}</div>
             <div className="related-name">{productInfo.name}</div>
             <Price
-              price={productData[product].price}
-              salesPrices={productData[product].salePrice}
+              price={productData.price}
+              salesPrices={productData.salePrice}
             />
-            <div className="related-stars">
+            {/* <div className="related-stars">
               <Star percentage={(averages[product] / 5) * 100} />
-            </div>
+            </div> */}
 
           </div>
 

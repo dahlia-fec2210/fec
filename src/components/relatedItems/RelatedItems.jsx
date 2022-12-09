@@ -10,7 +10,9 @@ import OutfitList from '../outfitList/OutfitList.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function RelatedItems({ currentProduct, setCurrentProduct }) {
+function RelatedItems({
+  currentProduct, setCurrentProduct, productInfo,
+}) {
   const [left, setLeft] = useState(0);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [openModal, setOpenModal] = useState(false);
@@ -43,6 +45,8 @@ function RelatedItems({ currentProduct, setCurrentProduct }) {
     setLeft(left - 272);
   }
 
+  console.log('PRODUCT INFO: ', productInfo);
+
   return (
     <div>
       <div className="related-container">
@@ -61,6 +65,7 @@ function RelatedItems({ currentProduct, setCurrentProduct }) {
               setProductData={setProductData}
               averages={averages}
               setAverages={setAverages}
+              productInfo={productInfo}
             />
           ))}
         </div>
@@ -78,8 +83,6 @@ function RelatedItems({ currentProduct, setCurrentProduct }) {
       )}
       <OutfitList
         currentProduct={currentProduct}
-        productData={productData}
-        setProductData={setProductData}
         averages={averages}
         setAverages={setAverages}
       />

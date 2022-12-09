@@ -12,87 +12,53 @@ import Star from '../common/Star.jsx';
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function ClothingPiece({
-  clothingPiece, left, outfit, setOutfit, productData, setProductData, averages, setAverages,
+  clothingPiece, left, outfit, setOutfit, averages, setAverages,
 }) {
-  useEffect(() => {
-    if (!productData[clothingPiece]) {
-      axios.get(`${serverRoute}/getProduct/${clothingPiece}`)
-        .then((data) => {
-          if (data.data.length > 0) {
-            const updatedProductData = productData;
-            updatedProductData[clothingPiece] = {
-              photo: data.data[0].photo,
-              price: data.data[0].price,
-              salePrice: data.data[0].salePrice,
-            };
-            setProductData(updatedProductData);
-          } else {
-            axios.get(`${serverRoute}/products/${clothingPiece}/styles`)
-              .then((response) => {
-                const updatedProductData = productData;
-                updatedProductData[clothingPiece] = {
-                  photo: response.data.results[0].photos[0].url,
-                  price: response.data.results[0].original_price,
-                  salePrice: response.data.results[0].sale_price,
-                };
-                setProductData(updatedProductData);
+  const [price, setPrice] = useState(0);
+  const [photo, setPhoto] = useState(null);
+  const [salePrice, setSalePrice] = useState(0);
+  const [productInfo, setProductInfo] = useState({});
 
-                axios.post(`${serverRoute}/productData`, {
-                  id: clothingPiece,
-                  photo: data.data.results[0].photos[0].url,
-                  price: data.data.results[0].original_price,
-                  salePrice: data.data.results[0].sale_price,
-                });
-              });
-          }
-        });
-    }
+  useEffect(() => {
+    axios.get(`${serverRoute}/products/${clothingPiece}`)
+      .then((data) => {
+        setProductInfo(data.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.get(`${serverRoute}/products/${clothingPiece}/styles`)
+      .then((response) => {
+        setPhoto(response.data.results[0].photos[0].url);
+        setPrice(response.data.results[0].original_price);
+        setSalePrice(response.data.results[0].sale_price);
+      });
   }, [outfit]);
 
   useEffect(() => {
-    if (!averages[clothingPiece]) {
-      axios.get(`${serverRoute}/average/${clothingPiece}`)
-        .then((data) => {
-          if (data.data.length > 0) {
-            const updatedAverages = averages;
-            updatedAverages[clothingPiece] = data.data[0].average;
-            setAverages(updatedAverages);
-          } else {
-            axios.get(`${serverRoute}/reviews/meta/?product_id=${clothingPiece}`)
-              .then((response) => {
-                const updatedAverages = averages;
-                const reviews = response.data.ratings;
-                const keys = Object.keys(reviews);
-                let sum = 0;
-                let numReviews = 0;
-                keys.forEach((key) => {
-                  sum += (key * reviews[key]);
-                  numReviews += Number(reviews[key]);
-                });
-                updatedAverages[clothingPiece] = sum / numReviews;
-                setAverages(updatedAverages);
-                axios.post(`${serverRoute}/average`, {
-                  id: clothingPiece,
-                  average: averages[clothingPiece],
-                });
-              });
-          }
+    axios.get(`${serverRoute}/reviews/meta/?product_id=${clothingPiece}`)
+      .then((response) => {
+        const updatedAverages = averages;
+        const reviews = response.data.ratings;
+        const keys = Object.keys(reviews);
+        let sum = 0;
+        let numReviews = 0;
+        keys.forEach((key) => {
+          sum += (key * reviews[key]);
+          numReviews += Number(reviews[key]);
         });
-    }
+        updatedAverages[clothingPiece] = sum / numReviews;
+        setAverages(updatedAverages);
+      });
   }, []);
 
   function removeFromOutfit(event) {
     event.preventDefault();
-    axios.post(`${serverRoute}/delete`, clothingPiece, { withCredentials: true })
-      .then(() => {
-        axios.get(`${serverRoute}/outfit`, { withCredentials: true })
-          .then((data) => {
-            setOutfit(data.data);
-          });
-      });
+    const newOutfit = outfit.filter((piece) => piece !== clothingPiece);
+    setOutfit(newOutfit);
   }
 
-  if (clothingPiece !== null) {
+  if (clothingPiece !== null && productInfo !== {}) {
     return (
       <div>
         <div className="related-product-card" style={{ left }}>
@@ -103,12 +69,12 @@ function ClothingPiece({
             </div>
           </div>
           <div>
-            <Photo product={clothingPiece} productData={productData} />
-            <div className="related-category">{clothingPiece.category}</div>
-            <div className="related-name">{clothingPiece.name}</div>
+            <img className="related-photo" src={photo || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={clothingPiece} />
+            <div className="related-category">{productInfo.category}</div>
+            <div className="related-name">{productInfo.name}</div>
             <Price
-              price={productData[clothingPiece].price}
-              salesPrices={productData[clothingPiece].salePrice}
+              price={price}
+              salesPrices={salePrice}
             />
             <div className="related-stars">
               <Star percentage={(averages[clothingPiece] / 5) * 100} />

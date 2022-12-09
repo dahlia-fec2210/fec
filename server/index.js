@@ -12,7 +12,6 @@ const sessionHandler = require('./session-handler');
 const products = require('../database/controllers/products');
 const reviews = require('../database/controllers/reviews');
 const questions = require('../database/controllers/questions');
-const db = require('../database/index.js');
 
 // app.use(cors());
 const corsOptions = {
@@ -26,74 +25,6 @@ app.use(sessionHandler);
 app.use(express.json());
 
 // Routes go here:
-
-// Outfit Routes:
-app.post('/piece', (req, res) => {
-  db.savePiece({
-    cookie: req.session_id, category: req.body.category, id: req.body.id, name: req.body.name,
-  })
-    .then((response) => {
-      res.send(response);
-    });
-});
-
-app.get('/outfit', (req, res) => {
-  db.getOutfit(req.session_id)
-    .then((response) => {
-      res.send(response);
-    });
-});
-
-app.post('/delete', (req, res) => {
-  db.deletePiece(req.body.id)
-    .then((outfit) => {
-      res.send(outfit);
-    });
-});
-
-// Product Data routes:
-app.post('/productData', (req, res) => {
-  db.saveProduct(req.body)
-    .then((response) => {
-      res.send(response);
-    });
-});
-
-app.get('/getProduct/:product_id', (req, res) => {
-  db.getProduct(req.params.product_id)
-    .then((response) => {
-      res.send(response);
-    });
-});
-
-app.get('/deleteProducts', (req, res) => {
-  db.deleteProducts()
-    .then((response) => {
-      res.send(response);
-    });
-});
-
-app.post('/average/', (req, res) => {
-  db.saveAverage(req.body)
-    .then((response) => {
-      res.send(response);
-    });
-});
-
-app.get('/average/:product_id', (req, res) => {
-  console.log(req.params.product_id);
-  db.getAverage(req.params.product_id)
-    .then((response) => {
-      res.send(response);
-    });
-});
-
-app.get('/deleteAverageReviews', (req, res) => {
-  db.deleteAverageReviews()
-    .then((response) => {
-      res.send(response);
-    });
-});
 
 // Product routes:
 app.get('/products', (req, res) => {
