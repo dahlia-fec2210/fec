@@ -30,7 +30,6 @@ function RelatedProduct({
     if (!productData[product]) {
       axios.get(`${serverRoute}/getProduct/${product}`)
         .then((data) => {
-          console.log(data.data);
           if (data.data.length > 0) {
             const updatedProductData = productData;
             updatedProductData[product] = {
@@ -44,7 +43,6 @@ function RelatedProduct({
             axios.get(`${serverRoute}/products/${product}/styles`)
               .then((data) => {
                 const styles = data.data.results;
-                console.log(styles);
                 const photos = [];
                 const thumbnails = [];
                 styles.forEach((style) => {

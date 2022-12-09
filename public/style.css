@@ -152,6 +152,32 @@ body {
   opacity: .7;
 }
 
+.related-photo:hover .related-thumbnails {
+  display: flex;
+}
+
+.related-thumbnails {
+  display: none;
+  align-items: flex-end;
+  height: 350px;
+  position: absolute;
+  width: 250px;
+  overflow: hidden;
+  top: -105px;
+  z-index: 1;
+}
+
+.related-thumbnails img {
+  min-height: 50px;
+  min-width: 50px;
+  max-width: 50px;
+  max-height: 50px;
+  object-fit: cover;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin-left: 8.5px;
+}
+
 /* .related-modal-container {
   height: 100vh;
   width: 100vw;
