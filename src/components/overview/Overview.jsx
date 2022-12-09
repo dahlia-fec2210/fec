@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Image from './Image.jsx';
 import ProductInfo from './ProductInfo.jsx';
+import './overview.css';
 
 function Overview({ productId, serverRoute }) {
   const [productInfo, setProductInfo] = useState({});
