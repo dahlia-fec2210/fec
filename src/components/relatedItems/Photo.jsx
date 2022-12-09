@@ -28,40 +28,44 @@ function Photo({ product, productData, changeProduct }) {
     return (
       <div className="related-photo">
         <img className="related-photo" src={productData.photos[photoIndex] || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={product} />
-        <div className="related-thumbnails" onClick={changeProduct}>
-          <img
-            onClick={(event) => {
-              event.stopPropagation();
-              setPhotoIndex(carousel[0]);
-            }}
-            src={productData.thumbnails[carousel[0]]}
-            alt=""
-          />
-          <img
-            onClick={(event) => {
-              event.stopPropagation();
-              setPhotoIndex(carousel[1]);
-            }}
-            src={productData.thumbnails[carousel[1]]}
-            alt=""
-          />
-          <img
-            onClick={(event) => {
-              event.stopPropagation();
-              setPhotoIndex(carousel[2]);
-            }}
-            src={productData.thumbnails[carousel[2]]}
-            alt=""
-          />
-          <img
-            onClick={(event) => {
-              event.stopPropagation();
-              setPhotoIndex(carousel[3]);
-            }}
-            src={productData.thumbnails[carousel[3]]}
-            alt=""
-          />
-        </div>
+        {productData.thumbnails[0] !== null
+          ? (
+            <div className="related-thumbnails" onClick={changeProduct}>
+              <img
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setPhotoIndex(carousel[0]);
+                }}
+                src={productData.thumbnails[carousel[0]]}
+                alt=""
+              />
+              <img
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setPhotoIndex(carousel[1]);
+                }}
+                src={productData.thumbnails[carousel[1]]}
+                alt=""
+              />
+              <img
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setPhotoIndex(carousel[2]);
+                }}
+                src={productData.thumbnails[carousel[2]]}
+                alt=""
+              />
+              <img
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setPhotoIndex(carousel[3]);
+                }}
+                src={productData.thumbnails[carousel[3]]}
+                alt=""
+              />
+            </div>
+          )
+          : null}
         { productData.thumbnails[0] !== null
           ? (
             <div className="related-photo-buttons">
