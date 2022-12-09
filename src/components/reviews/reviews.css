@@ -7,7 +7,7 @@
 /* Reviews list ************************************** */
 .review-list-container {
   max-height: 100vh;
-  max-width: 60vw;
+  width: 60vw;
 }
 
 .reviews-list {
