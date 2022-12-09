@@ -27,7 +27,7 @@ function Overview({ productId, serverRoute }) {
       .catch((err) => {
         console.log('Error getting product info\n', err);
       });
-  }, []);
+  }, [productId]);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}/styles`)
@@ -43,7 +43,7 @@ function Overview({ productId, serverRoute }) {
       .catch((err) => {
         console.log('Error getting styles\n', err);
       });
-  }, []);
+  }, [productId]);
 
   useEffect(() => {
     axios.get(`${serverRoute}/reviews/meta/?product_id=${productId}`)
@@ -58,7 +58,7 @@ function Overview({ productId, serverRoute }) {
         });
         setProductRating(sum / numReviews);
       });
-  }, []);
+  }, [productId]);
 
   // console.log('product styles:', productStyles);
   // console.log('current style:', currentStyle);
