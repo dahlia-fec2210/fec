@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AddToCart() {
+function AddToCart({ currentStyle, setCurrentStyle }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission
