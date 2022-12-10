@@ -14,14 +14,14 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 function App() {
-  const [currentProduct, setCurrentProduct] = useState(37314);
+  const [currentProduct, setCurrentProduct] = useState(37311);
 
   return (
     <div>
       <h1>Hello Dahlia</h1>
-      {/* <Overview productId={currentProduct} serverRoute={serverRoute} />
+      <Overview productId={currentProduct} serverRoute={serverRoute} />
       { currentProduct === null ? <div>Loading...</div>
-        : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> } */}
+        : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
       { currentProduct === {} ? (
         <RotatingLines
           strokeColor="grey"
@@ -37,8 +37,8 @@ function App() {
             setCurrentProduct={setCurrentProduct}
           />
         ) }
-      {/* { currentProduct === null ? <div>Loading...</div>
-        : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> } */}
+      { currentProduct === null ? <div>Loading...</div>
+        : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
     </div>
   );
 }

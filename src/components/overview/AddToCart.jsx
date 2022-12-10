@@ -13,7 +13,7 @@ function AddToCart({ currentStyleSkus }) {
     // Handle form submission
   };
 
-  console.log('current style skus:', currentStyleSkus);
+  // console.log('current style skus:', currentStyleSkus);
 
   const handleSizeChange = (e) => {
     setSelectedSize(e.target.value);
@@ -35,9 +35,9 @@ function AddToCart({ currentStyleSkus }) {
     setSelectedQuanity(e.target.value);
   };
 
-  console.log('selected size:', selectedSize);
-  console.log('size quantity:', sizeQuantity);
-  console.log('selected quantity:', selectedQuantity);
+  // console.log('selected size:', selectedSize);
+  // console.log('size quantity:', sizeQuantity);
+  // console.log('selected quantity:', selectedQuantity);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -62,7 +62,7 @@ function AddToCart({ currentStyleSkus }) {
         })}
       </select>
 
-      <button type="submit">Add to Cart/Bag</button>
+      <button type="submit">Add to Cart</button>
     </form>
   );
 }
