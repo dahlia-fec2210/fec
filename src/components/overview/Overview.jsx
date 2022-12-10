@@ -62,6 +62,7 @@ function Overview({ productId, serverRoute }) {
 
   // console.log('product styles:', productStyles);
   // console.log('current style:', currentStyle);
+  console.log('product info:', productInfo);
 
   return (
     <div className="overview-container">
