@@ -52,25 +52,38 @@ function RelatedProduct({
   }, []);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${product}`)
-      .then((data) => {
-        setProductInfo(data.data);
-      });
+    const cache = JSON.parse(localStorage.getItem(`productInfo-${product}`));
+    if (cache === null) {
+      axios.get(`${serverRoute}/products/${product}`)
+        .then((data) => {
+          localStorage.setItem(`productInfo-${product}`, JSON.stringify(data.data));
+          setProductInfo(data.data);
+        });
+    } else {
+      setProductInfo(cache);
+    }
   }, []);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/reviews/meta/?product_id=${product}`)
-      .then((data) => {
-        const reviews = data.data.ratings;
-        const keys = Object.keys(reviews);
-        let sum = 0;
-        let numReviews = 0;
-        keys.forEach((key) => {
-          sum += (key * reviews[key]);
-          numReviews += Number(reviews[key]);
+    const cache = JSON.parse(localStorage.getItem('averageReview')) || {};
+    if (!cache[product]) {
+      axios.get(`${serverRoute}/reviews/meta/?product_id=${product}`)
+        .then((data) => {
+          const reviews = data.data.ratings;
+          const keys = Object.keys(reviews);
+          let sum = 0;
+          let numReviews = 0;
+          keys.forEach((key) => {
+            sum += (key * reviews[key]);
+            numReviews += Number(reviews[key]);
+          });
+          cache[product] = sum / numReviews;
+          localStorage.setItem('averageReview', JSON.stringify(cache));
+          setAverage(sum / numReviews);
         });
-        setAverage(sum / numReviews);
-      });
+    } else {
+      setAverage(cache[product]);
+    }
   }, []);
 
   function changeProduct(event) {

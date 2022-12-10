@@ -14,19 +14,33 @@ function ComparisonModal({ modalProduct, currentProduct, setOpenModal }) {
   const [currentFeatures, setCurrentFeatures] = useState(null);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${currentProduct}`)
-      .then((data) => {
-        setCurrentProductInfo(data.data);
-        setCurrentFeatures(data.data.features);
-      });
+    const cache = JSON.parse(localStorage.getItem(`productInfo-${currentProduct}`));
+    if (cache === null) {
+      axios.get(`${serverRoute}/products/${currentProduct}`)
+        .then((data) => {
+          localStorage.setItem(`productInfo-${currentProduct}`, data.data);
+          setCurrentProductInfo(data.data);
+          setCurrentFeatures(data.data.features);
+        });
+    } else {
+      setCurrentProductInfo(cache);
+      setCurrentFeatures(cache.features);
+    }
   }, []);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${modalProduct}`)
-      .then((data) => {
-        setModalProductInfo(data.data);
-        setModalFeatures(data.data.features);
-      });
+    const cache = JSON.parse(localStorage.getItem(`productInfo-${modalProduct}`));
+    if (cache === null) {
+      axios.get(`${serverRoute}/products/${modalProduct}`)
+        .then((data) => {
+          localStorage.setItem(`product-${modalProduct}`, data.data);
+          setModalProductInfo(data.data);
+          setModalFeatures(data.data.features);
+        });
+    } else {
+      setModalProductInfo(cache);
+      setModalFeatures(cache.features);
+    }
   }, []);
 
   if (currentProductInfo !== null && modalProductInfo !== null) {
