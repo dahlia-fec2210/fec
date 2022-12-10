@@ -19,6 +19,8 @@ function QuestionSearch({ handleSearch }) {
     if (searchingQuestions.length >= 3) {
       // console.log('only when length of searched is greater than 3');
       handleSearch(event.target.value);
+    } else {
+      handleSearch([]);
     }
   };
 
