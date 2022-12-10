@@ -7,6 +7,7 @@ function Image({ currentStylePhotos }) {
 
   const [currentMainImageIndex, setCurrentMainImageIndex] = useState(0);
   const { length } = currentStylePhotos;
+  const [selected, setSelected] = useState(0);
 
   // Refactor so that the carousel is not circular:
   // Create states for first and last images in carousel
@@ -22,9 +23,8 @@ function Image({ currentStylePhotos }) {
     setCurrentMainImageIndex(currentMainImageIndex === length - 1 ? 0 : currentMainImageIndex + 1);
   };
 
-  // console.log('current main image index:', currentMainImageIndex);
-
-  const handleImageSetClick = (index) => {
+  const handleThumbnailClick = (index) => {
+    setSelected(index);
     setCurrentMainImageIndex(index);
   };
 
@@ -75,9 +75,13 @@ function Image({ currentStylePhotos }) {
       <div className="image-set">
         {upArrow}
         {currentStylePhotos.map((photo, i) => (
-          <div className="image-thumbnails" key={i} onClick={() => handleImageSetClick(i)}>
-            <ImageSet key={i} photo={photo} />
-          </div>
+          <ImageSet
+            key={i}
+            index={i}
+            photo={photo}
+            selected={selected}
+            handleThumbnailClick={handleThumbnailClick}
+          />
         ))}
         {downArrow}
       </div>
