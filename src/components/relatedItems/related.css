@@ -36,25 +36,20 @@ body {
   top: -185px;
   max-width: 1200px;
   margin: 0 auto;
-  z-index: -5;
+  z-index: 0;
 }
 
-.related-photo-buttons {
-  display: none;
-  padding: 0 10px;
-  justify-content: space-between;
-  position: relative;
-  top: -155px;
-  max-width: 350px;
-  margin: 0 auto;
-}
-
-.related-photo {
+.related-photo, .related-outfit-photo {
   width: 250px;
   height: 250px;
   object-fit: cover;
   border-radius: 4px 4px 0 0;
   border-bottom: 1px solid black;
+  z-index: 1;
+}
+
+.related-photo:hover {
+  cursor: pointer;
 }
 
 .related-sale-price {
@@ -94,12 +89,21 @@ body {
   z-index: 100;
 }
 
+.related-stack:hover {
+  cursor: pointer;
+}
+
 .related-circle {
   color: darkgray;
 }
 
 .related-star {
   color: white;
+  transition: all 150ms ease-in-out;
+}
+
+.related-star:hover {
+  color: black;
 }
 
 .related-comparison-modal {
@@ -137,6 +141,10 @@ body {
   left: 590px;
 }
 
+.related-comparison-stack:hover {
+  cursor: pointer;
+}
+
 .related-comparison-heading {
   margin-bottom: 15px;
 }
@@ -165,7 +173,11 @@ body {
   display: flex;
 }
 
-.related-photo:hover .related-photo-buttons {
+.related-photo:hover .mini-left-arrow {
+  display: flex;
+}
+
+.related-photo:hover .mini-right-arrow {
   display: flex;
 }
 
@@ -188,4 +200,45 @@ body {
   border: 1px solid white;
   border-radius: 4px;
   margin-left: 8.5px;
+  transition: all 150ms ease-in-out;
+}
+
+.related-thumbnails img:hover {
+  border: 1px solid black;
+}
+
+.mini-left-arrow {
+  display: none;
+  position: relative;
+  left: -205px;
+  top: -163px;
+}
+
+.mini-right-arrow {
+  display: none;
+  position: relative;
+  left: 5px;
+  top: -163px;
+}
+
+.related-arrows {
+  display: flex;
+  justify-content: space-between;
+}
+
+.related-arrow {
+  position: relative;
+  top: -200px;
+}
+
+.related-arrow:hover {
+  cursor: pointer;
+}
+
+.related-arrow-right {
+  left: 40px;
+}
+
+.related-arrow-left {
+  left: -40px;
 }

@@ -21,54 +21,80 @@ function RelatedProduct({
   const [productInfo, setProductInfo] = useState({});
   const [average, setAverage] = useState(0);
 
+  // if (!product) {
+  //   product = 37316;
+  // }
+
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${product}/styles`)
-      .then((data) => {
-        const styles = data.data.results;
-        const photos = [];
-        const thumbnails = [];
-        styles.forEach((style) => {
-          for (let i = 0; i < style.photos.length; i++) {
-            if (!photos.includes(style.photos[i].url)) { photos.push(style.photos[i].url); }
-            if (!thumbnails.includes(style.photos[i].thumbnail_url)) {
-              thumbnails.push(style.photos[i].thumbnail_url);
+    let cache = JSON.parse(localStorage.getItem(`productData-${product}`));
+    if (cache === null) {
+      console.log('API CALL: ', product);
+      axios.get(`${serverRoute}/products/${product}/styles`)
+        .then((data) => {
+          const styles = data.data.results;
+          const photos = [];
+          const thumbnails = [];
+          styles.forEach((style) => {
+            for (let i = 0; i < style.photos.length; i++) {
+              if (!photos.includes(style.photos[i].url)) { photos.push(style.photos[i].url); }
+              if (!thumbnails.includes(style.photos[i].thumbnail_url)) {
+                thumbnails.push(style.photos[i].thumbnail_url);
+              }
             }
-          }
+          });
+          cache = {
+            photos,
+            thumbnails,
+            price: data.data.results[0].original_price,
+            salePrice: data.data.results[0].sale_price,
+          };
+          localStorage.setItem(`productData-${product}`, JSON.stringify(cache));
+          setProductData(cache);
         });
-
-        setProductData({
-          photos,
-          thumbnails,
-          price: data.data.results[0].original_price,
-          salePrice: data.data.results[0].sale_price,
-        });
-      });
-  }, []);
-
-  useEffect(() => {
-    axios.get(`${serverRoute}/products/${product}`)
-      .then((data) => {
-        setProductInfo(data.data);
-      });
-  }, []);
+    } else {
+      setProductData(cache);
+    }
+  }, [product]);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/reviews/meta/?product_id=${product}`)
-      .then((data) => {
-        const reviews = data.data.ratings;
-        const keys = Object.keys(reviews);
-        let sum = 0;
-        let numReviews = 0;
-        keys.forEach((key) => {
-          sum += (key * reviews[key]);
-          numReviews += Number(reviews[key]);
+    const cache = JSON.parse(localStorage.getItem(`productInfo-${product}`));
+    if (cache === null) {
+      console.log('API CALL: ', product);
+      axios.get(`${serverRoute}/products/${product}`)
+        .then((data) => {
+          localStorage.setItem(`productInfo-${product}`, JSON.stringify(data.data));
+          setProductInfo(data.data);
         });
-        setAverage(sum / numReviews);
-      });
-  }, []);
+    } else {
+      setProductInfo(cache);
+    }
+  }, [product]);
+
+  useEffect(() => {
+    const cache = JSON.parse(localStorage.getItem('averageReview')) || {};
+    if (!cache[product]) {
+      axios.get(`${serverRoute}/reviews/meta/?product_id=${product}`)
+        .then((data) => {
+          const reviews = data.data.ratings;
+          const keys = Object.keys(reviews);
+          let sum = 0;
+          let numReviews = 0;
+          keys.forEach((key) => {
+            sum += (key * reviews[key]);
+            numReviews += Number(reviews[key]);
+          });
+          cache[product] = sum / numReviews;
+          localStorage.setItem('averageReview', JSON.stringify(cache));
+          setAverage(sum / numReviews);
+        });
+    } else {
+      setAverage(cache[product]);
+    }
+  }, [product]);
 
   function changeProduct(event) {
     event.preventDefault();
+    console.log('CHANGE PRODUCT: ', product);
     setCurrentProduct(product);
   }
 
