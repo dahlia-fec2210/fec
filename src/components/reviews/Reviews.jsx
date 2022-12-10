@@ -130,38 +130,43 @@ function Reviews({ currentProduct }) {
 
   if (listedReviews) {
     return (
-      <div className="reviews-container">
-        {metaData && <ProductBreakdown metaData={metaData} addFilter={addFilter} />}
-        <div className="review-list-container">
-          <SortByDropdown
-            reviewsListLength={allReviews.length}
-            changeSortOrder={changeSortOrder}
-            currentProduct={currentProduct}
-            filters={filters}
-            removeFilter={removeFilter}
-          />
-          <ReviewsList
-            reviews={listedReviews}
-            reportReview={reportReview}
-            bottomReviewsRef={bottomReviewsRef}
-          />
-          <div className="review-btns-container">
-            {itemCount > listedReviews.length
-              ? null
-              : (
-                <MoreReviewsButton addTwoItems={addTwoItems} bottomReviewsRef={bottomReviewsRef} />
-              )}
-            <button onClick={handleAddClick} className="new-review-btn">Add New Review</button>
-            {modal && (
-            <NewReviewModal
-              toggleModal={toggleModal}
-              metaData={metaData}
+      <>
+        <div className="reviews-container">
+          {metaData && <ProductBreakdown metaData={metaData} addFilter={addFilter} />}
+          <div className="review-list-container">
+            <SortByDropdown
+              reviewsListLength={allReviews.length}
+              changeSortOrder={changeSortOrder}
               currentProduct={currentProduct}
+              filters={filters}
+              removeFilter={removeFilter}
             />
-            )}
+            <ReviewsList
+              reviews={listedReviews}
+              reportReview={reportReview}
+              bottomReviewsRef={bottomReviewsRef}
+            />
+            <div className="review-btns-container">
+              {itemCount > listedReviews.length
+                ? null
+                : (
+                  <MoreReviewsButton addTwoItems={addTwoItems} bottomReviewsRef={bottomReviewsRef} />
+                )}
+              <button onClick={handleAddClick} className="new-review-btn">Add New Review</button>
+              {modal && (
+              <NewReviewModal
+                toggleModal={toggleModal}
+                metaData={metaData}
+                currentProduct={currentProduct}
+              />
+              )}
+            </div>
           </div>
         </div>
-      </div>
+        <div className="bottom-padding">
+          {' '}
+        </div>
+      </>
     );
   }
 }

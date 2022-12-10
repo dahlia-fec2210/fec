@@ -11,7 +11,7 @@ export default function FiltersList({ filters, removeFilter }) {
     <div className="filters-list">
       {filters.map((filter) => (
         <button type="button" className="filter-button" value={filter} onClick={handleClearFilter}>
-          <AiOutlineClose size={11} />
+          <AiOutlineClose size={11} className="filter-button-x" />
           {' '}
           {filter}
           {' '}
@@ -25,7 +25,7 @@ export default function FiltersList({ filters, removeFilter }) {
           value="clear"
           onClick={handleClearFilter}
         >
-          <AiOutlineClose size={11} />
+          <AiOutlineClose size={11} className="filter-button-x" />
           {' '}
           Clear filters
         </button>

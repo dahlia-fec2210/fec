@@ -17,7 +17,7 @@ export default function BodyInput({ body, setBody }) {
       );
     }
     return (
-      <div className="body-input-caption">
+      <div className="body-input-caption-met">
         Mininum Reached
       </div>
     );
@@ -31,7 +31,7 @@ export default function BodyInput({ body, setBody }) {
         className="body-input"
         maxLength={1000}
         placeholder="Why did you like the product or not?"
-        value={body}
+
         onChange={handleChange}
       />
       {displayCaption()}

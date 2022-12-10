@@ -28,17 +28,17 @@ export default function CharacteristicsInput({ characteristics, setCharacteristi
     <div className="review-select-characteristics">
       {prodCharaNames.map((charaName) => (
         <>
-          <div>
+          <div className="select-characteristics-label">
             {charaName}
             :
             {' '}
           </div>
-          <div className="review-radio-container">
+          <div className="review-radio-group">
             {descriptors[charaName].map((descriptor, index) => (
-              <div className="review-checkboxgroup">
-                <label onClick={handleClick} htmlFor={charaName + descriptor}>{descriptor}</label>
+              <>
                 <input onClick={handleClick} type="radio" name={prodCharaData[charaName].id} id={charaName + descriptor} value={index + 1} />
-              </div>
+                <label onClick={handleClick} htmlFor={charaName + descriptor}>{descriptor}</label>
+              </>
             ))}
           </div>
         </>
@@ -46,28 +46,3 @@ export default function CharacteristicsInput({ characteristics, setCharacteristi
     </div>
   );
 }
-
-// Comfort
-// :
-// id
-// :
-// 125054
-// value
-// :
-// "3.7894736842105263"
-// [[Prototype]]
-// :
-// Object
-
-// Quality
-// :
-// {id: 125055, value: '3.6000000000000000'}
-// Size
-// :
-// {id: 125052, value: '3.2000000000000000'}
-// Width
-// :
-// {id: 125053, value: '3.6500000000000000'}
-// [[Prototype]]
-// :
-// Object
