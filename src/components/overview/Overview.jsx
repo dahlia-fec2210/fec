@@ -86,8 +86,8 @@ function Overview({ productId, serverRoute }) {
           <p>{productInfo.description}</p>
         </div>
         <ul className="features">
-          {productFeatures.map((feature) => (
-            <li>
+          {productFeatures.map((feature, i) => (
+            <li key={i}>
               <strong>✓</strong>
               {` ${feature.feature}: ${feature.value}`}
             </li>
