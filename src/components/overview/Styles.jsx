@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function Styles({
-  index, style, setCurrentStylePhotos, selected, handleStyleClick,
+  index, style, selected, handleStyleClick,
 }) {
-  console.log('re-rendering Styles');
-
   let indicator;
   if (index === selected) {
     indicator = <div className="overlay" />;
