@@ -13,8 +13,10 @@ function OutfitList({
   const [outfit, setOutfit] = useState([]);
 
   useEffect(() => {
-    console.log('OUTFIT LIST:', localStorage.getItem('outfit'));
-    // setOutfit(JSON.parse(localStorage.getItem('outfit')));
+    const cache = JSON.parse(localStorage.getItem('outfit'));
+    if (cache !== null) {
+      setOutfit(cache);
+    }
   }, []);
 
   function moveRight(event) {
@@ -67,11 +69,12 @@ function OutfitList({
               : null
           }
         </div>
+        <div className="related-arrows">
+          <div className="related-arrow related-arrow-left" onClick={moveRight}>{ left === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
+          <div className="related-arrow related-arrow-right" onClick={moveLeft}>{ outfit.length <= 3 || left <= ((outfit.length - 3) * -272) ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
+        </div>
       </div>
-      <div className="related-buttons">
-        <div onClick={moveRight}>{ left === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
-        <div onClick={moveLeft}>{ outfit.length <= 3 || left <= ((outfit.length - 3) * -272) ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
-      </div>
+
     </div>
 
   );
