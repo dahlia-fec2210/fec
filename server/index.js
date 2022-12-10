@@ -24,6 +24,10 @@ app.use(morgan('dev'));
 app.use(sessionHandler);
 app.use(express.json());
 
+const productInfo = {};
+const productData = {};
+const relatedProducts = {};
+
 // Routes go here:
 
 // Product routes:
@@ -38,33 +42,48 @@ app.get('/products', (req, res) => {
 });
 
 app.get('/products/:product_id', (req, res) => {
-  products.getOneProduct(req.params.product_id)
-    .then((data) => {
-      res.status(200).send(data);
-    })
-    .catch((err) => {
-      res.status(500).send(err);
-    });
+  if (!productInfo[req.params.product_id]) {
+    products.getOneProduct(req.params.product_id)
+      .then((data) => {
+        productInfo[req.params.product_id] = data;
+        res.status(200).send(data);
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      });
+  } else {
+    res.status(200).send(productInfo[req.params.product_id]);
+  }
 });
 
 app.get('/products/:product_id/styles', (req, res) => {
-  products.getProductStyles(req.params.product_id)
-    .then((data) => {
-      res.status(200).send(data);
-    })
-    .catch((err) => {
-      res.status(500).send(err);
-    });
+  if (!productData[req.params.product_id]) {
+    products.getProductStyles(req.params.product_id)
+      .then((data) => {
+        productData[req.params.product_id] = data;
+        res.status(200).send(data);
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      });
+  } else {
+    res.status(200).send(productData[req.params.product_id]);
+  }
 });
 
 app.get('/products/:product_id/related', (req, res) => {
-  products.getRelatedProducts(req.params.product_id)
-    .then((data) => {
-      res.status(200).send(data);
-    })
-    .catch((err) => {
-      res.status(500).send(err);
-    });
+  if (!relatedProducts[req.params.product_id]) {
+    products.getRelatedProducts(req.params.product_id)
+      .then((data) => {
+        relatedProducts[req.params.product_id] = data;
+        res.status(200).send(data);
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      });
+  } else {
+    res.status(200).send(relatedProducts[req.params.product_id]);
+  }
 });
 
 app.get('/reviews', (req, res) => {
@@ -88,7 +107,6 @@ app.get('/reviews/meta', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-  console.log(req.body);
   reviews.postReview(req.body)
     .then((data) => {
       // data will be the word 'Created'
