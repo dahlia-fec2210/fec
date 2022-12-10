@@ -80,13 +80,17 @@ function Overview({ productId, serverRoute }) {
         currentStyleSkus={currentStyleSkus}
         setCurrentStylePhotos={setCurrentStylePhotos}
       />
-      <h3>{productInfo.slogan}</h3>
-      <p>{productInfo.description}</p>
-      {/* <ul>
-        {productInfo.features.map((feature) => (
-          <li>{`${feature.feature}: ${feature.value}`}</li>
-        ))}
-      </ul> */}
+      <div className="product-description">
+        <div className="description">
+          <h3>{productInfo.slogan}</h3>
+          <p>{productInfo.description}</p>
+        </div>
+        <ul className="features">
+          {productFeatures.map((feature) => (
+            <li>{`${feature.feature}: ${feature.value}`}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
