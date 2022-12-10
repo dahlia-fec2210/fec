@@ -145,19 +145,21 @@ function Reviews({ currentProduct }) {
             reportReview={reportReview}
             bottomReviewsRef={bottomReviewsRef}
           />
-          {itemCount > listedReviews.length
-            ? null
-            : (
-              <MoreReviewsButton addTwoItems={addTwoItems} bottomReviewsRef={bottomReviewsRef} />
+          <div className="review-btns-container">
+            {itemCount > listedReviews.length
+              ? null
+              : (
+                <MoreReviewsButton addTwoItems={addTwoItems} bottomReviewsRef={bottomReviewsRef} />
+              )}
+            <button onClick={handleAddClick} className="new-review-btn">Add New Review</button>
+            {modal && (
+            <NewReviewModal
+              toggleModal={toggleModal}
+              metaData={metaData}
+              currentProduct={currentProduct}
+            />
             )}
-          <button onClick={handleAddClick}>Add New Review</button>
-          {modal && (
-          <NewReviewModal
-            toggleModal={toggleModal}
-            metaData={metaData}
-            currentProduct={currentProduct}
-          />
-          )}
+          </div>
         </div>
       </div>
     );

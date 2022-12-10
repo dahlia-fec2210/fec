@@ -13,7 +13,7 @@ function MoreReviewsButton({ addTwoItems, bottomReviewsRef }) {
   };
   return (
     <>
-      <button type="button" onClick={handleClick}>
+      <button type="button" onClick={handleClick} className="more-reviews-btn">
         More Reviews
       </button>
       <div ref={buttonRef} />

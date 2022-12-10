@@ -24,6 +24,9 @@ export default function RatingBreakdown({ ratings, addFilter }) {
     <div className="rb-container">
       {ratingList.map((rating) => {
         const percentage = getRatingPercentage(rating);
+        const fillerStyles = {
+          width: `${percentage}%`,
+        };
         return (
           <div className="rating-bar-container" key={rating}>
             <span className="rating-bar-label" onClick={handleRatingClick}>
@@ -32,7 +35,11 @@ export default function RatingBreakdown({ ratings, addFilter }) {
               stars
               {' '}
             </span>
-            <meter value={percentage} max={100} className="rating-bar" />
+            <div className="rating-bar-padding">
+              <div className="rating-outer-bar">
+                <div className="rating-filler" style={fillerStyles} />
+              </div>
+            </div>
           </div>
         );
       })}

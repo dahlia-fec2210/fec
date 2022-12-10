@@ -30,7 +30,7 @@ export default function RatingRecommend({ metaData }) {
           <Star percentage={(overallRating / 5) * 100} />
         </div>
       </div>
-      <div>
+      <div className="rating-recommendation">
         {recommendation}
         % of reviews recommended this item.
       </div>

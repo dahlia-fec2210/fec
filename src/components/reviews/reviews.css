@@ -3,12 +3,14 @@
   display: flex;
   justify-content: center;
   align-content: flex-start;
+  margin-top: 30px;
 }
 /* Reviews list ************************************** */
 .review-list-container {
-  max-height: 100vh;
+  max-height: 98vh;
   width: 60vw;
   padding: 10px;
+  cursor: default;
 }
 .reviews-list-item {
   border-bottom: 1px black solid;
@@ -68,7 +70,43 @@
   overflow-y: scroll;
 }
 
+/* REVIEW BTNS  *********************************** */
+.review-btns-container {
+  margin-bottom: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  display: flex;
+}
+
+.more-reviews-btn, .new-review-btn {
+    color: #739086;
+    font-size: 16px;
+    line-height: 27px;
+    padding: 8px 20px;
+    font-family: Georgia, serif;
+    background-color: #f9f9f9;
+    box-shadow: rgba(0, 0, 0, 0.09) 2px 1px 13px 3px;
+    border: 1px solid #739086;
+    display: inline-block;
+    cursor: pointer;
+}
+.more-reviews-btn:hover, .new-review-btn:hover {
+  background-color: #739086;
+  color: #f9f9f9;
+}
+.more-reviews-btn:active, .new-review-btn:active {
+  background-color: #7da899;
+  color: #f9f9f9;
+}
+
+.new-review-btn {
+ margin-left: auto;
+}
+
 /* Dropdown Button***************************************/
+.sort-by {
+  cursor: default;
+}
 .dropbtn {
   background-color: #fff;
   color: black;
@@ -275,6 +313,10 @@ textarea {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.rating-recommendation {
+  margin: 10px 0;
 }
 
 .pb-overall {
@@ -294,9 +336,24 @@ textarea {
   text-decoration: underline;
   cursor: pointer;
 }
-meter {
+.rating-bar-padding {
+  padding: 5px;
   width: 70%;
-  height: 20px;
+}
+.rating-outer-bar  {
+  height: 8px;
+  width: 100%;
+  background-color: #e0e0de;
+  border-radius: 0px
+
+}
+
+.rating-filler {
+  height: 100%;
+  border-radius: inherit;
+  text-align: right;
+  position: relative;
+  background-color: #739086;
 }
 
 .bar-padding {
