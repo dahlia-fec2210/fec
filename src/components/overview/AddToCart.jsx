@@ -62,7 +62,7 @@ function AddToCart({ currentStyleSkus }) {
         })}
       </select>
 
-      <button type="submit">Add to Cart/Bag</button>
+      <button type="submit">Add to Cart</button>
     </form>
   );
 }
