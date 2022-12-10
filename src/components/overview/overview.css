@@ -1,0 +1,123 @@
+/* OVERVIEW *************************************/
+
+.overview-container {
+  width: 1070px;
+  margin: 0 auto;
+  display: flex;
+}
+
+/* .product-info-container {
+
+} */
+
+.overview-category {
+  text-transform: uppercase;
+  font-weight: 100;
+}
+
+.overview-name {
+  font-size: xx-large;
+}
+
+.main-carousel {
+  position: relative;
+  height: 550px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.main-image {
+  width: 300px;
+  border-radius: 5px;
+  position: relative;
+  margin-left: 100px;
+}
+
+.arrow {
+  position: absolute;
+  color: turquoise;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.left-arrow {
+  position: absolute;
+}
+
+/* .right-arrow {
+  right: 0;
+} */
+
+.up-arrow {
+  position: absolute;
+  top: -20px;
+  left: 17px;
+}
+
+.down-arrow {
+  position: absolute;
+  bottom: -20px;
+  left: 17px;
+}
+
+.up-arrow-container {
+  position: relative;
+}
+
+.down-arrow-container {
+  position: relative;
+}
+
+.slide {
+  transition-duration: 0.5s ease;
+  position: relative;
+}
+
+.slide-active {
+  transition-duration: 0.5s;
+  transform: scale(1.08);
+  position: relative;
+}
+
+.image-set {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  left: 50px;
+}
+
+.image-set img {
+  width: 65px;
+  height: 65px;
+  border-radius: 4px;
+  border: 1px solid white;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.styles-selector {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 300px;
+}
+
+.styles-selector .styles {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: 1 0 25%;
+}
+
+.style-images {
+  position: relative;
+  width: 66%;
+  margin: 0 auto;
+  display: flex;
+}

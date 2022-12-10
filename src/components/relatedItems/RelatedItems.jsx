@@ -6,14 +6,20 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RelatedProduct from './RelatedProduct.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
+import OutfitList from '../OutfitList/OutfitList.jsx';
+import './related.css';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function RelatedItems({ currentProduct, setCurrentProduct }) {
+function RelatedItems({
+  currentProduct, setCurrentProduct,
+}) {
   const [left, setLeft] = useState(0);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [modalProduct, setModalProduct] = useState(null);
+  const [productData, setProductData] = useState({});
+  const [averages, setAverages] = useState({});
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${currentProduct}/related`)
@@ -21,7 +27,7 @@ function RelatedItems({ currentProduct, setCurrentProduct }) {
         const uniqueProducts = [];
         const products = data.data;
         products.forEach((product) => {
-          if (!uniqueProducts.includes(product)) {
+          if (!uniqueProducts.includes(product) && product !== currentProduct) {
             uniqueProducts.push(product);
           }
         });
@@ -39,6 +45,7 @@ function RelatedItems({ currentProduct, setCurrentProduct }) {
     event.preventDefault();
     setLeft(left - 272);
   }
+
   return (
     <div>
       <div className="related-container">
@@ -48,10 +55,15 @@ function RelatedItems({ currentProduct, setCurrentProduct }) {
             <RelatedProduct
               setOpenModal={setOpenModal}
               setModalProduct={setModalProduct}
+              relatedProducts={relatedProducts}
               setCurrentProduct={setCurrentProduct}
               left={left}
               key={product}
               product={product}
+              productData={productData}
+              setProductData={setProductData}
+              averages={averages}
+              setAverages={setAverages}
             />
           ))}
         </div>
@@ -67,8 +79,12 @@ function RelatedItems({ currentProduct, setCurrentProduct }) {
         setOpenModal={setOpenModal}
       />
       )}
+      <OutfitList
+        currentProduct={currentProduct}
+        averages={averages}
+        setAverages={setAverages}
+      />
     </div>
-
   );
 }
 

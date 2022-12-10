@@ -7,7 +7,7 @@ import NewReviewModal from './new-review-modal/NewReviewModal.jsx';
 import ProductBreakdown from './product-breakdown/ProductBreakdown.jsx';
 import './reviews.css';
 
-const { useState, useEffect } = React;
+const { useState, useEffect, useRef } = React;
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function Reviews({ currentProduct }) {
@@ -19,6 +19,8 @@ function Reviews({ currentProduct }) {
   const [modal, setModal] = useState(false);
   const [filters, setFilters] = useState([]);
   const [filteredReviews, setFilteredReviews] = useState(null);
+
+  const bottomReviewsRef = useRef(null);
 
   const pageNumber = 1;
   const pageItemCount = 1000;
@@ -138,11 +140,15 @@ function Reviews({ currentProduct }) {
             filters={filters}
             removeFilter={removeFilter}
           />
-          <ReviewsList reviews={listedReviews} reportReview={reportReview} />
+          <ReviewsList
+            reviews={listedReviews}
+            reportReview={reportReview}
+            bottomReviewsRef={bottomReviewsRef}
+          />
           {itemCount > listedReviews.length
             ? null
             : (
-              <MoreReviewsButton addTwoItems={addTwoItems} />
+              <MoreReviewsButton addTwoItems={addTwoItems} bottomReviewsRef={bottomReviewsRef} />
             )}
           <button onClick={handleAddClick}>Add New Review</button>
           {modal && (

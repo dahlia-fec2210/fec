@@ -12,7 +12,6 @@ const sessionHandler = require('./session-handler');
 const products = require('../database/controllers/products');
 const reviews = require('../database/controllers/reviews');
 const questions = require('../database/controllers/questions');
-const db = require('../database/index.js');
 
 // app.use(cors());
 const corsOptions = {
@@ -26,30 +25,6 @@ app.use(sessionHandler);
 app.use(express.json());
 
 // Routes go here:
-
-// Outfit Routes:
-app.post('/piece', (req, res) => {
-  db.savePiece({
-    cookie: req.session_id, category: req.body.category, id: req.body.id, name: req.body.name,
-  })
-    .then((response) => {
-      res.send(response);
-    });
-});
-
-app.get('/outfit', (req, res) => {
-  db.getOutfit(req.session_id)
-    .then((response) => {
-      res.send(response);
-    });
-});
-
-app.post('/delete', (req, res) => {
-  db.deletePiece(req.body.id)
-    .then((outfit) => {
-      res.send(outfit);
-    });
-});
 
 // Product routes:
 app.get('/products', (req, res) => {
@@ -146,8 +121,10 @@ app.put('/reviews/:review_id/report', (req, res) => {
 });
 
 app.get('/qa/questions', (req, res) => {
+  // console.log(req.originalUrl, 'inside app.get');
   questions.getQuestionsForProduct(req.originalUrl)
     .then((data) => {
+      // console.log(data, 'is data printing');
       res.status(200).send(data);
     })
     .catch((err) => {
@@ -156,7 +133,7 @@ app.get('/qa/questions', (req, res) => {
 });
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  questions.getAnswersForQuestion(req.params.question_id)
+  questions.getAnswersForQuestion(req.originalUrl)
     .then((data) => {
       res.status(200).send(data);
     })
@@ -169,6 +146,8 @@ app.post('/qa/questions', (req, res) => {
   questions.postQuestion(req.body)
     .then((data) => {
       // data will be the word 'Created'
+      // console.log(data, 'data has been created');
+
       res.status(201).send(data);
     })
     .catch((err) => {
@@ -198,6 +177,8 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
 });
 
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
+  console.log(req.params.answer_id, 'inside helpful answer');
+  console.log(req.originalUrl, 'inside helpful answer');
   questions.markAnswerHelpful(req.params.answer_id)
     .then((data) => {
       res.status(200).send(data);

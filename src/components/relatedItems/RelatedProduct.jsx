@@ -1,36 +1,54 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable no-plusplus */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { RotatingLines } from 'react-loader-spinner';
+import Photo from './Photo.jsx';
 import Price from './Price.jsx';
 import Star from '../common/Star.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function RelatedProduct({
-  product, left, setCurrentProduct, setOpenModal, setModalProduct,
+  product, left, setCurrentProduct,
+  setOpenModal, setModalProduct,
 }) {
-  const [productInfo, setProductInfo] = useState(null);
-  const [photo, setPhoto] = useState('');
-  const [price, setPrice] = useState(null);
-  const [salesPrice, setSalesPrice] = useState(null);
+  const [productData, setProductData] = useState({});
+  const [productInfo, setProductInfo] = useState({});
   const [average, setAverage] = useState(0);
+
+  useEffect(() => {
+    axios.get(`${serverRoute}/products/${product}/styles`)
+      .then((data) => {
+        const styles = data.data.results;
+        const photos = [];
+        const thumbnails = [];
+        styles.forEach((style) => {
+          for (let i = 0; i < style.photos.length; i++) {
+            if (!photos.includes(style.photos[i].url)) { photos.push(style.photos[i].url); }
+            if (!thumbnails.includes(style.photos[i].thumbnail_url)) {
+              thumbnails.push(style.photos[i].thumbnail_url);
+            }
+          }
+        });
+
+        setProductData({
+          photos,
+          thumbnails,
+          price: data.data.results[0].original_price,
+          salePrice: data.data.results[0].sale_price,
+        });
+      });
+  }, []);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${product}`)
       .then((data) => {
         setProductInfo(data.data);
-      });
-  }, []);
-
-  useEffect(() => {
-    axios.get(`${serverRoute}/products/${product}/styles`)
-      .then((data) => {
-        setPrice(data.data.results[0].original_price);
-        setSalesPrice(data.data.results[0].sale_price);
-        setPhoto(data.data.results[0].photos[0].url);
       });
   }, []);
 
@@ -60,7 +78,7 @@ function RelatedProduct({
     setModalProduct(product);
   }
 
-  if (productInfo !== null) {
+  if (productData.price) {
     return (
       <div>
         <div className="related-product-card" style={{ left }}>
@@ -73,11 +91,14 @@ function RelatedProduct({
               <i className="related-star fa-solid fa-star fa-stack-1x" />
             </div>
           </div>
-          <div onClick={changeProduct}>
-            <img className="related-photo" src={photo || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={productInfo.name} />
+          <div>
+            <Photo changeProduct={changeProduct} product={product} productData={productData} />
             <div className="related-category">{productInfo.category}</div>
             <div className="related-name">{productInfo.name}</div>
-            <Price price={price} salesPrice={salesPrice} />
+            <Price
+              price={productData.price}
+              salesPrices={productData.salePrice}
+            />
             <div className="related-stars">
               <Star percentage={(average / 5) * 100} />
             </div>
@@ -89,7 +110,15 @@ function RelatedProduct({
     );
   }
   return (
-    <div>Loading...</div>
+    <div>
+      <RotatingLines
+        strokeColor="grey"
+        strokeWidth="5"
+        animationDuration="0.75"
+        width="96"
+        visible
+      />
+    </div>
   );
 }
 
