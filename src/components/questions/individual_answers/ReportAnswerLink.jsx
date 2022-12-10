@@ -4,8 +4,11 @@ import axios from 'axios';
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function ReportAnswerLink({ answer }) {
+  const [clickedReport, setClickedReport] = useState(false);
+
   const reportClicked = () => {
     console.log(answer.answer_id, 'is this correct answer id');
+    setClickedReport(!clickedReport);
     axios.put(`${serverRoute}/qa/answers/${answer.answer_id}/report`)
       .then((result) => {
         console.log(result, 'reported');
@@ -15,7 +18,7 @@ function ReportAnswerLink({ answer }) {
   return (
     <div>
       <div onClick={reportClicked}>
-        Report
+        {clickedReport ? 'Reported' : 'Report'}
       </div>
     </div>
   );
