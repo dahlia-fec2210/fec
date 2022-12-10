@@ -20,34 +20,58 @@ function ClothingPiece({
   const [average, setAverage] = useState(0);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${clothingPiece}`)
-      .then((data) => {
-        setProductInfo(data.data);
-      });
+    const cache = JSON.parse(localStorage.getItem(`productInfo-${clothingPiece}`));
+    if (cache === null) {
+      axios.get(`${serverRoute}/products/${clothingPiece}`)
+        .then((data) => {
+          localStorage.setItem(`productInfo-${clothingPiece}`, data.data);
+          setProductInfo(data.data);
+        });
+    } else {
+      setProductInfo(cache);
+    }
   }, []);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${clothingPiece}/styles`)
-      .then((response) => {
-        setPhoto(response.data.results[0].photos[0].url);
-        setPrice(response.data.results[0].original_price);
-        setSalePrice(response.data.results[0].sale_price);
-      });
+    const cache = JSON.parse(localStorage.getItem(`productData-${clothingPiece}`));
+    if (cache === null) {
+      axios.get(`${serverRoute}/products/${clothingPiece}/styles`)
+        .then((response) => {
+          cache.photos = response.data.results[0].photos[0].url;
+          cache.price = response.data.results[0].original_price;
+          cache.salePrice = response.data.results[0].sale_price;
+          localStorage.setItem(`productData-${clothingPiece}`, JSON.stringify(cache));
+          setPhoto(response.data.results[0].photos[0].url);
+          setPrice(response.data.results[0].original_price);
+          setSalePrice(response.data.results[0].sale_price);
+        });
+    } else {
+      setPhoto(cache.photos[0]);
+      setPrice(cache.price);
+      setSalePrice(cache.salePrice);
+    }
   }, [outfit]);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/reviews/meta/?product_id=${clothingPiece}`)
-      .then((response) => {
-        const reviews = response.data.ratings;
-        const keys = Object.keys(reviews);
-        let sum = 0;
-        let numReviews = 0;
-        keys.forEach((key) => {
-          sum += (key * reviews[key]);
-          numReviews += Number(reviews[key]);
+    const cache = JSON.parse(localStorage.getItem('averageReview')) || {};
+    if (!cache[clothingPiece]) {
+      axios.get(`${serverRoute}/reviews/meta/?product_id=${clothingPiece}`)
+        .then((data) => {
+          const reviews = data.data.ratings;
+          const keys = Object.keys(reviews);
+          let sum = 0;
+          let numReviews = 0;
+          keys.forEach((key) => {
+            sum += (key * reviews[key]);
+            numReviews += Number(reviews[key]);
+          });
+          cache[clothingPiece] = sum / numReviews;
+          localStorage.setItem('averageReview', JSON.stringify(cache));
+          setAverage(sum / numReviews);
         });
-        setAverage(sum / numReviews);
-      });
+    } else {
+      setAverage(cache[clothingPiece]);
+    }
   }, []);
 
   function removeFromOutfit(event) {
@@ -68,7 +92,7 @@ function ClothingPiece({
             </div>
           </div>
           <div>
-            <img className="related-photo" src={photo || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={clothingPiece} />
+            <img className="related-outfit-photo" src={photo || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={clothingPiece} />
             <div className="related-category">{productInfo.category}</div>
             <div className="related-name">{productInfo.name}</div>
             <Price

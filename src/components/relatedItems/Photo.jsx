@@ -27,7 +27,8 @@ function Photo({ product, productData, changeProduct }) {
   if (productData) {
     return (
       <div className="related-photo">
-        <img className="related-photo" src={productData.photos[photoIndex] || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={product} />
+        { productData.photos[photoIndex] ? <img className="related-photo" src={productData.photos[photoIndex]} alt={product} />
+          : <img onClick={changeProduct} className="related-photo" src="https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp" alt={product} />}
         {productData.thumbnails[0] !== null
           ? (
             <div className="related-thumbnails" onClick={changeProduct}>
@@ -68,25 +69,25 @@ function Photo({ product, productData, changeProduct }) {
           : null}
         { productData.thumbnails[0] !== null
           ? (
-            <div className="related-photo-buttons">
-              <div onClick={shiftDown}>
-                {carousel[0] === 0 ? null : (
-                  <div className="fa-stack" style={{ verticalAlign: 'top' }}>
-                    <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
-                    <i className="related-star fa-solid fa-chevron-left fa-stack-1x" />
-                  </div>
-                )}
-
-              </div>
-              <div onClick={shiftUp}>
-                {carousel[3] < productData.thumbnails.length - 1 ? (
-                  <div className="fa-stack" style={{ verticalAlign: 'top' }}>
-                    <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
-                    <i className="related-star fa-solid fa-chevron-right fa-stack-1x" />
-                  </div>
-                ) : null}
-
-              </div>
+            <div className="mini-left-arrow" onClick={shiftDown}>
+              {carousel[0] > 0 ? (
+                <div className="related-stack fa-stack" style={{ verticalAlign: 'top' }}>
+                  <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
+                  <i className="related-star fa-solid fa-chevron-left fa-stack-1x" />
+                </div>
+              ) : null}
+            </div>
+          )
+          : null}
+        { productData.thumbnails[0] !== null
+          ? (
+            <div className="mini-right-arrow" onClick={shiftUp}>
+              {carousel[3] < productData.thumbnails.length - 1 ? (
+                <div className="related-stack fa-stack" style={{ verticalAlign: 'top' }}>
+                  <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
+                  <i className="related-star fa-solid fa-chevron-right fa-stack-1x" />
+                </div>
+              ) : null}
             </div>
           )
           : null}
