@@ -32,12 +32,14 @@ function ReviewsListItem({ review, reportReview, index }) {
 
   return (
     <div className="reviews-list-item">
-      <DisplayStar percentage={starPercentage} />
-      <SubmissionInfo user={review.reviewer_name} date={review.date} />
-      {review.summary ? <div>{review.summary}</div> : null}
-      <div>{review.body}</div>
+      <div className="list-star-info">
+        <DisplayStar percentage={starPercentage} />
+        <SubmissionInfo user={review.reviewer_name} date={review.date} />
+      </div>
+      {review.summary ? <div className="review-summary">{review.summary}</div> : null}
+      <div className="review-body">{review.body}</div>
       {review.recommend ? (
-        <div>
+        <div className="review-recommend">
           <i className="fa-solid fa-check" />
           {' '}
           I recommend this product
@@ -45,17 +47,17 @@ function ReviewsListItem({ review, reportReview, index }) {
       ) : null}
       {review.photos.length > 0 ? <ReviewPhotos photos={review.photos} /> : null}
       {review.response ? <SellerResponse response={review.response} /> : null}
-      <span>
+      <span className="review-helpful">
         Helpful?&nbsp;&nbsp;
-        <span onClick={handleHelpfulClick}>
+        <span onClick={handleHelpfulClick} className="review-yes">
           Yes
         </span>
-        <span>
+        <span className="review-helpfulness">
         &nbsp;(
-          {helpfulness}
+          <span className="review-helpfulness-number">{helpfulness}</span>
           )&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
         </span>
-        <span onClick={handleReportClick}>
+        <span onClick={handleReportClick} className="review-report">
           Report
         </span>
       </span>
