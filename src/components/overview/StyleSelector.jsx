@@ -20,7 +20,6 @@ function StyleSelector({ productStyles, setCurrentStylePhotos }) {
               key={style.style_id}
               index={i}
               style={style}
-              setCurrentStylePhotos={setCurrentStylePhotos}
               selected={selected}
               handleStyleClick={handleStyleClick}
             />
