@@ -200,3 +200,7 @@
   overflow: hidden;
   text-align: left;
 }
+
+ul {
+  list-style: none;
+}
