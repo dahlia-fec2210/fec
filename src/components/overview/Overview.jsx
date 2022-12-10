@@ -87,7 +87,10 @@ function Overview({ productId, serverRoute }) {
         </div>
         <ul className="features">
           {productFeatures.map((feature) => (
-            <li>{`${feature.feature}: ${feature.value}`}</li>
+            <li>
+              <strong>✓</strong>
+              {` ${feature.feature}: ${feature.value}`}
+            </li>
           ))}
         </ul>
       </div>
