@@ -8,7 +8,7 @@ import './questions.css';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function Answer({ answer }) {
+function AnswerListItem({ answer }) {
   console.log(answer, 'answer123');
 
   return (
@@ -24,4 +24,4 @@ function Answer({ answer }) {
   );
 }
 
-export default Answer;
+export default AnswerListItem;
