@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RelatedProduct from './RelatedProduct.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
-import OutfitList from '../OutfitList/OutfitList.jsx';
+import OutfitList from '../outfitList/OutfitList.jsx';
 import './related.css';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
@@ -51,14 +51,12 @@ function RelatedItems({
   function shiftUp(event) {
     event.preventDefault();
     const newCarousel = carousel.map((index) => index + 1);
-    console.log(newCarousel);
     setCarousel(newCarousel);
   }
 
   function shiftDown(event) {
     event.preventDefault();
     const newCarousel = carousel.map((index) => index - 1);
-    console.log(newCarousel);
     setCarousel(newCarousel);
   }
 

@@ -9,25 +9,19 @@ import ClothingPiece from './ClothingPiece.jsx';
 function OutfitList({
   currentProduct, averages, setAverages,
 }) {
-  const [left, setLeft] = useState(0);
   const [outfit, setOutfit] = useState([]);
+  const [carousel, setCarousel] = useState([0, 1, 2]);
 
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem('outfit'));
     if (cache !== null) {
       setOutfit(cache);
     }
-  }, []);
+  }, [carousel]);
 
-  function moveRight(event) {
-    event.preventDefault();
-    setLeft(left + 272);
-  }
-
-  function moveLeft(event) {
-    event.preventDefault();
-    setLeft(left - 272);
-  }
+  useEffect(() => {
+    setCarousel([0, 1, 2]);
+  }, [currentProduct]);
 
   function addProduct(event) {
     event.preventDefault();
@@ -37,6 +31,20 @@ function OutfitList({
     }
     setOutfit(newOutfit);
     localStorage.setItem('outfit', JSON.stringify(newOutfit));
+  }
+
+  function shiftUp(event) {
+    event.preventDefault();
+    const newCarousel = carousel.map((index) => index + 1);
+    console.log(newCarousel);
+    setCarousel(newCarousel);
+  }
+
+  function shiftDown(event) {
+    event.preventDefault();
+    const newCarousel = carousel.map((index) => index - 1);
+    console.log(newCarousel);
+    setCarousel(newCarousel);
   }
 
   return (
@@ -53,25 +61,38 @@ function OutfitList({
               </div>
             </div>
           </div>
-          {
-            outfit.length > 0
-              ? outfit.map((clothingPiece, index) => (
-                <ClothingPiece
-                  key={index}
-                  clothingPiece={clothingPiece}
-                  left={left}
-                  outfit={outfit}
-                  setOutfit={setOutfit}
-                  averages={averages}
-                  setAverages={setAverages}
-                />
-              ))
-              : null
-          }
+          { outfit.length > 0 && (
+          <ClothingPiece
+            clothingPiece={outfit[carousel[0]]}
+            outfit={outfit}
+            setOutfit={setOutfit}
+            averages={averages}
+            setAverages={setAverages}
+          />
+          ) }
+          { outfit.length > 1 && (
+          <ClothingPiece
+            clothingPiece={outfit[carousel[1]]}
+            outfit={outfit}
+            setOutfit={setOutfit}
+            averages={averages}
+            setAverages={setAverages}
+          />
+          ) }
+          { outfit.length > 2 && (
+          <ClothingPiece
+            clothingPiece={outfit[carousel[2]]}
+            outfit={outfit}
+            setOutfit={setOutfit}
+            averages={averages}
+            setAverages={setAverages}
+          />
+          ) }
+
         </div>
         <div className="related-arrows">
-          <div className="related-arrow related-arrow-left" onClick={moveRight}>{ left === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
-          <div className="related-arrow related-arrow-right" onClick={moveLeft}>{ outfit.length <= 3 || left <= ((outfit.length - 3) * -272) ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
+          <div className="related-arrow related-arrow-left" onClick={shiftDown}>{ carousel[0] === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
+          <div className="related-arrow related-arrow-right" onClick={shiftUp}>{ carousel[2] === outfit.length - 1 ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
         </div>
       </div>
 

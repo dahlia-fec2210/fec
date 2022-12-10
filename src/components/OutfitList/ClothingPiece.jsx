@@ -11,7 +11,7 @@ import Star from '../common/Star.jsx';
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function ClothingPiece({
-  clothingPiece, left, outfit, setOutfit,
+  clothingPiece, outfit, setOutfit,
 }) {
   const [price, setPrice] = useState(0);
   const [photo, setPhoto] = useState(null);
@@ -84,7 +84,7 @@ function ClothingPiece({
   if (clothingPiece !== null && productInfo !== {}) {
     return (
       <div>
-        <div className="related-product-card" style={{ left }}>
+        <div className="related-product-card">
           <div className="related-stack" onClick={removeFromOutfit}>
             <div className="fa-stack" style={{ verticalAlign: 'top' }}>
               <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
