@@ -1,5 +1,7 @@
 /* OVERVIEW *************************************/
 
+
+
 .overview-container {
   width: 1070px;
   margin: 0 auto;
@@ -108,6 +110,31 @@
   border: 1px solid white;
   object-fit: cover;
   cursor: pointer;
+}
+
+/* .styles {
+  margin: 5px;
+} */
+
+.styles-container {
+  border-radius: 50%;
+  margin-bottom: 10px;
+  position: relative;
+  width: 65px;
+  height: 65px;
+}
+
+.styles-container .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  color: #FFF;
+  border-radius: 50%;
+  display: block;
+  background: rgba(125, 172, 145, 0.8);
 }
 
 .styles-selector {
