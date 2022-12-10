@@ -8,8 +8,61 @@
 .review-list-container {
   max-height: 100vh;
   width: 60vw;
+  padding: 10px;
+}
+.reviews-list-item {
+  border-bottom: 1px black solid;
+  padding-bottom: 20px;
+  margin-top: 15px;
+}
+.list-star-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+.review-submission-info {
+  font-size: 13px;
+}
+.review-list-username {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+.review-list-date {
+  font-style: italic;
+}
+.review-summary {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px;
+  margin-bottom: 7px;
+}
+.review-body {
+  padding: 0 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+
+}
+.review-recommend {
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-style: italic;
+
+}
+.review-helpful {
+  font-size: 14px;
+}
+.review-yes, .review-report {
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
+.review-helpfulness-number {
+  font-style: italic;
+}
 .reviews-list {
   max-height: 88vmin;
   overflow-y: scroll;
@@ -70,6 +123,7 @@
   max-height: 150px;
   overflow-x: none;
   overflow-y: scroll;
+  display: flex;
 }
 
 .review-btn-modal {
@@ -204,6 +258,9 @@
 .body-input-caption {
   text-align: right;
 }
+textarea {
+  resize: none;
+}
 
 /* PRODUCT BREAKDOWN***************************** */
 
@@ -224,4 +281,67 @@
   font-size: 60px;
   font-weight: bolder;
   padding-right: 20px;
+}
+
+.rating-bar-container {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+}
+
+.rating-bar-label {
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
+}
+meter {
+  width: 70%;
+  height: 20px;
+}
+
+.bar-padding {
+  padding: 10px;
+}
+.char-outer-bar  {
+  height: 10px;
+  width: 100%;
+  background-color: #d0d0ce;
+  border-radius: 50px;
+
+}
+
+.char-filler {
+  height: 100%;
+  border-radius: inherit;
+  text-align: right;
+  position: relative;
+}
+
+.triangle-down {
+  position: absolute;
+  right: -12px;
+  top: -13px;
+}
+
+.char-bars-container {
+  display: flex;
+  flex-direction: column;
+}
+.char-bd-container {
+  margin: 10px;
+}
+.char-bar-label {
+  margin-top: 7px;
+  font-size: 13px;
+
+}
+
+.bar-descriptors {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bar-descriptor {
+  font-size: 12px;
+  text-align: center;
 }

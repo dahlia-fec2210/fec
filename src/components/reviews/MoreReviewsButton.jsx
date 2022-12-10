@@ -9,7 +9,7 @@ function MoreReviewsButton({ addTwoItems, bottomReviewsRef }) {
     setTimeout(() => {
       buttonRef.current.scrollIntoView({ behavior: 'smooth' });
       bottomReviewsRef.current.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    }, 200);
   };
   return (
     <>

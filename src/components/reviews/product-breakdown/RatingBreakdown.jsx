@@ -25,7 +25,7 @@ export default function RatingBreakdown({ ratings, addFilter }) {
       {ratingList.map((rating) => {
         const percentage = getRatingPercentage(rating);
         return (
-          <div key={rating}>
+          <div className="rating-bar-container" key={rating}>
             <span className="rating-bar-label" onClick={handleRatingClick}>
               {rating}
               {' '}

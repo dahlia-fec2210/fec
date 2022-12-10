@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div>
-      <h1>Hello Dahlia</h1>
+      {/* <h1>Hello Dahlia</h1>
       <Overview productId={currentProduct} serverRoute={serverRoute} />
       { currentProduct === null ? <div>Loading...</div>
         : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
@@ -36,7 +36,7 @@ function App() {
             currentProduct={currentProduct}
             setCurrentProduct={setCurrentProduct}
           />
-        ) }
+        ) } */}
       { currentProduct === null ? <div>Loading...</div>
         : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
     </div>
