@@ -92,7 +92,7 @@ function ClothingPiece({
             </div>
           </div>
           <div>
-            <img className="related-photo" src={photo || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={clothingPiece} />
+            <img className="related-outfit-photo" src={photo || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={clothingPiece} />
             <div className="related-category">{productInfo.category}</div>
             <div className="related-name">{productInfo.name}</div>
             <Price
