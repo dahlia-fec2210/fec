@@ -16,6 +16,7 @@ function Overview({ productId, serverRoute }) {
   const [originalPrice, setOriginalPrice] = useState(0);
   const [salePrice, setSalePrice] = useState(null);
   const [currentStylePhotos, setCurrentStylePhotos] = useState([]);
+  const [productFeatures, setProductFeatures] = useState([]);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
@@ -23,6 +24,7 @@ function Overview({ productId, serverRoute }) {
         setProductInfo(info.data);
         setProductCategory(info.data.category);
         setProductName(info.data.name);
+        setProductFeatures(info.data.features);
       })
       .catch((err) => {
         console.log('Error getting product info\n', err);
@@ -62,10 +64,12 @@ function Overview({ productId, serverRoute }) {
 
   // console.log('product styles:', productStyles);
   // console.log('current style:', currentStyle);
+  // console.log('product info:', productInfo);
+  console.log('features:', productFeatures);
 
   return (
     <div className="overview-container">
-      <Image image={productImage} currentStylePhotos={currentStylePhotos} />
+      <Image currentStylePhotos={currentStylePhotos} />
       <ProductInfo
         productCategory={productCategory}
         productName={productName}
@@ -74,7 +78,22 @@ function Overview({ productId, serverRoute }) {
         salePrice={salePrice}
         productStyles={productStyles}
         currentStyleSkus={currentStyleSkus}
+        setCurrentStylePhotos={setCurrentStylePhotos}
       />
+      <div className="product-description">
+        <div className="description">
+          <h3>{productInfo.slogan}</h3>
+          <p>{productInfo.description}</p>
+        </div>
+        <ul className="features">
+          {productFeatures.map((feature, i) => (
+            <li key={i}>
+              <strong>✓</strong>
+              {` ${feature.feature}: ${feature.value}`}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
