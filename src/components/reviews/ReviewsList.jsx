@@ -1,8 +1,6 @@
 import React from 'react';
 import ReviewListItem from './review-list-item/ReviewListItem.jsx';
 
-const { useEffect, useRef } = React;
-
 function ReviewsList({ reviews, reportReview, bottomReviewsRef }) {
   if (reviews.length > 0) {
     return (

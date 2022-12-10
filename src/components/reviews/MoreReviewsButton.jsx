@@ -6,12 +6,14 @@ function MoreReviewsButton({ addTwoItems, bottomReviewsRef }) {
   const handleClick = (e) => {
     e.preventDefault();
     addTwoItems();
-    buttonRef.current.scrollIntoView({ behavior: 'smooth' });
-    bottomReviewsRef.current.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      buttonRef.current.scrollIntoView({ behavior: 'smooth' });
+      bottomReviewsRef.current.scrollIntoView({ behavior: 'smooth' });
+    }, 200);
   };
   return (
     <>
-      <button type="button" onClick={handleClick}>
+      <button type="button" onClick={handleClick} className="more-reviews-btn">
         More Reviews
       </button>
       <div ref={buttonRef} />
