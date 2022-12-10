@@ -27,9 +27,17 @@ function ProductInfo({
       />
       <AddToCart currentStyleSkus={currentStyleSkus} />
       <h3>Share on Social Media</h3>
-      <button type="button">Facebook</button>
-      <button type="button">Twitter</button>
-      <button type="button">Pinterest</button>
+      <div className="social-media">
+
+        <a className="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large">
+          <i className="fa-brands fa-twitter" />
+          <span className="twitter-label">Tweet</span>
+        </a>
+
+        <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore" rel="noreferrer">Share</a></div>
+
+        <a className="pinterest-share-button" href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" data-pin-tall="true"> </a>
+      </div>
     </div>
   );
 }
