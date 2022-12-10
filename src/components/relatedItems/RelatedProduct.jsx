@@ -21,9 +21,14 @@ function RelatedProduct({
   const [productInfo, setProductInfo] = useState({});
   const [average, setAverage] = useState(0);
 
+  // if (!product) {
+  //   product = 37316;
+  // }
+
   useEffect(() => {
     let cache = JSON.parse(localStorage.getItem(`productData-${product}`));
     if (cache === null) {
+      console.log('API CALL: ', product);
       axios.get(`${serverRoute}/products/${product}/styles`)
         .then((data) => {
           const styles = data.data.results;
@@ -49,11 +54,12 @@ function RelatedProduct({
     } else {
       setProductData(cache);
     }
-  }, []);
+  }, [product]);
 
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem(`productInfo-${product}`));
     if (cache === null) {
+      console.log('API CALL: ', product);
       axios.get(`${serverRoute}/products/${product}`)
         .then((data) => {
           localStorage.setItem(`productInfo-${product}`, JSON.stringify(data.data));
@@ -62,7 +68,7 @@ function RelatedProduct({
     } else {
       setProductInfo(cache);
     }
-  }, []);
+  }, [product]);
 
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem('averageReview')) || {};
@@ -84,10 +90,11 @@ function RelatedProduct({
     } else {
       setAverage(cache[product]);
     }
-  }, []);
+  }, [product]);
 
   function changeProduct(event) {
     event.preventDefault();
+    console.log('CHANGE PRODUCT: ', product);
     setCurrentProduct(product);
   }
 

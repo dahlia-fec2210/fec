@@ -20,9 +20,13 @@ function RelatedItems({
   const [modalProduct, setModalProduct] = useState(null);
   const [productData, setProductData] = useState({});
   const [averages, setAverages] = useState({});
+  const [carousel, setCarousel] = useState([0, 1, 2, 3]);
+
+  console.log(carousel[3] === relatedProducts.length - 1 && relatedProducts.length > 3);
 
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem('relatedProducts')) || {};
+    console.log('RELATED PRODUCTS', cache[currentProduct]);
     if (!cache[currentProduct]) {
       axios.get(`${serverRoute}/products/${currentProduct}/related`)
         .then((data) => {
@@ -43,58 +47,108 @@ function RelatedItems({
     }
   }, [currentProduct]);
 
-  function moveRight(event) {
+  function shiftUp(event) {
     event.preventDefault();
-    setLeft(left + 272);
+    const newCarousel = carousel.map((index) => index + 1);
+    console.log(newCarousel);
+    setCarousel(newCarousel);
   }
 
-  function moveLeft(event) {
+  function shiftDown(event) {
     event.preventDefault();
-    setLeft(left - 272);
+    const newCarousel = carousel.map((index) => index - 1);
+    console.log(newCarousel);
+    setCarousel(newCarousel);
   }
 
-  return (
-    <div>
-      <div className="related-container">
-        <h4 className="related-heading">Related Products</h4>
-        <div className="related-carousel">
-          {relatedProducts.map((product) => (
-            <RelatedProduct
-              setOpenModal={setOpenModal}
-              setModalProduct={setModalProduct}
-              relatedProducts={relatedProducts}
-              setCurrentProduct={setCurrentProduct}
-              left={left}
-              key={product}
-              product={product}
-              productData={productData}
-              setProductData={setProductData}
-              averages={averages}
-              setAverages={setAverages}
-            />
-          ))}
-        </div>
-        <div className="related-arrows">
-          <span className="related-arrow related-arrow-left" onClick={moveRight}>{ left === 0 ? <span /> : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</span>
-          <span className="related-arrow related-arrow-right" onClick={moveLeft}>{ left <= ((relatedProducts.length - 4) * -272) ? <span /> : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</span>
+  if (relatedProducts.length > 0) {
+    return (
+      <div>
+        <div className="related-container">
+          <h4 className="related-heading">Related Products</h4>
+          <div className="related-carousel">
+            { relatedProducts[carousel[0]] ? (
+              <RelatedProduct
+                setOpenModal={setOpenModal}
+                setModalProduct={setModalProduct}
+                relatedProducts={relatedProducts}
+                setCurrentProduct={setCurrentProduct}
+                left={left}
+                product={relatedProducts[carousel[0]]}
+                productData={productData}
+                setProductData={setProductData}
+                averages={averages}
+                setAverages={setAverages}
+              />
+            ) : null}
+            { relatedProducts[carousel[1]] ? (
+              <RelatedProduct
+                setOpenModal={setOpenModal}
+                setModalProduct={setModalProduct}
+                relatedProducts={relatedProducts}
+                setCurrentProduct={setCurrentProduct}
+                left={left}
+                product={relatedProducts[carousel[1]]}
+                productData={productData}
+                setProductData={setProductData}
+                averages={averages}
+                setAverages={setAverages}
+              />
+            ) : null}
+            { relatedProducts[carousel[2]]
+              ? (
+                <RelatedProduct
+                  setOpenModal={setOpenModal}
+                  setModalProduct={setModalProduct}
+                  relatedProducts={relatedProducts}
+                  setCurrentProduct={setCurrentProduct}
+                  left={left}
+                  product={relatedProducts[carousel[2]]}
+                  productData={productData}
+                  setProductData={setProductData}
+                  averages={averages}
+                  setAverages={setAverages}
+                />
+              ) : null }
+            {relatedProducts[carousel[3]]
+              ? (
+                <RelatedProduct
+                  setOpenModal={setOpenModal}
+                  setModalProduct={setModalProduct}
+                  relatedProducts={relatedProducts}
+                  setCurrentProduct={setCurrentProduct}
+                  left={left}
+                  product={relatedProducts[carousel[3]]}
+                  productData={productData}
+                  setProductData={setProductData}
+                  averages={averages}
+                  setAverages={setAverages}
+                />
+              ) : null }
+
+          </div>
+          <div className="related-arrows">
+            <span className="related-arrow related-arrow-left" onClick={shiftDown}>{ carousel[0] === 0 ? <span /> : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</span>
+            <span className="related-arrow related-arrow-right" onClick={shiftUp}>{ (carousel[3] === relatedProducts.length - 1 || relatedProducts.length < 4) ? <span /> : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</span>
+          </div>
         </div>
 
+        {openModal && (
+        <ComparisonModal
+          modalProduct={modalProduct}
+          currentProduct={currentProduct}
+          setOpenModal={setOpenModal}
+        />
+        )}
+        <OutfitList
+          currentProduct={currentProduct}
+          averages={averages}
+          setAverages={setAverages}
+        />
       </div>
-
-      {openModal && (
-      <ComparisonModal
-        modalProduct={modalProduct}
-        currentProduct={currentProduct}
-        setOpenModal={setOpenModal}
-      />
-      )}
-      <OutfitList
-        currentProduct={currentProduct}
-        averages={averages}
-        setAverages={setAverages}
-      />
-    </div>
-  );
+    );
+  }
+  return null;
 }
 
 export default RelatedItems;
