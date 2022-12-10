@@ -13,9 +13,9 @@ function StyleSelector({ productStyles, setCurrentStylePhotos }) {
     <div>
       <h4>STYLE &gt; SELECTED STYLE</h4>
       <div className="styles-selector">
-        {productStyles.map((style, i) => {
-          console.log('style in StylesSelector:', style);
-          return (
+        {productStyles.map((style, i) =>
+          // console.log('style in StylesSelector:', style);
+          (
             <Styles
               key={style.style_id}
               index={i}
@@ -23,8 +23,7 @@ function StyleSelector({ productStyles, setCurrentStylePhotos }) {
               selected={selected}
               handleStyleClick={handleStyleClick}
             />
-          );
-        })}
+          ))}
       </div>
     </div>
   );

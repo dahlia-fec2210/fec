@@ -3,7 +3,7 @@ import MainImage from './MainImage.jsx';
 import ImageSet from './ImageSet.jsx';
 
 function Image({ currentStylePhotos }) {
-  console.log('current style photos in Image comp:', currentStylePhotos);
+  // console.log('current style photos in Image comp:', currentStylePhotos);
 
   const [currentMainImageIndex, setCurrentMainImageIndex] = useState(0);
   const { length } = currentStylePhotos;

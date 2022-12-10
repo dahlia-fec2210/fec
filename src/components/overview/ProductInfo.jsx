@@ -7,7 +7,7 @@ function ProductInfo({
   productCategory, productName, productRating, originalPrice, salePrice,
   productStyles, currentStyleSkus, setCurrentStylePhotos,
 }) {
-  console.log('productStyles in ProductInfo:', productStyles);
+  // console.log('productStyles in ProductInfo:', productStyles);
   return (
     <div className="product-info-container">
       <DisplayStar percentage={(productRating / 5) * 100} />
