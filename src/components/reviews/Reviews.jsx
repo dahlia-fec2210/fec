@@ -74,13 +74,11 @@ function Reviews({ currentProduct }) {
   };
 
   const changeSortOrder = (newSortOrder) => {
-    const newItemCount = 2;
-    setItemCount(newItemCount);
     setSortBy(newSortOrder);
     fetchReviews(currentProduct, pageNumber, pageItemCount, newSortOrder)
       .then((result) => {
         setAllReviews(result.data.results);
-        setListedReviews(result.data.results.slice(0, newItemCount));
+        setListedReviews(result.data.results.slice(0, itemCount));
         filterReviews(filters, result.data.results);
       });
   };
