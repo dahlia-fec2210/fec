@@ -22,27 +22,33 @@ function RelatedProduct({
   const [average, setAverage] = useState(0);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${product}/styles`)
-      .then((data) => {
-        const styles = data.data.results;
-        const photos = [];
-        const thumbnails = [];
-        styles.forEach((style) => {
-          for (let i = 0; i < style.photos.length; i++) {
-            if (!photos.includes(style.photos[i].url)) { photos.push(style.photos[i].url); }
-            if (!thumbnails.includes(style.photos[i].thumbnail_url)) {
-              thumbnails.push(style.photos[i].thumbnail_url);
+    let cache = JSON.parse(localStorage.getItem(`productData-${product}`));
+    if (cache === null) {
+      axios.get(`${serverRoute}/products/${product}/styles`)
+        .then((data) => {
+          const styles = data.data.results;
+          const photos = [];
+          const thumbnails = [];
+          styles.forEach((style) => {
+            for (let i = 0; i < style.photos.length; i++) {
+              if (!photos.includes(style.photos[i].url)) { photos.push(style.photos[i].url); }
+              if (!thumbnails.includes(style.photos[i].thumbnail_url)) {
+                thumbnails.push(style.photos[i].thumbnail_url);
+              }
             }
-          }
+          });
+          cache = {
+            photos,
+            thumbnails,
+            price: data.data.results[0].original_price,
+            salePrice: data.data.results[0].sale_price,
+          };
+          localStorage.setItem(`productData-${product}`, JSON.stringify(cache));
+          setProductData(cache);
         });
-
-        setProductData({
-          photos,
-          thumbnails,
-          price: data.data.results[0].original_price,
-          salePrice: data.data.results[0].sale_price,
-        });
-      });
+    } else {
+      setProductData(cache);
+    }
   }, []);
 
   useEffect(() => {

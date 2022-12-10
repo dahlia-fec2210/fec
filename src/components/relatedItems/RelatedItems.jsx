@@ -22,18 +22,25 @@ function RelatedItems({
   const [averages, setAverages] = useState({});
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${currentProduct}/related`)
-      .then((data) => {
-        const uniqueProducts = [];
-        const products = data.data;
-        products.forEach((product) => {
-          if (!uniqueProducts.includes(product) && product !== currentProduct) {
-            uniqueProducts.push(product);
-          }
+    const cache = JSON.parse(localStorage.getItem('relatedProducts')) || {};
+    if (!cache[currentProduct]) {
+      axios.get(`${serverRoute}/products/${currentProduct}/related`)
+        .then((data) => {
+          const uniqueProducts = [];
+          const products = data.data;
+          products.forEach((product) => {
+            if (!uniqueProducts.includes(product) && product !== currentProduct) {
+              uniqueProducts.push(product);
+            }
+          });
+          setRelatedProducts(uniqueProducts);
+          setLeft(0);
+          cache[currentProduct] = uniqueProducts;
+          localStorage.setItem('relatedProducts', JSON.stringify(cache));
         });
-        setRelatedProducts(uniqueProducts);
-        setLeft(0);
-      });
+    } else {
+      setRelatedProducts(cache[currentProduct]);
+    }
   }, [currentProduct]);
 
   function moveRight(event) {
