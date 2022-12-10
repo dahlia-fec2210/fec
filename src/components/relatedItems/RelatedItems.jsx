@@ -74,11 +74,13 @@ function RelatedItems({
             />
           ))}
         </div>
+        <div className="related-arrows">
+          <span className="related-arrow related-arrow-left" onClick={moveRight}>{ left === 0 ? <span /> : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</span>
+          <span className="related-arrow related-arrow-right" onClick={moveLeft}>{ left <= ((relatedProducts.length - 4) * -272) ? <span /> : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</span>
+        </div>
+
       </div>
-      <div className="related-buttons">
-        <div onClick={moveRight}>{ left === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
-        <div onClick={moveLeft}>{ left <= ((relatedProducts.length - 4) * -272) ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
-      </div>
+
       {openModal && (
       <ComparisonModal
         modalProduct={modalProduct}

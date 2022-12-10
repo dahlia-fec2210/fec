@@ -39,17 +39,7 @@ body {
   top: -185px;
   max-width: 1200px;
   margin: 0 auto;
-  z-index: -5;
-}
-
-.related-photo-buttons {
-  display: none;
-  padding: 0 10px;
-  justify-content: space-between;
-  position: relative;
-  top: -155px;
-  max-width: 350px;
-  margin: 0 auto;
+  z-index: 0;
 }
 
 .related-photo, .related-outfit-photo {
@@ -58,6 +48,7 @@ body {
   object-fit: cover;
   border-radius: 4px 4px 0 0;
   border-bottom: 1px solid black;
+  z-index: 1;
 }
 
 .related-photo:hover {
@@ -231,4 +222,27 @@ body {
   position: relative;
   left: 5px;
   top: -163px;
+}
+
+.related-arrows {
+  display: flex;
+  justify-content: space-between;
+}
+
+.related-arrow {
+  position: relative;
+  top: -200px;
+}
+
+.related-arrow:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.related-arrow-right {
+  left: 40px;
+}
+
+.related-arrow-left {
+  left: -40px;
 }
