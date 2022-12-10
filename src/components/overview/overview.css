@@ -43,6 +43,7 @@
 .main-image {
   width: 300px;
   border-radius: 5px;
+  cursor: zoom-in;
 }
 
 .arrow {
@@ -103,7 +104,7 @@
   left: 50px;
 }
 
-.image-set img {
+.image-thumbnails .thumbnails {
   width: 65px;
   height: 65px;
   border-radius: 4px;
@@ -111,10 +112,6 @@
   object-fit: cover;
   cursor: pointer;
 }
-
-/* .styles {
-  margin: 5px;
-} */
 
 .styles-container {
   border-radius: 50%;
@@ -131,8 +128,18 @@
   width: 100%;
   height: 100%;
   display: none;
-  color: #FFF;
   border-radius: 50%;
+  display: block;
+  background: rgba(125, 172, 145, 0.8);
+}
+
+.thumbnail-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
   display: block;
   background: rgba(125, 172, 145, 0.8);
 }
@@ -149,6 +156,7 @@
   border-radius: 50%;
   object-fit: cover;
   flex: 1 0 25%;
+  cursor: pointer;
 }
 
 .style-images {
@@ -156,4 +164,38 @@
   width: 66%;
   margin: 0 auto;
   display: flex;
+}
+
+.social-media {
+  display: flex;
+  justify-content: space-around;
+}
+
+.social-media i {
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.twitter-share-button {
+  position: relative;
+  height: 26px;
+  box-sizing: border-box;
+  padding: 5px 12px 1px 12px;
+  background-color: #1d9bf0;
+  color: #fff;
+  border-radius: 9999px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.twitter-label {
+  margin-left: 4px;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  outline: 0;
+  text-decoration: none;
+  overflow: hidden;
+  text-align: left;
 }
