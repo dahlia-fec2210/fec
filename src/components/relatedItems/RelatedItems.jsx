@@ -22,11 +22,12 @@ function RelatedItems({
   const [averages, setAverages] = useState({});
   const [carousel, setCarousel] = useState([0, 1, 2, 3]);
 
-  console.log(carousel[3] === relatedProducts.length - 1 && relatedProducts.length > 3);
+  useEffect(() => {
+    setCarousel([0, 1, 2, 3]);
+  }, [currentProduct]);
 
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem('relatedProducts')) || {};
-    console.log('RELATED PRODUCTS', cache[currentProduct]);
     if (!cache[currentProduct]) {
       axios.get(`${serverRoute}/products/${currentProduct}/related`)
         .then((data) => {
