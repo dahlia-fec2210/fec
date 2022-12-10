@@ -13,8 +13,10 @@ function OutfitList({
   const [outfit, setOutfit] = useState([]);
 
   useEffect(() => {
-    console.log('OUTFIT LIST:', localStorage.getItem('outfit'));
-    // setOutfit(JSON.parse(localStorage.getItem('outfit')));
+    const cache = JSON.parse(localStorage.getItem('outfit'));
+    if (cache !== null) {
+      setOutfit(cache);
+    }
   }, []);
 
   function moveRight(event) {
