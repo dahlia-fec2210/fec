@@ -1,8 +1,11 @@
 import React from 'react';
 
-function MainImage({ photo }) {
+function MainImage({ photo, expanded, setExpanded }) {
+  const handleMainImageClick = () => {
+    setExpanded(true);
+  };
   return (
-    <div>
+    <div className={expanded === false ? 'default-image' : 'expanded-image'} onClick={handleMainImageClick}>
       <img className="main-image" src={photo.url} alt="" />
     </div>
   );
