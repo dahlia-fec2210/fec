@@ -42,8 +42,8 @@ function Reviews({ currentProduct }) {
 
   const filterReviews = (newFilters, unfilteredList) => {
     if (newFilters.length === 0) {
-      setFilteredReviews(allReviews);
-      setListedReviews(allReviews.slice(0, itemCount));
+      setFilteredReviews(unfilteredList);
+      setListedReviews(unfilteredList.slice(0, itemCount));
       return;
     }
     const newFiltered = unfilteredList.filter((review) => {
@@ -78,7 +78,6 @@ function Reviews({ currentProduct }) {
     fetchReviews(currentProduct, pageNumber, pageItemCount, newSortOrder)
       .then((result) => {
         setAllReviews(result.data.results);
-        setListedReviews(result.data.results.slice(0, itemCount));
         filterReviews(filters, result.data.results);
       });
   };
