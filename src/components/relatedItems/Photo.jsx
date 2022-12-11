@@ -3,25 +3,27 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-shadow */
 /* eslint-disable react/no-array-index-key */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
 
 function Photo({ product, productData, changeProduct }) {
   const [photoIndex, setPhotoIndex] = useState(0);
   const [left, setLeft] = useState(0);
-  const [carousel, setCarousel] = useState([0, 1, 2, 3]);
 
-  function shiftUp(event) {
+  const carouselStyle = {
+    transform: `translate(-${left}px, 0)`,
+    transition: 'transform 600ms ease-in-out',
+  };
+
+  function shiftRight(event) {
     event.preventDefault();
-    const newCarousel = carousel.map((index) => index + 1);
-    setCarousel(newCarousel);
+    setLeft(left + 60.5);
   }
 
-  function shiftDown(event) {
+  function shiftLeft(event) {
     event.preventDefault();
-    const newCarousel = carousel.map((index) => index - 1);
-    console.log(newCarousel);
-    setCarousel(newCarousel);
+    event.preventDefault();
+    setLeft(left - 60.5);
   }
 
   if (productData) {
@@ -32,45 +34,24 @@ function Photo({ product, productData, changeProduct }) {
         {productData.thumbnails[0] !== null
           ? (
             <div className="related-thumbnails" onClick={changeProduct}>
-              <img
-                onClick={(event) => {
-                  event.stopPropagation();
-                  setPhotoIndex(carousel[0]);
-                }}
-                src={productData.thumbnails[carousel[0]]}
-                alt=""
-              />
-              <img
-                onClick={(event) => {
-                  event.stopPropagation();
-                  setPhotoIndex(carousel[1]);
-                }}
-                src={productData.thumbnails[carousel[1]]}
-                alt=""
-              />
-              <img
-                onClick={(event) => {
-                  event.stopPropagation();
-                  setPhotoIndex(carousel[2]);
-                }}
-                src={productData.thumbnails[carousel[2]]}
-                alt=""
-              />
-              <img
-                onClick={(event) => {
-                  event.stopPropagation();
-                  setPhotoIndex(carousel[3]);
-                }}
-                src={productData.thumbnails[carousel[3]]}
-                alt=""
-              />
+              { productData.thumbnails.map((thumbnail, index) => (
+                <img
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setPhotoIndex(index);
+                  }}
+                  src={productData.thumbnails[index]}
+                  alt=""
+                  style={carouselStyle}
+                />
+              ))}
             </div>
           )
           : null}
         { productData.thumbnails[0] !== null
           ? (
-            <div className="mini-left-arrow" onClick={shiftDown}>
-              {carousel[0] > 0 ? (
+            <div className="mini-left-arrow" onClick={shiftLeft}>
+              { left !== 0 ? (
                 <div className="related-stack fa-stack" style={{ verticalAlign: 'top' }}>
                   <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
                   <i className="related-star fa-solid fa-chevron-left fa-stack-1x" />
@@ -81,8 +62,8 @@ function Photo({ product, productData, changeProduct }) {
           : null}
         { productData.thumbnails[0] !== null
           ? (
-            <div className="mini-right-arrow" onClick={shiftUp}>
-              {carousel[3] < productData.thumbnails.length - 1 ? (
+            <div className="mini-right-arrow" onClick={shiftRight}>
+              { left < (productData.thumbnails.length - 4) * 60.5 ? (
                 <div className="related-stack fa-stack" style={{ verticalAlign: 'top' }}>
                   <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
                   <i className="related-star fa-solid fa-chevron-right fa-stack-1x" />
