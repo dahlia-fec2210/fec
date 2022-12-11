@@ -5,11 +5,11 @@ import DisplayStar from '../common/Star.jsx';
 
 function ProductInfo({
   productCategory, productName, productRating, originalPrice, salePrice,
-  productStyles, currentStyleSkus, setCurrentStylePhotos,
+  productStyles, currentStyleSkus, setCurrentStylePhotos, expanded,
 }) {
   // console.log('productStyles in ProductInfo:', productStyles);
   return (
-    <div className="product-info-container">
+    <div className={expanded === false ? 'product-info-container' : 'hide-info'}>
       <DisplayStar percentage={(productRating / 5) * 100} />
       <span><small>Read all reviews</small></span>
       <h3 className="overview-category">{productCategory}</h3>
