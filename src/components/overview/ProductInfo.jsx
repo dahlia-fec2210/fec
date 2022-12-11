@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable import/extensions */
+import React from 'react';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import DisplayStar from '../common/Star.jsx';
