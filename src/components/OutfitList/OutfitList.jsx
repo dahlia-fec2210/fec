@@ -10,18 +10,14 @@ function OutfitList({
   currentProduct, averages, setAverages,
 }) {
   const [outfit, setOutfit] = useState([]);
-  const [carousel, setCarousel] = useState([0, 1, 2]);
+  const [left, setLeft] = useState(0);
 
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem('outfit'));
     if (cache !== null) {
       setOutfit(cache);
     }
-  }, [carousel]);
-
-  useEffect(() => {
-    setCarousel([0, 1, 2]);
-  }, [currentProduct]);
+  }, []);
 
   function addProduct(event) {
     event.preventDefault();
@@ -33,26 +29,23 @@ function OutfitList({
     localStorage.setItem('outfit', JSON.stringify(newOutfit));
   }
 
-  function shiftUp(event) {
+  function shiftRight(event) {
     event.preventDefault();
-    const newCarousel = carousel.map((index) => index + 1);
-    console.log(newCarousel);
-    setCarousel(newCarousel);
+    setLeft(left + 272);
   }
 
-  function shiftDown(event) {
+  function shiftLeft(event) {
     event.preventDefault();
-    const newCarousel = carousel.map((index) => index - 1);
-    console.log(newCarousel);
-    setCarousel(newCarousel);
+    event.preventDefault();
+    setLeft(left - 272);
   }
 
   return (
     <div>
       <div className="related-container">
         <h4 className="related-heading">Your Outfit</h4>
-        <div className="related-carousel">
-          <div className="related-product-card related-add-card">
+        <div className="outfit-row">
+          <div className="related-add-card">
             <div className="related-add-outfit-heading">Add to Outfit</div>
             <div className="related-stack" onClick={addProduct}>
               <div className="fa-stack" style={{ verticalAlign: 'top' }}>
@@ -61,38 +54,26 @@ function OutfitList({
               </div>
             </div>
           </div>
-          { outfit.length > 0 && (
-          <ClothingPiece
-            clothingPiece={outfit[carousel[0]]}
-            outfit={outfit}
-            setOutfit={setOutfit}
-            averages={averages}
-            setAverages={setAverages}
-          />
-          ) }
-          { outfit.length > 1 && (
-          <ClothingPiece
-            clothingPiece={outfit[carousel[1]]}
-            outfit={outfit}
-            setOutfit={setOutfit}
-            averages={averages}
-            setAverages={setAverages}
-          />
-          ) }
-          { outfit.length > 2 && (
-          <ClothingPiece
-            clothingPiece={outfit[carousel[2]]}
-            outfit={outfit}
-            setOutfit={setOutfit}
-            averages={averages}
-            setAverages={setAverages}
-          />
-          ) }
+          <div className="outfit-carousel">
+            { outfit.length > 0 && (
+              outfit.map((clothingPiece, index) => (
+                <ClothingPiece
+                  clothingPiece={clothingPiece}
+                  outfit={outfit}
+                  setOutfit={setOutfit}
+                  averages={averages}
+                  setAverages={setAverages}
+                  key={index}
+                  left={left}
+                />
+              ))
 
+            ) }
+          </div>
         </div>
         <div className="related-arrows">
-          <div className="related-arrow related-arrow-left" onClick={shiftDown}>{ carousel[0] === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
-          <div className="related-arrow related-arrow-right" onClick={shiftUp}>{ carousel[2] === outfit.length - 1 ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
+          <div className="related-arrow related-arrow-left" onClick={shiftLeft}>{ left === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
+          <div className="related-arrow related-arrow-right" onClick={shiftRight}>{ left === (outfit.length - 3) * 272 ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
         </div>
       </div>
 

@@ -21,14 +21,14 @@ function RelatedProduct({
   const [productInfo, setProductInfo] = useState({});
   const [average, setAverage] = useState(0);
 
-  // if (!product) {
-  //   product = 37316;
-  // }
+  const carouselStyle = {
+    transform: `translate(-${left}px, 0)`,
+    transition: 'transform 900ms ease-in-out',
+  };
 
   useEffect(() => {
     let cache = JSON.parse(localStorage.getItem(`productData-${product}`));
     if (cache === null) {
-      console.log('API CALL: ', product);
       axios.get(`${serverRoute}/products/${product}/styles`)
         .then((data) => {
           const styles = data.data.results;
@@ -59,7 +59,6 @@ function RelatedProduct({
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem(`productInfo-${product}`));
     if (cache === null) {
-      console.log('API CALL: ', product);
       axios.get(`${serverRoute}/products/${product}`)
         .then((data) => {
           localStorage.setItem(`productInfo-${product}`, JSON.stringify(data.data));
@@ -94,7 +93,6 @@ function RelatedProduct({
 
   function changeProduct(event) {
     event.preventDefault();
-    console.log('CHANGE PRODUCT: ', product);
     setCurrentProduct(product);
   }
 
@@ -107,7 +105,7 @@ function RelatedProduct({
   if (productData.price) {
     return (
       <div>
-        <div className="related-product-card" style={{ left }}>
+        <div className="related-product-card" style={carouselStyle}>
           <div
             className="related-stack"
             onClick={openModal}
