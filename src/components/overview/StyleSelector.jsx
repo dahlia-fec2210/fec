@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import React, { useState } from 'react';
 import Styles from './Styles.jsx';
 
