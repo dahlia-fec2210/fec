@@ -84,7 +84,7 @@ function RelatedItems({
           </div>
           <div className="related-arrows">
             <span className="related-arrow related-arrow-left" onClick={shiftLeft}>{ left === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" />}</span>
-            <span className="related-arrow related-arrow-right" onClick={shiftRight}>{ left === (relatedProducts.length - 4) * 272 ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" />}</span>
+            <span className="related-arrow related-arrow-right" onClick={shiftRight}>{ left >= (relatedProducts.length - 4) * 272 ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" />}</span>
           </div>
         </div>
 

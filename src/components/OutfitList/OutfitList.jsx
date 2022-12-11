@@ -73,7 +73,7 @@ function OutfitList({
         </div>
         <div className="related-arrows">
           <div className="related-arrow related-arrow-left" onClick={shiftLeft}>{ left === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
-          <div className="related-arrow related-arrow-right" onClick={shiftRight}>{ left === (outfit.length - 3) * 272 ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
+          <div className="related-arrow related-arrow-right" onClick={shiftRight}>{ left >= (outfit.length - 3) * 272 ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
         </div>
       </div>
 
