@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-shadow */
 /* eslint-disable react/no-array-index-key */
+/* eslint-disable import/extensions */
 import React, { useState } from 'react';
 import MainImage from './MainImage.jsx';
 import ImageSet from './ImageSet.jsx';
