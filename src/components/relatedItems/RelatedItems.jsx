@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable import/extensions */
@@ -6,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RelatedProduct from './RelatedProduct.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
-import OutfitList from '../OutfitList/OutfitList.jsx';
+import OutfitList from '../outfitList/OutfitList.jsx';
 import './related.css';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
@@ -20,13 +21,10 @@ function RelatedItems({
   const [modalProduct, setModalProduct] = useState(null);
   const [productData, setProductData] = useState({});
   const [averages, setAverages] = useState({});
-  const [carousel, setCarousel] = useState([0, 1, 2, 3]);
-
-  console.log(carousel[3] === relatedProducts.length - 1 && relatedProducts.length > 3);
 
   useEffect(() => {
+    setLeft(0);
     const cache = JSON.parse(localStorage.getItem('relatedProducts')) || {};
-    console.log('RELATED PRODUCTS', cache[currentProduct]);
     if (!cache[currentProduct]) {
       axios.get(`${serverRoute}/products/${currentProduct}/related`)
         .then((data) => {
@@ -47,18 +45,15 @@ function RelatedItems({
     }
   }, [currentProduct]);
 
-  function shiftUp(event) {
+  function shiftRight(event) {
     event.preventDefault();
-    const newCarousel = carousel.map((index) => index + 1);
-    console.log(newCarousel);
-    setCarousel(newCarousel);
+    setLeft(left + 272);
   }
 
-  function shiftDown(event) {
+  function shiftLeft(event) {
     event.preventDefault();
-    const newCarousel = carousel.map((index) => index - 1);
-    console.log(newCarousel);
-    setCarousel(newCarousel);
+    event.preventDefault();
+    setLeft(left - 272);
   }
 
   if (relatedProducts.length > 0) {
@@ -67,69 +62,29 @@ function RelatedItems({
         <div className="related-container">
           <h4 className="related-heading">Related Products</h4>
           <div className="related-carousel">
-            { relatedProducts[carousel[0]] ? (
-              <RelatedProduct
-                setOpenModal={setOpenModal}
-                setModalProduct={setModalProduct}
-                relatedProducts={relatedProducts}
-                setCurrentProduct={setCurrentProduct}
-                left={left}
-                product={relatedProducts[carousel[0]]}
-                productData={productData}
-                setProductData={setProductData}
-                averages={averages}
-                setAverages={setAverages}
-              />
-            ) : null}
-            { relatedProducts[carousel[1]] ? (
-              <RelatedProduct
-                setOpenModal={setOpenModal}
-                setModalProduct={setModalProduct}
-                relatedProducts={relatedProducts}
-                setCurrentProduct={setCurrentProduct}
-                left={left}
-                product={relatedProducts[carousel[1]]}
-                productData={productData}
-                setProductData={setProductData}
-                averages={averages}
-                setAverages={setAverages}
-              />
-            ) : null}
-            { relatedProducts[carousel[2]]
-              ? (
-                <RelatedProduct
-                  setOpenModal={setOpenModal}
-                  setModalProduct={setModalProduct}
-                  relatedProducts={relatedProducts}
-                  setCurrentProduct={setCurrentProduct}
-                  left={left}
-                  product={relatedProducts[carousel[2]]}
-                  productData={productData}
-                  setProductData={setProductData}
-                  averages={averages}
-                  setAverages={setAverages}
-                />
-              ) : null }
-            {relatedProducts[carousel[3]]
-              ? (
-                <RelatedProduct
-                  setOpenModal={setOpenModal}
-                  setModalProduct={setModalProduct}
-                  relatedProducts={relatedProducts}
-                  setCurrentProduct={setCurrentProduct}
-                  left={left}
-                  product={relatedProducts[carousel[3]]}
-                  productData={productData}
-                  setProductData={setProductData}
-                  averages={averages}
-                  setAverages={setAverages}
-                />
-              ) : null }
+            { relatedProducts.length > 0 ? (
 
+              relatedProducts.map((product, index) => (
+                <RelatedProduct
+                  setOpenModal={setOpenModal}
+                  setModalProduct={setModalProduct}
+                  relatedProducts={relatedProducts}
+                  setCurrentProduct={setCurrentProduct}
+                  key={index}
+                  left={left}
+                  product={product}
+                  productData={productData}
+                  setProductData={setProductData}
+                  averages={averages}
+                  setAverages={setAverages}
+                />
+              ))
+
+            ) : null}
           </div>
           <div className="related-arrows">
-            <span className="related-arrow related-arrow-left" onClick={shiftDown}>{ carousel[0] === 0 ? <span /> : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</span>
-            <span className="related-arrow related-arrow-right" onClick={shiftUp}>{ (carousel[3] === relatedProducts.length - 1 || relatedProducts.length < 4) ? <span /> : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</span>
+            <span className="related-arrow related-arrow-left" onClick={shiftLeft}>{ left === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" />}</span>
+            <span className="related-arrow related-arrow-right" onClick={shiftRight}>{ left >= (relatedProducts.length - 4) * 272 ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" />}</span>
           </div>
         </div>
 
