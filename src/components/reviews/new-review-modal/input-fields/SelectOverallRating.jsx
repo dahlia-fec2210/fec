@@ -15,7 +15,7 @@ export default function SelectOverallRating({ overallRating, setOverallRating })
       <div>
         Overall Rating:
         {' '}
-        {overallRating ? ratings[overallRating - 1] : null}
+        <span className="rating-description">{overallRating ? ratings[overallRating - 1] : null}</span>
       </div>
       {[...Array(5)].map((star, i) => {
         const ratingValue = i + 1;
