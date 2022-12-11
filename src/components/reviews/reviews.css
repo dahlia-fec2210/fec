@@ -1,4 +1,9 @@
 /* **** Reviews ****************************************** */
+.section-title {
+  font-size: 16px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
 .reviews-container {
   display: flex;
   justify-content: center;
@@ -10,6 +15,7 @@
   max-height: 98vh;
   width: 60vw;
   padding: 10px;
+  margin-top: 55px;
   cursor: default;
 }
 .reviews-list-item {
@@ -220,6 +226,7 @@
   max-width: 100px;
   max-height: 100px;
   padding: 20px;
+  cursor: pointer;
 }
 
 .review-thumbnails {
@@ -387,6 +394,7 @@
   max-height: 80vh;
   padding: 30px;
   padding-right: 40px;
+  cursor: default;
 }
 
 .overall-and-star {
@@ -606,7 +614,7 @@
 .review-fancy label {
   position: relative;
   margin-right: 1em;
-  padding-left: 2em;
+  padding-left: 1em;
   padding-right: 1em;
   line-height: 2;
   cursor: pointer;
@@ -621,9 +629,15 @@
   display: block;
   width: 1.4em;
   height: 1.4em;
-  border: 2px solid #739086;
+  /* border: 2px solid #739086; */
   border-radius: 0.25em;
   z-index: -1;
+}
+.review-fancy input:not(:checked) +label:hover {
+  background-color: #ddd;
+  border-radius: 1.25em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 .review-fancy input[type="radio"] + label::before {
   border-radius: 1em;
