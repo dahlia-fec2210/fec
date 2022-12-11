@@ -127,18 +127,32 @@ body {
   border: 1px solid black;
   border-radius: 4px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  width: 600px;
+  width: 750px;
   padding: 20px;
   position: absolute;
   background-color: white;
   margin: 0 auto;
-  top: 310px;
-  left: 495px;
-  z-index: 1;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
+}
+
+.related-modal-overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background: rgba(49,49,49,0.8);
+  z-index: 101;
 }
 
 .related-table {
   width: 100%;
+  table-layout: fixed;
 }
 
 .related-table td {
@@ -146,8 +160,7 @@ body {
 }
 
 .related-table-container {
-  height: 150px;
-  overflow-y: scroll;
+  height: auto;
   border: 1px solid black;
   border-radius: 4px;
 }
@@ -155,7 +168,7 @@ body {
 .related-comparison-stack {
   position: absolute;
   top: 12px;
-  left: 590px;
+  left: 740px;
 }
 
 .related-comparison-stack:hover {
@@ -261,7 +274,6 @@ body {
 }
 
 .related-add-card {
-  z-index: 1000;
   border: 1px solid black;
   border-radius: 4px;
   min-width: 250px;

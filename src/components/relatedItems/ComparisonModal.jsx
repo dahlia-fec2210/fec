@@ -68,56 +68,58 @@ function ComparisonModal({ modalProduct, currentProduct, setOpenModal }) {
     const allFeaturesKeys = Object.keys(allFeatures);
 
     return (
-      <div className="related-comparison-modal">
-        <div className="related-comparison-heading">Comparing</div>
-        <div
-          className="related-comparison-stack"
-          onClick={() => { setOpenModal(false); }}
-        >
-          <div className="fa-stack" style={{ verticalAlign: 'top' }}>
-            <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
-            <i className="related-star fa-solid fa-x fa-stack-1x" />
+      <div className="related-modal-overlay">
+        <div className="related-comparison-modal">
+          <div className="related-comparison-heading">Comparing</div>
+          <div
+            className="related-comparison-stack"
+            onClick={() => { setOpenModal(false); }}
+          >
+            <div className="fa-stack" style={{ verticalAlign: 'top' }}>
+              <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
+              <i className="related-star fa-solid fa-x fa-stack-1x" />
+            </div>
           </div>
-        </div>
-        <div className="related-table-container">
-          <table className="related-table">
-            <thead>
-              <tr>
-                <th scope="col">{modalProductInfo.name}</th>
-                <th scope="col">Characteristics</th>
-                <th scope="col">{currentProductInfo.name}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allFeaturesKeys.map((key) => {
-                if (allFeatures[key].includes('modal') && allFeatures[key].includes('current')) {
-                  return (
-                    <tr key={key}>
-                      <td>✅</td>
-                      <td>{key}</td>
-                      <td>✅</td>
-                    </tr>
-                  );
-                } if (allFeatures[key].includes('current') && !allFeatures[key].includes('modal')) {
-                  return (
-                    <tr key={key}>
-                      <td />
-                      <td>{key}</td>
-                      <td>✅</td>
-                    </tr>
-                  );
-                } if (!allFeatures[key].includes('current') && allFeatures[key].includes('modal')) {
-                  return (
-                    <tr key={key}>
-                      <td>✅</td>
-                      <td>{key}</td>
-                      <td />
-                    </tr>
-                  );
-                }
-              })}
-            </tbody>
-          </table>
+          <div className="related-table-container">
+            <table className="related-table">
+              <thead>
+                <tr>
+                  <th scope="col">{modalProductInfo.name}</th>
+                  <th scope="col">Characteristics</th>
+                  <th scope="col">{currentProductInfo.name}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allFeaturesKeys.map((key) => {
+                  if (allFeatures[key].includes('modal') && allFeatures[key].includes('current')) {
+                    return (
+                      <tr key={key}>
+                        <td>✅</td>
+                        <td>{key}</td>
+                        <td>✅</td>
+                      </tr>
+                    );
+                  } if (allFeatures[key].includes('current') && !allFeatures[key].includes('modal')) {
+                    return (
+                      <tr key={key}>
+                        <td />
+                        <td>{key}</td>
+                        <td>✅</td>
+                      </tr>
+                    );
+                  } if (!allFeatures[key].includes('current') && allFeatures[key].includes('modal')) {
+                    return (
+                      <tr key={key}>
+                        <td>✅</td>
+                        <td>{key}</td>
+                        <td />
+                      </tr>
+                    );
+                  }
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     );
