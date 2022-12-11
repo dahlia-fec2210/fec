@@ -3,14 +3,21 @@ import axios from 'axios';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function HelpfulQuestionLink({ question }) {
+function HelpfulQuestionLink({ question, helpfulQuestions, setHelpfulQuestions }) {
   const [questionHelpfulness, setQuestionHelpfulness] = useState(question.question_helpfulness);
 
   const incrementHelpfulness = () => axios.put(`${serverRoute}/qa/questions/${question.question_id}/helpful`);
 
   const helpfulClicked = () => {
-    incrementHelpfulness();
-    setQuestionHelpfulness(questionHelpfulness + 1);
+    const cache = JSON.parse(localStorage.getItem('helpfulQuestions'));
+    const currentHelpfulQuestions = helpfulQuestions;
+    if (!(helpfulQuestions.includes(question))) {
+      incrementHelpfulness();
+      setQuestionHelpfulness(questionHelpfulness + 1);
+    }
+    currentHelpfulQuestions.push(question);
+    setHelpfulQuestions(currentHelpfulQuestions);
+    localStorage.setItem('helpfulQuestions', JSON.stringify(currentHelpfulQuestions));
   };
 
   return (

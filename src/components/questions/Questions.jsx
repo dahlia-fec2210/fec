@@ -17,6 +17,8 @@ function Questions({ currentProduct }) {
   const [listCount, setListCount] = useState(null);
   const [openAddQuestionModal, setOpenAddQuestionModal] = useState(false);
   const [prefilterQuestions, setPrefilterQuestions] = useState(null);
+  const [helpfulAnswers, setHelpfulAnswers] = useState([]);
+  const [helpfulQuestions, setHelpfulQuestions] = useState([]);
 
   // console.log('currentProduct is', currentProduct);
 
@@ -87,7 +89,14 @@ function Questions({ currentProduct }) {
       <h1>Questions</h1>
       <div className="question-list">
         <QuestionSearch handleSearch={searchingQuestion} />
-        <QuestionEntry questions={questionsList} currentProductId={currentProduct} />
+        <QuestionEntry
+          questions={questionsList}
+          currentProductId={currentProduct}
+          helpfulAnswers={helpfulAnswers}
+          setHelpfulAnswers={setHelpfulAnswers}
+          helpfulQuestions={helpfulQuestions}
+          setHelpfulQuestions={setHelpfulQuestions}
+        />
       </div>
       {listCount > questionsList.length ? <CollapseQuestionButton />
         : <LoadQuestionButton handleClick={addTwoQuestions} />}

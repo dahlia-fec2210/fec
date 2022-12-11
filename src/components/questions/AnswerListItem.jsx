@@ -8,7 +8,7 @@ import './questions.css';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function AnswerListItem({ answer }) {
+function AnswerListItem({ answer, helpfulAnswers, setHelpfulAnswers }) {
   console.log(answer, 'answer123');
 
   return (
@@ -18,7 +18,7 @@ function AnswerListItem({ answer }) {
       {answer.body}
       {answer.photos.length === 0 ? null : <AnswerPhoto answer={answer} />}
       <AnswerSubmitInfo answer={answer} />
-      <HelpfulAnswerLink answer={answer} />
+      <HelpfulAnswerLink answer={answer} helpfulAnswers={helpfulAnswers} setHelpfulAnswers={setHelpfulAnswers} />
       <ReportAnswerLink answer={answer} />
     </div>
   );

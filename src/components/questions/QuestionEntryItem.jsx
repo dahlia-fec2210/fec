@@ -11,7 +11,9 @@ import AddAnswer from './individual_questions/AddAnswer.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function QuestionEntryItem({ question, currentProductId }) {
+function QuestionEntryItem({
+  question, currentProductId, helpfulAnswers, setHelpfulAnswers, helpfulQuestions, setHelpfulQuestions,
+}) {
   const [allAnswers, setAllAnswers] = useState([]);
   const [answersList, setAnswersList] = useState([]);
   // const [isLoading, setIsLoading] = useState(true);
@@ -70,10 +72,10 @@ function QuestionEntryItem({ question, currentProductId }) {
         {/* <div>
           {question.asker_name}
         </div> */}
-        <HelpfulQuestionLink question={question} />
+        <HelpfulQuestionLink question={question} helpfulQuestions={helpfulQuestions} setHelpfulQuestions={setHelpfulQuestions} />
       </div>
       {/* {answersList && answersList.map((individualA, index) => <Answer key={index} answer={individualA} />)} */}
-      <AnswerList answers={answersList} />
+      <AnswerList answers={answersList} helpfulAnswers={helpfulAnswers} setHelpfulAnswers={setHelpfulAnswers} />
       {listCount > allAnswers.length ? <CollapseAnswerButton /> : <LoadAnswerButton handleClick={addTwoQuestions} />}
     </div>
   );

@@ -5,13 +5,13 @@ import './questions.css';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function AnswerList({ answers }) {
+function AnswerList({ answers, helpfulAnswers, setHelpfulAnswers }) {
   console.log(answers, 'answer123');
   if (answers.length > 0) {
     return (
       <div>
-        {answers.map((answer) => (
-          <AnswerListItem answer={answer} />
+        {answers.map((answer, index) => (
+          <AnswerListItem answer={answer} key={index} helpfulAnswers={helpfulAnswers} setHelpfulAnswers={setHelpfulAnswers} />
         ))}
       </div>
     );

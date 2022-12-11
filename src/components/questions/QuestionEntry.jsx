@@ -7,14 +7,21 @@ import QuestionEntryItem from './QuestionEntryItem.jsx';
 
 // const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function QuestionEntry({ questions, currentProductId }) {
+function QuestionEntry({
+  questions, currentProductId, helpfulAnswers, setHelpfulAnswers, helpfulQuestions, setHelpfulQuestions,
+}) {
   console.log('questions', questions);
   if (questions.length > 0) {
     return (
       <div>
-        {questions.map((question) => (
+        {questions.map((question, index) => (
           <QuestionEntryItem
             question={question}
+            key={index}
+            helpfulAnswers={helpfulAnswers}
+            setHelpfulAnswers={setHelpfulAnswers}
+            helpfulQuestions={helpfulQuestions}
+            setHelpfulQuestions={setHelpfulQuestions}
             // key={index}
             currentProductId={currentProductId}
           />

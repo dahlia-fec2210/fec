@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './addQuestion.css';
 import axios from 'axios';
+import QuestionErrorMessage from './QuestionErrorMessage.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
+const validateError = require('./questionValidateError');
 
 function AddQuestionModal({ closeModal, currentProductId }) {
   console.log(currentProductId, 'current');
@@ -14,6 +16,23 @@ function AddQuestionModal({ closeModal, currentProductId }) {
     email: '',
     product_id: currentProductId,
   });
+
+  const [errors, setErrors] = useState(null);
+
+  const verifyErrors = () => {
+    const errorStrings = [];
+    if (!validateError.validateQuestion(newQuestion.body)) {
+      errorStrings.push('Please enter a valid question longer than 50 characters');
+    }
+    if (!validateError.validateNickname(newQuestion.name)) {
+      errorStrings.push('Please enter a valid nickname');
+    }
+    if (!validateError.validateEmail(newQuestion.email)) {
+      errorStrings.push('Please enter a valid email');
+    }
+    setErrors(errorStrings);
+    return errorStrings.length === 0;
+  };
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${currentProductId}`)
@@ -34,9 +53,12 @@ function AddQuestionModal({ closeModal, currentProductId }) {
         newQuestion,
       },
     });
-    axios.post(`${serverRoute}/qa/questions/`, newQuestion)
-      .then((result) => console.log(result));
+    if (verifyErrors()) {
+      axios.post(`${serverRoute}/qa/questions/`, newQuestion)
+        .then((result) => console.log(result));
+    }
   };
+
   return (
     // <div>
     //   Testing123
@@ -67,7 +89,10 @@ function AddQuestionModal({ closeModal, currentProductId }) {
             Email:
             <input name="email" type="email" maxLength="60" placeholder="example@example.com" required="" value={newQuestion.email} onChange={typing} />
           </label>
-          <button>Submit</button>
+          <div className="submit-button">
+            <button>Submit</button>
+            {errors ? <QuestionErrorMessage errors={errors} /> : null}
+          </div>
         </form>
         {/* <textarea className="question" placeholder="Enter your question here..." />
         <textarea className="nickname" placeholder="Example: jackson11!" />
