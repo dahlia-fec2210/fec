@@ -37,8 +37,8 @@ function App() {
             setCurrentProduct={setCurrentProduct}
           />
         ) }
-      {/* { currentProduct === null ? <div>Loading...</div>
-        : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> } */}
+      { currentProduct === null ? <div>Loading...</div>
+        : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
     </div>
   );
 }
