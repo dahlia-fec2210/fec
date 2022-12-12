@@ -104,16 +104,18 @@ function Image({
         {rightArrow}
       </div>
 
-      <div className="image-set">
-        {upArrow}
-        <ImageSet
-          currentStylePhotos={currentStylePhotos}
-          selected={selected}
-          imageSetCarousel={imageSetCarousel}
-          handleThumbnailClick={handleThumbnailClick}
-        />
-        {downArrow}
-      </div>
+      {zoomed === false ? (
+        <div className="image-set">
+          {upArrow}
+          <ImageSet
+            currentStylePhotos={currentStylePhotos}
+            selected={selected}
+            imageSetCarousel={imageSetCarousel}
+            handleThumbnailClick={handleThumbnailClick}
+          />
+          {downArrow}
+        </div>
+      ) : null}
     </div>
   );
 }
