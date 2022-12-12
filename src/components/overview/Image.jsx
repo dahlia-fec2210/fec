@@ -8,7 +8,9 @@ import React, { useState } from 'react';
 import MainImage from './MainImage.jsx';
 import ImageSet from './ImageSet.jsx';
 
-function Image({ currentStylePhotos, expanded, setExpanded }) {
+function Image({
+  currentStylePhotos, expanded, setExpanded, zoomed, setZoomed,
+}) {
   // console.log('current style photos in Image comp:', currentStylePhotos);
 
   const [currentMainImageIndex, setCurrentMainImageIndex] = useState(0);
@@ -87,7 +89,14 @@ function Image({ currentStylePhotos, expanded, setExpanded }) {
           {currentStylePhotos.map((photo, i) => (
             <div className={i === currentMainImageIndex ? 'slide-active' : 'slide'} key={i}>
               {i === currentMainImageIndex && (
-                <MainImage key={i} photo={photo} expanded={expanded} setExpanded={setExpanded} />
+                <MainImage
+                  key={i}
+                  photo={photo}
+                  expanded={expanded}
+                  setExpanded={setExpanded}
+                  zoomed={zoomed}
+                  setZoomed={setZoomed}
+                />
               )}
             </div>
           ))}
