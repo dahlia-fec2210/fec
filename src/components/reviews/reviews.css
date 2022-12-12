@@ -95,9 +95,9 @@
     line-height: 27px;
     padding: 8px 20px;
     font-family: Georgia, serif;
-    background-color: #739086;
+    background-color: #92ae9f;
     box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 2px;
-    border: 1px solid #739086;
+    border: 1px solid #92ae9f;
     display: inline-block;
     cursor: pointer;
 }
@@ -108,7 +108,7 @@
 .review-upload-button:hover,
 .submit-review-button:hover {
   background-color: #f7f7f7;
-  color: #739086;
+  color: #92ae9f;
 }
 .more-reviews-btn:active,
 .new-review-btn:active,
@@ -132,9 +132,9 @@
     padding-right: 5px;
     margin: 5px;
     font-family: Georgia, serif;
-    background-color: #739086;
+    background-color: #92ae9f;
     box-shadow: rgb(0 0 0 / 10%) 1px 1px 5px 2px;
-    border: 1px solid #739086;
+    border: 1px solid #92ae9f;
     display: inline-block;
     cursor: pointer;
 }
@@ -152,7 +152,7 @@
 .review-submit-errors {
   text-align: end;
   font-size: 11px;
-  color: red;
+  color: #9c3c44;
   margin: 3px 10px 0 10px;
 }
 
@@ -163,9 +163,9 @@
   font-size: 14px;
   padding: 7px 8px;
   font-family: Georgia, serif;
-  background-color: #739086;
+  background-color: #92ae9f;
   box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 2px;
-  border: 1px solid #739086;
+  border: 1px solid #92ae9f;
   display: inline-block;
   cursor: pointer;
 }
@@ -382,8 +382,8 @@
 }
 .body-input:focus {
   outline: none !important;
-  border:1px solid #739086;
-  box-shadow: 0 0 3px #739086;
+  border:1px solid #92ae9f;
+  box-shadow: 0 0 3px #92ae9f;
 }
 .body-input-caption,
 .body-input-caption-met {
@@ -393,7 +393,7 @@
 }
 .body-input-caption-met {
 
-  color: #739086;
+  color: #92ae9f;
 }
 
 /* PRODUCT BREAKDOWN***************************** */
@@ -450,7 +450,7 @@
   border-radius: inherit;
   text-align: right;
   position: relative;
-  background-color: #739086;
+  background-color: #92ae9f;
 }
 
 .bar-padding {
@@ -548,7 +548,7 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background: #739086;
+  background: #92ae9f;
   height: 2px;
   display: block;
   transform: rotateY(90deg);
@@ -587,7 +587,7 @@
 }
 .review-form-element-input.hasValue ~ .review-form-element-label,
 .review-form-element-input:focus ~ .review-form-element-label {
-  color: #739086;
+  color: #92ae9f;
 }
 .review-form-element-input.hasValue,
 .review-form-element-input:focus {
@@ -607,7 +607,7 @@
  margin-bottom: 30px;
 }
 .rating-description {
- color: #739086;
+ color: #92ae9f;
 }
 
 .review-fancy .review-radio-group {
@@ -638,7 +638,7 @@
   display: block;
   width: 1.4em;
   height: 1.4em;
-  /* border: 2px solid #739086; */
+  /* border: 2px solid #92ae9f; */
   border-radius: 0.25em;
   z-index: -1;
 }
@@ -660,7 +660,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: #739086;
+  background: #92ae9f;
 }
 /* Transition */
 .review-fancy label, .review-fancy label::before {
