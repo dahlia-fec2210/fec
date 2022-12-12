@@ -39,16 +39,23 @@
 .default-image {
   width: 300px;
   max-height: 500px;
+  position: relative;
+  overflow: hidden;
 }
 
 .expanded-image {
   width: 400px;
   max-height: 1020px;
+  position: relative;
+  overflow: hidden;
 }
 
 .zoomed-image {
   width: 400px;
   max-height: 1020px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
 }
 
 .main-image {
