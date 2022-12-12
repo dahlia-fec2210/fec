@@ -1,6 +1,8 @@
 import React from 'react';
 
-function MainImage({ photo, expanded, setExpanded . zoomed, setZoomed}) {
+function MainImage({
+  photo, expanded, setExpanded, zoomed, setZoomed,
+}) {
   const handleMainImageClick = () => {
     setExpanded(true);
   };
