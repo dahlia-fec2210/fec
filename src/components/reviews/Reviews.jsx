@@ -5,6 +5,7 @@ import MoreReviewsButton from './MoreReviewsButton.jsx';
 import SortByDropdown from './sort-dropdown/SortByDropdown.jsx';
 import NewReviewModal from './new-review-modal/NewReviewModal.jsx';
 import ProductBreakdown from './product-breakdown/ProductBreakdown.jsx';
+import logInteraction from './logInteraction.js';
 import './reviews.css';
 
 const { useState, useEffect, useRef } = React;
@@ -108,6 +109,7 @@ function Reviews({ currentProduct }) {
 
   const handleAddClick = (e) => {
     e.preventDefault();
+    logInteraction(e.target.id, [currentProduct]);
     toggleModal();
   };
 
@@ -147,9 +149,19 @@ function Reviews({ currentProduct }) {
               {itemCount > listedReviews.length
                 ? null
                 : (
-                  <MoreReviewsButton addTwoItems={addTwoItems} bottomReviewsRef={bottomReviewsRef} />
+                  <MoreReviewsButton
+                    addTwoItems={addTwoItems}
+                    bottomReviewsRef={bottomReviewsRef}
+                  />
                 )}
-              <button onClick={handleAddClick} className="new-review-btn">Add New Review</button>
+              <button
+                onClick={handleAddClick}
+                type="button"
+                id="add-new-review-button"
+                className="new-review-btn"
+              >
+                Add New Review
+              </button>
               {modal && (
               <NewReviewModal
                 toggleModal={toggleModal}
