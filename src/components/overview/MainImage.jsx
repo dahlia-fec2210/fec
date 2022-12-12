@@ -22,6 +22,13 @@ function MainImage({
     }
   };
 
+  const handleMouseLeave = (event) => {
+    if (zoomed === true) {
+      // alert('Mouse was moved!');
+      zoomedImageRef.current.style.transform = 'translate(0%, 0%) scale(1)';
+    }
+  };
+
   let containerClass;
   if (expanded === false && zoomed === false) {
     containerClass = 'default-image';
@@ -41,7 +48,7 @@ function MainImage({
   }
 
   return (
-    <div className={containerClass} onClick={handleMainImageClick} onMouseMove={handleMouseMove}>
+    <div className={containerClass} onClick={handleMainImageClick} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
       <img className={imageClass} ref={zoomedImageRef} src={photo.url} alt="" />
     </div>
   );
