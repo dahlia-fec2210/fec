@@ -12,6 +12,7 @@ const sessionHandler = require('./session-handler');
 const products = require('../database/controllers/products');
 const reviews = require('../database/controllers/reviews');
 const questions = require('../database/controllers/questions');
+const interactions = require('../database/controllers/interactions');
 
 // app.use(cors());
 const corsOptions = {
@@ -29,6 +30,15 @@ const productData = {};
 const relatedProducts = {};
 
 // Routes go here:
+
+// interaction route:
+app.post('/interactions', (req, res) => {
+  console.log(req.body);
+  interactions.postInteraction(req.body)
+    .then((response) => {
+      res.send(response);
+    });
+});
 
 // Product routes:
 app.get('/products', (req, res) => {
