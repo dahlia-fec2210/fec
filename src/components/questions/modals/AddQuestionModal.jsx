@@ -4,7 +4,7 @@ import axios from 'axios';
 import QuestionErrorMessage from './QuestionErrorMessage.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
-const validateError = require('./questionValidateError');
+const validateError = require('./validateError');
 
 function AddQuestionModal({ closeModal, currentProductId }) {
   console.log(currentProductId, 'current');

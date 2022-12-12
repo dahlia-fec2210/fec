@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './addAnswer.css';
 import axios from 'axios';
-
+import AnswerErrorMessage from './AnswerErrorMessage.jsx';
 import CloudinaryWidget from '../../common/CloudinaryWidget.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
+const validateError = require('./validateError');
 
 function AddQuestionModal({ closeModal, question, currentProductId }) {
   console.log(currentProductId, 'current123', question);
@@ -18,6 +19,26 @@ function AddQuestionModal({ closeModal, question, currentProductId }) {
     photos: imageUrls,
     question_id: question.question_id,
   });
+
+  const [errors, setErrors] = useState(null);
+
+  const verifyErrors = () => {
+    const errorStrings = [];
+    if (!validateError.validateAnswer(newAnswer.body)) {
+      errorStrings.push('Please enter a valid answer longer than 50 characters');
+    }
+    if (!validateError.validateNickname(newAnswer.name)) {
+      errorStrings.push('Please enter a valid nickname');
+    }
+    if (!validateError.validateEmail(newAnswer.email)) {
+      errorStrings.push('Please enter a valid email');
+    }
+    if (!validateError.validatePhotos(newAnswer.photos)) {
+      errorStrings.push('Please enter valid photo(s)');
+    }
+    setErrors(errorStrings);
+    return errorStrings.length === 0;
+  };
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${currentProductId}`)
@@ -41,8 +62,10 @@ function AddQuestionModal({ closeModal, question, currentProductId }) {
   const submitForm = (event) => {
     event.preventDefault();
     console.log('submitForm working?', newAnswer);
-    axios.post(`${serverRoute}/qa/questions/${question.question_id}/answers`, newAnswer)
-      .then((result) => console.log(result));
+    if (verifyErrors()) {
+      axios.post(`${serverRoute}/qa/questions/${question.question_id}/answers`, newAnswer)
+        .then((result) => console.log(result));
+    }
   };
   return (
     // <div>
@@ -79,7 +102,10 @@ function AddQuestionModal({ closeModal, question, currentProductId }) {
             <CloudinaryWidget setImageUrls={setImageUrls} />
             {/* <input name="photos" type="array" maxLength="1000" placeholder="example@example.com" value={newAnswer.photos} onChange={typing} /> */}
           </label>
-          <button>Submit</button>
+          <div className="submit-button-answer">
+            <button>Submit</button>
+            {errors ? <AnswerErrorMessage errors={errors} /> : null}
+          </div>
         </form>
         {/* <textarea className="question" placeholder="Enter your question here..." />
         <textarea className="nickname" placeholder="Example: jackson11!" />

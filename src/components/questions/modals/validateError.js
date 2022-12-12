@@ -18,3 +18,17 @@ export function validateEmail(email) {
   }
   return false;
 }
+
+export function validateAnswer(body) {
+  if (!body || body.trim() === '') {
+    return false;
+  }
+  return true;
+}
+
+export function validatePhotos(photos) {
+  if (!photos) {
+    return false;
+  }
+  return true;
+}
