@@ -37,12 +37,38 @@
 }
 
 .default-image {
-  width: 100%;
-  height: 100%;
+  width: 300px;
+  max-height: 500px;
+}
+
+.expanded-image {
+  width: 400px;
+  max-height: 1020px;
+}
+
+.zoomed-image {
+  width: 400px;
+  max-height: 1020px;
 }
 
 .main-image {
-  width: 300px;
+  width: 100%;
+  /* width: 300%; */
+  /* height: 90%; */
+  border-radius: 5px;
+  cursor: zoom-in;
+}
+
+.expanded-main-image {
+  width: 100%;
+  /* width: 300%; */
+  /* height: 90%; */
+  border-radius: 5px;
+  cursor: zoom-in;
+}
+
+.zoomed-main-image {
+  width: 100%;
   /* width: 300%; */
   /* height: 90%; */
   border-radius: 5px;
