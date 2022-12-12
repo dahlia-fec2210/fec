@@ -73,7 +73,10 @@ function ComparisonModal({ modalProduct, currentProduct, setOpenModal }) {
           <div className="related-comparison-heading">Comparing</div>
           <div
             className="related-comparison-stack"
-            onClick={() => { setOpenModal(false); }}
+            onClick={() => {
+              setOpenModal(false);
+              axios.post(`${serverRoute}/interactions`, { element: `comparison-modal-close-button:${currentProduct},${modalProduct}`, widget: 'Related Products', time: new Date().toTimeString() });
+            }}
           >
             <div className="fa-stack" style={{ verticalAlign: 'top' }}>
               <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />

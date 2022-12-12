@@ -84,6 +84,7 @@ function ClothingPiece({
     const newOutfit = outfit.filter((piece) => piece !== clothingPiece);
     setOutfit(newOutfit);
     localStorage.setItem('outfit', JSON.stringify(newOutfit));
+    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   if (clothingPiece !== null && productInfo !== {}) {
@@ -93,7 +94,7 @@ function ClothingPiece({
           <div className="related-stack" onClick={removeFromOutfit}>
             <div className="fa-stack" style={{ verticalAlign: 'top' }}>
               <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
-              <i className="related-star fa-solid fa-x fa-stack-1x" />
+              <i id={`outfit-list-remove-button:${clothingPiece}`} className="related-star fa-solid fa-x fa-stack-1x" />
             </div>
           </div>
           <div>

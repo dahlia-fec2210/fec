@@ -48,12 +48,14 @@ function RelatedItems({
   function shiftRight(event) {
     event.preventDefault();
     setLeft(left + 272);
+    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   function shiftLeft(event) {
     event.preventDefault();
     event.preventDefault();
     setLeft(left - 272);
+    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   if (relatedProducts.length > 0) {
@@ -63,12 +65,12 @@ function RelatedItems({
           <h4 className="related-heading">Related Products</h4>
           <div className="related-carousel">
             { relatedProducts.length > 0 ? (
-
               relatedProducts.map((product, index) => (
                 <RelatedProduct
                   setOpenModal={setOpenModal}
                   setModalProduct={setModalProduct}
                   relatedProducts={relatedProducts}
+                  currentProduct={currentProduct}
                   setCurrentProduct={setCurrentProduct}
                   key={index}
                   left={left}
@@ -83,8 +85,8 @@ function RelatedItems({
             ) : null}
           </div>
           <div className="related-arrows">
-            <span className="related-arrow related-arrow-left" onClick={shiftLeft}>{ left === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" />}</span>
-            <span className="related-arrow related-arrow-right" onClick={shiftRight}>{ left >= (relatedProducts.length - 4) * 272 ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" />}</span>
+            <span className="related-arrow related-arrow-left" onClick={shiftLeft}>{ left === 0 ? null : <i id="related-products-carousel-left-arrow" className="related-icon fa-solid fa-chevron-left fa-2xl" />}</span>
+            <span className="related-arrow related-arrow-right" onClick={shiftRight}>{ left >= (relatedProducts.length - 4) * 272 ? null : <i id="related-products-carousel-right-arrow" className="related-icon fa-solid fa-chevron-right fa-2xl" />}</span>
           </div>
         </div>
 
