@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 function MainImage({
   photo, expanded, setExpanded, zoomed, setZoomed,
 }) {
+  const zoomedImageRef = useRef(null);
+
   const handleMainImageClick = () => {
     if (expanded === true) {
       setZoomed(true);
@@ -10,6 +12,13 @@ function MainImage({
     } else {
       setZoomed(false);
       setExpanded(true);
+    }
+  };
+
+  const handleMouseMove = (event) => {
+    if (zoomed === true) {
+      // alert('Mouse was moved!');
+      zoomedImageRef.current.style.transform = 'translate(-50%, -50%) scale(2.5)';
     }
   };
 
@@ -32,8 +41,8 @@ function MainImage({
   }
 
   return (
-    <div className={containerClass} onClick={handleMainImageClick}>
-      <img className={imageClass} src={photo.url} alt="" />
+    <div className={containerClass} onClick={handleMainImageClick} onMouseMove={handleMouseMove}>
+      <img className={imageClass} ref={zoomedImageRef} src={photo.url} alt="" />
     </div>
   );
 }
