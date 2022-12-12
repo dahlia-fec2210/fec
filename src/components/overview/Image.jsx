@@ -82,8 +82,8 @@ function Image({
   }
 
   return (
-    <div className={expanded === false ? 'style-images' : 'expand-style-images'}>
-      <div className={expanded === false ? 'main-carousel' : 'expand-main-carousel'}>
+    <div className={expanded === false && zoomed === false ? 'style-images' : 'expand-style-images'}>
+      <div className={expanded === false && zoomed === false ? 'main-carousel' : 'expand-main-carousel'}>
         {leftArrow}
         <div className="main-set">
           {currentStylePhotos.map((photo, i) => (
