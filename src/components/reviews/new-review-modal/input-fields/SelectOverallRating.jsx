@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import React from 'react';
 import { IoStar } from 'react-icons/io5';
 
@@ -6,10 +7,11 @@ const ratings = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
 
 export default function SelectOverallRating({ overallRating, setOverallRating }) {
   const [hover, setHover] = useState(null);
-
+  let key = 0;
   const handleClick = (e) => {
     setOverallRating(Number(e.target.value));
   };
+  const getKey = () => key++;
   return (
     <div className="select-overall-rating">
       <div>
@@ -20,7 +22,7 @@ export default function SelectOverallRating({ overallRating, setOverallRating })
       {[...Array(5)].map((star, i) => {
         const ratingValue = i + 1;
         return (
-          <label>
+          <label key={getKey()}>
             <input
               type="radio"
               name="rating"

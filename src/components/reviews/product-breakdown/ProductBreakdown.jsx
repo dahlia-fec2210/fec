@@ -6,6 +6,7 @@ import CharacteristicBreakdown from './CharacteristicBreakdown.jsx';
 export default function ProductBreakdown({ metaData, addFilter }) {
   return (
     <div className="review-pb-container">
+      <div className="section-title">RATINGS & REVIEWS</div>
       <RatingRecommend metaData={metaData} />
       <RatingBreakdown ratings={metaData.ratings} addFilter={addFilter} />
       <CharacteristicBreakdown characteristics={metaData.characteristics} />
