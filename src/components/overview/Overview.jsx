@@ -18,6 +18,7 @@ function Overview({ productId, serverRoute }) {
   const [currentStylePhotos, setCurrentStylePhotos] = useState([]);
   const [productFeatures, setProductFeatures] = useState([]);
   const [expanded, setExpanded] = useState(false);
+  const [zoomed, setZoomed] = useState(false);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
@@ -75,6 +76,8 @@ function Overview({ productId, serverRoute }) {
           currentStylePhotos={currentStylePhotos}
           expanded={expanded}
           setExpanded={setExpanded}
+          zoomed={zoomed}
+          setZoomed={setZoomed}
         />
         <ProductInfo
           productCategory={productCategory}
@@ -85,6 +88,7 @@ function Overview({ productId, serverRoute }) {
           productStyles={productStyles}
           currentStyleSkus={currentStyleSkus}
           setCurrentStylePhotos={setCurrentStylePhotos}
+          currentStyle={currentStyle}
           expanded={expanded}
         />
         <div className="product-description">
