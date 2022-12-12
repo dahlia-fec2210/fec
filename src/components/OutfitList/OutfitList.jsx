@@ -4,7 +4,10 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import ClothingPiece from './ClothingPiece.jsx';
+
+const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function OutfitList({
   currentProduct, averages, setAverages,
@@ -26,18 +29,20 @@ function OutfitList({
       newOutfit.push(currentProduct);
     }
     setOutfit(newOutfit);
+    axios.post(`${serverRoute}/interactions`, { element: `outfit-list-add-button:${currentProduct}`, widget: 'Related Products', time: new Date().toTimeString() });
     localStorage.setItem('outfit', JSON.stringify(newOutfit));
   }
 
   function shiftRight(event) {
     event.preventDefault();
     setLeft(left + 272);
+    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   function shiftLeft(event) {
     event.preventDefault();
-    event.preventDefault();
     setLeft(left - 272);
+    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   return (
@@ -72,8 +77,8 @@ function OutfitList({
           </div>
         </div>
         <div className="related-arrows">
-          <div className="related-arrow related-arrow-left" onClick={shiftLeft}>{ left === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
-          <div className="related-arrow related-arrow-right" onClick={shiftRight}>{ left >= (outfit.length - 3) * 272 ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
+          <div className="related-arrow related-arrow-left" onClick={shiftLeft}>{ left === 0 ? null : <i id="outfit-list-carousel-left-arrow" className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
+          <div className="related-arrow related-arrow-right" onClick={shiftRight}>{ left >= (outfit.length - 3) * 272 ? null : <i id="outfit-list-carousel-right-arrow" className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
         </div>
       </div>
 

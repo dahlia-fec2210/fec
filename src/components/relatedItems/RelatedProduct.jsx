@@ -14,7 +14,7 @@ import Star from '../common/Star.jsx';
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function RelatedProduct({
-  product, left, setCurrentProduct,
+  product, left, currentProduct, setCurrentProduct,
   setOpenModal, setModalProduct,
 }) {
   const [productData, setProductData] = useState({});
@@ -94,12 +94,14 @@ function RelatedProduct({
   function changeProduct(event) {
     event.preventDefault();
     setCurrentProduct(product);
+    axios.post(`${serverRoute}/interactions`, { element: `related-product-change-button:${product}`, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   function openModal(event) {
     event.preventDefault();
     setOpenModal(true);
     setModalProduct(product);
+    axios.post(`${serverRoute}/interactions`, { element: `comparison-modal-open-button:${currentProduct},${product}`, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   if (productData.price) {
