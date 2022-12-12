@@ -90,24 +90,25 @@
 }
 
 .more-reviews-btn, .new-review-btn {
-    color: #739086;
+    color: #f7f7f7;
     font-size: 16px;
     line-height: 27px;
     padding: 8px 20px;
     font-family: Georgia, serif;
-    background-color: #f9f9f9;
+    background-color: #739086;
     box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 2px;
     border: 1px solid #739086;
     display: inline-block;
     cursor: pointer;
 }
+
 .more-reviews-btn:hover,
 .new-review-btn:hover,
 .filter-button:hover,
 .review-upload-button:hover,
 .submit-review-button:hover {
-  background-color: #739086;
-  color: #f9f9f9;
+  background-color: #f7f7f7;
+  color: #739086;
 }
 .more-reviews-btn:active,
 .new-review-btn:active,
@@ -115,7 +116,7 @@
 .review-upload-button:active,
 .submit-review-button:active {
   background-color: #7da899;
-  color: #f9f9f9;
+  color: #f7f7f7;
 }
 
 .new-review-btn {
@@ -123,7 +124,7 @@
 }
 
 .filter-button {
-  color: #739086;
+  color: #f7f7f7;
     font-size: 10px;
     line-height: 18px;
     padding: 2px 0px;
@@ -131,7 +132,7 @@
     padding-right: 5px;
     margin: 5px;
     font-family: Georgia, serif;
-    background-color: #f9f9f9;
+    background-color: #739086;
     box-shadow: rgb(0 0 0 / 10%) 1px 1px 5px 2px;
     border: 1px solid #739086;
     display: inline-block;
@@ -158,11 +159,11 @@
 .review-upload-button,
 .submit-review-button {
   max-height: 30px;
-  color: #739086;
+  color: #f7f7f7;
   font-size: 14px;
   padding: 7px 8px;
   font-family: Georgia, serif;
-  background-color: #f9f9f9;
+  background-color: #739086;
   box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 2px;
   border: 1px solid #739086;
   display: inline-block;
@@ -222,6 +223,14 @@
 
 /* new REVIEW MODAL********************************* */
 
+.review-modal .upload-thumbnails-container {
+  display: flex;
+  margin: 15px 5px;
+
+}
+.review-modal .uploaded-thumbnail {
+  margin-right: 10%;
+}
 .review-photo-thumbnail {
   max-width: 100px;
   max-height: 100px;
@@ -251,7 +260,7 @@
   right: 0;
   bottom: 0;
   position: fixed;
-  z-index: 101;
+  z-index: 1001;
 }
 
 .review-overlay {
@@ -298,7 +307,7 @@
   right: 0;
   bottom: 0;
   position: fixed;
-  z-index: 101;
+  z-index: 1001;
 }
 
 .review-image-overlay {

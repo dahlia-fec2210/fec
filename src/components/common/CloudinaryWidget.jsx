@@ -1,4 +1,5 @@
 import React from 'react';
+import Thumbnails from './Thumbnails.jsx';
 
 const { useState, memo } = React;
 
@@ -50,7 +51,8 @@ const CloudinaryWidget = memo(({ setImageUrls }) => {
   }, (error, result) => {
     if (!error && result && result.event === 'success') {
       urlList.push(result.info.url);
-      thumbnailList.push(result.info.thumbnail_url);
+      thumbnailList = [...thumbnailList, result.info.thumbnail_url];
+      console.log(result.info);
       updateImageUrls();
     }
   });
@@ -64,7 +66,7 @@ const CloudinaryWidget = memo(({ setImageUrls }) => {
 
   return (
     <div>
-      <div className="reviews-uploaded-thumbnails">
+      {/* <div className="reviews-uploaded-thumbnails">
         {thumbnailUrls.map((url, index) => {
           const alt = `uploaded image ${index + 1}`;
           return (
@@ -74,7 +76,8 @@ const CloudinaryWidget = memo(({ setImageUrls }) => {
             </span>
           );
         })}
-      </div>
+      </div> */}
+      <Thumbnails thumbnailUrls={thumbnailUrls} />
       <button className="review-upload-button" type="button" onClick={handleClick}>Upload Images</button>
     </div>
   );

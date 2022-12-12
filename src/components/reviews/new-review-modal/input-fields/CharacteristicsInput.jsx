@@ -28,7 +28,7 @@ export default function CharacteristicsInput({ characteristics, setCharacteristi
     <div className="review-select-characteristics">
       {prodCharaNames.map((charaName) => (
         <>
-          <div className="select-characteristics-label">
+          <div key={charaName} className="select-characteristics-label">
             {charaName}
             :
             {' '}
@@ -36,7 +36,7 @@ export default function CharacteristicsInput({ characteristics, setCharacteristi
           <div className="review-radio-group">
             {descriptors[charaName].map((descriptor, index) => (
               <>
-                <input onClick={handleClick} type="radio" name={prodCharaData[charaName].id} id={charaName + descriptor} value={index + 1} />
+                <input key={descriptor} onClick={handleClick} type="radio" name={prodCharaData[charaName].id} id={charaName + descriptor} value={index + 1} />
                 <label onClick={handleClick} htmlFor={charaName + descriptor}>{descriptor}</label>
               </>
             ))}
