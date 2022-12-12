@@ -10,12 +10,29 @@ body {
 
 .related-heading {
   text-transform: uppercase;
+  margin: 0;
 }
 
 .related-carousel {
   display: flex;
-  overflow: hidden;
   gap: 20px;
+  width: 1070px;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.outfit-row {
+  display: flex;
+  padding: 10px;
+  width: 1080px;
+}
+
+.outfit-carousel {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  height: 365px;
+  padding-left: 20px;
 }
 
 .related-product-card {
@@ -25,7 +42,7 @@ body {
   max-width: 250px;
   height: 350px;
   position: relative;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .related-buttons {
@@ -236,9 +253,21 @@ body {
 }
 
 .related-arrow-right {
-  left: 40px;
+  left: 50px;
 }
 
 .related-arrow-left {
-  left: -40px;
+  left: -30px;
+}
+
+.related-add-card {
+  z-index: 1000;
+  border: 1px solid black;
+  border-radius: 4px;
+  min-width: 250px;
+  max-width: 250px;
+  height: 350px;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: white;
 }
