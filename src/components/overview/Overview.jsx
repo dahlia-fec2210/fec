@@ -90,6 +90,7 @@ function Overview({ productId, serverRoute }) {
           setCurrentStylePhotos={setCurrentStylePhotos}
           currentStyle={currentStyle}
           expanded={expanded}
+          zoomed={zoomed}
         />
         <div className="product-description">
           <div className="description">
