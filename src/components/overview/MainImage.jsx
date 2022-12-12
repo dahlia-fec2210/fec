@@ -4,11 +4,17 @@ function MainImage({
   photo, expanded, setExpanded, zoomed, setZoomed,
 }) {
   const handleMainImageClick = () => {
-    setExpanded(true);
+    if (expanded === true) {
+      setZoomed(true);
+      setExpanded(false);
+    } else {
+      setZoomed(false);
+      setExpanded(true);
+    }
   };
 
   let containerClass;
-  if (expanded === false) {
+  if (expanded === false && zoomed === false) {
     containerClass = 'default-image';
   } else if (expanded === true) {
     containerClass = 'expanded-image';
@@ -17,7 +23,7 @@ function MainImage({
   }
 
   let imageClass;
-  if (expanded === false) {
+  if (expanded === false && zoomed === false) {
     imageClass = 'main-image';
   } else if (expanded === true) {
     imageClass = 'expanded-main-image';
@@ -27,7 +33,7 @@ function MainImage({
 
   return (
     <div className={containerClass} onClick={handleMainImageClick}>
-      <img className={expanded === false ? 'main-image' : 'expanded-main-image'} src={photo.url} alt="" />
+      <img className={imageClass} src={photo.url} alt="" />
     </div>
   );
 }
