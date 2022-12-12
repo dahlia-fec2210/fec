@@ -5,11 +5,14 @@ import SellerResponse from './SellerResponse.jsx';
 import SubmissionInfo from './SubmissionInfo.jsx';
 import DisplayStar from '../../common/Star.jsx';
 import ReviewPhotos from './ReviewPhotos.jsx';
+import logInteraction from '../logInteraction.js';
 
 const { useState } = React;
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function ReviewsListItem({ review, reportReview, index }) {
+function ReviewsListItem({
+  review, reportReview, index, currentProduct,
+}) {
   const [helpfulness, setHelpfulness] = useState(review.helpfulness);
   const [beenClicked, setBeenClicked] = useState(false);
   const possibleStars = 5;
@@ -17,6 +20,7 @@ function ReviewsListItem({ review, reportReview, index }) {
 
   const handleHelpfulClick = () => {
     if (!beenClicked) {
+      logInteraction('user-review-helpful-btn', [currentProduct, review.review_id]);
       const route = `${serverRoute}/reviews/${review.review_id}/helpful`;
       axios.put(route)
         .then(() => {
@@ -28,6 +32,7 @@ function ReviewsListItem({ review, reportReview, index }) {
 
   const handleReportClick = () => {
     reportReview(review.review_id, index);
+    logInteraction('user-review-report-btn', [currentProduct, review.review_id]);
   };
 
   return (
@@ -45,7 +50,14 @@ function ReviewsListItem({ review, reportReview, index }) {
           I recommend this product
         </div>
       ) : null}
-      {review.photos.length > 0 ? <ReviewPhotos photos={review.photos} /> : null}
+      {review.photos.length > 0
+        ? (
+          <ReviewPhotos
+            photos={review.photos}
+            reviewId={review.review_id}
+          />
+        )
+        : null}
       {review.response ? <SellerResponse response={review.response} /> : null}
       <span className="review-helpful">
         Helpful?&nbsp;&nbsp;

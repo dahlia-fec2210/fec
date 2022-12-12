@@ -123,7 +123,6 @@ app.post('/reviews', (req, res) => {
       res.status(201).send(data);
     })
     .catch((err) => {
-      console.log(err);
       res.status(404).send(err);
     });
 });

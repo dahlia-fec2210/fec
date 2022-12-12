@@ -1,7 +1,11 @@
 import React from 'react';
+import logInteraction from '../../logInteraction.js';
 
-export default function SelectRecommend({ setRecommend }) {
+export default function SelectRecommend({ setRecommend, productId }) {
   const handleClick = (e) => {
+    if (e.target.id !== '') {
+      logInteraction(e.target.id, [productId]);
+    }
     if (e.target.value === 'Yes') {
       setRecommend(true);
     } else {

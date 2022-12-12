@@ -9,6 +9,7 @@ import CharacteristicsInput from './input-fields/CharacteristicsInput.jsx';
 import SummaryInput from './input-fields/SummaryInput.jsx';
 import BodyInput from './input-fields/BodyInput.jsx';
 import ErrorMessage from './ErrorMessage.jsx';
+import logInteraction from '../logInteraction.js';
 
 const validate = require('./validate');
 
@@ -54,6 +55,7 @@ export default function NewReviewModal({ toggleModal, metaData, currentProduct }
 
   const submitForm = (e) => {
     e.preventDefault();
+    logInteraction(e.target.id, [currentProduct]);
     if (verifyInputs()) {
       const route = `${serverRoute}/reviews`;
       axios.post(route, {
@@ -72,21 +74,30 @@ export default function NewReviewModal({ toggleModal, metaData, currentProduct }
         });
     }
   };
+  const handleCloseModal = (e) => {
+    logInteraction(e.target.id, [currentProduct]);
+    toggleModal();
+  };
 
   return (
 
     <div className="review-modal">
       <div className="review-overlay" />
       <div className="review-modal-content">
-        <i className="fa-solid fa-xmark review-close-modal" onClick={toggleModal} />
+        <i
+          className="fa-solid fa-xmark review-close-modal"
+          id="close-new-review-btn"
+          onClick={handleCloseModal}
+        />
         <NicknameInput setNickname={setNickname} />
         <EmailInput setEmail={setEmail} />
         <SelectOverallRating
           overallRating={overallRating}
           setOverallRating={setOverallRating}
+          productId={currentProduct}
         />
         <div className="review-fancy">
-          <SelectRecommend setRecommend={setRecommend} />
+          <SelectRecommend setRecommend={setRecommend} productId={currentProduct} />
           <CharacteristicsInput
             characteristics={characteristics}
             setCharacteristics={setCharacteristics}
@@ -101,7 +112,14 @@ export default function NewReviewModal({ toggleModal, metaData, currentProduct }
         />
         <div className="review-submit-and-errors">
           {errors ? <ErrorMessage errors={errors} /> : null}
-          <button className="submit-review-button" type="submit" onClick={submitForm}>Submit Review</button>
+          <button
+            className="submit-review-button"
+            id="submit-new-review-btn"
+            type="submit"
+            onClick={submitForm}
+          >
+            Submit Review
+          </button>
         </div>
       </div>
     </div>
