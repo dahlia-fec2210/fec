@@ -1,10 +1,12 @@
 import React from 'react';
+import logInteraction from './logInteraction.js';
 
 const { useRef } = React;
-function MoreReviewsButton({ addTwoItems, bottomReviewsRef }) {
+function MoreReviewsButton({ addTwoItems, bottomReviewsRef, currentProduct }) {
   const buttonRef = useRef(null);
   const handleClick = (e) => {
     e.preventDefault();
+    logInteraction(e.target.id, [currentProduct]);
     addTwoItems();
     setTimeout(() => {
       buttonRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -13,7 +15,12 @@ function MoreReviewsButton({ addTwoItems, bottomReviewsRef }) {
   };
   return (
     <>
-      <button type="button" onClick={handleClick} className="more-reviews-btn">
+      <button
+        type="button"
+        onClick={handleClick}
+        className="more-reviews-btn"
+        id="show-more-reviews-btn"
+      >
         More Reviews
       </button>
       <div ref={buttonRef} />

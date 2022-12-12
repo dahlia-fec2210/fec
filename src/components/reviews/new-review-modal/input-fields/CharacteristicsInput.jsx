@@ -1,4 +1,5 @@
 import React from 'react';
+import logInteraction from '../../logInteraction.js';
 
 const descriptors = {
   Size: ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too big'],
@@ -17,6 +18,7 @@ export default function CharacteristicsInput({ characteristics, setCharacteristi
     const id = e.target.name;
     const { value } = e.target;
     if (id && value) {
+      logInteraction(e.target.id, [metaData.product_id]);
       setCharacteristics({
         ...characteristics,
         [id]: Number(value),
@@ -34,12 +36,15 @@ export default function CharacteristicsInput({ characteristics, setCharacteristi
             {' '}
           </div>
           <div className="review-radio-group">
-            {descriptors[charaName].map((descriptor, index) => (
-              <div key={descriptor}>
-                <input onClick={handleClick} type="radio" name={prodCharaData[charaName].id} id={charaName + descriptor} value={index + 1} />
-                <label onClick={handleClick} htmlFor={charaName + descriptor}>{descriptor}</label>
-              </div>
-            ))}
+            {descriptors[charaName].map((descriptor, index) => {
+              const id = `${charaName}-${descriptor.split(' ').join('-')}-selector`;
+              return (
+                <div key={descriptor}>
+                  <input onClick={handleClick} type="radio" name={prodCharaData[charaName].id} id={id} value={index + 1} />
+                  <label onClick={handleClick} htmlFor={id}>{descriptor}</label>
+                </div>
+              );
+            })}
           </div>
         </div>
       ))}

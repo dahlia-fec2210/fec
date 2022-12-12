@@ -144,6 +144,7 @@ function Reviews({ currentProduct }) {
               reviews={listedReviews}
               reportReview={reportReview}
               bottomReviewsRef={bottomReviewsRef}
+              currentProduct={currentProduct}
             />
             <div className="review-btns-container">
               {itemCount > listedReviews.length
@@ -152,6 +153,7 @@ function Reviews({ currentProduct }) {
                   <MoreReviewsButton
                     addTwoItems={addTwoItems}
                     bottomReviewsRef={bottomReviewsRef}
+                    currentProduct={currentProduct}
                   />
                 )}
               <button
