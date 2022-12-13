@@ -4,7 +4,7 @@ import Image from './Image.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import './overview.css';
 
-function Overview({ productId, serverRoute }) {
+function Overview({ productId, serverRoute, reviewsRef }) {
   const [productInfo, setProductInfo] = useState({});
   const [productStyles, setProductStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
@@ -100,6 +100,7 @@ function Overview({ productId, serverRoute }) {
           zoomed={zoomed}
           setSelectedThumbnail={setSelectedThumbnail}
           setCurrentMainImageIndex={setCurrentMainImageIndex}
+          reviewsRef={reviewsRef}
         />
         <div className="product-description">
           <div className="description">
