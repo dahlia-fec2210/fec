@@ -21,7 +21,7 @@ function ReviewsListItem({
   const handleHelpfulClick = () => {
     if (!beenClicked) {
       logInteraction('user-review-helpful-btn', [currentProduct, review.review_id]);
-      const route = `${serverRoute}/reviews/${review.review_id}/helpful`;
+      const route = `/reviews/${review.review_id}/helpful`;
       axios.put(route)
         .then(() => {
           setHelpfulness(helpfulness + 1);

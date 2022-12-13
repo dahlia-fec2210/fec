@@ -26,7 +26,7 @@ function Reviews({ currentProduct, reviewsRef }) {
   const pageNumber = 1;
   const pageItemCount = 1000;
 
-  const fetchReviews = (productId, page, count, sort) => axios.get(`${serverRoute}/reviews/`, {
+  const fetchReviews = (productId, page, count, sort) => axios.get('/reviews/', {
     params: {
       product_id: productId,
       page,
@@ -35,7 +35,7 @@ function Reviews({ currentProduct, reviewsRef }) {
     },
   });
 
-  const fetchMetaData = (productId) => axios.get(`${serverRoute}/reviews/meta`, {
+  const fetchMetaData = (productId) => axios.get('/reviews/meta', {
     params: {
       product_id: productId,
     },
@@ -63,7 +63,7 @@ function Reviews({ currentProduct, reviewsRef }) {
   };
 
   const reportReview = (reviewId, index) => {
-    const route = `${serverRoute}/reviews/${reviewId}/report`;
+    const route = `/reviews/${reviewId}/report`;
     axios.put(route)
       .then(() => {
         const newlistedReviews = listedReviews;

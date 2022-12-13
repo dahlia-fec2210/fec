@@ -57,7 +57,7 @@ export default function NewReviewModal({ toggleModal, metaData, currentProduct }
     e.preventDefault();
     logInteraction(e.target.id, [currentProduct]);
     if (verifyInputs()) {
-      const route = `${serverRoute}/reviews`;
+      const route = `/reviews`;
       axios.post(route, {
         summary,
         body,

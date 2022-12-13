@@ -35,7 +35,7 @@ function AddQuestionModal({ closeModal, currentProductId }) {
   };
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${currentProductId}`)
+    axios.get(`/products/${currentProductId}`)
       .then((result) => {
         setProductName(result.data.name);
       });
@@ -54,7 +54,7 @@ function AddQuestionModal({ closeModal, currentProductId }) {
       },
     });
     if (verifyErrors()) {
-      axios.post(`${serverRoute}/qa/questions/`, newQuestion)
+      axios.post('/qa/questions/', newQuestion)
         .then((result) => console.log(result));
     }
   };

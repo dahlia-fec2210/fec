@@ -48,14 +48,14 @@ function RelatedItems({
   function shiftRight(event) {
     event.preventDefault();
     setLeft(left + 272);
-    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
+    axios.post('/interactions', { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   function shiftLeft(event) {
     event.preventDefault();
     event.preventDefault();
     setLeft(left - 272);
-    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
+    axios.post('/interactions', { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   if (relatedProducts.length > 0) {

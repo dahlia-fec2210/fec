@@ -39,7 +39,7 @@ function Questions({ currentProduct }) {
     return 0;
   };
 
-  const fetchAllQuestions = (productId) => axios.get(`${serverRoute}/qa/questions`, {
+  const fetchAllQuestions = (productId) => axios.get('/qa/questions', {
     params: {
       product_id: productId,
       count: 1000,

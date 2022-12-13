@@ -21,14 +21,14 @@ function Photo({ product, productData, changeProduct }) {
   function shiftRight(event) {
     event.preventDefault();
     setLeft(left + 60.5);
-    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
+    axios.post('/interactions', { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   function shiftLeft(event) {
     event.preventDefault();
     event.preventDefault();
     setLeft(left - 60.5);
-    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
+    axios.post('/interactions', { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   if (productData) {
@@ -44,7 +44,7 @@ function Photo({ product, productData, changeProduct }) {
                   onClick={(event) => {
                     event.stopPropagation();
                     setPhotoIndex(index);
-                    axios.post(`${serverRoute}/interactions`, { element: `related-thumbnail-photo:${product}, ${thumbnail}`, widget: 'Related Products', time: new Date().toTimeString() });
+                    axios.post('/interactions', { element: `related-thumbnail-photo:${product}, ${thumbnail}`, widget: 'Related Products', time: new Date().toTimeString() });
                   }}
                   src={productData.thumbnails[index]}
                   alt=""
