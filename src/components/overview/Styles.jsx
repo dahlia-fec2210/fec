@@ -4,10 +4,10 @@
 import React from 'react';
 
 function Styles({
-  index, style, selected, handleStyleClick,
+  index, style, selectedStyle, handleStyleClick,
 }) {
   let indicator;
-  if (index === selected) {
+  if (index === selectedStyle) {
     indicator = <div className="overlay" />;
   } else {
     indicator = null;
