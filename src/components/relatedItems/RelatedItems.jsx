@@ -26,7 +26,7 @@ function RelatedItems({
     setLeft(0);
     const cache = JSON.parse(localStorage.getItem('relatedProducts')) || {};
     if (!cache[currentProduct]) {
-      axios.get(`${serverRoute}/products/${currentProduct}/related`)
+      axios.get(`/products/${currentProduct}/related`)
         .then((data) => {
           const uniqueProducts = [];
           const products = data.data;
