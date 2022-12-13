@@ -20,9 +20,9 @@ function App() {
     <div>
       <h1>Hello Dahlia</h1>
       <Overview productId={currentProduct} serverRoute={serverRoute} />
-      { currentProduct === null ? <div>Loading...</div>
-        : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
-      { currentProduct === {} ? (
+      {/* { currentProduct === null ? <div>Loading...</div>
+        : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> } */}
+      {/* { currentProduct === {} ? (
         <RotatingLines
           strokeColor="grey"
           strokeWidth="5"
@@ -36,9 +36,9 @@ function App() {
             currentProduct={currentProduct}
             setCurrentProduct={setCurrentProduct}
           />
-        ) }
-      { currentProduct === null ? <div>Loading...</div>
-        : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+        ) } */}
+      {/* { currentProduct === null ? <div>Loading...</div>
+        : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> } */}
     </div>
   );
 }
