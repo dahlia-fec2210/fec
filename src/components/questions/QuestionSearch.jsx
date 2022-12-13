@@ -28,7 +28,8 @@ function QuestionSearch({ handleSearch }) {
   return (
     <div className="topnav">
       <form className="wrap" onSubmit={submitSearch}>
-        <div className="search-bar">
+        {/* <div className="search-bar"> */}
+        <div>
           <input type="text" className="searchTerm" placeholder="Have a question? Search for answers..." value={searchingQuestions} onChange={enterSearch} />
           <button className="search-button">
             Search

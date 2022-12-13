@@ -163,7 +163,8 @@
   width: 100%;
   position: center;
   display: flex;
-  padding-bottom: 20px;
+  padding-bottom: 18px;
+  /* margin-bottom: 15px; */
 }
 
 .searchTerm {
@@ -175,6 +176,7 @@
   border-radius: 5px 0 0 5px;
   outline: none;
   color: #9dbfaf;
+  margin-bottom: 15px;
 }
 
 .wrap {
@@ -203,4 +205,10 @@
 .general-button:hover {
   background-color: #f7f7f7;
   color: #739086;
+}
+
+.search-button {
+  border-radius:5px;
+  margin-top: 2px;
+
 }
