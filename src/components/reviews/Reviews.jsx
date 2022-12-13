@@ -22,6 +22,7 @@ function Reviews({ currentProduct, reviewsRef }) {
   const [filteredReviews, setFilteredReviews] = useState(null);
 
   const bottomReviewsRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const pageNumber = 1;
   const pageItemCount = 1000;
@@ -153,6 +154,7 @@ function Reviews({ currentProduct, reviewsRef }) {
                   <MoreReviewsButton
                     addTwoItems={addTwoItems}
                     bottomReviewsRef={bottomReviewsRef}
+                    buttonRef={buttonRef}
                     currentProduct={currentProduct}
                   />
                 )}
@@ -174,6 +176,7 @@ function Reviews({ currentProduct, reviewsRef }) {
             </div>
           </div>
         </div>
+        <div ref={buttonRef} />
         <div className="bottom-padding">
           {' '}
         </div>
