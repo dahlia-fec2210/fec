@@ -1,7 +1,7 @@
 /* OVERVIEW *************************************/
 
 .overview-container {
-  width: 1070px;
+  width: 1100px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -225,10 +225,10 @@
   display: none;
   border-radius: 50%;
   display: block;
-  background: rgba(125, 172, 145, 0.8);
+  background: rgba(125, 172, 145, 0.6);
 }
 
-.thumbnail-overlay {
+/* .thumbnail-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -242,7 +242,7 @@
   border: 1px solid white;
   object-fit: cover;
   cursor: pointer;
-}
+} */
 
 .styles-selector {
   display: flex;
@@ -303,18 +303,22 @@
 
 .product-description {
   display: flex;
-  width: 750px;
+  width: 950px;
   margin: 0 auto;
   margin-top: 40px;
+  margin-bottom: 30px;
+  /* margin-left: 80px; */
+  /* margin-right: 0; */
 }
 
 .description {
   border-right: 3px solid #000;
   padding-right: 10px;
+  /* width: 60%; */
 }
 
 ul {
   list-style: none;
-  width: 40%;
+  width: 50%;
   padding-top: 15px;
 }

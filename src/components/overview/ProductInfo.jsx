@@ -7,6 +7,7 @@ import DisplayStar from '../common/Star.jsx';
 function ProductInfo({
   productCategory, productName, productRating, originalPrice, salePrice,
   productStyles, currentStyleSkus, setCurrentStylePhotos, currentStyle, expanded, zoomed,
+  setSelectedThumbnail, setCurrentMainImageIndex,
 }) {
   // console.log('productStyles in ProductInfo:', productStyles);
   return (
@@ -25,6 +26,8 @@ function ProductInfo({
       <StyleSelector
         productStyles={productStyles}
         setCurrentStylePhotos={setCurrentStylePhotos}
+        setSelectedThumbnail={setSelectedThumbnail}
+        setCurrentMainImageIndex={setCurrentMainImageIndex}
       />
       <AddToCart currentStyle={currentStyle} currentStyleSkus={currentStyleSkus} />
       <h3>Share on Social Media</h3>

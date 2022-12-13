@@ -9,39 +9,40 @@ import MainImage from './MainImage.jsx';
 import ImageSet from './ImageSet.jsx';
 
 function Image({
-  currentStylePhotos, expanded, setExpanded, zoomed, setZoomed,
+  currentStylePhotos, expanded, setExpanded, zoomed, setZoomed, selectedThumbnail,
+  setSelectedThumbnail, currentMainImageIndex, setCurrentMainImageIndex,
 }) {
   // console.log('current style photos in Image comp:', currentStylePhotos);
 
-  const [currentMainImageIndex, setCurrentMainImageIndex] = useState(0);
   const { length } = currentStylePhotos;
-  const [selectedThumbnail, setSelectedThumbnail] = useState(0);
   const [imageSetCarousel, setImageSetCarousel] = useState([0, 1, 2, 3, 4, 5]);
 
   const prevImage = () => {
-    if (currentMainImageIndex === 0) {
-      // do nothing
+    if (currentMainImageIndex !== 0) {
+      setCurrentMainImageIndex(currentMainImageIndex - 1);
+      setSelectedThumbnail(currentMainImageIndex - 1);
     }
-    setCurrentMainImageIndex(currentMainImageIndex - 1);
   };
 
   const shiftUp = () => {
-    if (currentMainImageIndex === 0) {
-      // do nothing
-    }
-    setCurrentMainImageIndex(currentMainImageIndex - 1);
-    if (imageSetCarousel[0] > 0) {
-      const newCarousel = imageSetCarousel.map((n) => n - 1);
-      setImageSetCarousel(newCarousel);
+    if (currentMainImageIndex !== 0) {
+      setCurrentMainImageIndex(currentMainImageIndex - 1);
+      setSelectedThumbnail(currentMainImageIndex - 1);
+      if (imageSetCarousel[0] > 0) {
+        const newCarousel = imageSetCarousel.map((n) => n - 1);
+        setImageSetCarousel(newCarousel);
+      }
     }
   };
 
   const nextImage = () => {
     setCurrentMainImageIndex(currentMainImageIndex === length - 1 ? 0 : currentMainImageIndex + 1);
+    setSelectedThumbnail(currentMainImageIndex === length - 1 ? 0 : currentMainImageIndex + 1);
   };
 
   const shiftDown = () => {
     setCurrentMainImageIndex(currentMainImageIndex === length - 1 ? 0 : currentMainImageIndex + 1);
+    setSelectedThumbnail(currentMainImageIndex === length - 1 ? 0 : currentMainImageIndex + 1);
     if (imageSetCarousel[imageSetCarousel.length - 1] < currentStylePhotos.length - 1) {
       const newCarousel = imageSetCarousel.map((n) => n + 1);
       setImageSetCarousel(newCarousel);
@@ -49,7 +50,7 @@ function Image({
   };
 
   const handleThumbnailClick = (index) => {
-    console.log('index in handleThumbnailClick:', index);
+    // console.log('index in handleThumbnailClick:', index);
     setSelectedThumbnail(index);
     setCurrentMainImageIndex(index);
   };
@@ -88,6 +89,10 @@ function Image({
   } else {
     styleImagesClass = 'expand-style-images';
   }
+
+  console.log('==================================================');
+  console.log('selectedThumbnail:', selectedThumbnail);
+  console.log('currentMainImageIndex:', currentMainImageIndex);
 
   return (
     <div className={styleImagesClass}>
