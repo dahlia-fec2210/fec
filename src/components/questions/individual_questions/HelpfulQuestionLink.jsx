@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './AddAnswer.css';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
@@ -20,14 +21,21 @@ function HelpfulQuestionLink({ question, helpfulQuestions, setHelpfulQuestions }
     localStorage.setItem('helpfulQuestions', JSON.stringify(currentHelpfulQuestions));
   };
 
+  useEffect(() => {
+    setQuestionHelpfulness(question.question_helpfulness);
+  }, [question.question_helpfulness]);
+
   return (
     <div>
-      <div onClick={helpfulClicked}>
-        Helpful?
-        {' '}
-        Yes
-        {' ('}
-        {questionHelpfulness}
+      <div className="helpful-question-button" onClick={helpfulClicked}>
+        Helpful?&nbsp;&nbsp;
+        <div className="yes-question-helpful">
+          Yes
+          {' ('}
+        </div>
+        <span className="helpful-number">
+          {questionHelpfulness}
+        </span>
         {') '}
       </div>
     </div>

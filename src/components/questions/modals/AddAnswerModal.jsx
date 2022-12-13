@@ -76,34 +76,38 @@ function AddQuestionModal({ closeModal, question, currentProductId }) {
         <div className="titleCloseBtn">
           <button onClick={() => closeModal(false)}> X </button>
         </div>
-        <div className="title">Submit your Answer</div>
-        <div className="subtitle">
+        <div className="modalTitle">Submit your Answer</div>
+        <div className="modalSubtitle">
           {productName}
           {': '}
           {question.question_body}
         </div>
         <form onSubmit={submitForm}>
-          <label>
-            *Answer:
-            <textarea cols="48" rows="8" name="body" type="text" maxLength="1000" placeholder="Enter your question here..." required="" value={newAnswer.body} onChange={typing} />
+          <label className="modalAnswer">
+            <span className="modalAnswerLabel">
+              *Answer:
+            </span>
+            <textarea cols="48" rows="8" name="body" type="text" maxLength="1000" placeholder="Enter your question here..." required="" value={newAnswer.body} className="answerTextBox" onChange={typing} />
           </label>
-          <label>
+          <label className="modalAnswer">
             *Nickname:
-            <input name="name" type="text" maxLength="60" placeholder="Example: jack543!" required="" value={newAnswer.name} onChange={typing} />
+            <input className="answerOtherInputs" name="name" type="text" maxLength="60" placeholder="Example: jack543!" required="" value={newAnswer.name} onChange={typing} />
           </label>
-          <small>For authentication reasons, do not use your full name or email address</small>
-          <label>
-            Email:
-            <input name="email" type="email" maxLength="60" placeholder="jack@email.com" required="" value={newAnswer.email} onChange={typing} />
+          <small className="authenticationMessage">For authentication reasons, do not use your full name or email address</small>
+          <label className="modalAnswer">
+            *Email:
+            <input className="answerOtherInputs" name="email" type="email" maxLength="60" placeholder="jack@email.com" required="" value={newAnswer.email} onChange={typing} />
           </label>
-          <small>For authentication reasons, you will not be emailed</small>
-          <label>
+          <small className="authenticationMessage">For authentication reasons, you will not be emailed</small>
+          <label className="modalSubtitle">
             Photos:
-            <CloudinaryWidget setImageUrls={setImageUrls} />
+            <div className="insertPhoto">
+              <CloudinaryWidget setImageUrls={setImageUrls} />
+            </div>
             {/* <input name="photos" type="array" maxLength="1000" placeholder="example@example.com" value={newAnswer.photos} onChange={typing} /> */}
           </label>
           <div className="submit-button-answer">
-            <button>Submit</button>
+            <button className="general-button answerModalSubmit">Submit</button>
             {errors ? <AnswerErrorMessage errors={errors} /> : null}
           </div>
         </form>

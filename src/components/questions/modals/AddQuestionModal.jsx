@@ -68,29 +68,31 @@ function AddQuestionModal({ closeModal, currentProductId }) {
         <div className="titleCloseBtn">
           <button onClick={() => closeModal(false)}> X </button>
         </div>
-        <div className="title">Ask Your Question</div>
-        <div className="subtitle">
+        <div className="modalTitle">Ask Your Question</div>
+        <div className="modalSubtitle">
           About the
           {' '}
           {productName}
           {' '}
         </div>
         <form onSubmit={submitForm}>
-          <label>
-            Question:
-            <textarea cols="48" rows="8" name="body" type="text" maxLength="1000" placeholder="Enter your question here..." required="" value={newQuestion.question} onChange={typing} />
+          <label className="modalAnswer">
+            <span className="modalAnswerLabel">
+              *Question:
+            </span>
+            <textarea className="answerTextBox" cols="48" rows="8" name="body" type="text" maxLength="1000" placeholder="Enter your question here..." required="" value={newQuestion.question} onChange={typing} />
           </label>
-          <label>
-            Nickname:
-            <input name="name" type="text" maxLength="60" placeholder="Example: jackson11!" required="" value={newQuestion.nickname} onChange={typing} />
+          <label className="modalAnswer">
+            *Nickname:
+            <input className="answerOtherInputs" name="name" type="text" maxLength="60" placeholder="Example: jackson11!" required="" value={newQuestion.nickname} onChange={typing} />
           </label>
-          <small>For authentication reasons, you will not be emailed</small>
-          <label>
+          <small className="authenticationMessage">For authentication reasons, you will not be emailed</small>
+          <label className="modalAnswer">
             Email:
-            <input name="email" type="email" maxLength="60" placeholder="example@example.com" required="" value={newQuestion.email} onChange={typing} />
+            <input className="answerOtherInputs" name="email" type="email" maxLength="60" placeholder="example@example.com" required="" value={newQuestion.email} onChange={typing} />
           </label>
-          <div className="submit-button">
-            <button>Submit</button>
+          <div className="submit-button-answer">
+            <button className="general-button answerModalSubmit">Submit</button>
             {errors ? <QuestionErrorMessage errors={errors} /> : null}
           </div>
         </form>

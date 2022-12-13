@@ -85,32 +85,36 @@ function Questions({ currentProduct }) {
   };
 
   return (
-    <div>
-      <h1>Questions</h1>
-      <div className="question-list">
-        <QuestionSearch handleSearch={searchingQuestion} />
-        <QuestionEntry
-          questions={questionsList}
-          currentProductId={currentProduct}
-          helpfulAnswers={helpfulAnswers}
-          setHelpfulAnswers={setHelpfulAnswers}
-          helpfulQuestions={helpfulQuestions}
-          setHelpfulQuestions={setHelpfulQuestions}
-        />
-      </div>
-      {listCount > questionsList.length ? <CollapseQuestionButton />
-        : <LoadQuestionButton handleClick={addTwoQuestions} />}
-      <div>
-        <button
-          className="openAddQuestionModalBtn"
-          onClick={() => {
-            setOpenAddQuestionModal(true);
-          }}
-        >
-          Add a Question
+    <div className="questions-container">
+      <div className="questions-list-container">
+        <h1 className="questions-section-title">Questions</h1>
+        <div>
+          <QuestionSearch handleSearch={searchingQuestion} />
+          <QuestionEntry
+            questions={questionsList}
+            currentProductId={currentProduct}
+            helpfulAnswers={helpfulAnswers}
+            setHelpfulAnswers={setHelpfulAnswers}
+            helpfulQuestions={helpfulQuestions}
+            setHelpfulQuestions={setHelpfulQuestions}
+          />
+        </div>
+        <div className="questions-buttons">
+          {listCount > questionsList.length ? <CollapseQuestionButton />
+            : <LoadQuestionButton handleClick={addTwoQuestions} />}
+        </div>
+        <div>
+          <button
+            className="general-button openAddQuestionModalBtn"
+            onClick={() => {
+              setOpenAddQuestionModal(true);
+            }}
+          >
+            Add a Question
 
-        </button>
-        {openAddQuestionModal && <AddQuestionModal closeModal={setOpenAddQuestionModal} currentProductId={currentProduct} />}
+          </button>
+          {openAddQuestionModal && <AddQuestionModal closeModal={setOpenAddQuestionModal} currentProductId={currentProduct} />}
+        </div>
       </div>
     </div>
   );

@@ -12,7 +12,6 @@ function HelpfulAnswerLink({ answer, helpfulAnswers, setHelpfulAnswers }) {
     const cache = JSON.parse(localStorage.getItem('helpfulAnswers'));
     const currentHelpfulAnswers = helpfulAnswers;
     if (!(helpfulAnswers.includes(answer))) {
-      console.log(cache, 'is cache inside line 23');
       incrementHelpfulness();
       setAnswerHelpfulness(answerHelpfulness + 1);
     }
@@ -22,15 +21,24 @@ function HelpfulAnswerLink({ answer, helpfulAnswers, setHelpfulAnswers }) {
     console.log(helpfulAnswers.includes(answer), '6974');
   };
 
+  useEffect(() => {
+    setAnswerHelpfulness(answer.helpfulness);
+  }, [answer.helpfulness]);
+
   return (
-    <div>
+    <div className="answer-helpful-link">
       <div onClick={helpfulClicked}>
         Helpful?
         {' '}
-        Yes
+        <span className="answer-helpful-yes-button">
+          Yes
+        </span>
         {' ('}
-        {answerHelpfulness}
+        <span className="helpful-number">
+          {answerHelpfulness}
+        </span>
         {') '}
+&nbsp;&nbsp;|&nbsp;&nbsp;
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ function App() {
   return (
     <div>
       <h1>Hello Dahlia</h1>
-      <Overview productId={currentProduct} serverRoute={serverRoute} />
+      {/* <Overview productId={currentProduct} serverRoute={serverRoute} /> */}
       { currentProduct === {} ? (
         <RotatingLines
           strokeColor="grey"

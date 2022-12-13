@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './questions.css';
 
 function QuestionSearch({ handleSearch }) {
   const [searchingQuestions, setSearchingQuestions] = useState('');
@@ -26,11 +27,13 @@ function QuestionSearch({ handleSearch }) {
 
   return (
     <div className="topnav">
-      <form onSubmit={submitSearch}>
-        <input type="text" placeholder="Have a question? Search for answers..." value={searchingQuestions} onChange={enterSearch} />
-        <button>
-          Search
-        </button>
+      <form className="wrap" onSubmit={submitSearch}>
+        <div className="search-bar">
+          <input type="text" className="searchTerm" placeholder="Have a question? Search for answers..." value={searchingQuestions} onChange={enterSearch} />
+          <button className="search-button">
+            Search
+          </button>
+        </div>
       </form>
     </div>
   );

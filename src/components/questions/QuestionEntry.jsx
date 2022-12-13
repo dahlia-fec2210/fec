@@ -13,7 +13,7 @@ function QuestionEntry({
   console.log('questions', questions);
   if (questions.length > 0) {
     return (
-      <div>
+      <div className="questions-entry">
         {questions.map((question, index) => (
           <QuestionEntryItem
             question={question}
