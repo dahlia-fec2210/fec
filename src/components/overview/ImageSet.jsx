@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 
 function ImageSet({
+  // eslint-disable-next-line max-len
   imageSetCarousel, handleThumbnailClick, currentStylePhotos, selectedThumbnail,
 }) {
   // const handleClick = (index) => {
@@ -29,9 +30,9 @@ function ImageSet({
   //     border: 'border: 1px solid white;',
   //   };
   // }
-  const [selectedIndex, setSelectedIndex] = useState(null);
+  // const [selectedIndex, setSelectedIndex] = useState(null);
   const handleClick = (index) => {
-    setSelectedIndex(index);
+    // setSelectedIndex(index);
     handleThumbnailClick(index);
   };
 
@@ -43,14 +44,19 @@ function ImageSet({
     border: '1px solid white',
   };
 
-  console.log('selected index is at 0:', selectedIndex === imageSetCarousel[0]);
+  // console.log('==============================================================================');
+  // console.log('currentMainImageIndex:', currentMainImageIndex);
+  // console.log('selectedThumbnail:', selectedThumbnail);
+  // console.log('imageSetCarousel:', imageSetCarousel);
+  // console.log('selectedImageCondition0:', selectedImageCondition0);
+  // console.log('selectedImageCondition1:', selectedImageCondition1);
 
   return (
     <div className="image-thumbnails">
       <div className="thumbnails-container">
         <img
-          className="thumbnails thumbnail-0"
-          style={selectedIndex === imageSetCarousel[0] ? selectedThumbnailStyle : thumbnailStyle}
+          className="thumbnails"
+          style={selectedThumbnail === imageSetCarousel[0] ? selectedThumbnailStyle : thumbnailStyle}
           src={currentStylePhotos[imageSetCarousel[0]].thumbnail_url}
           alt=""
           onClick={() => handleClick(imageSetCarousel[0])}
@@ -58,18 +64,17 @@ function ImageSet({
       </div>
       <div className="thumbnails-container">
         <img
-          className="thumbnails thumbnail-1"
-          style={selectedIndex === imageSetCarousel[1] ? selectedThumbnailStyle : thumbnailStyle}
+          className="thumbnails"
+          style={selectedThumbnail === imageSetCarousel[1] ? selectedThumbnailStyle : thumbnailStyle}
           src={currentStylePhotos[imageSetCarousel[1]].thumbnail_url}
           alt=""
           onClick={() => handleClick(imageSetCarousel[1])}
         />
-        {/* {indicator} */}
       </div>
       <div className="thumbnails-container">
         <img
-          className="thumbnails thumbnail-2"
-          style={selectedIndex === imageSetCarousel[2] ? selectedThumbnailStyle : thumbnailStyle}
+          className="thumbnails"
+          style={selectedThumbnail === imageSetCarousel[2] ? selectedThumbnailStyle : thumbnailStyle}
           src={currentStylePhotos[imageSetCarousel[2]].thumbnail_url}
           alt=""
           onClick={() => handleClick(imageSetCarousel[2])}
@@ -77,33 +82,30 @@ function ImageSet({
       </div>
       <div className="thumbnails-container">
         <img
-          className="thumbnails thumbnail-3"
-          style={selectedIndex === imageSetCarousel[3] ? selectedThumbnailStyle : thumbnailStyle}
+          className="thumbnails"
+          style={selectedThumbnail === imageSetCarousel[3] ? selectedThumbnailStyle : thumbnailStyle}
           src={currentStylePhotos[imageSetCarousel[3]].thumbnail_url}
           alt=""
           onClick={() => handleClick(imageSetCarousel[3])}
         />
-        {/* {indicator} */}
       </div>
       <div className="thumbnails-container">
         <img
-          className="thumbnails thumbnail-4"
-          style={selectedIndex === imageSetCarousel[4] ? selectedThumbnailStyle : thumbnailStyle}
+          className="thumbnails"
+          style={selectedThumbnail === imageSetCarousel[4] ? selectedThumbnailStyle : thumbnailStyle}
           src={currentStylePhotos[imageSetCarousel[4]].thumbnail_url}
           alt=""
           onClick={() => handleClick(imageSetCarousel[4])}
         />
-        {/* {indicator} */}
       </div>
       <div className="thumbnails-container">
         <img
-          className="thumbnails thumbnail-5"
-          style={selectedIndex === imageSetCarousel[5] ? selectedThumbnailStyle : thumbnailStyle}
+          className="thumbnails"
+          style={selectedThumbnail === imageSetCarousel[5] ? selectedThumbnailStyle : thumbnailStyle}
           src={currentStylePhotos[imageSetCarousel[5]].thumbnail_url}
           alt=""
           onClick={() => handleClick(imageSetCarousel[5])}
         />
-        {/* {indicator} */}
       </div>
     </div>
   );
