@@ -9,13 +9,12 @@ import MainImage from './MainImage.jsx';
 import ImageSet from './ImageSet.jsx';
 
 function Image({
-  currentStylePhotos, expanded, setExpanded, zoomed, setZoomed,
+  currentStylePhotos, expanded, setExpanded, zoomed, setZoomed, selectedThumbnail,
+  setSelectedThumbnail, currentMainImageIndex, setCurrentMainImageIndex,
 }) {
   // console.log('current style photos in Image comp:', currentStylePhotos);
 
-  const [currentMainImageIndex, setCurrentMainImageIndex] = useState(0);
   const { length } = currentStylePhotos;
-  const [selectedThumbnail, setSelectedThumbnail] = useState(0);
   const [imageSetCarousel, setImageSetCarousel] = useState([0, 1, 2, 3, 4, 5]);
 
   const prevImage = () => {
@@ -90,6 +89,10 @@ function Image({
   } else {
     styleImagesClass = 'expand-style-images';
   }
+
+  console.log('==================================================');
+  console.log('selectedThumbnail:', selectedThumbnail);
+  console.log('currentMainImageIndex:', currentMainImageIndex);
 
   return (
     <div className={styleImagesClass}>
