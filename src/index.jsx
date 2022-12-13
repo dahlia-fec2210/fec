@@ -57,7 +57,7 @@ function App() {
 
       </div>
       <div className="widgets">
-        <Overview productId={currentProduct} serverRoute={serverRoute} />
+        {/* <Overview productId={currentProduct} serverRoute={serverRoute} /> */}
         { currentProduct === {} ? (
           <RotatingLines
             strokeColor="grey"
@@ -77,8 +77,6 @@ function App() {
           : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
         { currentProduct === null ? <div>Loading...</div>
           : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
-        { currentProduct === null ? <div>Loading...</div>
-          : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
       </div>
     </div>
   );
