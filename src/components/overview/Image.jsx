@@ -15,7 +15,7 @@ function Image({
 
   const [currentMainImageIndex, setCurrentMainImageIndex] = useState(0);
   const { length } = currentStylePhotos;
-  const [selected, setSelected] = useState(0);
+  const [selectedThumbnail, setSelectedThumbnail] = useState(0);
   const [imageSetCarousel, setImageSetCarousel] = useState([0, 1, 2, 3, 4, 5]);
 
   const prevImage = () => {
@@ -49,7 +49,8 @@ function Image({
   };
 
   const handleThumbnailClick = (index) => {
-    setSelected(index);
+    console.log('index in handleThumbnailClick:', index);
+    setSelectedThumbnail(index);
     setCurrentMainImageIndex(index);
   };
 
@@ -81,10 +82,18 @@ function Image({
     rightArrow = null;
   }
 
+  let styleImagesClass;
+  if (expanded === false && zoomed === false) {
+    styleImagesClass = 'style-images';
+  } else {
+    styleImagesClass = 'expand-style-images';
+  }
+
   return (
-    <div className={expanded === false && zoomed === false ? 'style-images' : 'expand-style-images'}>
+    <div className={styleImagesClass}>
+      {styleImagesClass === 'expand-style-images' ? <span className="exit-expanded-view" onClick={() => { setZoomed(false); setExpanded(false); }}>X</span> : null}
       <div className={expanded === false && zoomed === false ? 'main-carousel' : 'expand-main-carousel'}>
-        {leftArrow}
+        {zoomed === false ? leftArrow : null}
         <div className="main-set">
           {currentStylePhotos.map((photo, i) => (
             <div className={i === currentMainImageIndex ? 'slide-active' : 'slide'} key={i}>
@@ -101,7 +110,7 @@ function Image({
             </div>
           ))}
         </div>
-        {rightArrow}
+        {zoomed === false ? rightArrow : null}
       </div>
 
       {zoomed === false ? (
@@ -109,7 +118,7 @@ function Image({
           {upArrow}
           <ImageSet
             currentStylePhotos={currentStylePhotos}
-            selected={selected}
+            selectedThumbnail={selectedThumbnail}
             imageSetCarousel={imageSetCarousel}
             handleThumbnailClick={handleThumbnailClick}
           />
