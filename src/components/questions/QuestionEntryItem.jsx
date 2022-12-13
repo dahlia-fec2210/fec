@@ -11,7 +11,9 @@ import AddAnswer from './individual_questions/AddAnswer.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function QuestionEntryItem({ question, currentProductId }) {
+function QuestionEntryItem({
+  question, currentProductId, helpfulAnswers, setHelpfulAnswers, helpfulQuestions, setHelpfulQuestions,
+}) {
   const [allAnswers, setAllAnswers] = useState([]);
   const [answersList, setAnswersList] = useState([]);
   // const [isLoading, setIsLoading] = useState(true);
@@ -55,26 +57,30 @@ function QuestionEntryItem({ question, currentProductId }) {
   useEffect(() => {
     fetchAllAnswers(question.question_id)
       .then((answersArr) => {
+        console.log(answersArr.slice(0, 2), 'in QuestionEntryItem');
         setAnswersList(answersArr.slice(0, 2));
         setListCount(2);
       });
   }, [question]);
 
   return (
-    <div className="question">
-      <div>
-        Q:
-        {' '}
-        {question.question_body}
-        <AddAnswer question={question} currentProductId={currentProductId} />
-        {/* <div>
-          {question.asker_name}
-        </div> */}
-        <HelpfulQuestionLink question={question} />
+    <div className="questions-entry-item">
+      <div className="question-entry-body">
+        <div className="question-entry-body-question">
+          Q:
+          {' '}
+          {question.question_body}
+        </div>
+        <div className="question-entry-addanswer-button">
+          <HelpfulQuestionLink question={question} helpfulQuestions={helpfulQuestions} setHelpfulQuestions={setHelpfulQuestions} />
+          <AddAnswer question={question} currentProductId={currentProductId} />
+        </div>
       </div>
       {/* {answersList && answersList.map((individualA, index) => <Answer key={index} answer={individualA} />)} */}
-      <AnswerList answers={answersList} />
-      {listCount > allAnswers.length ? <CollapseAnswerButton /> : <LoadAnswerButton handleClick={addTwoQuestions} />}
+      <AnswerList answers={answersList} helpfulAnswers={helpfulAnswers} setHelpfulAnswers={setHelpfulAnswers} />
+      <div className="question-entry-more-answers">
+        {listCount > allAnswers.length ? <CollapseAnswerButton /> : <LoadAnswerButton handleClick={addTwoQuestions} />}
+      </div>
     </div>
   );
 }

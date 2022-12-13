@@ -6,28 +6,14 @@ import CharacteristicBreakdown from './CharacteristicBreakdown.jsx';
 export default function ProductBreakdown({ metaData, addFilter }) {
   return (
     <div className="review-pb-container">
+      <div className="section-title">RATINGS & REVIEWS</div>
       <RatingRecommend metaData={metaData} />
-      <RatingBreakdown ratings={metaData.ratings} addFilter={addFilter} />
+      <RatingBreakdown
+        ratings={metaData.ratings}
+        addFilter={addFilter}
+        currentProduct={metaData.product_id}
+      />
       <CharacteristicBreakdown characteristics={metaData.characteristics} />
     </div>
   );
 }
-
-// const metadata = {
-//   characteristics: {
-//     Comfort: {
-//       id: 125054,
-//       value: '3.63636363634',
-//     },
-//   },
-//   product_id: '37317',
-//   ratings: {
-//     1: '2',
-//     2: '2',
-//   },
-//   recommended: {
-//     false: '4',
-//     true: '59',
-//   },
-
-// };

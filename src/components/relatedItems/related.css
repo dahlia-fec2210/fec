@@ -10,22 +10,40 @@ body {
 
 .related-heading {
   text-transform: uppercase;
+  margin: 0;
 }
 
 .related-carousel {
   display: flex;
-  overflow: hidden;
   gap: 20px;
+  width: 1070px;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.outfit-row {
+  display: flex;
+  padding: 10px;
+  width: 1080px;
+}
+
+.outfit-carousel {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  height: 365px;
+  padding-left: 20px;
 }
 
 .related-product-card {
-  border: 1px solid black;
-  border-radius: 4px;
+  border: 2px solid #5e8e6f;
+  background-color: white;
+  border-radius: 5px;
   min-width: 250px;
   max-width: 250px;
   height: 350px;
   position: relative;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .related-buttons {
@@ -44,7 +62,7 @@ body {
   height: 250px;
   object-fit: cover;
   border-radius: 4px 4px 0 0;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid #5e8e6f;
   z-index: 1;
 }
 
@@ -94,7 +112,7 @@ body {
 }
 
 .related-circle {
-  color: darkgray;
+  color: #92ae9f;
 }
 
 .related-star {
@@ -103,25 +121,39 @@ body {
 }
 
 .related-star:hover {
-  color: black;
+  color: #5e8e6f;
 }
 
 .related-comparison-modal {
-  border: 1px solid black;
+  border: 1px solid #5e8e6f;
   border-radius: 4px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  width: 600px;
+  width: 750px;
   padding: 20px;
   position: absolute;
   background-color: white;
   margin: 0 auto;
-  top: 310px;
-  left: 495px;
-  z-index: 1;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
+}
+
+.related-modal-overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background: rgba(49,49,49,0.8);
+  z-index: 101;
 }
 
 .related-table {
   width: 100%;
+  table-layout: fixed;
 }
 
 .related-table td {
@@ -129,16 +161,15 @@ body {
 }
 
 .related-table-container {
-  height: 150px;
-  overflow-y: scroll;
-  border: 1px solid black;
+  height: auto;
+  border: 1px solid #5e8e6f;
   border-radius: 4px;
 }
 
 .related-comparison-stack {
   position: absolute;
   top: 12px;
-  left: 590px;
+  left: 740px;
 }
 
 .related-comparison-stack:hover {
@@ -204,7 +235,7 @@ body {
 }
 
 .related-thumbnails img:hover {
-  border: 1px solid black;
+  border: 1px solid #5e8e6f;
 }
 
 .mini-left-arrow {
@@ -236,9 +267,20 @@ body {
 }
 
 .related-arrow-right {
-  left: 40px;
+  left: 50px;
 }
 
 .related-arrow-left {
-  left: -40px;
+  left: -30px;
+}
+
+.related-add-card {
+  border: 1px solid #5e8e6f;
+  border-radius: 4px;
+  min-width: 250px;
+  max-width: 250px;
+  height: 350px;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: white;
 }

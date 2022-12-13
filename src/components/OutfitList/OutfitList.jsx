@@ -4,13 +4,16 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import ClothingPiece from './ClothingPiece.jsx';
+
+const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function OutfitList({
   currentProduct, averages, setAverages,
 }) {
-  const [left, setLeft] = useState(0);
   const [outfit, setOutfit] = useState([]);
+  const [left, setLeft] = useState(0);
 
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem('outfit'));
@@ -19,16 +22,6 @@ function OutfitList({
     }
   }, []);
 
-  function moveRight(event) {
-    event.preventDefault();
-    setLeft(left + 272);
-  }
-
-  function moveLeft(event) {
-    event.preventDefault();
-    setLeft(left - 272);
-  }
-
   function addProduct(event) {
     event.preventDefault();
     const newOutfit = [...outfit];
@@ -36,15 +29,28 @@ function OutfitList({
       newOutfit.push(currentProduct);
     }
     setOutfit(newOutfit);
+    axios.post(`${serverRoute}/interactions`, { element: `outfit-list-add-button:${currentProduct}`, widget: 'Related Products', time: new Date().toTimeString() });
     localStorage.setItem('outfit', JSON.stringify(newOutfit));
+  }
+
+  function shiftRight(event) {
+    event.preventDefault();
+    setLeft(left + 272);
+    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
+  }
+
+  function shiftLeft(event) {
+    event.preventDefault();
+    setLeft(left - 272);
+    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   return (
     <div>
       <div className="related-container">
         <h4 className="related-heading">Your Outfit</h4>
-        <div className="related-carousel">
-          <div className="related-product-card related-add-card">
+        <div className="outfit-row">
+          <div className="related-add-card">
             <div className="related-add-outfit-heading">Add to Outfit</div>
             <div className="related-stack" onClick={addProduct}>
               <div className="fa-stack" style={{ verticalAlign: 'top' }}>
@@ -53,25 +59,26 @@ function OutfitList({
               </div>
             </div>
           </div>
-          {
-            outfit.length > 0
-              ? outfit.map((clothingPiece, index) => (
+          <div className="outfit-carousel">
+            { outfit.length > 0 && (
+              outfit.map((clothingPiece, index) => (
                 <ClothingPiece
-                  key={index}
                   clothingPiece={clothingPiece}
-                  left={left}
                   outfit={outfit}
                   setOutfit={setOutfit}
                   averages={averages}
                   setAverages={setAverages}
+                  key={index}
+                  left={left}
                 />
               ))
-              : null
-          }
+
+            ) }
+          </div>
         </div>
         <div className="related-arrows">
-          <div className="related-arrow related-arrow-left" onClick={moveRight}>{ left === 0 ? null : <i className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
-          <div className="related-arrow related-arrow-right" onClick={moveLeft}>{ outfit.length <= 3 || left <= ((outfit.length - 3) * -272) ? null : <i className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
+          <div className="related-arrow related-arrow-left" onClick={shiftLeft}>{ left === 0 ? null : <i id="outfit-list-carousel-left-arrow" className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
+          <div className="related-arrow related-arrow-right" onClick={shiftRight}>{ left >= (outfit.length - 3) * 272 ? null : <i id="outfit-list-carousel-right-arrow" className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
         </div>
       </div>
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function CollapseAnswerButton({ handleClick }) {
   return (
-    <button onClick={handleClick}>
+    <button className="general-button" onClick={handleClick}>
       Collapse Answers
     </button>
   );

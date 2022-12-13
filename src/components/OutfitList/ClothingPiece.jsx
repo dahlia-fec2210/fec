@@ -11,13 +11,18 @@ import Star from '../common/Star.jsx';
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function ClothingPiece({
-  clothingPiece, left, outfit, setOutfit,
+  clothingPiece, outfit, setOutfit, left,
 }) {
   const [price, setPrice] = useState(0);
   const [photo, setPhoto] = useState(null);
   const [salePrice, setSalePrice] = useState(0);
   const [productInfo, setProductInfo] = useState({});
   const [average, setAverage] = useState(0);
+
+  const carouselStyle = {
+    transform: `translate(-${left}px, 0)`,
+    transition: 'transform 900ms ease-in-out',
+  };
 
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem(`productInfo-${clothingPiece}`));
@@ -79,16 +84,17 @@ function ClothingPiece({
     const newOutfit = outfit.filter((piece) => piece !== clothingPiece);
     setOutfit(newOutfit);
     localStorage.setItem('outfit', JSON.stringify(newOutfit));
+    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   if (clothingPiece !== null && productInfo !== {}) {
     return (
       <div>
-        <div className="related-product-card" style={{ left }}>
+        <div className="related-product-card" style={carouselStyle}>
           <div className="related-stack" onClick={removeFromOutfit}>
             <div className="fa-stack" style={{ verticalAlign: 'top' }}>
               <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
-              <i className="related-star fa-solid fa-x fa-stack-1x" />
+              <i id={`outfit-list-remove-button:${clothingPiece}`} className="related-star fa-solid fa-x fa-stack-1x" />
             </div>
           </div>
           <div>
