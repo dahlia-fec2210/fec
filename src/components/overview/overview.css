@@ -306,16 +306,19 @@
   width: 950px;
   margin: 0 auto;
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  /* margin-left: 80px; */
+  /* margin-right: 0; */
 }
 
 .description {
   border-right: 3px solid #000;
   padding-right: 10px;
+  /* width: 60%; */
 }
 
 ul {
   list-style: none;
-  width: 40%;
+  width: 50%;
   padding-top: 15px;
 }
