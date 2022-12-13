@@ -87,8 +87,8 @@ function Questions({ currentProduct }) {
   return (
     <div className="questions-container">
       <div className="questions-list-container">
-        <h1 className="questions-section-title">Questions</h1>
-        <div>
+        <span className="questions-section-title">QUESTIONS</span>
+        <div className="questions-section-search-bar-top">
           <QuestionSearch handleSearch={searchingQuestion} />
           <QuestionEntry
             questions={questionsList}
@@ -99,21 +99,23 @@ function Questions({ currentProduct }) {
             setHelpfulQuestions={setHelpfulQuestions}
           />
         </div>
-        <div className="questions-buttons">
-          {listCount > questionsList.length ? <CollapseQuestionButton />
-            : <LoadQuestionButton handleClick={addTwoQuestions} />}
-        </div>
-        <div>
-          <button
-            className="general-button openAddQuestionModalBtn"
-            onClick={() => {
-              setOpenAddQuestionModal(true);
-            }}
-          >
-            Add a Question
+        <div className="questions-two-buttons">
+          <div className="questions-buttons">
+            {listCount > questionsList.length ? <CollapseQuestionButton />
+              : <LoadQuestionButton handleClick={addTwoQuestions} />}
+          </div>
+          <div>
+            <button
+              className="add-question-button"
+              onClick={() => {
+                setOpenAddQuestionModal(true);
+              }}
+            >
+              Add a Question
 
-          </button>
-          {openAddQuestionModal && <AddQuestionModal closeModal={setOpenAddQuestionModal} currentProductId={currentProduct} />}
+            </button>
+            {openAddQuestionModal && <AddQuestionModal closeModal={setOpenAddQuestionModal} currentProductId={currentProduct} />}
+          </div>
         </div>
       </div>
     </div>

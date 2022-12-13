@@ -3,7 +3,7 @@ import './AddAnswer.css';
 
 function LoadQuestionButton({ handleClick }) {
   return (
-    <button className="general-button" onClick={handleClick}>
+    <button className="load-question-button" onClick={handleClick}>
       More Answered Questions
     </button>
   );

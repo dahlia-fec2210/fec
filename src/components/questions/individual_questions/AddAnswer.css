@@ -14,7 +14,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color:#bfdccd;
+  /* background-color:#bfdccd; */
+  background: rgba(49,49,49,0.8);
 }
 
 .modalContainer {
@@ -36,7 +37,8 @@
 }
 
 .modal-pop {
-  background: #29b8ff;
+  /* background: #29b8ff; */
+  background: rgba(49,49,49,0.8);
   border: 2px solid #aaa;
   color: #D5DBE7;
   border-radius: 5px;
@@ -171,6 +173,7 @@
   display: inline-block;
   cursor: pointer;
   margin-left: 20px;
+  border-radius: 5px;
 }
 
 .search-button {
@@ -184,4 +187,28 @@
   border: 1px solid #739086;
   display: inline-block;
   cursor: pointer;
+  border-radius: 5px;
+}
+
+.load-question-button {
+  color: #f7f7f7;
+  font-size: 16px;
+  line-height: 27px;
+  /* padding: 8px 20px; */
+  font-family: sans-serif;
+  background-color: #739086;
+  box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 2px;
+  border: 1px solid #739086;
+  display: inline-block;
+  cursor: pointer;
+  /* margin-left: 20px; */
+  width: 230px;
+  height: 50px;
+  border-radius: 5px;
+
+}
+
+.load-question-button:hover {
+  background-color: #f7f7f7;
+  color: #739086;
 }
