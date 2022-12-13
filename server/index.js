@@ -236,4 +236,4 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
 });
 
 app.listen(process.env.PORT);
-console.log('Listening on port 3001');
+console.log(`Listening on port ${process.env.PORT}`);
