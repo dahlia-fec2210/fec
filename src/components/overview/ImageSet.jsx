@@ -8,9 +8,6 @@ import React, { useState } from 'react';
 function ImageSet({
   imageSetCarousel, handleThumbnailClick, currentStylePhotos, selectedThumbnail,
 }) {
-  const [indicator, setIndicator] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(null);
-
   // const handleClick = (index) => {
   //   console.log('index in handleClick:', index);
   //   setSelectedIndex(index);
@@ -22,12 +19,6 @@ function ImageSet({
   //   }
   // };
 
-  const handleClick = (index) => {
-    console.log('about to be selectedIndex:', index);
-    setSelectedIndex(index);
-    handleThumbnailClick(index);
-  };
-
   // let thumbnailStyle;
   // if (selectedIndex) {
   //   selectedThumbnailStyle = {
@@ -38,14 +29,21 @@ function ImageSet({
   //     border: 'border: 1px solid white;',
   //   };
   // }
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const handleClick = (index) => {
+    setSelectedIndex(index);
+    handleThumbnailClick(index);
+  };
 
   const selectedThumbnailStyle = {
     border: '3px solid rgba(125, 172, 145, 1)',
   };
 
   const thumbnailStyle = {
-    border: '1px solid white;',
+    border: '1px solid white',
   };
+
+  console.log('selected index is at 0:', selectedIndex === imageSetCarousel[0]);
 
   return (
     <div className="image-thumbnails">
