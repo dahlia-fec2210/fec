@@ -1,8 +1,9 @@
+/* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import SizeOptions from './SizeOptions.jsx';
 import QuantityOptions from './QuantityOptions.jsx';
 
-function AddToCart({ currentStyleSkus }) {
+function AddToCart({ currentStyle, currentStyleSkus }) {
   const [selectedSize, setSelectedSize] = useState('');
   const [sizeQuantity, setSizeQuantity] = useState(0);
   const [currentSku, setCurrentSku] = useState(0);
@@ -10,10 +11,10 @@ function AddToCart({ currentStyleSkus }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
+    alert('unga bunga');
   };
 
-  // console.log('current style skus:', currentStyleSkus);
+  console.log('current style skus:', currentStyleSkus);
 
   const handleSizeChange = (e) => {
     setSelectedSize(e.target.value);
@@ -38,6 +39,8 @@ function AddToCart({ currentStyleSkus }) {
   // console.log('selected size:', selectedSize);
   // console.log('size quantity:', sizeQuantity);
   // console.log('selected quantity:', selectedQuantity);
+
+  console.log('current style name:', currentStyle.name);
 
   return (
     <form onSubmit={handleSubmit}>

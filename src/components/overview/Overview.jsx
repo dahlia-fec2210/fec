@@ -4,7 +4,7 @@ import Image from './Image.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import './overview.css';
 
-function Overview({ productId, serverRoute }) {
+function Overview({ productId, serverRoute, reviewsRef }) {
   const [productInfo, setProductInfo] = useState({});
   const [productStyles, setProductStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
@@ -17,6 +17,10 @@ function Overview({ productId, serverRoute }) {
   const [salePrice, setSalePrice] = useState(null);
   const [currentStylePhotos, setCurrentStylePhotos] = useState([]);
   const [productFeatures, setProductFeatures] = useState([]);
+  const [expanded, setExpanded] = useState(false);
+  const [zoomed, setZoomed] = useState(false);
+  const [currentMainImageIndex, setCurrentMainImageIndex] = useState(0);
+  const [selectedThumbnail, setSelectedThumbnail] = useState(0);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
@@ -65,37 +69,57 @@ function Overview({ productId, serverRoute }) {
   // console.log('product styles:', productStyles);
   // console.log('current style:', currentStyle);
   // console.log('product info:', productInfo);
-  console.log('features:', productFeatures);
+  // console.log('features:', productFeatures);
 
-  return (
-    <div className="overview-container">
-      <Image currentStylePhotos={currentStylePhotos} />
-      <ProductInfo
-        productCategory={productCategory}
-        productName={productName}
-        productRating={productRating}
-        originalPrice={originalPrice}
-        salePrice={salePrice}
-        productStyles={productStyles}
-        currentStyleSkus={currentStyleSkus}
-        setCurrentStylePhotos={setCurrentStylePhotos}
-      />
-      <div className="product-description">
-        <div className="description">
-          <h3>{productInfo.slogan}</h3>
-          <p>{productInfo.description}</p>
+  if (currentStylePhotos.length > 0) {
+    return (
+      <div className="overview-container">
+        <Image
+          currentStylePhotos={currentStylePhotos}
+          expanded={expanded}
+          setExpanded={setExpanded}
+          zoomed={zoomed}
+          setZoomed={setZoomed}
+          selectedThumbnail={selectedThumbnail}
+          setSelectedThumbnail={setSelectedThumbnail}
+          currentMainImageIndex={currentMainImageIndex}
+          setCurrentMainImageIndex={setCurrentMainImageIndex}
+
+        />
+        <ProductInfo
+          productCategory={productCategory}
+          productName={productName}
+          productRating={productRating}
+          originalPrice={originalPrice}
+          salePrice={salePrice}
+          productStyles={productStyles}
+          currentStyleSkus={currentStyleSkus}
+          setCurrentStylePhotos={setCurrentStylePhotos}
+          currentStyle={currentStyle}
+          expanded={expanded}
+          zoomed={zoomed}
+          setSelectedThumbnail={setSelectedThumbnail}
+          setCurrentMainImageIndex={setCurrentMainImageIndex}
+          reviewsRef={reviewsRef}
+        />
+        <div className="product-description">
+          <div className="description">
+            <h3>{productInfo.slogan}</h3>
+            <p>{productInfo.description}</p>
+          </div>
+          <ul className="features">
+            {productFeatures.map((feature, i) => (
+              <li key={i}>
+                <strong>✓</strong>
+                {` ${feature.feature}: ${feature.value}`}
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="features">
-          {productFeatures.map((feature, i) => (
-            <li key={i}>
-              <strong>✓</strong>
-              {` ${feature.feature}: ${feature.value}`}
-            </li>
-          ))}
-        </ul>
       </div>
-    </div>
-  );
+    );
+  }
+  return null;
 }
 
 export default Overview;

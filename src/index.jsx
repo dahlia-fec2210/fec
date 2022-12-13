@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable import/extensions */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffec, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { RotatingLines } from 'react-loader-spinner';
@@ -17,25 +17,6 @@ const root = createRoot(container);
 
 function App() {
   const [currentProduct, setCurrentProduct] = useState(37312);
-  const [left, setLeft] = useState(0);
-
-  const toggleStyle = {
-    transform: `translate(${left}px, 0)`,
-    transition: 'transform 700ms ease-in-out',
-  };
-
-  function toggle(event) {
-    event.preventDefault();
-    if (left === 0) {
-      setLeft(left + 40);
-      document.getElementById('light-mode').href = 'darkmode.css';
-      document.getElementById('light-mode-related').href = 'related-dark-mode.css';
-    } else {
-      setLeft(0);
-      document.getElementById('light-mode').href = 'style.css';
-      document.getElementById('light-mode-related').href = 'related.css';
-    }
-  }
 
   return (
     <div>
@@ -57,7 +38,7 @@ function App() {
 
       </div>
       <div className="widgets">
-        {/* <Overview productId={currentProduct} serverRoute={serverRoute} /> */}
+        {/* <Overview productId={currentProduct} serverRoute={serverRoute} reviewsRef={reviewsRef} /> */}
         { currentProduct === {} ? (
           <RotatingLines
             strokeColor="grey"
@@ -77,6 +58,8 @@ function App() {
           : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
         { currentProduct === null ? <div>Loading...</div>
           : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+        {/* { currentProduct === null ? <div>Loading...</div>
+          : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> } */}
       </div>
     </div>
   );

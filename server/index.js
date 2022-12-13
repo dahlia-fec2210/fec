@@ -33,7 +33,6 @@ const relatedProducts = {};
 
 // interaction route:
 app.post('/interactions', (req, res) => {
-  console.log(req.body);
   interactions.postInteraction(req.body)
     .then((response) => {
       res.send(response);
