@@ -9,3 +9,11 @@
   overflow-x: none;
   overflow-y: scroll;
 }
+
+.answer-helpful-yes-button {
+  color: #5e8e6f;
+}
+
+.answer-report-button {
+  color: #9c3c44;
+}
