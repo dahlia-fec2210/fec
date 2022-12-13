@@ -19,6 +19,8 @@ function Overview({ productId, serverRoute }) {
   const [productFeatures, setProductFeatures] = useState([]);
   const [expanded, setExpanded] = useState(false);
   const [zoomed, setZoomed] = useState(false);
+  const [currentMainImageIndex, setCurrentMainImageIndex] = useState(0);
+  const [selectedThumbnail, setSelectedThumbnail] = useState(0);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
@@ -78,6 +80,11 @@ function Overview({ productId, serverRoute }) {
           setExpanded={setExpanded}
           zoomed={zoomed}
           setZoomed={setZoomed}
+          selectedThumbnail={selectedThumbnail}
+          setSelectedThumbnail={setSelectedThumbnail}
+          currentMainImageIndex={currentMainImageIndex}
+          setCurrentMainImageIndex={setCurrentMainImageIndex}
+
         />
         <ProductInfo
           productCategory={productCategory}
@@ -91,6 +98,8 @@ function Overview({ productId, serverRoute }) {
           currentStyle={currentStyle}
           expanded={expanded}
           zoomed={zoomed}
+          setSelectedThumbnail={setSelectedThumbnail}
+          setCurrentMainImageIndex={setCurrentMainImageIndex}
         />
         <div className="product-description">
           <div className="description">
