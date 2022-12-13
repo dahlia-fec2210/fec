@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+/* eslint-disable import/extensions */
+import React from 'react';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import DisplayStar from '../common/Star.jsx';
 
 function ProductInfo({
   productCategory, productName, productRating, originalPrice, salePrice,
-  productStyles, currentStyleSkus, setCurrentStylePhotos,
+  productStyles, currentStyleSkus, setCurrentStylePhotos, currentStyle, expanded, zoomed,
+  setSelectedThumbnail, setCurrentMainImageIndex,
 }) {
   // console.log('productStyles in ProductInfo:', productStyles);
   return (
-    <div className="product-info-container">
+    <div className={expanded === false && zoomed === false ? 'product-info-container' : 'hide-info'}>
       <DisplayStar percentage={(productRating / 5) * 100} />
       <span><small>Read all reviews</small></span>
       <h3 className="overview-category">{productCategory}</h3>
@@ -24,8 +26,10 @@ function ProductInfo({
       <StyleSelector
         productStyles={productStyles}
         setCurrentStylePhotos={setCurrentStylePhotos}
+        setSelectedThumbnail={setSelectedThumbnail}
+        setCurrentMainImageIndex={setCurrentMainImageIndex}
       />
-      <AddToCart currentStyleSkus={currentStyleSkus} />
+      <AddToCart currentStyle={currentStyle} currentStyleSkus={currentStyleSkus} />
       <h3>Share on Social Media</h3>
       <div className="social-media">
 
