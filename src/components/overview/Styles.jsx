@@ -1,10 +1,13 @@
+/* eslint-disable import/extensions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 
 function Styles({
-  index, style, selected, handleStyleClick,
+  index, style, selectedStyle, handleStyleClick,
 }) {
   let indicator;
-  if (index === selected) {
+  if (index === selectedStyle) {
     indicator = <div className="overlay" />;
   } else {
     indicator = null;
