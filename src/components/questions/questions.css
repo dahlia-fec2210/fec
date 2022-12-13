@@ -211,9 +211,9 @@
   line-height: 27px;
   padding: 8px 20px;
   font-family: sans-serif;
-  background-color: #739086;
+  background-color: #5e8e6f;
   box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 2px;
-  border: 1px solid #739086;
+  border: 1px solid #5e8e6f;
   display: inline-block;
   cursor: pointer;
   border-radius:5px;
@@ -225,7 +225,7 @@
 .search-button:hover,
 .add-question-button:hover {
   background-color: #f7f7f7;
-  color: #739086;
+  color: #5e8e6f;
 }
 
 .search-button {
@@ -240,9 +240,9 @@
   line-height: 27px;
   padding: 8px 20px;
   font-family: sans-serif;
-  background-color: #739086;
+  background-color: #5e8e6f;
   box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 2px;
-  border: 1px solid #739086;
+  border: 1px solid #5e8e6f;
   display: inline-block;
   cursor: pointer;
   margin-left: 80px;
