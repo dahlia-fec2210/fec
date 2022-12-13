@@ -1,14 +1,16 @@
 /* eslint-disable no-plusplus */
 import React from 'react';
 import { IoStar } from 'react-icons/io5';
+import logInteraction from '../../logInteraction.js';
 
 const { useState } = React;
 const ratings = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
 
-export default function SelectOverallRating({ overallRating, setOverallRating }) {
+export default function SelectOverallRating({ overallRating, setOverallRating, productId }) {
   const [hover, setHover] = useState(null);
   let key = 0;
   const handleClick = (e) => {
+    logInteraction(e.target.id, [productId]);
     setOverallRating(Number(e.target.value));
   };
   const getKey = () => key++;
@@ -28,6 +30,7 @@ export default function SelectOverallRating({ overallRating, setOverallRating })
               name="rating"
               value={ratingValue}
               onClick={handleClick}
+              id={`select-rating-${ratingValue}`}
 
             />
             <IoStar
@@ -36,6 +39,7 @@ export default function SelectOverallRating({ overallRating, setOverallRating })
               size={20}
               onMouseEnter={() => setHover(ratingValue)}
               onMouseLeave={() => setHover(null)}
+
             />
           </label>
         );

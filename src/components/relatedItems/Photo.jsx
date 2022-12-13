@@ -5,6 +5,9 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
+import axios from 'axios';
+
+const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function Photo({ product, productData, changeProduct }) {
   const [photoIndex, setPhotoIndex] = useState(0);
@@ -18,12 +21,14 @@ function Photo({ product, productData, changeProduct }) {
   function shiftRight(event) {
     event.preventDefault();
     setLeft(left + 60.5);
+    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   function shiftLeft(event) {
     event.preventDefault();
     event.preventDefault();
     setLeft(left - 60.5);
+    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   if (productData) {
@@ -39,6 +44,7 @@ function Photo({ product, productData, changeProduct }) {
                   onClick={(event) => {
                     event.stopPropagation();
                     setPhotoIndex(index);
+                    axios.post(`${serverRoute}/interactions`, { element: `related-thumbnail-photo:${product}, ${thumbnail}`, widget: 'Related Products', time: new Date().toTimeString() });
                   }}
                   src={productData.thumbnails[index]}
                   alt=""
@@ -54,7 +60,7 @@ function Photo({ product, productData, changeProduct }) {
               { left !== 0 ? (
                 <div className="related-stack fa-stack" style={{ verticalAlign: 'top' }}>
                   <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
-                  <i className="related-star fa-solid fa-chevron-left fa-stack-1x" />
+                  <i id={`related-thumbnails-carousel-left-arrow:${product}`} className="related-star fa-solid fa-chevron-left fa-stack-1x" />
                 </div>
               ) : null}
             </div>
@@ -66,7 +72,7 @@ function Photo({ product, productData, changeProduct }) {
               { left < (productData.thumbnails.length - 4) * 60.5 ? (
                 <div className="related-stack fa-stack" style={{ verticalAlign: 'top' }}>
                   <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
-                  <i className="related-star fa-solid fa-chevron-right fa-stack-1x" />
+                  <i id={`related-thumbnails-carousel-right-arrow:${product}`} className="related-star fa-solid fa-chevron-right fa-stack-1x" />
                 </div>
               ) : null}
             </div>

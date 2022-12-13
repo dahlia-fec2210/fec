@@ -1,6 +1,50 @@
-#root {
-  background-color: #f7f7f7;
+body {
+  margin: 0;
 }
+
+#root {
+  background-color: #f9f9f9;
+}
+
+.bulbastore-heading {
+  display: flex;
+  padding: 20px 30px;
+  background-color: #bfdccd;
+  margin-bottom: 40px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.logo {
+  display: flex;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.cart-icon {
+  color: #5e8e6f;
+  align-self: center;
+}
+
+.bulbastore-heading h1 {
+  color: #5e8e6f;
+  font-size: 40px;
+  line-height: 60px;
+  margin: 0;
+  font-family: 'Pacifico', cursive;
+}
+
+.bulbastore-icon {
+  height: 60px;
+}
+
+.search-bar {
+  border: 1px solid #030303;
+  border-radius: 30px;
+  width: 250px;
+  height: 35px;
+  align-self: center;
+}
+
 /* STARS *************************************/
 .ratings {
   position: relative;
@@ -15,7 +59,7 @@
   top: 0;
   white-space: nowrap;
   overflow: hidden;
-  color: #fde16d;
+  color: #9c3c44;
 }
 
 .empty-stars:before {
