@@ -25,6 +25,36 @@ body {
   align-self: center;
 }
 
+.sun {
+  color: #5e8e6f;
+}
+
+.moon {
+  color: #5e8e6f;
+}
+
+.circle-toggle {
+  position: relative;
+  top: 16px;
+  left: 53px;
+  background-color: #9c3c44;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.night-mode-icon {
+  align-self: center;
+  margin-left: 20px;
+  background-color: white;
+  height: 36px;
+  width: 80px;
+  align-items: center;
+  display: flex;
+  border-radius: 36px;
+  justify-content: space-around;
+}
+
 .bulbastore-heading h1 {
   color: #5e8e6f;
   font-size: 40px;
