@@ -3,28 +3,42 @@ import axios from 'axios';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function HelpfulAnswerLink({ answer }) {
+function HelpfulAnswerLink({ answer, helpfulAnswers, setHelpfulAnswers }) {
   const [answerHelpfulness, setAnswerHelpfulness] = useState(answer.helpfulness);
 
   const incrementHelpfulness = () => axios.put(`${serverRoute}/qa/answers/${answer.answer_id}/helpful`);
 
   const helpfulClicked = () => {
-    incrementHelpfulness();
-    setAnswerHelpfulness(answerHelpfulness + 1);
-    // .then((newHelpfulness) => {
-    //   setAnswerHelpfulness(newHelpfulness);
-    // });
+    const cache = JSON.parse(localStorage.getItem('helpfulAnswers'));
+    const currentHelpfulAnswers = helpfulAnswers;
+    if (!(helpfulAnswers.includes(answer))) {
+      incrementHelpfulness();
+      setAnswerHelpfulness(answerHelpfulness + 1);
+    }
+    currentHelpfulAnswers.push(answer);
+    setHelpfulAnswers(currentHelpfulAnswers);
+    localStorage.setItem('helpfulAnswers', JSON.stringify(currentHelpfulAnswers));
+    console.log(helpfulAnswers.includes(answer), '6974');
   };
 
+  useEffect(() => {
+    setAnswerHelpfulness(answer.helpfulness);
+  }, [answer.helpfulness]);
+
   return (
-    <div>
+    <div className="answer-helpful-link">
       <div onClick={helpfulClicked}>
         Helpful?
         {' '}
-        Yes
+        <span className="answer-helpful-yes-button">
+          Yes
+        </span>
         {' ('}
-        {answerHelpfulness}
+        <span className="helpful-number">
+          {answerHelpfulness}
+        </span>
         {') '}
+&nbsp;&nbsp;|&nbsp;&nbsp;
       </div>
     </div>
   );

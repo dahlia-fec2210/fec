@@ -9,6 +9,7 @@ import CharacteristicsInput from './input-fields/CharacteristicsInput.jsx';
 import SummaryInput from './input-fields/SummaryInput.jsx';
 import BodyInput from './input-fields/BodyInput.jsx';
 import ErrorMessage from './ErrorMessage.jsx';
+import logInteraction from '../logInteraction.js';
 
 const validate = require('./validate');
 
@@ -54,6 +55,7 @@ export default function NewReviewModal({ toggleModal, metaData, currentProduct }
 
   const submitForm = (e) => {
     e.preventDefault();
+    logInteraction(e.target.id, [currentProduct]);
     if (verifyInputs()) {
       const route = `${serverRoute}/reviews`;
       axios.post(route, {
@@ -69,9 +71,12 @@ export default function NewReviewModal({ toggleModal, metaData, currentProduct }
       })
         .then(() => {
           toggleModal();
-        })
-        .catch((err) => console.error(err));
+        });
     }
+  };
+  const handleCloseModal = (e) => {
+    logInteraction(e.target.id, [currentProduct]);
+    toggleModal();
   };
 
   return (
@@ -79,56 +84,44 @@ export default function NewReviewModal({ toggleModal, metaData, currentProduct }
     <div className="review-modal">
       <div className="review-overlay" />
       <div className="review-modal-content">
-        <i className="fa-solid fa-xmark review-close-modal" onClick={toggleModal} />
-        <NicknameInput nickname={nickname} setNickname={setNickname} />
-        <EmailInput email={email} setEmail={setEmail} />
+        <i
+          className="fa-solid fa-xmark review-close-modal"
+          id="close-new-review-btn"
+          onClick={handleCloseModal}
+        />
+        <NicknameInput setNickname={setNickname} />
+        <EmailInput setEmail={setEmail} />
         <SelectOverallRating
           overallRating={overallRating}
           setOverallRating={setOverallRating}
+          productId={currentProduct}
         />
-        <SelectRecommend setRecommend={setRecommend} />
-        <CharacteristicsInput
-          characteristics={characteristics}
-          setCharacteristics={setCharacteristics}
-          metaData={metaData}
-        />
-        <SummaryInput summary={summary} setSummary={setSummary} />
+        <div className="review-fancy">
+          <SelectRecommend setRecommend={setRecommend} productId={currentProduct} />
+          <CharacteristicsInput
+            characteristics={characteristics}
+            setCharacteristics={setCharacteristics}
+            metaData={metaData}
+          />
+        </div>
+        <SummaryInput setSummary={setSummary} />
         <BodyInput body={body} setBody={setBody} />
         <CloudinaryWidget
           setImageUrls={setImageUrls}
+          className="review-upload-button"
         />
-        <button type="submit" onClick={submitForm}>submit</button>
-        {errors ? <ErrorMessage errors={errors} /> : null}
+        <div className="review-submit-and-errors">
+          {errors ? <ErrorMessage errors={errors} /> : null}
+          <button
+            className="submit-review-button"
+            id="submit-new-review-btn"
+            type="submit"
+            onClick={submitForm}
+          >
+            Submit Review
+          </button>
+        </div>
       </div>
     </div>
   );
 }
-
-/*
-needs:
- name
- email
- overall rating
- do you recommend product?
- characteristics
- review summary
- review body
- upload photos
- submit button
-*/
-
-// product_id
-// :
-// "37317"
-
-// ratings
-// :
-// {1: "2", 2: "1", 3: "11", 4: "4", 5: "42"}
-
-// recommended
-// :
-// {false: "2", true: "58"}
-
-// characteristics
-// :
-// {Comfort: {…}, Quality: {…}, Size

@@ -2,10 +2,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import ImageModal from './ImageModal.jsx';
+import logInteraction from '../logInteraction.js';
 
 const { useState } = React;
 
-function ReviewPhotos({ photos }) {
+function ReviewPhotos({ photos, reviewId }) {
   const [modal, setModal] = useState(false);
   const [imgUrl, setImgUrl] = useState(null);
 
@@ -15,6 +16,7 @@ function ReviewPhotos({ photos }) {
 
   const handleImgClick = (e) => {
     setImgUrl(e.target.currentSrc);
+    logInteraction('click-user-review-image', [reviewId, e.target.currentSrc]);
     toggleModal();
   };
 
@@ -29,7 +31,13 @@ function ReviewPhotos({ photos }) {
           onClick={handleImgClick}
         />
       ))}
-      {modal && <ImageModal imgUrl={imgUrl} toggleModal={toggleModal} />}
+      {modal && (
+      <ImageModal
+        imgUrl={imgUrl}
+        toggleModal={toggleModal}
+        reviewId={reviewId}
+      />
+      )}
     </div>
   );
 }

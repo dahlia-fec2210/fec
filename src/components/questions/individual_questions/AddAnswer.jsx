@@ -12,7 +12,7 @@ function AddAnswer({ question, currentProductId }) {
   return (
     <div onClick={helpfulClicked}>
       <button
-        className="openAddAnswerModalBtn"
+        className="general-button openAddAnswerModalBtn"
         onClick={() => {
           setOpenAddAnswerModal(true);
         }}

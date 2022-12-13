@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './addQuestion.css';
 import axios from 'axios';
+import QuestionErrorMessage from './QuestionErrorMessage.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
+const validateError = require('./validateError');
 
 function AddQuestionModal({ closeModal, currentProductId }) {
   console.log(currentProductId, 'current');
@@ -14,6 +16,23 @@ function AddQuestionModal({ closeModal, currentProductId }) {
     email: '',
     product_id: currentProductId,
   });
+
+  const [errors, setErrors] = useState(null);
+
+  const verifyErrors = () => {
+    const errorStrings = [];
+    if (!validateError.validateQuestion(newQuestion.body)) {
+      errorStrings.push('Please enter a valid question longer than 50 characters');
+    }
+    if (!validateError.validateNickname(newQuestion.name)) {
+      errorStrings.push('Please enter a valid nickname');
+    }
+    if (!validateError.validateEmail(newQuestion.email)) {
+      errorStrings.push('Please enter a valid email');
+    }
+    setErrors(errorStrings);
+    return errorStrings.length === 0;
+  };
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${currentProductId}`)
@@ -34,9 +53,12 @@ function AddQuestionModal({ closeModal, currentProductId }) {
         newQuestion,
       },
     });
-    axios.post(`${serverRoute}/qa/questions/`, newQuestion)
-      .then((result) => console.log(result));
+    if (verifyErrors()) {
+      axios.post(`${serverRoute}/qa/questions/`, newQuestion)
+        .then((result) => console.log(result));
+    }
   };
+
   return (
     // <div>
     //   Testing123
@@ -46,28 +68,33 @@ function AddQuestionModal({ closeModal, currentProductId }) {
         <div className="titleCloseBtn">
           <button onClick={() => closeModal(false)}> X </button>
         </div>
-        <div className="title">Ask Your Question</div>
-        <div className="subtitle">
+        <div className="modalTitle">Ask Your Question</div>
+        <div className="modalSubtitle">
           About the
           {' '}
           {productName}
           {' '}
         </div>
         <form onSubmit={submitForm}>
-          <label>
-            Question:
-            <textarea cols="48" rows="8" name="body" type="text" maxLength="1000" placeholder="Enter your question here..." required="" value={newQuestion.question} onChange={typing} />
+          <label className="modalAnswer">
+            <span className="modalAnswerLabel">
+              *Question:
+            </span>
+            <textarea className="answerTextBox" cols="48" rows="8" name="body" type="text" maxLength="1000" placeholder="Enter your question here..." required="" value={newQuestion.question} onChange={typing} />
           </label>
-          <label>
-            Nickname:
-            <input name="name" type="text" maxLength="60" placeholder="Example: jackson11!" required="" value={newQuestion.nickname} onChange={typing} />
+          <label className="modalAnswer">
+            *Nickname:
+            <input className="answerOtherInputs" name="name" type="text" maxLength="60" placeholder="Example: jackson11!" required="" value={newQuestion.nickname} onChange={typing} />
           </label>
-          <small>For authentication reasons, you will not be emailed</small>
-          <label>
+          <small className="authenticationMessage">For authentication reasons, you will not be emailed</small>
+          <label className="modalAnswer">
             Email:
-            <input name="email" type="email" maxLength="60" placeholder="example@example.com" required="" value={newQuestion.email} onChange={typing} />
+            <input className="answerOtherInputs" name="email" type="email" maxLength="60" placeholder="example@example.com" required="" value={newQuestion.email} onChange={typing} />
           </label>
-          <button>Submit</button>
+          <div className="submit-button-answer">
+            <button className="general-button answerModalSubmit">Submit</button>
+            {errors ? <QuestionErrorMessage errors={errors} /> : null}
+          </div>
         </form>
         {/* <textarea className="question" placeholder="Enter your question here..." />
         <textarea className="nickname" placeholder="Example: jackson11!" />

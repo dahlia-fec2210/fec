@@ -1,9 +1,10 @@
 import React from 'react';
 import _ from 'lodash';
+import logInteraction from '../logInteraction';
 
 const ratingList = ['5', '4', '3', '2', '1'];
 
-export default function RatingBreakdown({ ratings, addFilter }) {
+export default function RatingBreakdown({ ratings, addFilter, currentProduct }) {
   const totalRatings = (() => {
     let count = 0;
     _.each(ratings, (ratingCount) => {
@@ -17,6 +18,8 @@ export default function RatingBreakdown({ ratings, addFilter }) {
   };
 
   const handleRatingClick = (e) => {
+    const id = `filter-${e.target.innerHTML[0]}-stars-btn`;
+    logInteraction(id, [currentProduct]);
     addFilter(e.target.innerHTML[0]);
   };
 
