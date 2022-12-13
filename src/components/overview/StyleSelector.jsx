@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import Styles from './Styles.jsx';
 
 function StyleSelector({ productStyles, setCurrentStylePhotos }) {
-  const [selected, setSelected] = useState(0);
+  const [selectedStyle, setSelectedStyle] = useState(0);
   const [styleName, setStyleName] = useState(productStyles[0].name);
 
   const handleStyleClick = (index, style) => {
-    setSelected(index);
+    setSelectedStyle(index);
     setCurrentStylePhotos(style.photos);
     setStyleName(style.name);
   };
@@ -28,7 +28,7 @@ function StyleSelector({ productStyles, setCurrentStylePhotos }) {
               key={style.style_id}
               index={i}
               style={style}
-              selected={selected}
+              selectedStyle={selectedStyle}
               handleStyleClick={handleStyleClick}
             />
           ))}
