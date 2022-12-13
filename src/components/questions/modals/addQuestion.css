@@ -14,7 +14,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color:#bfdccd;
+  /* background-color:#bfdccd; */
+  background: rgba(49,49,49,0.8);
+
 }
 
 .modalContainer {
