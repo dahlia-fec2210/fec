@@ -51,6 +51,10 @@ function ImageSet({
   // console.log('selectedImageCondition0:', selectedImageCondition0);
   // console.log('selectedImageCondition1:', selectedImageCondition1);
 
+  // If in the expanded view, changed thumbnails to little dots and change its position
+  // to be underneath the main image
+  // For the differentiation, make the dots bigger
+
   return (
     <div className="image-thumbnails">
       <div className="thumbnails-container">
