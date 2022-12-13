@@ -9,8 +9,10 @@ function MoreReviewsButton({ addTwoItems, bottomReviewsRef, currentProduct }) {
     logInteraction(e.target.id, [currentProduct]);
     addTwoItems();
     setTimeout(() => {
-      buttonRef.current.scrollIntoView({ behavior: 'smooth' });
-      bottomReviewsRef.current.scrollIntoView({ behavior: 'smooth' });
+      bottomReviewsRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      setTimeout(() => {
+        buttonRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      }, 350);
     }, 200);
   };
   return (

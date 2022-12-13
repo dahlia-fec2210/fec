@@ -14,7 +14,7 @@ export default function RatingBreakdown({ ratings, addFilter, currentProduct }) 
   })();
   const getRatingPercentage = (ratingNumber) => {
     const numberOfRatings = ratings[ratingNumber];
-    return _.round((numberOfRatings / totalRatings) * 100, 2);
+    return _.round((numberOfRatings / totalRatings) * 100);
   };
 
   const handleRatingClick = (e) => {
