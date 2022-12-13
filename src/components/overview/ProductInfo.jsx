@@ -7,13 +7,16 @@ import DisplayStar from '../common/Star.jsx';
 function ProductInfo({
   productCategory, productName, productRating, originalPrice, salePrice,
   productStyles, currentStyleSkus, setCurrentStylePhotos, currentStyle, expanded, zoomed,
-  setSelectedThumbnail, setCurrentMainImageIndex,
+  setSelectedThumbnail, setCurrentMainImageIndex, reviewsRef,
 }) {
+  const scrollToReviews = () => {
+    reviewsRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
   // console.log('productStyles in ProductInfo:', productStyles);
   return (
     <div className={expanded === false && zoomed === false ? 'product-info-container' : 'hide-info'}>
       <DisplayStar percentage={(productRating / 5) * 100} />
-      <span><small>Read all reviews</small></span>
+      <span onClick={scrollToReviews}><small>Read all reviews</small></span>
       <h3 className="overview-category">{productCategory}</h3>
       <h3 className="overview-name">{productName}</h3>
       { !salePrice ? <p>{originalPrice}</p>
