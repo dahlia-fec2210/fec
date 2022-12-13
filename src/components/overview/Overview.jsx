@@ -4,7 +4,7 @@ import Image from './Image.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import './overview.css';
 
-function Overview({ productId, serverRoute }) {
+function Overview({ productId, serverRoute, reviewsRef }) {
   const [productInfo, setProductInfo] = useState({});
   const [productStyles, setProductStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
@@ -79,6 +79,7 @@ function Overview({ productId, serverRoute }) {
         productStyles={productStyles}
         currentStyleSkus={currentStyleSkus}
         setCurrentStylePhotos={setCurrentStylePhotos}
+        reviewsRef={reviewsRef}
       />
       <div className="product-description">
         <div className="description">

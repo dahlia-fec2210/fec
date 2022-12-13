@@ -5,13 +5,20 @@ import DisplayStar from '../common/Star.jsx';
 
 function ProductInfo({
   productCategory, productName, productRating, originalPrice, salePrice,
-  productStyles, currentStyleSkus, setCurrentStylePhotos,
+  productStyles, currentStyleSkus, setCurrentStylePhotos, reviewsRef,
 }) {
+  const handleScroll = () => {
+    window.scrollTo({
+      top: reviewsRef.current.offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
   // console.log('productStyles in ProductInfo:', productStyles);
   return (
     <div className="product-info-container">
       <DisplayStar percentage={(productRating / 5) * 100} />
-      <span><small>Read all reviews</small></span>
+      <span onClick={handleScroll}><small>Read all reviews</small></span>
       <h3 className="overview-category">{productCategory}</h3>
       <h3 className="overview-name">{productName}</h3>
       { !salePrice ? <p>{originalPrice}</p>

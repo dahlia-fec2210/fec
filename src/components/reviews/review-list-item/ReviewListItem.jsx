@@ -5,7 +5,7 @@ import SellerResponse from './SellerResponse.jsx';
 import SubmissionInfo from './SubmissionInfo.jsx';
 import DisplayStar from '../../common/Star.jsx';
 import ReviewPhotos from './ReviewPhotos.jsx';
-import logInteraction from '../logInteraction.js';
+import logInteraction from '../logInteraction.jsx';
 
 const { useState } = React;
 const serverRoute = `http://localhost:${process.env.PORT}`;

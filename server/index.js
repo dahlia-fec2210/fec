@@ -24,6 +24,7 @@ app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(sessionHandler);
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '/../public')));
 
 const productInfo = {};
 const productData = {};

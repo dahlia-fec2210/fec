@@ -1,5 +1,5 @@
 import React from 'react';
-import logInteraction from '../logInteraction.js';
+import logInteraction from '../logInteraction.jsx';
 
 export default function ImageModal({ imgUrl, toggleModal, reviewId }) {
   const handleClick = (e) => {

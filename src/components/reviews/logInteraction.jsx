@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const serverRoute = `http://localhost:${process.env.PORT}`;
+const serverRoute = 'http://localhost:3001';
 
 export default function logInteraction(elementId, dataArr) {
   axios.post(`${serverRoute}/interactions`, {

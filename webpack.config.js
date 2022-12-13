@@ -39,4 +39,11 @@ module.exports = {
   plugins: [
     new Dotenv(),
   ],
+  resolve: {
+    fallback: {
+      fs: false,
+      path: false,
+      os: false,
+    },
+  },
 };

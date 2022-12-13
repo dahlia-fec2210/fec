@@ -5,13 +5,13 @@ import MoreReviewsButton from './MoreReviewsButton.jsx';
 import SortByDropdown from './sort-dropdown/SortByDropdown.jsx';
 import NewReviewModal from './new-review-modal/NewReviewModal.jsx';
 import ProductBreakdown from './product-breakdown/ProductBreakdown.jsx';
-import logInteraction from './logInteraction.js';
+import logInteraction from './logInteraction.jsx';
 import './reviews.css';
 
 const { useState, useEffect, useRef } = React;
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function Reviews({ currentProduct }) {
+function Reviews({ currentProduct, reviewsRef }) {
   const [allReviews, setAllReviews] = useState(null);
   const [listedReviews, setListedReviews] = useState(null);
   const [metaData, setMetaData] = useState(null);
@@ -130,7 +130,7 @@ function Reviews({ currentProduct }) {
   if (listedReviews) {
     return (
       <>
-        <div className="reviews-container">
+        <div className="reviews-container" ref={reviewsRef}>
           {metaData && <ProductBreakdown metaData={metaData} addFilter={addFilter} />}
           <div className="review-list-container">
             <SortByDropdown

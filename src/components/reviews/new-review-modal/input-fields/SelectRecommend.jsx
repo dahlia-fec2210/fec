@@ -1,5 +1,5 @@
 import React from 'react';
-import logInteraction from '../../logInteraction.js';
+import logInteraction from '../../logInteraction.jsx';
 
 export default function SelectRecommend({ setRecommend, productId }) {
   const handleClick = (e) => {

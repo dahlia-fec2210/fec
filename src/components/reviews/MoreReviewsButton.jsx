@@ -1,5 +1,5 @@
 import React from 'react';
-import logInteraction from './logInteraction.js';
+import logInteraction from './logInteraction.jsx';
 
 const { useRef } = React;
 function MoreReviewsButton({ addTwoItems, bottomReviewsRef, currentProduct }) {

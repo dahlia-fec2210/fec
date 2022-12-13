@@ -1,7 +1,7 @@
 /* eslint-disable no-plusplus */
 import React from 'react';
 import { IoStar } from 'react-icons/io5';
-import logInteraction from '../../logInteraction.js';
+import logInteraction from '../../logInteraction.jsx';
 
 const { useState } = React;
 const ratings = ['Poor', 'Fair', 'Average', 'Good', 'Great'];

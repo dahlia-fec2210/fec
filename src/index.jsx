@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { RotatingLines } from 'react-loader-spinner';
@@ -15,6 +15,7 @@ const root = createRoot(container);
 
 function App() {
   const [currentProduct, setCurrentProduct] = useState(37312);
+  const reviewsRef = useRef(null);
 
   return (
     <div>
@@ -28,7 +29,7 @@ function App() {
         <i className="cart-icon fa-solid fa-cart-shopping fa-2x" />
       </div>
       <div className="widgets">
-        <Overview productId={currentProduct} serverRoute={serverRoute} />
+        <Overview productId={currentProduct} serverRoute={serverRoute} reviewsRef={reviewsRef} />
         { currentProduct === {} ? (
           <RotatingLines
             strokeColor="grey"
@@ -45,7 +46,13 @@ function App() {
             />
           ) }
         { currentProduct === null ? <div>Loading...</div>
-          : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+          : (
+            <Reviews
+              currentProduct={currentProduct}
+              setCurrentProduct={setCurrentProduct}
+              reviewsRef={reviewsRef}
+            />
+          ) }
         { currentProduct === null ? <div>Loading...</div>
           : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
       </div>

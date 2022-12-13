@@ -1,5 +1,5 @@
 import React from 'react';
-import logInteraction from '../logInteraction.js';
+import logInteraction from '../logInteraction.jsx';
 
 function SortByButton({ toggleDropdown, sortOption, currentProduct }) {
   const handleClick = (e) => {
