@@ -18,25 +18,35 @@ function App() {
 
   return (
     <div>
-      <h1>Hello Dahlia</h1>
-      {/* <Overview productId={currentProduct} serverRoute={serverRoute} /> */}
-      { currentProduct === {} ? (
-        <RotatingLines
-          strokeColor="grey"
-          strokeWidth="5"
-          animationDuration="0.75"
-          width="96"
-          visible
-        />
-      )
-        : (
-          <RelatedItems
-            currentProduct={currentProduct}
-            setCurrentProduct={setCurrentProduct}
+      <div className="bulbastore-heading">
+        <div className="logo">
+          <img className="bulbastore-icon" src="bulbastore.png" alt="bulbsaur icon" />
+          <h1>
+            Bulbastore
+          </h1>
+        </div>
+        <i className="cart-icon fa-solid fa-cart-shopping fa-2x" />
+      </div>
+      <div className="widgets">
+        <Overview productId={currentProduct} serverRoute={serverRoute} />
+        { currentProduct === {} ? (
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible
           />
-        ) }
-      { currentProduct === null ? <div>Loading...</div>
-        : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+        )
+          : (
+            <RelatedItems
+              currentProduct={currentProduct}
+              setCurrentProduct={setCurrentProduct}
+            />
+          ) }
+        { currentProduct === null ? <div>Loading...</div>
+          : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+      </div>
     </div>
   );
 }
