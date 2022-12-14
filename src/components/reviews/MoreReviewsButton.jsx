@@ -22,6 +22,7 @@ function MoreReviewsButton({ addTwoItems, bottomReviewsRef, currentProduct }) {
         onClick={handleClick}
         className="more-reviews-btn"
         id="show-more-reviews-btn"
+        data-testid="add-more-reviews"
       >
         More Reviews
       </button>
