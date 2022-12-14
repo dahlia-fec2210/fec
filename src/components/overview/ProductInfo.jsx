@@ -29,7 +29,11 @@ function ProductInfo({
         setSelectedThumbnail={setSelectedThumbnail}
         setCurrentMainImageIndex={setCurrentMainImageIndex}
       />
-      <AddToCart currentStyle={currentStyle} currentStyleSkus={currentStyleSkus} />
+      <AddToCart
+        currentStyle={currentStyle}
+        currentStyleSkus={currentStyleSkus}
+        productName={productName}
+      />
       <h3>Share on Social Media</h3>
       <div className="social-media">
 
