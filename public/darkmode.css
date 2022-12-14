@@ -1,6 +1,15 @@
 body {
   margin: 0;
+
 }
+body::-webkit-scrollbar {
+  background-color: #181218;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #282228;
+  border-radius: 1em;
+}
+
 
 #root {
   background-color: #181218;
