@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable import/extensions */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffec, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { RotatingLines } from 'react-loader-spinner';
@@ -16,6 +16,7 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 function App() {
+<<<<<<< HEAD
   const [currentProduct, setCurrentProduct] = useState(37311);
   const [left, setLeft] = useState(0);
   const reviewsRef = useRef(null);
@@ -39,6 +40,9 @@ function App() {
       document.getElementById('light-mode-questions').href = 'questions.css';
     }
   }
+=======
+  const [currentProduct, setCurrentProduct] = useState(37312);
+>>>>>>> parent of 3dd9ed9... Re-paste code
 
   return (
     <div>
@@ -60,7 +64,7 @@ function App() {
 
       </div>
       <div className="widgets">
-        <Overview productId={currentProduct} serverRoute={serverRoute} reviewsRef={reviewsRef} />
+        {/* <Overview productId={currentProduct} serverRoute={serverRoute} reviewsRef={reviewsRef} /> */}
         { currentProduct === {} ? (
           <RotatingLines
             strokeColor="grey"
@@ -80,6 +84,11 @@ function App() {
           : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
         { currentProduct === null ? <div>Loading...</div>
           : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+<<<<<<< HEAD
+=======
+        {/* { currentProduct === null ? <div>Loading...</div>
+          : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> } */}
+>>>>>>> parent of 3dd9ed9... Re-paste code
       </div>
     </div>
   );

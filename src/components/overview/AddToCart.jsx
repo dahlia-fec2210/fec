@@ -14,6 +14,8 @@ function AddToCart({ currentStyle, currentStyleSkus }) {
     alert('unga bunga');
   };
 
+  console.log('current style:', currentStyle);
+
   console.log('current style skus:', currentStyleSkus);
 
   const handleSizeChange = (e) => {

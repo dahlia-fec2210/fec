@@ -17,7 +17,7 @@ function ProductInfo({
     <div className={expanded === false && zoomed === false ? 'product-info-container' : 'hide-info'}>
       <DisplayStar percentage={(productRating / 5) * 100} />
       <span onClick={scrollToReviews}><small>Read all reviews</small></span>
-      <h3 className="overview-category">{productCategory}</h3>
+      <h3 data-testId="category" className="overview-category">{productCategory}</h3>
       <h3 className="overview-name">{productName}</h3>
       { !salePrice ? <p>{originalPrice}</p>
         : (
