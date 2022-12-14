@@ -31,10 +31,12 @@ function App() {
       setLeft(left + 40);
       document.getElementById('light-mode').href = 'darkmode.css';
       document.getElementById('light-mode-related').href = 'related-dark-mode.css';
+      document.getElementById('light-mode-questions').href = 'questions-dark-mode.css';
     } else {
       setLeft(0);
       document.getElementById('light-mode').href = 'style.css';
       document.getElementById('light-mode-related').href = 'related.css';
+      document.getElementById('light-mode-questions').href = 'questions.css';
     }
   }
 

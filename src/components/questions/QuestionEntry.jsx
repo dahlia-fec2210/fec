@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
 import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
-import './questions.css';
+// import './questions.css';
 
 import QuestionEntryItem from './QuestionEntryItem.jsx';
 
