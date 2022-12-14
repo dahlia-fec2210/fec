@@ -253,9 +253,8 @@ body {
 
 .mini-right-arrow {
   display: none;
-  position: relative;
-  left: 5px;
-  top: -163px;
+  position: absolute;
+  top: 93px;
 }
 
 .related-arrows {

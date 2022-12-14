@@ -104,7 +104,6 @@ function RelatedProduct({
     axios.post(`${serverRoute}/interactions`, { element: `comparison-modal-open-button:${currentProduct},${product}`, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
-  console.log('PRODUCT DATA: ', productData);
   if (productData.price) {
     return (
       <div>
