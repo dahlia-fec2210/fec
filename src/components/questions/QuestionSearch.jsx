@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './questions.css';
+// import './questions.css';
 
 function QuestionSearch({ handleSearch }) {
   const [searchingQuestions, setSearchingQuestions] = useState('');
