@@ -8,7 +8,7 @@ import axios from 'axios';
 import RelatedProduct from './RelatedProduct.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
 import OutfitList from '../OutfitList/OutfitList.jsx';
-import './related.css';
+import '../../../public/related.css';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
