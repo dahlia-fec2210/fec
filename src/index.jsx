@@ -16,7 +16,6 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 function App() {
-<<<<<<< HEAD
   const [currentProduct, setCurrentProduct] = useState(37311);
   const [left, setLeft] = useState(0);
   const reviewsRef = useRef(null);
@@ -40,9 +39,6 @@ function App() {
       document.getElementById('light-mode-questions').href = 'questions.css';
     }
   }
-=======
-  const [currentProduct, setCurrentProduct] = useState(37312);
->>>>>>> parent of 3dd9ed9... Re-paste code
 
   return (
     <div>
@@ -84,11 +80,6 @@ function App() {
           : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
         { currentProduct === null ? <div>Loading...</div>
           : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
-<<<<<<< HEAD
-=======
-        {/* { currentProduct === null ? <div>Loading...</div>
-          : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> } */}
->>>>>>> parent of 3dd9ed9... Re-paste code
       </div>
     </div>
   );
