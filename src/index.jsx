@@ -51,7 +51,9 @@ function App() {
             </h1>
           ) : <h1>Venustore</h1>}
         </div>
-        <i className="cart-icon fa-solid fa-cart-shopping fa-2x" />
+        <div className="cart-div">
+          <i className="cart-icon fa-solid fa-cart-shopping fa-2x" />
+        </div>
         <div onClick={toggle} className="circle-toggle" style={toggleStyle} />
         <div className="night-mode-icon">
           <i className="moon fa-solid fa-moon fa-xl" />
@@ -76,10 +78,10 @@ function App() {
               setCurrentProduct={setCurrentProduct}
             />
           ) }
-        { currentProduct === null ? <div>Loading...</div>
+        {/* { currentProduct === null ? <div>Loading...</div>
           : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
         { currentProduct === null ? <div>Loading...</div>
-          : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+          : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> } */}
       </div>
     </div>
   );
