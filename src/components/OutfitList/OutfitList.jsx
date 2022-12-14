@@ -10,7 +10,7 @@ import ClothingPiece from './ClothingPiece.jsx';
 const serverRoute = `http://localhost:${process.env.PORT || 3001}`;
 
 function OutfitList({
-  currentProduct, averages, setAverages,
+  currentProduct, averages, setAverages, cards,
 }) {
   const [outfit, setOutfit] = useState([]);
   const [left, setLeft] = useState(0);
@@ -78,7 +78,7 @@ function OutfitList({
         </div>
         <div className="related-arrows">
           <div data-testid="outfit-arrow-left" className="related-arrow related-arrow-left" onClick={shiftLeft}>{ left === 0 ? null : <i id="outfit-list-carousel-left-arrow" className="related-icon fa-solid fa-chevron-left fa-2xl" /> }</div>
-          <div data-testid="outfit-arrow-right" className="related-arrow related-arrow-right" onClick={shiftRight}>{ left >= (outfit.length - 3) * 272 ? null : <i id="outfit-list-carousel-right-arrow" className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
+          <div data-testid="outfit-arrow-right" className="related-arrow related-arrow-right" onClick={shiftRight}>{ left >= (outfit.length - (cards - 1)) * 272 ? null : <i id="outfit-list-carousel-right-arrow" className="related-icon fa-solid fa-chevron-right fa-2xl" /> }</div>
         </div>
       </div>
 
