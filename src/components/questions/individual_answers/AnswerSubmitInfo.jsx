@@ -8,7 +8,6 @@ function AnswerSubmitInfo({ answer }) {
         By
         {' '}
         {answer.answerer_name === 'seller' ? <b>{answer.answerer_name}</b> : answer.answerer_name}
-        ,
       </div>
 
       <div className="answer-submit-info-date">

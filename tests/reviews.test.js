@@ -1,13 +1,13 @@
 import React from 'react';
+import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor } from '@testing-library/react';
+import MoreReviewsButton from '../src/components/reviews/MoreReviewsButton.jsx';
 
-import ShallowRenderer from 'react-shallow-renderer';
-import RelatedItems from '../src/components/reviews/Reviews.jsx';
-
-// in your test:
-const renderer = new ShallowRenderer();
-
-it('renders', () => {
-  renderer.render(<Reviews />);
-  const result = renderer.getRenderOutput();
-  expect(result.type).toBe('div');
+describe('Reviews test', () => {
+  const user = userEvent.setup();
+  it('should render the add more reviews button', () => {
+    render(<MoreReviewsButton currentProduct={37311} />);
+    expect(screen.getByRole('button')).toHaveTextContent(/more reviews/i);
+  });
 });

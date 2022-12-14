@@ -4,7 +4,7 @@ import AnswerSubmitInfo from './individual_answers/AnswerSubmitInfo.jsx';
 import HelpfulAnswerLink from './individual_answers/HelpfulAnswerLink.jsx';
 import ReportAnswerLink from './individual_answers/ReportAnswerLink.jsx';
 import AnswerPhoto from './individual_answers/AnswerPhoto.jsx';
-import './questions.css';
+// import './questions.css';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 

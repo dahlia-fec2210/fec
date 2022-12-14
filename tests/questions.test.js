@@ -1,13 +1,13 @@
-/* eslint-disable no-undef */
 import React from 'react';
+
 import ShallowRenderer from 'react-shallow-renderer';
-import RelatedItems from '../src/components/relatedItems/RelatedItems.jsx';
+import Questions from '../src/components/questions/Questions.jsx';
 
 // in your test:
 const renderer = new ShallowRenderer();
 
 it('renders', () => {
-  renderer.render(<RelatedItems />);
+  renderer.render(<Questions />);
   const result = renderer.getRenderOutput();
   expect(result.type).toBe('div');
 });
