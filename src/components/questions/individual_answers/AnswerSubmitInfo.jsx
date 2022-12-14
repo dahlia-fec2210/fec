@@ -1,5 +1,4 @@
 import React from 'react';
-// import dateFormat from 'dateformat';
 import { format, parseISO } from 'date-fns';
 
 function AnswerSubmitInfo({ answer }) {
