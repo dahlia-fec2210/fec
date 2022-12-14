@@ -8,7 +8,7 @@ import AddQuestionModal from './modals/AddQuestionModal.jsx';
 import QuestionSearch from './QuestionSearch.jsx';
 import './questions.css';
 
-const serverRoute = `http://localhost:${process.env.PORT}`;
+const serverRoute = `http://localhost:${process.env.PORT || 3001}`;
 
 function Questions({ currentProduct }) {
   const [allQuestions, setAllQuestions] = useState(null);
