@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders related products and outfit list with 37315 1`] = `
+<div>
+  <div
+    className="related-container"
+  >
+    <h4
+      className="related-heading"
+      data-testid="related-heading"
+    >
+      Related Products
+    </h4>
+    <div
+      className="related-carousel"
+    />
+    <div
+      className="related-arrows"
+    >
+      <span
+        className="related-arrow related-arrow-left"
+        data-testid="related-arrow-left"
+        onClick={[Function]}
+      />
+      <span
+        className="related-arrow related-arrow-right"
+        data-testid="related-arrow-right"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      className="related-container"
+    >
+      <h4
+        className="related-heading"
+        data-testid="outfit-heading"
+      >
+        Your Outfit
+      </h4>
+      <div
+        className="outfit-row"
+      >
+        <div
+          className="related-add-card"
+        >
+          <div
+            className="related-add-outfit-heading"
+            data-testid="add-card"
+          >
+            Add to Outfit
+          </div>
+          <div
+            className="related-stack"
+            data-testid="add-to-outfit"
+            onClick={[Function]}
+          >
+            <div
+              className="fa-stack"
+              style={
+                {
+                  "verticalAlign": "top",
+                }
+              }
+            >
+              <i
+                className="related-circle fa-solid fa-regular fa-circle fa-stack-2x"
+              />
+              <i
+                className="related-star fa-solid fa-plus fa-stack-1x"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="outfit-carousel"
+          data-testid="outfit-carousel"
+        />
+      </div>
+      <div
+        className="related-arrows"
+      >
+        <div
+          className="related-arrow related-arrow-left"
+          data-testid="outfit-arrow-left"
+          onClick={[Function]}
+        />
+        <div
+          className="related-arrow related-arrow-right"
+          data-testid="outfit-arrow-right"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
