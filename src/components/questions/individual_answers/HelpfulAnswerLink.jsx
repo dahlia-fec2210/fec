@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './individual_answers.css';
+// import './individual_answers.css';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
