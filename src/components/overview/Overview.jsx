@@ -100,6 +100,7 @@ function Overview({ productId, serverRoute }) {
           zoomed={zoomed}
           setSelectedThumbnail={setSelectedThumbnail}
           setCurrentMainImageIndex={setCurrentMainImageIndex}
+          setCurrentStyle={setCurrentStyle}
         />
         <div className="product-description">
           <div className="description">
