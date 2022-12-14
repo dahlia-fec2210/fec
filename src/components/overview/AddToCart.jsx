@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import SizeOptions from './SizeOptions.jsx';
 import QuantityOptions from './QuantityOptions.jsx';
 
-function AddToCart({ currentStyle, currentStyleSkus }) {
+function AddToCart({ currentStyle, currentStyleSkus, productName }) {
   const [selectedSize, setSelectedSize] = useState('');
   const [sizeQuantity, setSizeQuantity] = useState(0);
   const [currentSku, setCurrentSku] = useState(0);
@@ -11,14 +11,17 @@ function AddToCart({ currentStyle, currentStyleSkus }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('unga bunga');
+    // eslint-disable-next-line no-alert
+    alert(
+      `Added to cart:\n${productName}\n${currentStyle.name}\nSize: ${selectedSize}   Quantity: ${sizeQuantity}`,
+    );
   };
 
-  console.log('current style skus:', currentStyleSkus);
+  // console.log('current style skus:', currentStyleSkus);
 
   const handleSizeChange = (e) => {
     setSelectedSize(e.target.value);
-    // eslint-disable-next-line no-restricted-syntax
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
     for (const k in currentStyleSkus) {
       // console.log('current sku:', currentStyleSkus[k]);
       // console.log('sku quantity:', currentStyleSkus[k].quantity);
@@ -39,8 +42,8 @@ function AddToCart({ currentStyle, currentStyleSkus }) {
   // console.log('selected size:', selectedSize);
   // console.log('size quantity:', sizeQuantity);
   // console.log('selected quantity:', selectedQuantity);
-
-  console.log('current style name:', currentStyle.name);
+  // console.log('current style name:', currentStyle.name);
+  // console.log('current style:', currentStyle);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -58,7 +61,7 @@ function AddToCart({ currentStyle, currentStyleSkus }) {
       </select>
 
       <select onChange={handleQuantityChange} value={selectedQuantity}>
-        <option value="">---</option>
+        <option value="">-</option>
         {[...Array(sizeQuantity + 1).keys()].slice(1).map((n, i) => {
           console.log('n:', n);
           return <QuantityOptions key={i} value={n} />;
