@@ -120,7 +120,7 @@
 
 .answer-submit-info-name {
   font-size: 12px;
-  font-weight: bold;
+  /* font-weight: bold; */
   text-transform:  uppercase;
 }
 
@@ -343,7 +343,7 @@
   text-align: left;
   margin-top: 10px;
   margin-bottom: 10px;
-  color: #5e8e6f;
+  color: #BF6DA0;
 }
 
 .insertPhoto {
@@ -517,5 +517,7 @@
 }
 
 .answer-report-button {
-  color: #5e8e6f;
+  color: #9c3c44;
 }
+
+/* 9c3c44 */

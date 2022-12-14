@@ -30,9 +30,9 @@ function QuestionEntryItem({
   };
 
   let compareFn = (a, b) => {
-    if (a.answerer_name === 'seller' && b.answerer_name !== 'seller') {
+    if (a.answerer_name === 'Seller' && b.answerer_name !== 'Seller') {
       return -1;
-    } if (a.answerer_name !== 'seller' && b.answerer_name === 'seller') {
+    } if (a.answerer_name !== 'Seller' && b.answerer_name === 'Seller') {
       return 1;
     } if (a.answer_helpfulness > b.answer_helpfulness) {
       return -1;
@@ -49,6 +49,7 @@ function QuestionEntryItem({
   })
     .then((response) => {
       const answersArr = [...response.data.results].sort(compareFn);
+      console.log(answersArr, 'thisAnswer');
       setAllAnswers(answersArr);
       // setIsLoading(false);
       return answersArr;
