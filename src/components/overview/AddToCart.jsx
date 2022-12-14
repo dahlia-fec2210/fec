@@ -17,6 +17,7 @@ function AddToCart({ currentStyle, currentStyleSkus, productName }) {
     );
   };
 
+  // console.log('current style:', currentStyle);
   // console.log('current style skus:', currentStyleSkus);
 
   const handleSizeChange = (e) => {
