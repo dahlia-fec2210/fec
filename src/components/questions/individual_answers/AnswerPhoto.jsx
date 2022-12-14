@@ -1,6 +1,6 @@
 import React from 'react';
 import dateFormat from 'dateformat';
-import './individual_answers.css';
+// import './individual_answers.css';
 
 function AnswerSubmitInfo({ answer }) {
   return (

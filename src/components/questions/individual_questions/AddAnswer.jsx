@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './AddAnswer.css';
+// import './AddAnswer.css';
 import AddAnswerModal from '../modals/AddAnswerModal.jsx';
 
 function AddAnswer({ question, currentProductId }) {
