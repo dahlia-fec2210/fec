@@ -179,7 +179,7 @@
 
 .searchTerm {
   width: 920px;
-  border: 3px solid #5e8e6f;
+  border: 3px solid #BF6DA0;
   /* border-right: none; */
   padding: 10px;
   height: 20px;
@@ -211,9 +211,9 @@
   line-height: 27px;
   padding: 8px 20px;
   font-family: sans-serif;
-  background-color: #5e8e6f;
+  background-color: #BF6DA0;
   box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 2px;
-  border: 1px solid #5e8e6f;
+  border: 1px solid #BF6DA0;
   display: inline-block;
   cursor: pointer;
   border-radius:5px;
@@ -225,7 +225,7 @@
 .search-button:hover,
 .add-question-button:hover {
   background-color: #f7f7f7;
-  color: #5e8e6f;
+  color: #BF6DA0;
 }
 
 .search-button {
@@ -240,9 +240,9 @@
   line-height: 27px;
   padding: 8px 20px;
   font-family: sans-serif;
-  background-color: #5e8e6f;
+  background-color: #BF6DA0;
   box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 2px;
-  border: 1px solid #5e8e6f;
+  border: 1px solid #BF6DA0;
   display: inline-block;
   cursor: pointer;
   margin-left: 80px;
@@ -343,7 +343,7 @@
   text-align: left;
   margin-top: 10px;
   margin-bottom: 10px;
-  color: #9c3c44;
+  color: #5e8e6f;
 }
 
 .insertPhoto {
@@ -418,7 +418,7 @@
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
-  color: #5e8e6f;
+  color: #BF6DA0;
 
 }
 
@@ -429,9 +429,9 @@
   line-height: 27px;
   padding: 8px 20px;
   font-family: sans-serif;
-  background-color: #5e8e6f;
+  background-color: #BF6DA0;
   box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 2px;
-  border: 1px solid #5e8e6f;
+  border: 1px solid #BF6DA0;
   display: inline-block;
   cursor: pointer;
   margin-left: 20px;
@@ -444,9 +444,9 @@
   line-height: 27px;
   padding: 8px 20px;
   font-family: sans-serif;
-  background-color: #5e8e6f;
+  background-color: #BF6DA0;
   box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 2px;
-  border: 1px solid #5e8e6f;
+  border: 1px solid #BF6DA0;
   display: inline-block;
   cursor: pointer;
   border-radius: 5px;
@@ -458,9 +458,9 @@
   line-height: 27px;
   /* padding: 8px 20px; */
   font-family: sans-serif;
-  background-color: #5e8e6f;
+  background-color: #BF6DA0;
   box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 2px;
-  border: 1px solid #5e8e6f;
+  border: 1px solid #BF6DA0;
   display: inline-block;
   cursor: pointer;
   /* margin-left: 20px; */
@@ -472,7 +472,7 @@
 
 .load-question-button:hover {
   background-color: #f7f7f7;
-  color: #5e8e6f;
+  color: #BF6DA0;
 }
 
 
@@ -513,9 +513,9 @@
 }
 
 .answer-helpful-yes-button {
-  color: #5e8e6f;
+  color: #BF6DA0;
 }
 
 .answer-report-button {
-  color: #9c3c44;
+  color: #5e8e6f;
 }

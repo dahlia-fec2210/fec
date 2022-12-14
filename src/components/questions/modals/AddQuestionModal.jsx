@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './addQuestion.css';
+// import './addQuestion.css';
 import axios from 'axios';
 import QuestionErrorMessage from './QuestionErrorMessage.jsx';
 
@@ -88,7 +88,7 @@ function AddQuestionModal({ closeModal, currentProductId }) {
           </label>
           <small className="authenticationMessage">For authentication reasons, you will not be emailed</small>
           <label className="modalAnswer">
-            Email:
+            *Email:
             <input className="answerOtherInputs" name="email" type="email" maxLength="60" placeholder="example@example.com" required="" value={newQuestion.email} onChange={typing} />
           </label>
           <div className="submit-button-answer">
