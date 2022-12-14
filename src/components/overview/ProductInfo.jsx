@@ -6,8 +6,8 @@ import DisplayStar from '../common/Star.jsx';
 
 function ProductInfo({
   productCategory, productName, productRating, originalPrice, salePrice,
-  productStyles, currentStyleSkus, setCurrentStylePhotos, currentStyle, expanded, zoomed,
-  setSelectedThumbnail, setCurrentMainImageIndex,
+  productStyles, currentStyleSkus, setCurrentStylePhotos, currentStyle,
+  setCurrentStyle, expanded, zoomed, setSelectedThumbnail, setCurrentMainImageIndex,
 }) {
   // console.log('productStyles in ProductInfo:', productStyles);
   return (
@@ -28,6 +28,7 @@ function ProductInfo({
         setCurrentStylePhotos={setCurrentStylePhotos}
         setSelectedThumbnail={setSelectedThumbnail}
         setCurrentMainImageIndex={setCurrentMainImageIndex}
+        setCurrentStyle={setCurrentStyle}
       />
       <AddToCart
         currentStyle={currentStyle}
