@@ -24,6 +24,7 @@ export default function NicknameInput({ setNickname }) {
       />
       <div className="review-form-element-bar" />
       <label className="review-form-element-label" htmlFor="nickname">Name</label>
+      <small className="review-form-element-hint">For privacy reasons, do not use your full name or email address</small>
     </div>
   );
 }
