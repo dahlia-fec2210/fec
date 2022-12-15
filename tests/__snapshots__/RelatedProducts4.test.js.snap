@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders remove button on outfit list with product 37315 1`] = `
+<div
+  className="related-stack"
+>
+  <div
+    className="fa-stack"
+    style={
+      {
+        "verticalAlign": "top",
+      }
+    }
+  >
+    <i
+      className="related-circle fa-solid fa-regular fa-circle fa-stack-2x"
+    />
+    <i
+      className="related-star fa-solid fa-x fa-stack-1x"
+      id="outfit-list-remove-button:37315"
+    />
+  </div>
+</div>
+`;

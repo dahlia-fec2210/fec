@@ -47,8 +47,10 @@ function Photo({ product, productData, changeProduct }) {
                     axios.post(`${serverRoute}/interactions`, { element: `related-thumbnail-photo:${product}, ${thumbnail}`, widget: 'Related Products', time: new Date().toTimeString() });
                   }}
                   src={productData.thumbnails[index]}
-                  alt=""
+                  alt="thumbnail"
                   style={carouselStyle}
+                  key={index}
+                  data-testid="thumbnail"
                 />
               ))}
             </div>
@@ -68,7 +70,7 @@ function Photo({ product, productData, changeProduct }) {
           : null}
         { productData.thumbnails[0] !== null
           ? (
-            <div className="mini-right-arrow" onClick={shiftRight}>
+            <div data-testid="mini-right-arrow" className="mini-right-arrow" onClick={shiftRight}>
               { left < (productData.thumbnails.length - 4) * 60.5 ? (
                 <div className="related-stack fa-stack" style={{ verticalAlign: 'top' }}>
                   <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
@@ -82,13 +84,15 @@ function Photo({ product, productData, changeProduct }) {
     );
   }
   return (
-    <RotatingLines
-      strokeColor="grey"
-      strokeWidth="5"
-      animationDuration="0.75"
-      width="96"
-      visible
-    />
+    <div data-testid="empty">
+      <RotatingLines
+        strokeColor="grey"
+        strokeWidth="5"
+        animationDuration="0.75"
+        width="96"
+        visible
+      />
+    </div>
   );
 }
 

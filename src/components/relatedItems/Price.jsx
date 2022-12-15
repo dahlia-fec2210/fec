@@ -3,7 +3,7 @@ import React from 'react';
 function Price({ price, salePrice }) {
   if (!salePrice) {
     return (
-      <div className="related-price">
+      <div data-testid="price" className="related-price">
         $
         {price}
       </div>
@@ -11,7 +11,7 @@ function Price({ price, salePrice }) {
   }
   return (
     <div className="related-price">
-      <span className="related-sale-price">
+      <span data-testid="sale-price" className="related-sale-price">
         $
         {salePrice}
         {' '}

@@ -1,0 +1,257 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders snapshot for clothing piece 1`] = `
+<div>
+  <div
+    className="related-product-card"
+    style={
+      {
+        "transform": "translate(-undefinedpx, 0)",
+        "transition": "transform 900ms ease-in-out",
+      }
+    }
+  >
+    <div
+      className="related-stack"
+      onClick={[Function]}
+    >
+      <div
+        className="fa-stack"
+        style={
+          {
+            "verticalAlign": "top",
+          }
+        }
+      >
+        <i
+          className="related-circle fa-solid fa-regular fa-circle fa-stack-2x"
+        />
+        <i
+          className="related-star fa-solid fa-x fa-stack-1x"
+          id="outfit-list-remove-button:undefined"
+        />
+      </div>
+    </div>
+    <div>
+      <img
+        className="related-outfit-photo"
+        src="https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp"
+      />
+      <div
+        className="related-category"
+      />
+      <div
+        className="related-name"
+      />
+      <div
+        className="related-price"
+        data-testid="price"
+      >
+        $
+        0
+      </div>
+      <div
+        className="related-stars"
+      >
+        <div
+          className="ratings"
+        >
+          <div
+            className="empty-stars"
+          >
+            <svg
+              fill="currentColor"
+              height={20}
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width={20}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M394 480a16 16 0 01-9.39-3L256 383.76 127.39 477a16 16 0 01-24.55-18.08L153 310.35 23 221.2a16 16 0 019-29.2h160.38l48.4-148.95a16 16 0 0130.44 0l48.4 149H480a16 16 0 019.05 29.2L359 310.35l50.13 148.53A16 16 0 01394 480z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height={20}
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width={20}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M394 480a16 16 0 01-9.39-3L256 383.76 127.39 477a16 16 0 01-24.55-18.08L153 310.35 23 221.2a16 16 0 019-29.2h160.38l48.4-148.95a16 16 0 0130.44 0l48.4 149H480a16 16 0 019.05 29.2L359 310.35l50.13 148.53A16 16 0 01394 480z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height={20}
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width={20}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M394 480a16 16 0 01-9.39-3L256 383.76 127.39 477a16 16 0 01-24.55-18.08L153 310.35 23 221.2a16 16 0 019-29.2h160.38l48.4-148.95a16 16 0 0130.44 0l48.4 149H480a16 16 0 019.05 29.2L359 310.35l50.13 148.53A16 16 0 01394 480z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height={20}
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width={20}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M394 480a16 16 0 01-9.39-3L256 383.76 127.39 477a16 16 0 01-24.55-18.08L153 310.35 23 221.2a16 16 0 019-29.2h160.38l48.4-148.95a16 16 0 0130.44 0l48.4 149H480a16 16 0 019.05 29.2L359 310.35l50.13 148.53A16 16 0 01394 480z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height={20}
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width={20}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M394 480a16 16 0 01-9.39-3L256 383.76 127.39 477a16 16 0 01-24.55-18.08L153 310.35 23 221.2a16 16 0 019-29.2h160.38l48.4-148.95a16 16 0 0130.44 0l48.4 149H480a16 16 0 019.05 29.2L359 310.35l50.13 148.53A16 16 0 01394 480z"
+              />
+            </svg>
+          </div>
+          <div
+            className="full-stars"
+            style={
+              {
+                "width": "0%",
+              }
+            }
+          >
+            <svg
+              fill="currentColor"
+              height={20}
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width={20}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M394 480a16 16 0 01-9.39-3L256 383.76 127.39 477a16 16 0 01-24.55-18.08L153 310.35 23 221.2a16 16 0 019-29.2h160.38l48.4-148.95a16 16 0 0130.44 0l48.4 149H480a16 16 0 019.05 29.2L359 310.35l50.13 148.53A16 16 0 01394 480z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height={20}
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width={20}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M394 480a16 16 0 01-9.39-3L256 383.76 127.39 477a16 16 0 01-24.55-18.08L153 310.35 23 221.2a16 16 0 019-29.2h160.38l48.4-148.95a16 16 0 0130.44 0l48.4 149H480a16 16 0 019.05 29.2L359 310.35l50.13 148.53A16 16 0 01394 480z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height={20}
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width={20}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M394 480a16 16 0 01-9.39-3L256 383.76 127.39 477a16 16 0 01-24.55-18.08L153 310.35 23 221.2a16 16 0 019-29.2h160.38l48.4-148.95a16 16 0 0130.44 0l48.4 149H480a16 16 0 019.05 29.2L359 310.35l50.13 148.53A16 16 0 01394 480z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height={20}
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width={20}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M394 480a16 16 0 01-9.39-3L256 383.76 127.39 477a16 16 0 01-24.55-18.08L153 310.35 23 221.2a16 16 0 019-29.2h160.38l48.4-148.95a16 16 0 0130.44 0l48.4 149H480a16 16 0 019.05 29.2L359 310.35l50.13 148.53A16 16 0 01394 480z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height={20}
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width={20}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M394 480a16 16 0 01-9.39-3L256 383.76 127.39 477a16 16 0 01-24.55-18.08L153 310.35 23 221.2a16 16 0 019-29.2h160.38l48.4-148.95a16 16 0 0130.44 0l48.4 149H480a16 16 0 019.05 29.2L359 310.35l50.13 148.53A16 16 0 01394 480z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

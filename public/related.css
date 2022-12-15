@@ -33,7 +33,7 @@ body {
   gap: 20px;
   overflow: hidden;
   height: 365px;
-  padding-left: 20px;
+  padding: 0 20px;
 }
 
 .related-product-card {
@@ -253,9 +253,8 @@ body {
 
 .mini-right-arrow {
   display: none;
-  position: relative;
-  left: 5px;
-  top: -163px;
+  position: absolute;
+  top: 93px;
 }
 
 .related-arrows {
@@ -289,4 +288,81 @@ body {
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: lightgray;
+}
+
+.related-check {
+  margin-bottom: 10px;
+  color: #9c3c44;
+}
+
+@media screen and (max-width: 1200px) {
+  .related-carousel {
+    display: flex;
+    gap: 20px;
+    width: 795px;
+    overflow: hidden;
+    padding: 10px;
+  }
+  .related-container {
+    width: 795px;
+    margin: 0 auto;
+  }
+  .outfit-row {
+    display: flex;
+    padding: 10px;
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .related-carousel {
+    display: flex;
+    gap: 20px;
+    width: 525px;
+    overflow: hidden;
+    padding: 10px;
+  }
+  .related-container {
+    width: 525px;
+    margin: 0 auto;
+  }
+  .outfit-row {
+    display: flex;
+    padding: 10px;
+    width: 530px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .related-carousel {
+    display: flex;
+    gap: 20px;
+    width: 255px;
+    overflow: hidden;
+    padding: 10px;
+  }
+  .related-container {
+    width: 255px;
+    margin: 0 auto;
+  }
+  .outfit-row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 10px;
+    width: 260px;
+  }
+  .outfit-carousel {
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    height: 365px;
+    padding: 0;
+  }
+  .related-heading {
+    font-weight: normal;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 20px 0 5px 0;
+  }
 }

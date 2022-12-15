@@ -97,9 +97,9 @@ function ComparisonModal({ modalProduct, currentProduct, setOpenModal }) {
                   if (allFeatures[key].includes('modal') && allFeatures[key].includes('current')) {
                     return (
                       <tr key={key}>
-                        <td>✅</td>
+                        <td><i className="related-check fa-solid fa-check" /></td>
                         <td>{key}</td>
-                        <td>✅</td>
+                        <td><i className="related-check fa-solid fa-check" /></td>
                       </tr>
                     );
                   } if (allFeatures[key].includes('current') && !allFeatures[key].includes('modal')) {
@@ -107,13 +107,13 @@ function ComparisonModal({ modalProduct, currentProduct, setOpenModal }) {
                       <tr key={key}>
                         <td />
                         <td>{key}</td>
-                        <td>✅</td>
+                        <td><i className="related-check fa-solid fa-check" /></td>
                       </tr>
                     );
                   } if (!allFeatures[key].includes('current') && allFeatures[key].includes('modal')) {
                     return (
                       <tr key={key}>
-                        <td>✅</td>
+                        <td><i className="related-check fa-solid fa-check" /></td>
                         <td>{key}</td>
                         <td />
                       </tr>
