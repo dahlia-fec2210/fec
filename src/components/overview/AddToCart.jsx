@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-alert */
 import React, { useState, useEffect, useRef } from 'react';
-import Select from 'react-select';
+// import Select from 'react-select';
 import SizeOptions from './SizeOptions.jsx';
 import QuantityOptions from './QuantityOptions.jsx';
 import SizeSelector from './SizeSelector.jsx';
