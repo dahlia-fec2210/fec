@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable import/extensions */
-import React, { useState, useEffec, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { RotatingLines } from 'react-loader-spinner';
@@ -9,7 +9,6 @@ import Overview from './components/overview/Overview.jsx';
 import Reviews from './components/reviews/Reviews.jsx';
 import Questions from './components/questions/Questions.jsx';
 import RelatedItems from './components/relatedItems/RelatedItems.jsx';
-import Star from './components/common/Star.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 const container = document.getElementById('root');
