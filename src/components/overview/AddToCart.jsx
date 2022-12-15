@@ -94,11 +94,11 @@ function AddToCart({
         : (
           <select onChange={handleQuantityChange} value={selectedQuantity}>
             <option value="">1</option>
-            {[...Array(sizeQuantity + 1).keys()].slice(1).map((n, i) => <QuantityOptions key={i} value={n} />)}
+            {[...Array(sizeQuantity + 1).keys()].slice(2).map((n, i) => <QuantityOptions key={i} value={n} />)}
           </select>
         )}
 
-      <button type="submit">Add to Cart</button>
+      {styleQuantities === 0 ? null : <button type="submit">Add to Cart</button>}
     </form>
   );
 }
