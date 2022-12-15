@@ -76,6 +76,8 @@ function MainImage({
   }
 
   return (
+    // eslint-disable-next-line max-len
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       className={containerClass}
       ref={zoomedImageAreaRef}
@@ -83,7 +85,7 @@ function MainImage({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <img id="main-image" className={imageClass} ref={zoomedImageRef} src={photo.url} alt="" />
+      <img className={imageClass} ref={zoomedImageRef} src={photo.url} alt="" />
     </div>
   );
 }

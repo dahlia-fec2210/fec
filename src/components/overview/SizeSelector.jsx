@@ -6,7 +6,7 @@ function SizeSelector({
   handleSizeChange, selectedSize, sizeDropdown, inStockSizes, currentStyleSkus,
 }) {
   return (
-    <select className="size-dropdown" id="select-size" onChange={handleSizeChange} value={selectedSize} ref={sizeDropdown}>
+    <select id="select-size" className="size-dropdown" onChange={handleSizeChange} value={selectedSize} ref={sizeDropdown}>
       <option value="">SELECT SIZE</option>
       {inStockSizes.map((sku, i) => (
         <SizeOptions key={Object.keys(currentStyleSkus)[i]} size={sku.size} />

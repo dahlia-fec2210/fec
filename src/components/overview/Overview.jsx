@@ -3,9 +3,7 @@ import axios from 'axios';
 import Image from './Image.jsx';
 import ProductInfo from './ProductInfo.jsx';
 
-function Overview({
-  productId, serverRoute, reviewsRef, left,
-}) {
+function Overview({ productId, serverRoute, left }) {
   const [productInfo, setProductInfo] = useState({});
   const [productStyles, setProductStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
@@ -22,6 +20,7 @@ function Overview({
   const [zoomed, setZoomed] = useState(false);
   const [currentMainImageIndex, setCurrentMainImageIndex] = useState(0);
   const [selectedThumbnail, setSelectedThumbnail] = useState(0);
+  const [selectedDot, setSelectedDot] = useState(0);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
@@ -85,6 +84,8 @@ function Overview({
           setSelectedThumbnail={setSelectedThumbnail}
           currentMainImageIndex={currentMainImageIndex}
           setCurrentMainImageIndex={setCurrentMainImageIndex}
+          selectedDot={selectedDot}
+          setSelectedDot={setSelectedDot}
           left={left}
         />
         <ProductInfo

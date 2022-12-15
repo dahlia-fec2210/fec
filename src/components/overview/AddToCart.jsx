@@ -13,7 +13,6 @@ function AddToCart({
   const [sizeQuantity, setSizeQuantity] = useState(0);
   const [currentSku, setCurrentSku] = useState(0);
   const [noSizeSelected, setNoSizeSelected] = useState(false);
-
   const sizeDropdown = useRef(null);
 
   const handleSubmit = (e) => {
@@ -28,7 +27,6 @@ function AddToCart({
     }
   };
 
-  // console.log('current style:', currentStyle);
   // console.log('current style:', currentStyle);
   // console.log('current style skus:', currentStyleSkus);
 
@@ -55,7 +53,6 @@ function AddToCart({
 
   // console.log('selected size:', selectedSize);
   // console.log('size quantity:', sizeQuantity);
-  // console.log('selected quantity:', selectedQuantity);
   // console.log('current style name:', currentStyle.name);
   // console.log('current style:', currentStyle);
   // console.log('SKUS:', currentStyleSkus);
@@ -65,6 +62,8 @@ function AddToCart({
   const styleQuantities = styleAvailabilities.reduce((availableQuantities, style) => availableQuantities + style.quantity, 0);
 
   const inStockSizes = styleAvailabilities.filter((style) => style.quantity > 0);
+
+  console.log('selected quantity:', selectedQuantity);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -93,7 +92,7 @@ function AddToCart({
           </select>
         )
         : (
-          <select onChange={handleQuantityChange} value={selectedQuantity} className="quantity-dropdown">
+          <select className="quantity-dropdown" onChange={handleQuantityChange} value={selectedQuantity}>
             <option value="">1</option>
             {[...Array(sizeQuantity + 1).keys()].slice(2).map((n, i) => <QuantityOptions key={i} value={n} />)}
           </select>

@@ -267,7 +267,6 @@
 
 .styles-container {
   border-radius: 50%;
-  margin-bottom: 10px;
   position: relative;
   width: 60px;
   height: 60px;
@@ -448,7 +447,7 @@ button:hover {
   cursor: pointer;
   margin-left: 19px;
   margin-top: 10px;
-  /* width: 150px; */
+  min-width: 82px;
   height: 50px;
   border-radius: 5px;
   cursor: pointer;
