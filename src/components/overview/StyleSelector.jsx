@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import Styles from './Styles.jsx';
 
 function StyleSelector({
-  productStyles, setCurrentStylePhotos, setSelectedThumbnail,
-  setCurrentMainImageIndex, setCurrentStyle, setSelectedSize, setSelectedQuanity,
+  productStyles, setCurrentStylePhotos, setCurrentStyle, setSelectedSize, setSelectedQuanity,
   setCurrentStyleSkus,
 }) {
   const [selectedStyle, setSelectedStyle] = useState(0);
@@ -14,8 +13,6 @@ function StyleSelector({
     setSelectedStyle(index);
     setCurrentStylePhotos(style.photos);
     setStyleName(style.name);
-    setSelectedThumbnail(0);
-    setCurrentMainImageIndex(0);
     setCurrentStyle(style);
     setSelectedSize('');
     setSelectedQuanity('');
