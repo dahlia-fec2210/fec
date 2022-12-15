@@ -81,7 +81,6 @@ function App() {
             />
           ) }
         { currentProduct === null ? <div>Loading...</div>
-        { currentProduct === null ? <div>Loading...</div>
           : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
         { currentProduct === null ? <div>Loading...</div>
           : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} reviewsRef={reviewsRef} /> }
