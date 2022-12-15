@@ -66,7 +66,12 @@ function App() {
 
       </div>
       <div className="widgets">
-        <Overview productId={currentProduct} serverRoute={serverRoute} reviewsRef={reviewsRef} />
+        <Overview
+          productId={currentProduct}
+          serverRoute={serverRoute}
+          reviewsRef={reviewsRef}
+          left={left}
+        />
         { currentProduct === {} ? (
           <RotatingLines
             strokeColor="grey"

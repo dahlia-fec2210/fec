@@ -10,7 +10,7 @@ import ImageSet from './ImageSet.jsx';
 
 function Image({
   currentStylePhotos, expanded, setExpanded, zoomed, setZoomed, selectedThumbnail,
-  setSelectedThumbnail, currentMainImageIndex, setCurrentMainImageIndex,
+  setSelectedThumbnail, currentMainImageIndex, setCurrentMainImageIndex, left,
 }) {
   // console.log('current style photos in Image comp:', currentStylePhotos);
 
@@ -126,6 +126,7 @@ function Image({
             selectedThumbnail={selectedThumbnail}
             imageSetCarousel={imageSetCarousel}
             handleThumbnailClick={handleThumbnailClick}
+            left={left}
           />
           {downArrow}
         </div>

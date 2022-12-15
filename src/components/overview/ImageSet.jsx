@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 
 function ImageSet({
   // eslint-disable-next-line max-len
-  imageSetCarousel, handleThumbnailClick, currentStylePhotos, selectedThumbnail,
+  imageSetCarousel, handleThumbnailClick, currentStylePhotos, selectedThumbnail, left,
 }) {
   // const handleClick = (index) => {
   //   console.log('index in handleClick:', index);
@@ -36,9 +36,16 @@ function ImageSet({
     handleThumbnailClick(index);
   };
 
-  const selectedThumbnailStyle = {
-    border: '4px solid rgba(156, 60, 68, 1)',
-  };
+  let selectedThumbnailStyle;
+  if (left === 0) {
+    selectedThumbnailStyle = {
+      border: '4px solid rgba(156, 60, 68, 1)',
+    };
+  } else {
+    selectedThumbnailStyle = {
+      border: '4px solid rgba(191, 109, 160, 1)',
+    };
+  }
 
   const thumbnailStyle = {
     border: '1px solid white',

@@ -3,7 +3,9 @@ import axios from 'axios';
 import Image from './Image.jsx';
 import ProductInfo from './ProductInfo.jsx';
 
-function Overview({ productId, serverRoute, reviewsRef }) {
+function Overview({
+  productId, serverRoute, reviewsRef, left,
+}) {
   const [productInfo, setProductInfo] = useState({});
   const [productStyles, setProductStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
@@ -83,7 +85,7 @@ function Overview({ productId, serverRoute, reviewsRef }) {
           setSelectedThumbnail={setSelectedThumbnail}
           currentMainImageIndex={currentMainImageIndex}
           setCurrentMainImageIndex={setCurrentMainImageIndex}
-
+          left={left}
         />
         <ProductInfo
           productCategory={productCategory}
