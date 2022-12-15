@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 // import './AddAnswer.css';
 
-function LoadAnswerButton({ handleClick }) {
+function LoadAnswerButton({ handleClick, answersButtonRef }) {
   return (
-    <button className="general-button" onClick={handleClick}>
+    <button className="general-button" onClick={handleClick} ref={answersButtonRef}>
       More Answers
     </button>
   );

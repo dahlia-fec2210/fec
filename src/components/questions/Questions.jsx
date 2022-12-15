@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import QuestionEntry from './QuestionEntry.jsx';
 import LoadQuestionButton from './individual_questions/LoadQuestionButton.jsx';
@@ -20,6 +20,8 @@ function Questions({ currentProduct }) {
   const [helpfulAnswers, setHelpfulAnswers] = useState([]);
   const [helpfulQuestions, setHelpfulQuestions] = useState([]);
 
+  const questionsBottomRef = useRef(null);
+
   // console.log('currentProduct is', currentProduct);
 
   const addTwoQuestions = () => {
@@ -28,6 +30,9 @@ function Questions({ currentProduct }) {
     const newQuestionsSet = allQuestions.slice(0, newItemCount);
     setQuestionsList(newQuestionsSet);
     setPrefilterQuestions(newQuestionsSet);
+    setTimeout(() => {
+      questionsBottomRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    }, 300);
   };
 
   let compareFn = (a, b) => {
@@ -97,6 +102,7 @@ function Questions({ currentProduct }) {
             setHelpfulAnswers={setHelpfulAnswers}
             helpfulQuestions={helpfulQuestions}
             setHelpfulQuestions={setHelpfulQuestions}
+            questionsBottomRef={questionsBottomRef}
           />
         </div>
         <div className="questions-two-buttons">

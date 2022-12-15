@@ -64,7 +64,7 @@ function App() {
 
       </div>
       <div className="widgets">
-        {/* <Overview productId={currentProduct} serverRoute={serverRoute} reviewsRef={reviewsRef} /> */}
+        <Overview productId={currentProduct} serverRoute={serverRoute} reviewsRef={reviewsRef} />
         { currentProduct === {} ? (
           <RotatingLines
             strokeColor="grey"
@@ -83,7 +83,7 @@ function App() {
         { currentProduct === null ? <div>Loading...</div>
           : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
         { currentProduct === null ? <div>Loading...</div>
-          : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+          : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} reviewsRef={reviewsRef} /> }
       </div>
     </div>
   );
