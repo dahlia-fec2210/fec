@@ -84,7 +84,7 @@ function AddToCart({
           </select>
         )}
 
-      {styleQuantities === 0 ? null : <button type="submit">Add to Cart</button>}
+      {styleQuantities === 0 ? null : <button className="cart" type="submit">Add to Cart</button>}
     </form>
   );
 }
