@@ -29,11 +29,12 @@ function HelpfulAnswerLink({ answer, helpfulAnswers, setHelpfulAnswers }) {
   return (
     <div className="answer-helpful-link">
       <div onClick={helpfulClicked}>
-        Helpful?
+        Helpful?&nbsp;&nbsp;
         {' '}
         <span className="answer-helpful-yes-button">
           Yes
         </span>
+&nbsp;
         {' ('}
         <span className="helpful-number">
           {answerHelpfulness}
