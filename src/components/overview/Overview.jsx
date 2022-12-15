@@ -3,7 +3,9 @@ import axios from 'axios';
 import Image from './Image.jsx';
 import ProductInfo from './ProductInfo.jsx';
 
-function Overview({ productId, serverRoute, left }) {
+function Overview({
+  productId, serverRoute, left, reviewsRef,
+}) {
   const [productInfo, setProductInfo] = useState({});
   const [productStyles, setProductStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
@@ -97,6 +99,7 @@ function Overview({ productId, serverRoute, left }) {
           expanded={expanded}
           zoomed={zoomed}
           setCurrentStyle={setCurrentStyle}
+          reviewsRef={reviewsRef}
         />
         <div className="product-description">
           <div className="description">
