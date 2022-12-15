@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+}
+
+#root {
+  background-color: #f9f9f9;
+}
+
+.bulbastore-heading {
+  display: flex;
+  padding: 20px 30px;
+  background-color: #bfdccd;
+  margin-bottom: 40px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.logo {
+  display: flex;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.cart-div {
+  align-self: center;
+}
+
+.cart-icon {
+  color: #5e8e6f;
+  align-self: center;
+}
+
+.sun {
+  color: #5e8e6f;
+}
+
+.moon {
+  color: #5e8e6f;
+}
+
+.circle-toggle {
+  position: relative;
+  top: 16px;
+  left: 53px;
+  background-color: #9c3c44;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.night-mode-icon {
+  align-self: center;
+  margin-left: 20px;
+  background-color: white;
+  height: 36px;
+  width: 80px;
+  align-items: center;
+  display: flex;
+  border-radius: 36px;
+  justify-content: space-around;
+}
+
+.bulbastore-heading h1 {
+  color: #5e8e6f;
+  font-size: 40px;
+  line-height: 60px;
+  margin: 0;
+  font-family: 'Pacifico', cursive;
+}
+
+.bulbastore-icon {
+  height: 60px;
+}
+
+/* STARS *************************************/
+.ratings {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  color: #b1b1b1;
+  overflow: hidden;
+}
+.full-stars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #9c3c44;
+}
+
+.empty-stars:before {
+  -webkit-text-stroke: 1px #848484;
+}
+.full-stars:before {
+  -webkit-text-stroke: 1px orange;
+}
+/* Webkit-text-stroke is not supported on firefox or IE */
+
+/* Firefox */
+@-moz-document url-prefix() {
+  .full-stars {
+      color: #ECBE24;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .cart-div {
+    display: none;
+  }
+
+  .bulbastore-heading {
+    display: flex;
+    padding: 10px 20px;
+    background-color: #bfdccd;
+    margin-bottom: 40px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  .circle-toggle {
+    position: relative;
+    top: 4px;
+    left: 53px;
+    background-color: #9c3c44;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+  }
+
+  .bulbastore-heading h1 {
+    color: #5e8e6f;
+    font-size: 28px;
+    line-height: 36px;
+    margin: 0;
+    font-family: 'Pacifico', cursive;
+  }
+
+  .bulbastore-icon {
+    height: 36px;
+  }
+}
+
+

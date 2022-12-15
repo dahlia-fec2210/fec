@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+public/bundle.js
+bundle.js
+/home/itsnothalley/hackreactor/fec/tests/questions.test.js
+tests/questions.test.js
+questions.test.js

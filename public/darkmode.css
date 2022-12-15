@@ -1,0 +1,166 @@
+body {
+  margin: 0;
+
+}
+body::-webkit-scrollbar {
+  background-color: #181218;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #282228;
+  border-radius: 1em;
+}
+
+
+#root {
+  background-color: #181218;
+  color: white;
+}
+
+.bulbastore-heading {
+  display: flex;
+  padding: 20px 30px;
+  background-color: #404258;
+  margin-bottom: 40px;
+  box-shadow: rgba(207, 207, 207, 0.24) 0px 3px 8px;
+}
+
+.logo {
+  display: flex;
+  gap: 10px;
+  flex-grow: 1;
+  height: 60px;
+}
+
+.cart-div {
+  align-self: center;
+}
+
+.cart-icon {
+  color: white;
+  align-self: center;
+}
+
+.sun {
+  color: white;
+}
+
+.moon {
+  color: white;
+}
+
+.circle-toggle {
+  position: relative;
+  top: 16px;
+  left: 53px;
+  background-color: #404258;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.night-mode-icon {
+  align-self: center;
+  margin-left: 20px;
+  background-color: #6B728E;
+  height: 36px;
+  width: 80px;
+  align-items: center;
+  display: flex;
+  border-radius: 36px;
+  justify-content: space-around;
+}
+
+.bulbastore-heading h1 {
+  color: white;
+  font-size: 40px;
+  line-height: 60px;
+  margin: 0;
+  font-family: 'Pacifico', cursive;
+}
+
+.bulbastore-icon {
+  height: 80px;
+  object-fit: cover;
+  position: relative;
+  top: -12px;
+}
+
+/* STARS *************************************/
+.ratings {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  color: white;
+  overflow: hidden;
+}
+.full-stars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #bf6da0;
+}
+
+.empty-stars:before {
+  -webkit-text-stroke: 1px #848484;
+}
+.full-stars:before {
+  -webkit-text-stroke: 1px orange;
+}
+/* Webkit-text-stroke is not supported on firefox or IE */
+
+/* Firefox */
+@-moz-document url-prefix() {
+  .full-stars {
+      color: #ECBE24;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .bulbastore-heading {
+    display: flex;
+    padding: 10px 20px;
+    background-color: #404258;
+    margin-bottom: 40px;
+    box-shadow: rgba(207, 207, 207, 0.24) 0px 3px 8px;
+  }
+
+  .cart-div {
+    display: none;
+  }
+
+  .circle-toggle {
+    position: relative;
+    top: 4px;
+    left: 53px;
+    background-color: #404258;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+  }
+
+  .bulbastore-heading h1 {
+    color: white;
+    font-size: 28px;
+    line-height: 36px;
+    margin: 0;
+    font-family: 'Pacifico', cursive;
+  }
+
+  .bulbastore-icon {
+    height: 48px;
+    position: relative;
+    top: -1px;
+    align-self: center;
+  }
+
+  .logo {
+    display: flex;
+    gap: 10px;
+    flex-grow: 1;
+    height: 36px;
+  }
+}
+
+

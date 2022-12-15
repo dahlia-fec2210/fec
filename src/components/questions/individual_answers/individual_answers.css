@@ -1,0 +1,19 @@
+.answer-photo-thumbnail {
+  max-width: 100px;
+  max-height: 100px;
+  padding: 20px;
+}
+
+.answer-thumbnails {
+  max-height: 150px;
+  overflow-x: none;
+  overflow-y: scroll;
+}
+
+.answer-helpful-yes-button {
+  color: #5e8e6f;
+}
+
+.answer-report-button {
+  color: #9c3c44;
+}
