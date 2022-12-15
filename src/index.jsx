@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable import/extensions */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { RotatingLines } from 'react-loader-spinner';
@@ -9,7 +9,6 @@ import Overview from './components/overview/Overview.jsx';
 import Reviews from './components/reviews/Reviews.jsx';
 import Questions from './components/questions/Questions.jsx';
 import RelatedItems from './components/relatedItems/RelatedItems.jsx';
-import Star from './components/common/Star.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 const container = document.getElementById('root');
@@ -30,12 +29,14 @@ function App() {
     if (left === 0) {
       setLeft(left + 40);
       document.getElementById('light-mode').href = 'darkmode.css';
+      document.getElementById('light-mode-overview').href = 'overview-dark-mode.css';
       document.getElementById('light-mode-related').href = 'related-dark-mode.css';
       document.getElementById('light-mode-questions').href = 'questions-dark-mode.css';
       document.getElementById('light-mode-reviews').href = 'reviews-dark-mode.css';
     } else {
       setLeft(0);
       document.getElementById('light-mode').href = 'style.css';
+      document.getElementById('light-mode-overview').href = 'overview.css';
       document.getElementById('light-mode-related').href = 'related.css';
       document.getElementById('light-mode-questions').href = 'questions.css';
       document.getElementById('light-mode-reviews').href = 'reviews.css';
@@ -64,7 +65,12 @@ function App() {
 
       </div>
       <div className="widgets">
-        <Overview productId={currentProduct} serverRoute={serverRoute} reviewsRef={reviewsRef} />
+        <Overview
+          productId={currentProduct}
+          serverRoute={serverRoute}
+          reviewsRef={reviewsRef}
+          left={left}
+        />
         { currentProduct === {} ? (
           <RotatingLines
             strokeColor="grey"

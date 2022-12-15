@@ -1,9 +1,8 @@
 import React from 'react';
 
-function QuantityOptions({ n }) {
-  // console.log('n in QuantityOptions:', n);
+function QuantityOptions({ value }) {
   return (
-    <option value={n}>{n}</option>
+    <option value={value}>{value}</option>
   );
 }
 
