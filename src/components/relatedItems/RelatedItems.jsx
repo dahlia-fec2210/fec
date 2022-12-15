@@ -40,7 +40,6 @@ function RelatedItems({
     setWidth(window.innerWidth);
     const throttled = throttle(() => {
       setWidth(window.innerWidth);
-      console.log('resizing...');
     }, 100);
 
     window.addEventListener('resize', throttled);

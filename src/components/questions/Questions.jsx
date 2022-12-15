@@ -22,8 +22,6 @@ function Questions({ currentProduct }) {
 
   const questionsBottomRef = useRef(null);
 
-  // console.log('currentProduct is', currentProduct);
-
   const addTwoQuestions = () => {
     const newItemCount = listCount + 2;
     setListCount(newItemCount);
@@ -66,25 +64,17 @@ function Questions({ currentProduct }) {
       });
   }, [currentProduct]);
 
-  // const addQuestion = () => {
-  //   console.log('handling Add');
-  // };
-
   const searchingQuestion = (searchedQuestion) => {
-    console.log(searchedQuestion, 'searchedQuestion coming into searchingQuestion');
     if (searchedQuestion.length === 0) {
       setQuestionsList(prefilterQuestions);
     } else {
       let searchedQuestionArr = [];
-      console.log(allQuestions, 'allQuestionis?');
       for (let i = 0; i < allQuestions.length; i++) {
         let currentQuestion = allQuestions[i].question_body;
         if (currentQuestion.toLowerCase().includes(searchedQuestion.toLowerCase())) {
           searchedQuestionArr.push(allQuestions[i]);
-          console.log(searchedQuestionArr, 'searchedQuestionArr is?');
         }
       }
-      console.log('these questions are getting searched', searchedQuestionArr);
       setQuestionsList(searchedQuestionArr);
     }
   };

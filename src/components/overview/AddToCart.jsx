@@ -49,8 +49,6 @@ function AddToCart({
 
   const inStockSizes = styleAvailabilities.filter((style) => style.quantity > 0);
 
-  console.log('selected quantity:', selectedQuantity);
-
   return (
     <form onSubmit={handleSubmit}>
       {styleQuantities === 0 && (

@@ -5,7 +5,7 @@ import MoreReviewsButton from './MoreReviewsButton.jsx';
 import SortByDropdown from './sort-dropdown/SortByDropdown.jsx';
 import NewReviewModal from './new-review-modal/NewReviewModal.jsx';
 import ProductBreakdown from './product-breakdown/ProductBreakdown.jsx';
-import logInteraction from './logInteraction.js';
+import logInteraction from './logInteraction.jsx';
 
 const { useState, useEffect, useRef } = React;
 const serverRoute = `http://localhost:${process.env.PORT}`;

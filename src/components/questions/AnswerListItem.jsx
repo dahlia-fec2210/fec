@@ -7,8 +7,6 @@ import AnswerPhoto from './individual_answers/AnswerPhoto.jsx';
 // import './questions.css';
 
 function AnswerListItem({ answer, helpfulAnswers, setHelpfulAnswers }) {
-  console.log(answer.answer_id, answer.helpfulness, 'answer123');
-
   return (
     <div className="answer">
       <div className="answer-body">

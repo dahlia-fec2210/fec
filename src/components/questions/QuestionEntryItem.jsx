@@ -16,13 +16,9 @@ function QuestionEntryItem({
 }) {
   const [allAnswers, setAllAnswers] = useState([]);
   const [answersList, setAnswersList] = useState([]);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [page, setPage] = useState(1);
   const [listCount, setListCount] = useState(0);
   const answersButtonRef = useRef(null);
   const answersListRef = useRef(null);
-
-  // console.log(question.question_id);
 
   const addTwoQuestions = () => {
     const newItemCount = listCount + 2;
@@ -57,7 +53,6 @@ function QuestionEntryItem({
   })
     .then((response) => {
       const answersArr = [...response.data.results].sort(compareFn);
-      console.log(answersArr, 'thisAnswer');
       setAllAnswers(answersArr);
       // setIsLoading(false);
       return answersArr;
@@ -66,7 +61,6 @@ function QuestionEntryItem({
   useEffect(() => {
     fetchAllAnswers(question.question_id)
       .then((answersArr) => {
-        console.log(answersArr.slice(0, 2), 'in QuestionEntryItem');
         setAnswersList(answersArr.slice(0, 2));
         setListCount(2);
       });

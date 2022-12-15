@@ -8,7 +8,6 @@ import QuestionEntryItem from './QuestionEntryItem.jsx';
 function QuestionEntry({
   questions, currentProductId, helpfulAnswers, setHelpfulAnswers, helpfulQuestions, setHelpfulQuestions, questionsBottomRef,
 }) {
-  console.log('questions', questions);
   if (questions.length > 0) {
     return (
       <div className="questions-entry">

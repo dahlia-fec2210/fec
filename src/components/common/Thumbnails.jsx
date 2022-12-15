@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function Thumbnails({ thumbnailUrls }) {
-  // console.log(thumbnailUrls);
   return (
     <div className="upload-thumbnails-container">
       {thumbnailUrls.map((thumbnailUrl) => (

@@ -8,8 +8,6 @@ const serverRoute = `http://localhost:${process.env.PORT}`;
 const validateError = require('./validateError');
 
 function AddQuestionModal({ closeModal, question, currentProductId }) {
-  console.log(currentProductId, 'current123', question);
-
   const [imageUrls, setImageUrls] = useState([]);
   const [productName, setProductName] = useState('');
   const [newAnswer, setNewAnswer] = useState({
@@ -61,10 +59,8 @@ function AddQuestionModal({ closeModal, question, currentProductId }) {
 
   const submitForm = (event) => {
     event.preventDefault();
-    console.log('submitForm working?', newAnswer);
     if (verifyErrors()) {
-      axios.post(`/qa/questions/${question.question_id}/answers`, newAnswer)
-        .then((result) => console.log(result));
+      axios.post(`/qa/questions/${question.question_id}/answers`, newAnswer);
     }
   };
   return (

@@ -19,13 +19,11 @@ function getAnswersForQuestion(url) {
 }
 
 function postQuestion(question) {
-  console.log(question, 'inside postQuestion');
   return axios.post(path.join(process.env.DATABASE_URL, 'qa/questions'), question, headers)
     .then((response) => response.data);
 }
 
 function postAnswerToQuestion(questionId, answer) {
-  console.log(questionId, answer, 'inside postAnswerToQuestion');
   return axios.post(path.join(process.env.DATABASE_URL, `qa/questions/${questionId}/answers`), answer, headers)
     .then((response) => response.data);
 }

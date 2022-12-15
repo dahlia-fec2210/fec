@@ -5,12 +5,8 @@ import AddAnswerModal from '../modals/AddAnswerModal.jsx';
 function AddAnswer({ question, currentProductId }) {
   const [openAddAnswerModal, setOpenAddAnswerModal] = useState(false);
 
-  const helpfulClicked = () => {
-    console.log(question, 'add answer clicked');
-  };
-
   return (
-    <div onClick={helpfulClicked}>
+    <div>
       <button
         className="general-button openAddAnswerModalBtn"
         onClick={() => {

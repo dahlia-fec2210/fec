@@ -9,12 +9,8 @@ function ReportAnswerLink({ answer }) {
   const [clickedReport, setClickedReport] = useState(false);
 
   const reportClicked = () => {
-    console.log(answer.answer_id, 'is this correct answer id');
     setClickedReport(!clickedReport);
-    axios.put(`/qa/answers/${answer.answer_id}/report`)
-      .then((result) => {
-        console.log(result, 'reported');
-      });
+    axios.put(`/qa/answers/${answer.answer_id}/report`);
   };
 
   return (

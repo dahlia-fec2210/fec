@@ -8,7 +8,6 @@ const serverRoute = `http://localhost:${process.env.PORT}`;
 function AnswerList({
   answers, helpfulAnswers, setHelpfulAnswers, answersListRef,
 }) {
-  // console.log(answers[0].answer_id, answers[0].helpfulness, 'answer123');
   if (answers.length > 0) {
     return (
       <div className="answers-entry">

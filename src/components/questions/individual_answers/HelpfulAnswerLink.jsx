@@ -19,7 +19,6 @@ function HelpfulAnswerLink({ answer, helpfulAnswers, setHelpfulAnswers }) {
     currentHelpfulAnswers.push(answer);
     setHelpfulAnswers(currentHelpfulAnswers);
     localStorage.setItem('helpfulAnswers', JSON.stringify(currentHelpfulAnswers));
-    console.log(helpfulAnswers.includes(answer), '6974');
   };
 
   useEffect(() => {

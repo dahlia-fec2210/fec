@@ -52,7 +52,6 @@ const CloudinaryWidget = memo(({ setImageUrls }) => {
     if (!error && result && result.event === 'success') {
       urlList.push(result.info.url);
       thumbnailList = [...thumbnailList, result.info.thumbnail_url];
-      console.log(result.info);
       updateImageUrls();
     }
   });
