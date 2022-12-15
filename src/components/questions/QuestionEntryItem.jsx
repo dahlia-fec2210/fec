@@ -80,7 +80,7 @@ function QuestionEntryItem({
       {/* {answersList && answersList.map((individualA, index) => <Answer key={index} answer={individualA} />)} */}
       <AnswerList answers={answersList} helpfulAnswers={helpfulAnswers} setHelpfulAnswers={setHelpfulAnswers} />
       <div className="question-entry-more-answers">
-        {listCount > allAnswers.length ? <CollapseAnswerButton /> : <LoadAnswerButton handleClick={addTwoQuestions} />}
+        {allAnswers.length <= 2 ? null : listCount >= allAnswers.length ? <CollapseAnswerButton /> : <LoadAnswerButton handleClick={addTwoQuestions} />}
       </div>
     </div>
   );
