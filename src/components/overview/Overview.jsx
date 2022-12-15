@@ -66,11 +66,6 @@ function Overview({ productId, serverRoute, left }) {
       });
   }, [productId]);
 
-  // console.log('product styles:', productStyles);
-  // console.log('current style:', currentStyle);
-  // console.log('product info:', productInfo);
-  // console.log('features:', productFeatures);
-
   if (currentStylePhotos.length > 0) {
     return (
       <div className="overview-container">

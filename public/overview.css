@@ -285,22 +285,6 @@
   background: rgba(125, 172, 145, 0.6);
 }
 
-/* .thumbnail-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 65px;
-  height: 65px;
-  display: none;
-  border-radius: 4px;
-  display: block;
-  background: rgba(125, 172, 145, 0.8);
-  border-radius: 4px;
-  border: 1px solid white;
-  object-fit: cover;
-  cursor: pointer;
-} */
-
 .styles-selector {
   display: flex;
   flex-wrap: wrap;
