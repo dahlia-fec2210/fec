@@ -21,12 +21,12 @@ function MainImage({
       // const maxWidth = window.innerWidth;
       const minX = zoomedImageAreaRef.current.offsetWidth;
       const minY = zoomedImageAreaRef.current.offsetHeight;
-      console.log('minX:', minX);
+      // console.log('minX:', minX);
 
       const { clientX } = event;
       const { clientY } = event;
-      console.log('clientX:', clientX);
-      console.log('clientY:', clientY);
+      // console.log('clientX:', clientX);
+      // console.log('clientY:', clientY);
 
       const mWidth = zoomedImageAreaRef.current.offsetWidth;
       const mHeight = zoomedImageAreaRef.current.offsetHeight;
@@ -39,12 +39,12 @@ function MainImage({
 
       // console.log('xTransform:', xTransform);
       // console.log('xPercentage:', xPercentage);
-      console.log('yTransform:', yTransform);
-      console.log('yPercentage:', yPercentage);
-      console.log('clientX percentage:', clientX);
-      console.log('clientY percentage:', clientY);
-      console.log('mWidth:', mWidth);
-      console.log('mHeight:', mHeight);
+      // console.log('yTransform:', yTransform);
+      // console.log('yPercentage:', yPercentage);
+      // console.log('clientX percentage:', clientX);
+      // console.log('clientY percentage:', clientY);
+      // console.log('mWidth:', mWidth);
+      // console.log('mHeight:', mHeight);
 
       zoomedImageRef.current.style.transform = `translate(${xTransform * -1}%, ${yTransform * -1}%) scale(2.5)`;
     }
