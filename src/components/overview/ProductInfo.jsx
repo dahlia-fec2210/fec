@@ -7,7 +7,7 @@ import DisplayStar from '../common/Star.jsx';
 function ProductInfo({
   productCategory, productName, productRating, originalPrice, salePrice,
   productStyles, currentStyleSkus, setCurrentStyleSkus, setCurrentStylePhotos, currentStyle,
-  setCurrentStyle, expanded, zoomed, setSelectedThumbnail, setCurrentMainImageIndex,
+  setCurrentStyle, expanded, zoomed,
 }) {
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedQuantity, setSelectedQuanity] = useState('');
@@ -29,8 +29,6 @@ function ProductInfo({
       <StyleSelector
         productStyles={productStyles}
         setCurrentStylePhotos={setCurrentStylePhotos}
-        setSelectedThumbnail={setSelectedThumbnail}
-        setCurrentMainImageIndex={setCurrentMainImageIndex}
         setCurrentStyle={setCurrentStyle}
         setSelectedSize={setSelectedSize}
         setSelectedQuanity={setSelectedQuanity}
