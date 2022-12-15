@@ -29,19 +29,19 @@ function ProductInfo({
       <StyleSelector
         productStyles={productStyles}
         setCurrentStylePhotos={setCurrentStylePhotos}
-        setCurrentStyle={setCurrentStyle}
-        setSelectedSize={setSelectedSize}
-        setSelectedQuanity={setSelectedQuanity}
-        setCurrentStyleSkus={setCurrentStyleSkus}
+        // setCurrentStyle={setCurrentStyle}
+        // setSelectedSize={setSelectedSize}
+        // setSelectedQuanity={setSelectedQuanity}
+        // setCurrentStyleSkus={setCurrentStyleSkus}
       />
       <AddToCart
         currentStyle={currentStyle}
         currentStyleSkus={currentStyleSkus}
         productName={productName}
-        selectedSize={selectedSize}
-        setSelectedSize={setSelectedSize}
-        selectedQuantity={selectedQuantity}
-        setSelectedQuanity={setSelectedQuanity}
+        // selectedSize={selectedSize}
+        // setSelectedSize={setSelectedSize}
+        // selectedQuantity={selectedQuantity}
+        // setSelectedQuanity={setSelectedQuanity}
       />
       <h3>Share on Social Media</h3>
       <div className="social-media">
