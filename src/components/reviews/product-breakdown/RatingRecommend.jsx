@@ -17,7 +17,7 @@ export default function RatingRecommend({ metaData }) {
   const findRecommendation = (recommendations) => {
     const truths = Number(recommendations.true);
     const falses = Number(recommendations.false);
-    return _.round(truths / (truths + falses), 2) * 100;
+    return _.round((truths / (truths + falses)) * 100);
   };
 
   const overallRating = findOverallRating(metaData.ratings);
