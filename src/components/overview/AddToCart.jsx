@@ -69,7 +69,7 @@ function AddToCart({
   return (
     <form onSubmit={handleSubmit}>
       {styleQuantities === 0 && (
-      <select disabled>
+      <select className="size-dropdown" disabled>
         <option value="">OUT OF STOCK</option>
       </select>
       )}
@@ -88,12 +88,12 @@ function AddToCart({
 
       {selectedSize === ''
         ? (
-          <select disabled>
+          <select className="quantity-dropdown" disabled>
             <option value="">-</option>
           </select>
         )
         : (
-          <select onChange={handleQuantityChange} value={selectedQuantity}>
+          <select onChange={handleQuantityChange} value={selectedQuantity} className="quantity-dropdown">
             <option value="">1</option>
             {[...Array(sizeQuantity + 1).keys()].slice(2).map((n, i) => <QuantityOptions key={i} value={n} />)}
           </select>

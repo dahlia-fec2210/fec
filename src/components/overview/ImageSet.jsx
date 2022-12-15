@@ -37,7 +37,7 @@ function ImageSet({
   };
 
   const selectedThumbnailStyle = {
-    border: '3px solid rgba(125, 172, 145, 1)',
+    border: '4px solid rgba(156, 60, 68, 1)',
   };
 
   const thumbnailStyle = {

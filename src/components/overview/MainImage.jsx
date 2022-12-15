@@ -83,7 +83,7 @@ function MainImage({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <img className={imageClass} ref={zoomedImageRef} src={photo.url} alt="" />
+      <img id="main-image" className={imageClass} ref={zoomedImageRef} src={photo.url} alt="" />
     </div>
   );
 }

@@ -21,11 +21,12 @@ function StyleSelector({
 
   return (
     <div>
-      <h4>
+      <span className="style-name-indicator">
         STYLE &gt;
-        {' '}
+      </span>
+      <span className="style-name">
         {styleName}
-      </h4>
+      </span>
       <div className="styles-selector">
         {productStyles.map((style, i) =>
           // console.log('style in StylesSelector:', style);
