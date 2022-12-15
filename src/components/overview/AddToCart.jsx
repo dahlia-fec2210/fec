@@ -77,7 +77,7 @@ function AddToCart({
         )
         : (
           <select onChange={handleQuantityChange} value={selectedQuantity}>
-            <option value="">-</option>
+            <option value="">1</option>
             {[...Array(sizeQuantity + 1).keys()].slice(1).map((n, i) => <QuantityOptions key={i} value={n} />)}
           </select>
         )}
