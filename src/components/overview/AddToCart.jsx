@@ -28,8 +28,7 @@ function AddToCart({
     }
   };
 
-  console.log('current style:', currentStyle);
-
+  // console.log('current style:', currentStyle);
   // console.log('current style:', currentStyle);
   // console.log('current style skus:', currentStyleSkus);
 
@@ -59,7 +58,7 @@ function AddToCart({
   // console.log('selected quantity:', selectedQuantity);
   // console.log('current style name:', currentStyle.name);
   // console.log('current style:', currentStyle);
-  console.log('SKUS:', currentStyleSkus);
+  // console.log('SKUS:', currentStyleSkus);
 
   const styleAvailabilities = Object.values(currentStyleSkus);
   // eslint-disable-next-line max-len
