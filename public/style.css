@@ -20,6 +20,10 @@ body {
   flex-grow: 1;
 }
 
+.cart-div {
+  align-self: center;
+}
+
 .cart-icon {
   color: #5e8e6f;
   align-self: center;
@@ -67,14 +71,6 @@ body {
   height: 60px;
 }
 
-.search-bar {
-  border: 1px solid #030303;
-  border-radius: 30px;
-  width: 250px;
-  height: 35px;
-  align-self: center;
-}
-
 /* STARS *************************************/
 .ratings {
   position: relative;
@@ -104,6 +100,42 @@ body {
 @-moz-document url-prefix() {
   .full-stars {
       color: #ECBE24;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .cart-div {
+    display: none;
+  }
+
+  .bulbastore-heading {
+    display: flex;
+    padding: 10px 20px;
+    background-color: #bfdccd;
+    margin-bottom: 40px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  .circle-toggle {
+    position: relative;
+    top: 4px;
+    left: 53px;
+    background-color: #9c3c44;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+  }
+
+  .bulbastore-heading h1 {
+    color: #5e8e6f;
+    font-size: 28px;
+    line-height: 36px;
+    margin: 0;
+    font-family: 'Pacifico', cursive;
+  }
+
+  .bulbastore-icon {
+    height: 36px;
   }
 }
 

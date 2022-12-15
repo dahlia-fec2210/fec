@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable import/extensions */
@@ -7,6 +8,8 @@ import axios from 'axios';
 import { RotatingLines } from 'react-loader-spinner';
 import Price from '../relatedItems/Price.jsx';
 import Star from '../common/Star.jsx';
+import RemoveButton from './RemoveButton.jsx';
+import OutfitCardPhoto from './OutfitCardPhoto.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
@@ -91,14 +94,9 @@ function ClothingPiece({
     return (
       <div>
         <div className="related-product-card" style={carouselStyle}>
-          <div className="related-stack" onClick={removeFromOutfit}>
-            <div className="fa-stack" style={{ verticalAlign: 'top' }}>
-              <i className="related-circle fa-solid fa-regular fa-circle fa-stack-2x" />
-              <i id={`outfit-list-remove-button:${clothingPiece}`} className="related-star fa-solid fa-x fa-stack-1x" />
-            </div>
-          </div>
+          <RemoveButton removeFromOutfit={removeFromOutfit} clothingPiece={clothingPiece} />
           <div>
-            <img className="related-outfit-photo" src={photo || 'https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp'} alt={clothingPiece} />
+            <OutfitCardPhoto photo={photo} clothingPiece={clothingPiece} />
             <div className="related-category">{productInfo.category}</div>
             <div className="related-name">{productInfo.name}</div>
             <Price
