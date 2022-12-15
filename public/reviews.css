@@ -6,6 +6,7 @@
 }
 .reviews-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
   margin-top: 30px;
@@ -13,11 +14,13 @@
 /* Reviews list ************************************** */
 .review-list-container {
   max-height: 98vh;
-  width: 60vw;
+  min-width: 60vw;
+  max-width: 85vw;
   padding: 10px;
   margin-top: 55px;
   cursor: default;
 }
+
 .reviews-list-item {
   border-bottom: 1px black solid;
   padding-bottom: 20px;
@@ -414,7 +417,6 @@
 /* PRODUCT BREAKDOWN***************************** */
 
 .review-pb-container {
-  max-width: 35vw;
   max-height: 80vh;
   padding: 30px;
   padding-right: 40px;
