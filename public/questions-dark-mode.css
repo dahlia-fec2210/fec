@@ -520,7 +520,7 @@
 .answer-thumbnails {
   max-height: 150px;
   overflow-x: none;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .answer-helpful-yes-button {
