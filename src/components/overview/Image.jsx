@@ -11,9 +11,8 @@ import ImageSet from './ImageSet.jsx';
 function Image({
   currentStylePhotos, expanded, setExpanded, zoomed, setZoomed, selectedThumbnail,
   setSelectedThumbnail, currentMainImageIndex, setCurrentMainImageIndex,
+  selectedDot, setSelectedDot, left,
 }) {
-  // console.log('current style photos in Image comp:', currentStylePhotos);
-
   const { length } = currentStylePhotos;
   const [imageSetCarousel, setImageSetCarousel] = useState([0, 1, 2, 3, 4, 5]);
 
@@ -21,6 +20,7 @@ function Image({
     if (currentMainImageIndex !== 0) {
       setCurrentMainImageIndex(currentMainImageIndex - 1);
       setSelectedThumbnail(currentMainImageIndex - 1);
+      setSelectedDot(currentMainImageIndex - 1);
     }
   };
 
@@ -28,6 +28,7 @@ function Image({
     if (currentMainImageIndex !== 0) {
       setCurrentMainImageIndex(currentMainImageIndex - 1);
       setSelectedThumbnail(currentMainImageIndex - 1);
+      setSelectedDot(currentMainImageIndex - 1);
       if (imageSetCarousel[0] > 0) {
         const newCarousel = imageSetCarousel.map((n) => n - 1);
         setImageSetCarousel(newCarousel);
@@ -38,11 +39,13 @@ function Image({
   const nextImage = () => {
     setCurrentMainImageIndex(currentMainImageIndex === length - 1 ? 0 : currentMainImageIndex + 1);
     setSelectedThumbnail(currentMainImageIndex === length - 1 ? 0 : currentMainImageIndex + 1);
+    setSelectedDot(currentMainImageIndex === length - 1 ? 0 : currentMainImageIndex + 1);
   };
 
   const shiftDown = () => {
     setCurrentMainImageIndex(currentMainImageIndex === length - 1 ? 0 : currentMainImageIndex + 1);
     setSelectedThumbnail(currentMainImageIndex === length - 1 ? 0 : currentMainImageIndex + 1);
+    setSelectedDot(currentMainImageIndex === length - 1 ? 0 : currentMainImageIndex + 1);
     if (imageSetCarousel[imageSetCarousel.length - 1] < currentStylePhotos.length - 1) {
       const newCarousel = imageSetCarousel.map((n) => n + 1);
       setImageSetCarousel(newCarousel);
@@ -50,8 +53,8 @@ function Image({
   };
 
   const handleThumbnailClick = (index) => {
-    // console.log('index in handleThumbnailClick:', index);
     setSelectedThumbnail(index);
+    setSelectedDot(index);
     setCurrentMainImageIndex(index);
   };
 
@@ -90,10 +93,6 @@ function Image({
     styleImagesClass = 'expand-style-images';
   }
 
-  console.log('==================================================');
-  console.log('selectedThumbnail:', selectedThumbnail);
-  console.log('currentMainImageIndex:', currentMainImageIndex);
-
   return (
     <div className={styleImagesClass}>
       {styleImagesClass === 'expand-style-images' ? <span className="exit-expanded-view" onClick={() => { setZoomed(false); setExpanded(false); }}>X</span> : null}
@@ -126,6 +125,9 @@ function Image({
             selectedThumbnail={selectedThumbnail}
             imageSetCarousel={imageSetCarousel}
             handleThumbnailClick={handleThumbnailClick}
+            expanded={expanded}
+            selectedDot={selectedDot}
+            left={left}
           />
           {downArrow}
         </div>

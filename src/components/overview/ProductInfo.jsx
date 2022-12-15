@@ -1,38 +1,65 @@
 /* eslint-disable import/extensions */
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import DisplayStar from '../common/Star.jsx';
 
 function ProductInfo({
   productCategory, productName, productRating, originalPrice, salePrice,
-  productStyles, currentStyleSkus, setCurrentStylePhotos, currentStyle, expanded, zoomed,
-  setSelectedThumbnail, setCurrentMainImageIndex, reviewsRef,
+  productStyles, currentStyleSkus, setCurrentStylePhotos, currentStyle,
+  expanded, zoomed, reviewsRef, setCurrentStyle, setCurrentStyleSkus,
 }) {
+  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedQuantity, setSelectedQuanity] = useState('1');
   const scrollToReviews = () => {
     reviewsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
-  // console.log('productStyles in ProductInfo:', productStyles);
+
   return (
     <div className={expanded === false && zoomed === false ? 'product-info-container' : 'hide-info'}>
-      <DisplayStar percentage={(productRating / 5) * 100} />
-      <span onClick={scrollToReviews}><small>Read all reviews</small></span>
-      <h3 className="overview-category">{productCategory}</h3>
+      <div className="overview-rating">
+        <DisplayStar percentage={(productRating / 5) * 100} />
+        <span className="all-reviews-link" onClick={scrollToReviews}>Read all reviews</span>
+      </div>
+      <h3 data-testid="category" className="overview-category">{productCategory}</h3>
       <h3 className="overview-name">{productName}</h3>
-      { !salePrice ? <p>{originalPrice}</p>
+      { !salePrice ? (
+        <p className="overview-price">
+          $
+          {originalPrice}
+        </p>
+      )
         : (
-          <div>
-            <span><s>{originalPrice}</s></span>
-            <span style={{ color: 'red' }}>{salePrice}</span>
+          <div className="overview-price">
+            <span>
+              <s>
+                $
+                {originalPrice}
+              </s>
+            </span>
+            <span style={{ color: 'red' }}>
+              $
+              {salePrice}
+            </span>
           </div>
         )}
       <StyleSelector
         productStyles={productStyles}
         setCurrentStylePhotos={setCurrentStylePhotos}
-        setSelectedThumbnail={setSelectedThumbnail}
-        setCurrentMainImageIndex={setCurrentMainImageIndex}
+        setCurrentStyle={setCurrentStyle}
+        setSelectedSize={setSelectedSize}
+        setSelectedQuanity={setSelectedQuanity}
+        setCurrentStyleSkus={setCurrentStyleSkus}
       />
-      <AddToCart currentStyle={currentStyle} currentStyleSkus={currentStyleSkus} />
+      <AddToCart
+        currentStyle={currentStyle}
+        currentStyleSkus={currentStyleSkus}
+        productName={productName}
+        selectedSize={selectedSize}
+        setSelectedSize={setSelectedSize}
+        selectedQuantity={selectedQuantity}
+        setSelectedQuanity={setSelectedQuanity}
+      />
       <h3>Share on Social Media</h3>
       <div className="social-media">
 

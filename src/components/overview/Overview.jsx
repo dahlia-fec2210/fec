@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Image from './Image.jsx';
 import ProductInfo from './ProductInfo.jsx';
-import './overview.css';
 
-function Overview({ productId, serverRoute, reviewsRef }) {
+function Overview({ productId, serverRoute, left }) {
   const [productInfo, setProductInfo] = useState({});
   const [productStyles, setProductStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
@@ -21,6 +20,7 @@ function Overview({ productId, serverRoute, reviewsRef }) {
   const [zoomed, setZoomed] = useState(false);
   const [currentMainImageIndex, setCurrentMainImageIndex] = useState(0);
   const [selectedThumbnail, setSelectedThumbnail] = useState(0);
+  const [selectedDot, setSelectedDot] = useState(0);
 
   useEffect(() => {
     axios.get(`${serverRoute}/products/${productId}`)
@@ -66,11 +66,6 @@ function Overview({ productId, serverRoute, reviewsRef }) {
       });
   }, [productId]);
 
-  // console.log('product styles:', productStyles);
-  // console.log('current style:', currentStyle);
-  // console.log('product info:', productInfo);
-  // console.log('features:', productFeatures);
-
   if (currentStylePhotos.length > 0) {
     return (
       <div className="overview-container">
@@ -84,7 +79,9 @@ function Overview({ productId, serverRoute, reviewsRef }) {
           setSelectedThumbnail={setSelectedThumbnail}
           currentMainImageIndex={currentMainImageIndex}
           setCurrentMainImageIndex={setCurrentMainImageIndex}
-
+          selectedDot={selectedDot}
+          setSelectedDot={setSelectedDot}
+          left={left}
         />
         <ProductInfo
           productCategory={productCategory}
@@ -94,13 +91,12 @@ function Overview({ productId, serverRoute, reviewsRef }) {
           salePrice={salePrice}
           productStyles={productStyles}
           currentStyleSkus={currentStyleSkus}
+          setCurrentStyleSkus={setCurrentStyleSkus}
           setCurrentStylePhotos={setCurrentStylePhotos}
           currentStyle={currentStyle}
           expanded={expanded}
           zoomed={zoomed}
-          setSelectedThumbnail={setSelectedThumbnail}
-          setCurrentMainImageIndex={setCurrentMainImageIndex}
-          reviewsRef={reviewsRef}
+          setCurrentStyle={setCurrentStyle}
         />
         <div className="product-description">
           <div className="description">
