@@ -2,16 +2,14 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
-import ProductInfo from '../src/components/overview/ProductInfo.jsx';
-import Overview from '../src/components/overview/Overview.jsx';
-import StyleSelector from '../src/components/overview/StyleSelector.jsx';
+import AddToCart from '../src/components/overview/AddToCart.jsx';
 
 describe('AddToCart test', () => {
   const user = userEvent.setup();
   it('should render the current style skus', () => {
     render(<AddToCart />);
     screen.debugger;
-    expect(screen.getByTestId('category')).toHaveTextContent('JACKETS');
+    expect(screen.getByTestId('cart')).toHaveTextContent('');
   });
 });
 
