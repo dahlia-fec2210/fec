@@ -5,7 +5,9 @@ import AnswerListItem from './AnswerListItem.jsx';
 
 const serverRoute = `http://localhost:${process.env.PORT}`;
 
-function AnswerList({ answers, helpfulAnswers, setHelpfulAnswers }) {
+function AnswerList({
+  answers, helpfulAnswers, setHelpfulAnswers, answersListRef,
+}) {
   // console.log(answers[0].answer_id, answers[0].helpfulness, 'answer123');
   if (answers.length > 0) {
     return (
@@ -13,6 +15,7 @@ function AnswerList({ answers, helpfulAnswers, setHelpfulAnswers }) {
         {answers.map((answer, index) => (
           <AnswerListItem answer={answer} key={index} helpfulAnswers={helpfulAnswers} setHelpfulAnswers={setHelpfulAnswers} />
         ))}
+        <div ref={answersListRef} />
       </div>
     );
   }
