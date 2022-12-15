@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 // import './questions.css';
 
@@ -19,6 +19,8 @@ function QuestionEntryItem({
   // const [isLoading, setIsLoading] = useState(true);
   // const [page, setPage] = useState(1);
   const [listCount, setListCount] = useState(0);
+  const answersButtonRef = useRef(null);
+  const answersListRef = useRef(null);
 
   // console.log(question.question_id);
 
@@ -27,6 +29,12 @@ function QuestionEntryItem({
     setListCount(newItemCount);
     const newAnswerSet = allAnswers.slice(0, newItemCount);
     setAnswersList(newAnswerSet);
+    setTimeout(() => {
+      answersButtonRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      setTimeout(() => {
+        answersListRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      }, 350);
+    }, 200);
   };
 
   let compareFn = (a, b) => {
@@ -77,9 +85,9 @@ function QuestionEntryItem({
         </div>
       </div>
       {/* {answersList && answersList.map((individualA, index) => <Answer key={index} answer={individualA} />)} */}
-      <AnswerList answers={answersList} helpfulAnswers={helpfulAnswers} setHelpfulAnswers={setHelpfulAnswers} />
+      <AnswerList answers={answersList} helpfulAnswers={helpfulAnswers} setHelpfulAnswers={setHelpfulAnswers} answersListRef={answersListRef} />
       <div className="question-entry-more-answers">
-        {listCount > allAnswers.length ? <CollapseAnswerButton /> : <LoadAnswerButton handleClick={addTwoQuestions} />}
+        {listCount > allAnswers.length ? <CollapseAnswerButton /> : <LoadAnswerButton handleClick={addTwoQuestions} answersButtonRef={answersButtonRef} />}
       </div>
     </div>
   );
