@@ -1,14 +1,17 @@
 /* eslint-disable import/extensions */
-import React from 'react';
+import React, { useState } from 'react';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import DisplayStar from '../common/Star.jsx';
 
 function ProductInfo({
   productCategory, productName, productRating, originalPrice, salePrice,
-  productStyles, currentStyleSkus, setCurrentStylePhotos, currentStyle,
+  productStyles, currentStyleSkus, setCurrentStyleSkus, setCurrentStylePhotos, currentStyle,
   setCurrentStyle, expanded, zoomed, setSelectedThumbnail, setCurrentMainImageIndex,
 }) {
+  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedQuantity, setSelectedQuanity] = useState('');
+
   // console.log('productStyles in ProductInfo:', productStyles);
   return (
     <div className={expanded === false && zoomed === false ? 'product-info-container' : 'hide-info'}>
@@ -29,11 +32,18 @@ function ProductInfo({
         setSelectedThumbnail={setSelectedThumbnail}
         setCurrentMainImageIndex={setCurrentMainImageIndex}
         setCurrentStyle={setCurrentStyle}
+        setSelectedSize={setSelectedSize}
+        setSelectedQuanity={setSelectedQuanity}
+        setCurrentStyleSkus={setCurrentStyleSkus}
       />
       <AddToCart
         currentStyle={currentStyle}
         currentStyleSkus={currentStyleSkus}
         productName={productName}
+        selectedSize={selectedSize}
+        setSelectedSize={setSelectedSize}
+        selectedQuantity={selectedQuantity}
+        setSelectedQuanity={setSelectedQuanity}
       />
       <h3>Share on Social Media</h3>
       <div className="social-media">
