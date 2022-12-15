@@ -1,7 +1,10 @@
 /* eslint-disable import/extensions */
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-alert */
+import React, { useState, useEffect, useRef } from 'react';
+import Select from 'react-select';
 import SizeOptions from './SizeOptions.jsx';
 import QuantityOptions from './QuantityOptions.jsx';
+import SizeSelector from './SizeSelector.jsx';
 
 function AddToCart({
   currentStyle, currentStyleSkus, productName, selectedSize, setSelectedSize,
@@ -9,19 +12,27 @@ function AddToCart({
 }) {
   const [sizeQuantity, setSizeQuantity] = useState(0);
   const [currentSku, setCurrentSku] = useState(0);
+  const [noSizeSelected, setNoSizeSelected] = useState(false);
+
+  const sizeDropdown = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // eslint-disable-next-line no-alert
-    alert(
-      `Added to cart:\n${productName}\n${currentStyle.name}\nSize: ${selectedSize}   Quantity: ${selectedQuantity}`,
-    );
+    if (selectedSize === '') {
+      sizeDropdown.current.focus();
+      setNoSizeSelected(true);
+    } else {
+      alert(
+        `Added to cart:\n${productName}\n${currentStyle.name}\nSize: ${selectedSize}   Quantity: ${selectedQuantity}`,
+      );
+    }
   };
 
   // console.log('current style:', currentStyle);
   // console.log('current style skus:', currentStyleSkus);
 
   const handleSizeChange = (e) => {
+    setNoSizeSelected(false);
     setSelectedSize(e.target.value);
     // eslint-disable-next-line no-restricted-syntax, guard-for-in
     for (const k in currentStyleSkus) {
@@ -62,12 +73,17 @@ function AddToCart({
       </select>
       )}
 
-      <select id="select-size" onChange={handleSizeChange} value={selectedSize}>
-        <option value="">SELECT SIZE</option>
-        {inStockSizes.map((sku, i) => (
-          <SizeOptions key={Object.keys(currentStyleSkus)[i]} size={sku.size} />
-        ))}
-      </select>
+      {noSizeSelected === true ? <p style={{ color: 'red' }}>Please select size</p> : null}
+
+      <SizeSelector
+        // eslint-disable-next-line react/jsx-boolean-value
+        openMenuOnFocus={true}
+        handleSizeChange={handleSizeChange}
+        selectedSize={selectedSize}
+        sizeDropdown={sizeDropdown}
+        inStockSizes={inStockSizes}
+        currentStyleSkus={currentStyleSkus}
+      />
 
       {selectedSize === ''
         ? (
