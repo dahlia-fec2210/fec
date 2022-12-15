@@ -3,57 +3,32 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-shadow */
 /* eslint-disable react/no-array-index-key */
-import React, { useState } from 'react';
+/* eslint-disable max-len */
+/* eslint-disable-next-line max-len */
+
+import React from 'react';
 
 function ImageSet({
-  // eslint-disable-next-line max-len
-  imageSetCarousel, handleThumbnailClick, currentStylePhotos, selectedThumbnail,
+  imageSetCarousel, handleThumbnailClick, currentStylePhotos, selectedThumbnail, selectedDot, expanded, left,
 }) {
-  // const handleClick = (index) => {
-  //   console.log('index in handleClick:', index);
-  //   setSelectedIndex(index);
-  //   handleThumbnailClick(index);
-  //   if (index === selectedThumbnail) {
-  //     setIndicator(<div className="thumbnail-overlay" />);
-  //   } else {
-  //     setIndicator(null);
-  //   }
-  // };
-
-  // let thumbnailStyle;
-  // if (selectedIndex) {
-  //   selectedThumbnailStyle = {
-  //     border: '2px solid rgba(125, 172, 145, 1)',
-  //   };
-  // } else {
-  //   thumbnailStyle = {
-  //     border: 'border: 1px solid white;',
-  //   };
-  // }
-  // const [selectedIndex, setSelectedIndex] = useState(null);
   const handleClick = (index) => {
-    // setSelectedIndex(index);
     handleThumbnailClick(index);
   };
 
-  const selectedThumbnailStyle = {
-    border: '3px solid rgba(125, 172, 145, 1)',
-  };
+  let selectedThumbnailStyle;
+  if (left === 0) {
+    selectedThumbnailStyle = {
+      border: '4px solid rgba(125, 172, 145, 1)',
+    };
+  } else {
+    selectedThumbnailStyle = {
+      border: '4px solid rgba(191, 109, 160, 1)',
+    };
+  }
 
   const thumbnailStyle = {
-    border: '1px solid white',
+    border: '2px solid white',
   };
-
-  // console.log('==============================================================================');
-  // console.log('currentMainImageIndex:', currentMainImageIndex);
-  // console.log('selectedThumbnail:', selectedThumbnail);
-  // console.log('imageSetCarousel:', imageSetCarousel);
-  // console.log('selectedImageCondition0:', selectedImageCondition0);
-  // console.log('selectedImageCondition1:', selectedImageCondition1);
-
-  // If in the expanded view, changed thumbnails to little dots and change its position
-  // to be underneath the main image
-  // For the differentiation, make the dots bigger
 
   return (
     <div className="image-thumbnails">
