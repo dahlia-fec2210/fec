@@ -8,7 +8,7 @@ import QuestionEntryItem from './QuestionEntryItem.jsx';
 // const serverRoute = `http://localhost:${process.env.PORT}`;
 
 function QuestionEntry({
-  questions, currentProductId, helpfulAnswers, setHelpfulAnswers, helpfulQuestions, setHelpfulQuestions,
+  questions, currentProductId, helpfulAnswers, setHelpfulAnswers, helpfulQuestions, setHelpfulQuestions, questionsBottomRef,
 }) {
   console.log('questions', questions);
   if (questions.length > 0) {
@@ -26,6 +26,7 @@ function QuestionEntry({
             currentProductId={currentProductId}
           />
         ))}
+        <div ref={questionsBottomRef} />
       </div>
     );
   }

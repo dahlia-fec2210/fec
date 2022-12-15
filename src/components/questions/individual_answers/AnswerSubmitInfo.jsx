@@ -1,17 +1,17 @@
 import React from 'react';
-import dateFormat from 'dateformat';
+import { format, parseISO } from 'date-fns';
 
 function AnswerSubmitInfo({ answer }) {
   return (
     <div>
       <div className="answer-submit-info-name">
-        By
+        <b>By</b>
         {' '}
-        {answer.answerer_name === 'seller' ? <b>{answer.answerer_name}</b> : answer.answerer_name}
+        {answer.answerer_name === 'Seller' ? <b>{answer.answerer_name}</b> : answer.answerer_name}
       </div>
 
       <div className="answer-submit-info-date">
-        {dateFormat(answer.date, 'mmmm d, yyyy ')}
+        {format(parseISO(answer.date), 'MMM do, yyyy ')}
       </div>
     </div>
     // <span>
