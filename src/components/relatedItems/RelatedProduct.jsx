@@ -11,7 +11,7 @@ import Photo from './Photo.jsx';
 import Price from './Price.jsx';
 import Star from '../common/Star.jsx';
 
-const serverRoute = `http://localhost:${process.env.PORT}`;
+const serverRoute = `http://localhost:${process.env.PORT || 3001}`;
 
 function RelatedProduct({
   product, left, currentProduct, setCurrentProduct,

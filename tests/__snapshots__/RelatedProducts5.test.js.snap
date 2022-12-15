@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders photo for outfit list card with product 37315 1`] = `
+<img
+  alt={37315}
+  className="related-outfit-photo"
+  src="https://img.ltwebstatic.com/images3_pi/2022/04/06/16492430704a5786a3329d6838490cfcc903aa6996_thumbnail_600x.webp"
+/>
+`;
