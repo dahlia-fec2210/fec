@@ -94,6 +94,7 @@ function Overview({ productId, serverRoute }) {
           salePrice={salePrice}
           productStyles={productStyles}
           currentStyleSkus={currentStyleSkus}
+          setCurrentStyleSkus={setCurrentStyleSkus}
           setCurrentStylePhotos={setCurrentStylePhotos}
           currentStyle={currentStyle}
           expanded={expanded}
