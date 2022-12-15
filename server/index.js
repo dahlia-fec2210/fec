@@ -24,6 +24,7 @@ app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(sessionHandler);
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '/../public')));
 
 const productInfo = {};
 const productData = {};
@@ -235,4 +236,4 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
 });
 
 app.listen(process.env.PORT);
-console.log('Listening on port 3001');
+console.log(`Listening on port ${process.env.PORT}`);

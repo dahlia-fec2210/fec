@@ -41,7 +41,7 @@ function AddQuestionModal({ closeModal, question, currentProductId }) {
   };
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${currentProductId}`)
+    axios.get(`/products/${currentProductId}`)
       .then((result) => {
         setProductName(result.data.name);
       });
@@ -63,7 +63,7 @@ function AddQuestionModal({ closeModal, question, currentProductId }) {
     event.preventDefault();
     console.log('submitForm working?', newAnswer);
     if (verifyErrors()) {
-      axios.post(`${serverRoute}/qa/questions/${question.question_id}/answers`, newAnswer)
+      axios.post(`/qa/questions/${question.question_id}/answers`, newAnswer)
         .then((result) => console.log(result));
     }
   };

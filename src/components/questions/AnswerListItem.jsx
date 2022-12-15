@@ -6,8 +6,6 @@ import ReportAnswerLink from './individual_answers/ReportAnswerLink.jsx';
 import AnswerPhoto from './individual_answers/AnswerPhoto.jsx';
 // import './questions.css';
 
-const serverRoute = `http://localhost:${process.env.PORT}`;
-
 function AnswerListItem({ answer, helpfulAnswers, setHelpfulAnswers }) {
   console.log(answer.answer_id, answer.helpfulness, 'answer123');
 

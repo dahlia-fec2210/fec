@@ -2,7 +2,7 @@ import React from 'react';
 import SortByButton from './SortByButton.jsx';
 import SortOptions from './SortOptions.jsx';
 import FiltersList from './FiltersList.jsx';
-import logInteraction from '../logInteraction.js';
+import logInteraction from '../logInteraction.jsx';
 
 const { useState, useEffect } = React;
 

@@ -62,7 +62,7 @@ function RelatedItems({
     setLeft(0);
     const cache = JSON.parse(localStorage.getItem('relatedProducts')) || {};
     if (!cache[currentProduct]) {
-      axios.get(`${serverRoute}/products/${currentProduct}/related`)
+      axios.get(`/products/${currentProduct}/related`)
         .then((data) => {
           const uniqueProducts = [];
           const products = data.data;
@@ -84,14 +84,14 @@ function RelatedItems({
   function shiftRight(event) {
     event.preventDefault();
     setLeft(left + 272);
-    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
+    axios.post('/interactions', { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   function shiftLeft(event) {
     event.preventDefault();
     event.preventDefault();
     setLeft(left - 272);
-    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
+    axios.post('/interactions', { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   // if (relatedProducts.length > 0) {

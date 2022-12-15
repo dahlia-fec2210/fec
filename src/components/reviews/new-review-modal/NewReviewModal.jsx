@@ -9,7 +9,7 @@ import CharacteristicsInput from './input-fields/CharacteristicsInput.jsx';
 import SummaryInput from './input-fields/SummaryInput.jsx';
 import BodyInput from './input-fields/BodyInput.jsx';
 import ErrorMessage from './ErrorMessage.jsx';
-import logInteraction from '../logInteraction.js';
+import logInteraction from '../logInteraction.jsx';
 
 const validate = require('./validate');
 
@@ -57,7 +57,7 @@ export default function NewReviewModal({ toggleModal, metaData, currentProduct }
     e.preventDefault();
     logInteraction(e.target.id, [currentProduct]);
     if (verifyInputs()) {
-      const route = `${serverRoute}/reviews`;
+      const route = `/reviews`;
       axios.post(route, {
         summary,
         body,

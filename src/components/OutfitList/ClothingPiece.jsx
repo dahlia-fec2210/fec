@@ -30,7 +30,7 @@ function ClothingPiece({
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem(`productInfo-${clothingPiece}`));
     if (cache === null) {
-      axios.get(`${serverRoute}/products/${clothingPiece}`)
+      axios.get(`/products/${clothingPiece}`)
         .then((data) => {
           localStorage.setItem(`productInfo-${clothingPiece}`, data.data);
           setProductInfo(data.data);
@@ -43,7 +43,7 @@ function ClothingPiece({
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem(`productData-${clothingPiece}`));
     if (cache === null) {
-      axios.get(`${serverRoute}/products/${clothingPiece}/styles`)
+      axios.get(`/products/${clothingPiece}/styles`)
         .then((response) => {
           cache.photos = response.data.results[0].photos[0].url;
           cache.price = response.data.results[0].original_price;
@@ -63,7 +63,7 @@ function ClothingPiece({
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem('averageReview')) || {};
     if (!cache[clothingPiece]) {
-      axios.get(`${serverRoute}/reviews/meta/?product_id=${clothingPiece}`)
+      axios.get(`/reviews/meta/?product_id=${clothingPiece}`)
         .then((data) => {
           const reviews = data.data.ratings;
           const keys = Object.keys(reviews);
@@ -87,7 +87,7 @@ function ClothingPiece({
     const newOutfit = outfit.filter((piece) => piece !== clothingPiece);
     setOutfit(newOutfit);
     localStorage.setItem('outfit', JSON.stringify(newOutfit));
-    axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
+    axios.post('/interactions', { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   if (clothingPiece !== null && productInfo !== {}) {

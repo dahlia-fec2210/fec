@@ -1,14 +1,18 @@
 import React from 'react';
-import logInteraction from './logInteraction.js';
+import logInteraction from './logInteraction.jsx';
 
-const { useRef } = React;
-function MoreReviewsButton({ addTwoItems, bottomReviewsRef, currentProduct }) {
-  const buttonRef = useRef(null);
+function MoreReviewsButton({
+  addTwoItems, bottomReviewsRef, buttonRef, currentProduct,
+}) {
   const handleClick = (e) => {
     e.preventDefault();
     logInteraction(e.target.id, [currentProduct]);
     addTwoItems();
     setTimeout(() => {
+      bottomReviewsRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      setTimeout(() => {
+        buttonRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      }, 350);
       bottomReviewsRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
       setTimeout(() => {
         buttonRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });

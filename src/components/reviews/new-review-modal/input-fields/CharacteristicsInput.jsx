@@ -1,5 +1,5 @@
 import React from 'react';
-import logInteraction from '../../logInteraction.js';
+import logInteraction from '../../logInteraction.jsx';
 
 const descriptors = {
   Size: ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too big'],

@@ -25,7 +25,7 @@ function Overview({
   const [selectedDot, setSelectedDot] = useState(0);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${productId}`)
+    axios.get(`/products/${productId}`)
       .then((info) => {
         setProductInfo(info.data);
         setProductCategory(info.data.category);
@@ -38,7 +38,7 @@ function Overview({
   }, [productId]);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/products/${productId}/styles`)
+    axios.get(`/products/${productId}/styles`)
       .then((styles) => {
         setProductStyles(styles.data.results);
         setCurrentStyle(styles.data.results[0]);
@@ -54,7 +54,7 @@ function Overview({
   }, [productId]);
 
   useEffect(() => {
-    axios.get(`${serverRoute}/reviews/meta/?product_id=${productId}`)
+    axios.get(`/reviews/meta/?product_id=${productId}`)
       .then((data) => {
         const reviews = data.data.ratings;
         const keys = Object.keys(reviews);

@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import logInteraction from '../logInteraction';
+import logInteraction from '../logInteraction.jsx';
 
 const ratingList = ['5', '4', '3', '2', '1'];
 

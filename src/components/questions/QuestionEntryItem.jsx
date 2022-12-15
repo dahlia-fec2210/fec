@@ -50,7 +50,7 @@ function QuestionEntryItem({
     return 0;
   };
 
-  const fetchAllAnswers = (currentQuestionId) => axios.get(`${serverRoute}/qa/questions/${currentQuestionId}/answers`, {
+  const fetchAllAnswers = (currentQuestionId) => axios.get(`/qa/questions/${currentQuestionId}/answers`, {
     params: {
       count: 1000,
     },

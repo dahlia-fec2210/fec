@@ -16,7 +16,7 @@ function ComparisonModal({ modalProduct, currentProduct, setOpenModal }) {
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem(`productInfo-${currentProduct}`));
     if (cache === null) {
-      axios.get(`${serverRoute}/products/${currentProduct}`)
+      axios.get(`/products/${currentProduct}`)
         .then((data) => {
           localStorage.setItem(`productInfo-${currentProduct}`, data.data);
           setCurrentProductInfo(data.data);
@@ -31,7 +31,7 @@ function ComparisonModal({ modalProduct, currentProduct, setOpenModal }) {
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem(`productInfo-${modalProduct}`));
     if (cache === null) {
-      axios.get(`${serverRoute}/products/${modalProduct}`)
+      axios.get(`/products/${modalProduct}`)
         .then((data) => {
           localStorage.setItem(`product-${modalProduct}`, data.data);
           setModalProductInfo(data.data);
@@ -75,7 +75,7 @@ function ComparisonModal({ modalProduct, currentProduct, setOpenModal }) {
             className="related-comparison-stack"
             onClick={() => {
               setOpenModal(false);
-              axios.post(`${serverRoute}/interactions`, { element: `comparison-modal-close-button:${currentProduct},${modalProduct}`, widget: 'Related Products', time: new Date().toTimeString() });
+              axios.post('/interactions', { element: `comparison-modal-close-button:${currentProduct},${modalProduct}`, widget: 'Related Products', time: new Date().toTimeString() });
             }}
           >
             <div className="fa-stack" style={{ verticalAlign: 'top' }}>

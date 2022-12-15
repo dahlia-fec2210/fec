@@ -5,8 +5,6 @@ import React, { useState, useEffect } from 'react';
 
 import QuestionEntryItem from './QuestionEntryItem.jsx';
 
-// const serverRoute = `http://localhost:${process.env.PORT}`;
-
 function QuestionEntry({
   questions, currentProductId, helpfulAnswers, setHelpfulAnswers, helpfulQuestions, setHelpfulQuestions, questionsBottomRef,
 }) {

@@ -29,7 +29,7 @@ function RelatedProduct({
   useEffect(() => {
     let cache = JSON.parse(localStorage.getItem(`productData-${product}`));
     if (cache === null) {
-      axios.get(`${serverRoute}/products/${product}/styles`)
+      axios.get(`/products/${product}/styles`)
         .then((data) => {
           const styles = data.data.results;
           const photos = [];
@@ -59,7 +59,7 @@ function RelatedProduct({
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem(`productInfo-${product}`));
     if (cache === null) {
-      axios.get(`${serverRoute}/products/${product}`)
+      axios.get(`/products/${product}`)
         .then((data) => {
           localStorage.setItem(`productInfo-${product}`, JSON.stringify(data.data));
           setProductInfo(data.data);
@@ -72,7 +72,7 @@ function RelatedProduct({
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem('averageReview')) || {};
     if (!cache[product]) {
-      axios.get(`${serverRoute}/reviews/meta/?product_id=${product}`)
+      axios.get(`/reviews/meta/?product_id=${product}`)
         .then((data) => {
           const reviews = data.data.ratings;
           const keys = Object.keys(reviews);
@@ -94,14 +94,14 @@ function RelatedProduct({
   function changeProduct(event) {
     event.preventDefault();
     setCurrentProduct(product);
-    axios.post(`${serverRoute}/interactions`, { element: `related-product-change-button:${product}`, widget: 'Related Products', time: new Date().toTimeString() });
+    axios.post('/interactions', { element: `related-product-change-button:${product}`, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   function openModal(event) {
     event.preventDefault();
     setOpenModal(true);
     setModalProduct(product);
-    axios.post(`${serverRoute}/interactions`, { element: `comparison-modal-open-button:${currentProduct},${product}`, widget: 'Related Products', time: new Date().toTimeString() });
+    axios.post('/interactions', { element: `comparison-modal-open-button:${currentProduct},${product}`, widget: 'Related Products', time: new Date().toTimeString() });
   }
 
   if (productData.price) {

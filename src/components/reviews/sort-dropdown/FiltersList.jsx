@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
-import logInteraction from '../logInteraction.js';
+import logInteraction from '../logInteraction.jsx';
 
 export default function FiltersList({ filters, removeFilter, currentProduct }) {
   const handleClearFilter = (e) => {

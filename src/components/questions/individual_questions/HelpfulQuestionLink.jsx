@@ -7,7 +7,7 @@ const serverRoute = `http://localhost:${process.env.PORT}`;
 function HelpfulQuestionLink({ question, helpfulQuestions, setHelpfulQuestions }) {
   const [questionHelpfulness, setQuestionHelpfulness] = useState(question.question_helpfulness);
 
-  const incrementHelpfulness = () => axios.put(`${serverRoute}/qa/questions/${question.question_id}/helpful`);
+  const incrementHelpfulness = () => axios.put(`/qa/questions/${question.question_id}/helpful`);
 
   const helpfulClicked = () => {
     const cache = JSON.parse(localStorage.getItem('helpfulQuestions'));
