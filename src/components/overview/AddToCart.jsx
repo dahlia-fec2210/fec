@@ -3,17 +3,18 @@ import React, { useState, useEffect } from 'react';
 import SizeOptions from './SizeOptions.jsx';
 import QuantityOptions from './QuantityOptions.jsx';
 
-function AddToCart({ currentStyle, currentStyleSkus, productName }) {
-  const [selectedSize, setSelectedSize] = useState('');
+function AddToCart({
+  currentStyle, currentStyleSkus, productName, selectedSize, setSelectedSize,
+  selectedQuantity, setSelectedQuanity,
+}) {
   const [sizeQuantity, setSizeQuantity] = useState(0);
   const [currentSku, setCurrentSku] = useState(0);
-  const [selectedQuantity, setSelectedQuanity] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // eslint-disable-next-line no-alert
     alert(
-      `Added to cart:\n${productName}\n${currentStyle.name}\nSize: ${selectedSize}   Quantity: ${sizeQuantity}`,
+      `Added to cart:\n${productName}\n${currentStyle.name}\nSize: ${selectedSize}   Quantity: ${selectedQuantity}`,
     );
   };
 
@@ -30,7 +31,7 @@ function AddToCart({ currentStyle, currentStyleSkus, productName }) {
       if (currentStyleSkus[k].size === e.target.value) {
         // console.log('UNGA BUNGA SIZE MATCH');
         setCurrentSku(k);
-        setSizeQuantity(currentStyleSkus[k].quantity);
+        setSizeQuantity(currentStyleSkus[k].quantity <= 15 ? currentStyleSkus[k].quantity : 15);
         break;
       }
     }
@@ -45,10 +46,17 @@ function AddToCart({ currentStyle, currentStyleSkus, productName }) {
   // console.log('selected quantity:', selectedQuantity);
   // console.log('current style name:', currentStyle.name);
   // console.log('current style:', currentStyle);
+  console.log('SKUS:', currentStyleSkus);
+
+  const styleAvailabilities = Object.values(currentStyleSkus);
+  // eslint-disable-next-line max-len
+  const styleQuantities = styleAvailabilities.reduce((availableQuantities, style) => availableQuantities + style.quantity, 0);
+
+  const inStockSizes = styleAvailabilities.filter((style) => style.quantity > 0);
 
   return (
     <form onSubmit={handleSubmit}>
-      {Object.keys(currentStyleSkus).length === 0 && (
+      {styleQuantities === 0 && (
       <select disabled>
         <option value="">OUT OF STOCK</option>
       </select>
@@ -56,18 +64,23 @@ function AddToCart({ currentStyle, currentStyleSkus, productName }) {
 
       <select id="select-size" onChange={handleSizeChange} value={selectedSize}>
         <option value="">SELECT SIZE</option>
-        {Object.values(currentStyleSkus).map((sku, i) => (
+        {inStockSizes.map((sku, i) => (
           <SizeOptions key={Object.keys(currentStyleSkus)[i]} size={sku.size} />
         ))}
       </select>
 
-      <select onChange={handleQuantityChange} value={selectedQuantity}>
-        <option value="">-</option>
-        {[...Array(sizeQuantity + 1).keys()].slice(1).map((n, i) => {
-          console.log('n:', n);
-          return <QuantityOptions key={i} value={n} />;
-        })}
-      </select>
+      {selectedSize === ''
+        ? (
+          <select disabled>
+            <option value="">-</option>
+          </select>
+        )
+        : (
+          <select onChange={handleQuantityChange} value={selectedQuantity}>
+            <option value="">-</option>
+            {[...Array(sizeQuantity + 1).keys()].slice(1).map((n, i) => <QuantityOptions key={i} value={n} />)}
+          </select>
+        )}
 
       <button type="submit">Add to Cart</button>
     </form>
