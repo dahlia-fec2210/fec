@@ -16,7 +16,7 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 function App() {
-  const [currentProduct, setCurrentProduct] = useState(37311);
+  const [currentProduct, setCurrentProduct] = useState(37315);
   const [left, setLeft] = useState(0);
   const reviewsRef = useRef(null);
 
@@ -32,11 +32,13 @@ function App() {
       document.getElementById('light-mode').href = 'darkmode.css';
       document.getElementById('light-mode-related').href = 'related-dark-mode.css';
       document.getElementById('light-mode-questions').href = 'questions-dark-mode.css';
+      document.getElementById('light-mode-reviews').href = 'reviews-dark-mode.css';
     } else {
       setLeft(0);
       document.getElementById('light-mode').href = 'style.css';
       document.getElementById('light-mode-related').href = 'related.css';
       document.getElementById('light-mode-questions').href = 'questions.css';
+      document.getElementById('light-mode-reviews').href = 'reviews.css';
     }
   }
 
@@ -51,7 +53,9 @@ function App() {
             </h1>
           ) : <h1>Venustore</h1>}
         </div>
-        <i className="cart-icon fa-solid fa-cart-shopping fa-2x" />
+        <div className="cart-div">
+          <i className="cart-icon fa-solid fa-cart-shopping fa-2x" />
+        </div>
         <div onClick={toggle} className="circle-toggle" style={toggleStyle} />
         <div className="night-mode-icon">
           <i className="moon fa-solid fa-moon fa-xl" />
@@ -79,7 +83,7 @@ function App() {
         { currentProduct === null ? <div>Loading...</div>
           : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
         { currentProduct === null ? <div>Loading...</div>
-          : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
+          : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} reviewsRef={reviewsRef} /> }
       </div>
     </div>
   );
