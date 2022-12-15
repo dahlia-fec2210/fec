@@ -24,7 +24,26 @@ function RelatedItems({
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
+    function throttle(cb, delay) {
+      let last = 0;
+      return () => {
+        const now = new Date().getTime();
+        if (now - last < delay) {
+          last = now;
+          return;
+        }
+        last = now;
+        cb();
+      };
+    }
+
     setWidth(window.innerWidth);
+    const throttled = throttle(() => {
+      setWidth(window.innerWidth);
+      console.log('resizing...');
+    }, 100);
+
+    window.addEventListener('resize', throttled);
   }, []);
 
   useEffect(() => {
@@ -38,14 +57,6 @@ function RelatedItems({
       setCards(1);
     }
   }, [width]);
-
-  function resizeListener() {
-    setTimeout(() => {
-      setWidth(window.innerWidth);
-    }, 500);
-  }
-
-  window.addEventListener('resize', resizeListener);
 
   useEffect(() => {
     setLeft(0);
@@ -82,8 +93,6 @@ function RelatedItems({
     setLeft(left - 272);
     axios.post(`${serverRoute}/interactions`, { element: event.target.id, widget: 'Related Products', time: new Date().toTimeString() });
   }
-
-  console.log(cards);
 
   // if (relatedProducts.length > 0) {
   return (
@@ -129,6 +138,7 @@ function RelatedItems({
         averages={averages}
         setAverages={setAverages}
         cards={cards}
+        setCards={setCards}
       />
     </div>
   );

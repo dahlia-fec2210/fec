@@ -290,6 +290,11 @@ body {
   background-color: lightgray;
 }
 
+.related-check {
+  margin-bottom: 10px;
+  color: #9c3c44;
+}
+
 @media screen and (max-width: 1200px) {
   .related-carousel {
     display: flex;

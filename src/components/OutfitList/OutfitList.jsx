@@ -10,10 +10,45 @@ import ClothingPiece from './ClothingPiece.jsx';
 const serverRoute = `http://localhost:${process.env.PORT || 3001}`;
 
 function OutfitList({
-  currentProduct, averages, setAverages, cards,
+  currentProduct, averages, setAverages, cards, setCards,
 }) {
   const [outfit, setOutfit] = useState([]);
   const [left, setLeft] = useState(0);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    function throttle(cb, delay) {
+      let last = 0;
+      return () => {
+        const now = new Date().getTime();
+        if (now - last < delay) {
+          last = now;
+          return;
+        }
+        last = now;
+        cb();
+      };
+    }
+
+    setWidth(window.innerWidth);
+    const throttled = throttle(() => {
+      setWidth(window.innerWidth);
+    }, 100);
+
+    window.addEventListener('resize', throttled);
+  }, []);
+
+  useEffect(() => {
+    if (width > 1200) {
+      setCards(4);
+    } else if (width > 950) {
+      setCards(3);
+    } else if (width > 650) {
+      setCards(2);
+    } else {
+      setCards(1);
+    }
+  }, [width]);
 
   useEffect(() => {
     const cache = JSON.parse(localStorage.getItem('outfit'));
