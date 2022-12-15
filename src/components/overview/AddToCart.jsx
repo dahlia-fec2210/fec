@@ -1,26 +1,42 @@
 /* eslint-disable import/extensions */
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-alert */
+import React, { useState, useEffect, useRef } from 'react';
+import Select from 'react-select';
 import SizeOptions from './SizeOptions.jsx';
 import QuantityOptions from './QuantityOptions.jsx';
+import SizeSelector from './SizeSelector.jsx';
 
-function AddToCart({ currentStyle, currentStyleSkus }) {
-  const [selectedSize, setSelectedSize] = useState('');
+function AddToCart({
+  currentStyle, currentStyleSkus, productName, selectedSize, setSelectedSize,
+  selectedQuantity, setSelectedQuanity,
+}) {
   const [sizeQuantity, setSizeQuantity] = useState(0);
   const [currentSku, setCurrentSku] = useState(0);
-  const [selectedQuantity, setSelectedQuanity] = useState('');
+  const [noSizeSelected, setNoSizeSelected] = useState(false);
+
+  const sizeDropdown = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('unga bunga');
+    if (selectedSize === '') {
+      sizeDropdown.current.focus();
+      setNoSizeSelected(true);
+    } else {
+      alert(
+        `Added to cart:\n${productName}\n${currentStyle.name}\nSize: ${selectedSize}   Quantity: ${selectedQuantity}`,
+      );
+    }
   };
 
   console.log('current style:', currentStyle);
 
-  console.log('current style skus:', currentStyleSkus);
+  // console.log('current style:', currentStyle);
+  // console.log('current style skus:', currentStyleSkus);
 
   const handleSizeChange = (e) => {
+    setNoSizeSelected(false);
     setSelectedSize(e.target.value);
-    // eslint-disable-next-line no-restricted-syntax
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
     for (const k in currentStyleSkus) {
       // console.log('current sku:', currentStyleSkus[k]);
       // console.log('sku quantity:', currentStyleSkus[k].quantity);
@@ -28,7 +44,7 @@ function AddToCart({ currentStyle, currentStyleSkus }) {
       if (currentStyleSkus[k].size === e.target.value) {
         // console.log('UNGA BUNGA SIZE MATCH');
         setCurrentSku(k);
-        setSizeQuantity(currentStyleSkus[k].quantity);
+        setSizeQuantity(currentStyleSkus[k].quantity <= 15 ? currentStyleSkus[k].quantity : 15);
         break;
       }
     }
@@ -41,33 +57,50 @@ function AddToCart({ currentStyle, currentStyleSkus }) {
   // console.log('selected size:', selectedSize);
   // console.log('size quantity:', sizeQuantity);
   // console.log('selected quantity:', selectedQuantity);
+  // console.log('current style name:', currentStyle.name);
+  // console.log('current style:', currentStyle);
+  console.log('SKUS:', currentStyleSkus);
 
-  console.log('current style name:', currentStyle.name);
+  const styleAvailabilities = Object.values(currentStyleSkus);
+  // eslint-disable-next-line max-len
+  const styleQuantities = styleAvailabilities.reduce((availableQuantities, style) => availableQuantities + style.quantity, 0);
+
+  const inStockSizes = styleAvailabilities.filter((style) => style.quantity > 0);
 
   return (
     <form onSubmit={handleSubmit}>
-      {Object.keys(currentStyleSkus).length === 0 && (
+      {styleQuantities === 0 && (
       <select disabled>
         <option value="">OUT OF STOCK</option>
       </select>
       )}
 
-      <select id="select-size" onChange={handleSizeChange} value={selectedSize}>
-        <option value="">SELECT SIZE</option>
-        {Object.values(currentStyleSkus).map((sku, i) => (
-          <SizeOptions key={Object.keys(currentStyleSkus)[i]} size={sku.size} />
-        ))}
-      </select>
+      {noSizeSelected === true ? <p style={{ color: 'red' }}>Please select size</p> : null}
 
-      <select onChange={handleQuantityChange} value={selectedQuantity}>
-        <option value="">---</option>
-        {[...Array(sizeQuantity + 1).keys()].slice(1).map((n, i) => {
-          console.log('n:', n);
-          return <QuantityOptions key={i} value={n} />;
-        })}
-      </select>
+      <SizeSelector
+        // eslint-disable-next-line react/jsx-boolean-value
+        openMenuOnFocus={true}
+        handleSizeChange={handleSizeChange}
+        selectedSize={selectedSize}
+        sizeDropdown={sizeDropdown}
+        inStockSizes={inStockSizes}
+        currentStyleSkus={currentStyleSkus}
+      />
 
-      <button type="submit">Add to Cart</button>
+      {selectedSize === ''
+        ? (
+          <select disabled>
+            <option value="">-</option>
+          </select>
+        )
+        : (
+          <select onChange={handleQuantityChange} value={selectedQuantity}>
+            <option value="">1</option>
+            {[...Array(sizeQuantity + 1).keys()].slice(2).map((n, i) => <QuantityOptions key={i} value={n} />)}
+          </select>
+        )}
+
+      {styleQuantities === 0 ? null : <button type="submit">Add to Cart</button>}
     </form>
   );
 }

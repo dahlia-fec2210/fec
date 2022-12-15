@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import React from 'react';
+import React, { useState } from 'react';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import DisplayStar from '../common/Star.jsx';
@@ -29,10 +29,20 @@ function ProductInfo({
       <StyleSelector
         productStyles={productStyles}
         setCurrentStylePhotos={setCurrentStylePhotos}
-        setSelectedThumbnail={setSelectedThumbnail}
-        setCurrentMainImageIndex={setCurrentMainImageIndex}
+        setCurrentStyle={setCurrentStyle}
+        setSelectedSize={setSelectedSize}
+        setSelectedQuanity={setSelectedQuanity}
+        setCurrentStyleSkus={setCurrentStyleSkus}
       />
-      <AddToCart currentStyle={currentStyle} currentStyleSkus={currentStyleSkus} />
+      <AddToCart
+        currentStyle={currentStyle}
+        currentStyleSkus={currentStyleSkus}
+        productName={productName}
+        selectedSize={selectedSize}
+        setSelectedSize={setSelectedSize}
+        selectedQuantity={selectedQuantity}
+        setSelectedQuanity={setSelectedQuanity}
+      />
       <h3>Share on Social Media</h3>
       <div className="social-media">
 

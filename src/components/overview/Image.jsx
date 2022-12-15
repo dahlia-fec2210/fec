@@ -90,9 +90,9 @@ function Image({
     styleImagesClass = 'expand-style-images';
   }
 
-  console.log('==================================================');
-  console.log('selectedThumbnail:', selectedThumbnail);
-  console.log('currentMainImageIndex:', currentMainImageIndex);
+  // console.log('==================================================');
+  // console.log('selectedThumbnail:', selectedThumbnail);
+  // console.log('currentMainImageIndex:', currentMainImageIndex);
 
   return (
     <div className={styleImagesClass}>

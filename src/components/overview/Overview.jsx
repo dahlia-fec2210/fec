@@ -93,13 +93,12 @@ function Overview({ productId, serverRoute, reviewsRef }) {
           salePrice={salePrice}
           productStyles={productStyles}
           currentStyleSkus={currentStyleSkus}
+          setCurrentStyleSkus={setCurrentStyleSkus}
           setCurrentStylePhotos={setCurrentStylePhotos}
           currentStyle={currentStyle}
           expanded={expanded}
           zoomed={zoomed}
-          setSelectedThumbnail={setSelectedThumbnail}
-          setCurrentMainImageIndex={setCurrentMainImageIndex}
-          reviewsRef={reviewsRef}
+          setCurrentStyle={setCurrentStyle}
         />
         <div className="product-description">
           <div className="description">
