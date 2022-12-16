@@ -15,9 +15,11 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 function App() {
-  const [currentProduct, setCurrentProduct] = useState(37315);
+  const [currentProduct, setCurrentProduct] = useState(37313);
   const [left, setLeft] = useState(0);
   const reviewsRef = useRef(null);
+
+  const audio = new Audio('./venusaur.m4a');
 
   const toggleStyle = {
     transform: `translate(${left}px, 0)`,
@@ -28,6 +30,7 @@ function App() {
     event.preventDefault();
     if (left === 0) {
       setLeft(left + 40);
+      audio.play();
       document.getElementById('light-mode').href = 'darkmode.css';
       document.getElementById('light-mode-overview').href = 'overview-dark-mode.css';
       document.getElementById('light-mode-related').href = 'related-dark-mode.css';
@@ -47,7 +50,8 @@ function App() {
     <div>
       <div className="bulbastore-heading">
         <div className="logo">
-          { left === 0 ? <img className="bulbastore-icon" src="bulbastore.png" alt="bulbsaur icon" /> : <img className="bulbastore-icon" src="old-bulbasaur.png" alt="bulbsaur icon" />}
+          { left === 0 ? <img className="bulbastore-icon" src="bulbastore.png" alt="bulbsaur icon" />
+            : <img className="bulbastore-icon" src="old-bulbasaur.png" alt="bulbsaur icon" />}
           { left === 0 ? (
             <h1>
               Bulbastore
@@ -62,7 +66,6 @@ function App() {
           <i className="moon fa-solid fa-moon fa-xl" />
           <i className="sun fa-solid fa-sun fa-xl" />
         </div>
-
       </div>
       <div className="widgets">
         <Overview
@@ -89,7 +92,13 @@ function App() {
         { currentProduct === null ? <div>Loading...</div>
           : <Questions currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} /> }
         { currentProduct === null ? <div>Loading...</div>
-          : <Reviews currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} reviewsRef={reviewsRef} /> }
+          : (
+            <Reviews
+              currentProduct={currentProduct}
+              setCurrentProduct={setCurrentProduct}
+              reviewsRef={reviewsRef}
+            />
+          ) }
       </div>
     </div>
   );

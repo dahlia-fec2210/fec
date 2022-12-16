@@ -8,19 +8,16 @@
   flex-wrap: wrap;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 .product-info-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
 .all-reviews-link {
   text-decoration: underline;
   cursor: pointer;
   margin-left: 5px;
 }
-
 .overview-category {
   text-transform: uppercase;
   font-size: 16px;
@@ -32,13 +29,11 @@
   margin-left: 0;
   margin-bottom: 0;
 }
-
 .overview-name {
   font-size: xx-large;
   margin-top: 10px;
   margin-bottom: 0;
 }
-
 .overview-price {
   text-transform: uppercase;
   font-size: 16px;
@@ -50,7 +45,6 @@
   margin-left: 0;
   margin-bottom: 20px;
 }
-
 .style-name-indicator {
   text-transform: uppercase;
   font-size: 16px;
@@ -60,7 +54,6 @@
   font-weight: 700;
   margin-left: 0;
 }
-
 .style-name {
   text-transform: uppercase;
   font-size: 16px;
@@ -69,7 +62,6 @@
   letter-spacing: 0.07em;
   font-weight: 100;
 }
-
 .main-carousel {
   position: relative;
   height: 550px;
@@ -81,28 +73,24 @@
   border-radius: 5px;
   margin: 0 auto;
 }
-
 .main-set {
   display: flex;
   flex-direction: row;
   position: relative;
   margin-left: 100px;
 }
-
 .default-image {
   width: 300px;
   max-height: 500px;
   position: relative;
   overflow: hidden;
 }
-
 .expanded-image {
   width: 400px;
   max-height: 1020px;
   position: relative;
   overflow: hidden;
 }
-
 .zoomed-image {
   width: 400px;
   max-height: 1020px;
@@ -112,7 +100,6 @@
   border-radius: 5px;
   cursor: zoom-out;
 }
-
 .main-image {
   width: 100%;
   /* width: 300%; */
@@ -120,7 +107,6 @@
   border-radius: 5px;
   cursor: zoom-in;
 }
-
 .expanded-main-image {
   width: 100%;
   /* width: 300%; */
@@ -128,7 +114,6 @@
   border-radius: 5px;
   cursor: zoom-in;
 }
-
 .zoomed-main-image {
   /* width: 100%; */
   /* width: 300%; */
@@ -143,11 +128,9 @@
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
-
 .hide-info {
   display: none;
 }
-
 .expand-style-images {
   position: relative;
   width: 100%;
@@ -155,7 +138,6 @@
   margin: 0 auto;
   display: flex;
 }
-
 .expand-main-carousel {
   position: relative;
   height: 700px;
@@ -167,7 +149,6 @@
   border-radius: 5px;
   margin: 0 auto;
 }
-
 .exit-expanded-view {
   position: relative;
   left: 1040px;
@@ -178,7 +159,6 @@
 .exit-expanded-view:hover {
   cursor: pointer;
 }
-
 /* .expand-main-carousel {
   position: relative;
   height: 550px;
@@ -190,59 +170,49 @@
   border-radius: 5px;
   margin: 0 auto;
 } */
-
 .arrow {
   position: absolute;
-  color: #bf6da0;
+  color: #BF6DA0;
   cursor: pointer;
   z-index: 10;
 }
-
 .left-arrow {
   position: absolute;
   left: 150px;
   top: 270px;
 }
-
 .right-arrow {
   position: absolute;
   right: 50px;
   top: 270px;
 }
-
 .up-arrow {
   position: absolute;
   top: -20px;
   left: 17px;
 }
-
 .down-arrow {
   position: absolute;
   bottom: -20px;
   left: 17px;
 }
-
 .up-arrow-container {
   position: relative;
 }
-
 .down-arrow-container {
   position: relative;
 }
-
 .slide {
   transition-duration: 0.5s ease;
   position: relative;
   width: 100%;
 }
-
 .slide-active {
   transition-duration: 0.5s;
   transform: scale(1.08);
   position: relative;
   width: 100%;
 }
-
 .image-set {
   display: flex;
   flex-direction: column;
@@ -250,7 +220,6 @@
   top: 60px;
   left: 50px;
 }
-
 .image-thumbnails .thumbnails {
   box-sizing: border-box;
   width: 65px;
@@ -260,14 +229,12 @@
   object-fit: cover;
   cursor: pointer;
 }
-
 .styles-container {
   border-radius: 50%;
   position: relative;
   width: 60px;
   height: 60px;
 }
-
 .styles-container .overlay {
   position: absolute;
   top: 0;
@@ -279,24 +246,21 @@
   display: block;
   background: rgba(191, 109, 160, 0.6);
 }
-
 .styles-selector {
   display: flex;
   flex-wrap: wrap;
-  max-width: 300px;
-  justify-content: space-between;
+  max-width: 290px;
+  /* justify-content: space-between; */
   margin-top: 16px;
 }
-
 .styles-selector .styles {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  flex: 1 0 20%;
+  flex: 1 0 25%;
   cursor: pointer;
 }
-
 .style-images {
   position: relative;
   width: 66%;
@@ -304,30 +268,26 @@
   display: flex;
   border-radius: 5px;
 }
-
 .social-media {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-
 .social-media i {
   cursor: pointer;
   font-size: 1em;
 }
-
 .twitter-share-button {
   position: relative;
   height: 26px;
   box-sizing: border-box;
   padding: 5px 12px 1px 12px;
-  background-color: #1d9bf0;
+  background-color: #1D9BF0;
   color: #fff;
   border-radius: 9999px;
   font-weight: 500;
   cursor: pointer;
 }
-
 .twitter-label {
   margin-left: 4px;
   white-space: nowrap;
@@ -339,7 +299,6 @@
   overflow: hidden;
   text-align: left;
 }
-
 .product-description {
   display: flex;
   width: 950px;
@@ -349,21 +308,18 @@
   /* margin-left: 80px; */
   /* margin-right: 0; */
 }
-
 .description {
   border-right: 3px solid #fff;
   padding-right: 23px;
   /* width: 60%; */
 }
-
 ul {
   list-style: none;
   width: 50%;
   padding-top: 15px;
 }
-
 .cart {
-  color: #f7f7f7;
+  color: #F7F7F7;
   font-size: 16px;
   line-height: 27px;
   padding: 8px 20px;
@@ -384,14 +340,12 @@ ul {
   cursor: pointer;
   text-decoration: none;
 }
-
 .cart:hover {
-  background-color: #f7f7f7;
+  background-color: #F7F7F7;
   color: #BF6DA0;
 }
-
 .size-dropdown {
-  color: #f7f7f7;
+  color: #F7F7F7;
   font-size: 16px;
   line-height: 27px;
   padding: 8px 20px;
@@ -412,9 +366,8 @@ ul {
   cursor: pointer;
   text-decoration: none;
 }
-
 .quantity-dropdown {
-  color: #f7f7f7;
+  color: #F7F7F7;
   font-size: 16px;
   line-height: 27px;
   padding: 8px 20px;
