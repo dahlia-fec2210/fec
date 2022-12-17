@@ -82,3 +82,7 @@ Delete branch - <br>
 
 
 ![Screen_Recording_2022-12-17_at_12_32_32_PM_AdobeExpress](https://user-images.githubusercontent.com/97549146/208254206-620b4caa-2d54-4db9-bcf4-7e3d804dd0f5.gif)
+
+6. Sellers can add answers. If an answer is made by seller, despite helpfulness, it will show up at the top of the answers list for that question.
+
+<img src="https://user-images.githubusercontent.com/97549146/208254283-7a563e94-0bbd-4290-b06d-bcfc2f00f3ba.gif" width="600" />
