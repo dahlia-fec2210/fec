@@ -63,7 +63,7 @@ Delete branch - <br>
 `git push origin --delete {branch}`
 
 1. Search function that will search relevant questions when there are more then 3 characters in the search query
-2. 
+
 <img src="https://user-images.githubusercontent.com/97549146/208253414-56d9d9b8-24b2-4f82-9053-7d3d2f369aa1.gif" width="500" />
 
 
@@ -85,6 +85,7 @@ Delete branch - <br>
 5. User can add answers. If there are invalid inputs in mandatory slots, it will show an error message
 
 <img src="https://user-images.githubusercontent.com/97549146/208254206-620b4caa-2d54-4db9-bcf4-7e3d804dd0f5.gif" width="500" />
+
 
 6. Sellers can add answers. If an answer is made by seller, despite helpfulness, it will show up at the top of the answers list for that question.
 
