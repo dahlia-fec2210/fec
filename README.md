@@ -62,6 +62,23 @@ USE WITH CAUTION:
 Delete branch - <br>
 `git push origin --delete {branch}`
 
+/* Overview ************************************************************************************* */
+
+The Overview section features the product information, description and images. 
+
+A user can use the two image carousels on the left to scroll the main image into view by clicking on any of the arrows or the image thumbnails.
+
+The user can see the description and features of the product undeneath the images and the product details on the right.
+
+Clicking on a style thumbnail will update the images and information for that particular style.
+
+Under the style selector a user can select an available size for the selected product style and the quantity they wish to add to their cart. Attempting to add-to-cart without selecting a size will pop up a message instructing them to do so.
+
+A user can also share the product on social media by tweeting on Twitter, sharing on Facebook, or adding the product images to Pinterest.
+
+At the top of the product details is the average star rating (out of 5) of the product by other users and a link that scrolls the user's page down to the Reviews section.
+
+
 /* Questions Widget ************************************************************************************* */
 1. Search function that will search relevant questions when there are more then 3 characters in the search query
 
