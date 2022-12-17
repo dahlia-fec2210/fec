@@ -73,3 +73,7 @@ Users can navegate through the related products carousel...
 
 <img src="https://user-images.githubusercontent.com/109521820/208253635-6b2a2cfe-5a1e-44f8-bb02-f4eddb3c40b1.gif" width="500" />
 
+Users can compare product features...
+
+<img src="https://user-images.githubusercontent.com/109521820/208253972-38f941e0-e4df-440d-a674-6451518b8618.gif" width="500" />
+
