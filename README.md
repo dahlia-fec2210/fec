@@ -65,4 +65,5 @@ Delete branch - <br>
 <br>
 RELATED PRODUCTS
 
-![](https://github.com/dahlia-fec2210/fec/blob/related-products/public/FEC_GIF_Responsive.gif)
+https://user-images.githubusercontent.com/109521820/208252229-cf5ce2b1-b496-4b20-a2f8-11859f306e8e.mov
+
