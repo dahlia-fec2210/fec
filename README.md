@@ -74,6 +74,11 @@ Delete branch - <br>
 
 ![Screen_Recording_2022-12-17_at_12_23_39_PM_AdobeExpress](https://user-images.githubusercontent.com/97549146/208253901-33c6d47f-14b0-4c46-95a8-1a27608e75fb.gif)
 
-4. User can add questions. If there are no valid inputs in mandatory slots, it will show an error message
+4. User can add questions. If there are invalid inputs in mandatory slots, it will show an error message
 
 ![Screen_Recording_2022-12-17_at_12_29_15_PM_AdobeExpress](https://user-images.githubusercontent.com/97549146/208254065-fa60bf5f-813a-4c74-8e1f-ffea3b40fb3b.gif)
+
+5. User can add answers. If there are invalid inputs in mandatory slots, it will show an error message
+
+
+![Screen_Recording_2022-12-17_at_12_32_32_PM_AdobeExpress](https://user-images.githubusercontent.com/97549146/208254206-620b4caa-2d54-4db9-bcf4-7e3d804dd0f5.gif)
