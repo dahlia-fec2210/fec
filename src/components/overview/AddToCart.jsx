@@ -1,8 +1,9 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-alert */
-import React, { useState, useEffect, useRef } from 'react';
+/* eslint-disable-next-line no-restricted-syntax, guard-for-in */
+/* eslint-disable-next-line max-len */
+import React, { useState, useRef } from 'react';
 // import Select from 'react-select';
-import SizeOptions from './SizeOptions.jsx';
 import QuantityOptions from './QuantityOptions.jsx';
 import SizeSelector from './SizeSelector.jsx';
 
@@ -27,19 +28,11 @@ function AddToCart({
     }
   };
 
-  // console.log('current style:', currentStyle);
-  // console.log('current style skus:', currentStyleSkus);
-
   const handleSizeChange = (e) => {
     setNoSizeSelected(false);
     setSelectedSize(e.target.value);
-    // eslint-disable-next-line no-restricted-syntax, guard-for-in
     for (const k in currentStyleSkus) {
-      // console.log('current sku:', currentStyleSkus[k]);
-      // console.log('sku quantity:', currentStyleSkus[k].quantity);
-      // console.log('sku size:', currentStyleSkus[k].size);
       if (currentStyleSkus[k].size === e.target.value) {
-        // console.log('UNGA BUNGA SIZE MATCH');
         setCurrentSku(k);
         setSizeQuantity(currentStyleSkus[k].quantity <= 15 ? currentStyleSkus[k].quantity : 15);
         break;
@@ -51,14 +44,7 @@ function AddToCart({
     setSelectedQuanity(e.target.value);
   };
 
-  // console.log('selected size:', selectedSize);
-  // console.log('size quantity:', sizeQuantity);
-  // console.log('current style name:', currentStyle.name);
-  // console.log('current style:', currentStyle);
-  // console.log('SKUS:', currentStyleSkus);
-
   const styleAvailabilities = Object.values(currentStyleSkus);
-  // eslint-disable-next-line max-len
   const styleQuantities = styleAvailabilities.reduce((availableQuantities, style) => availableQuantities + style.quantity, 0);
 
   const inStockSizes = styleAvailabilities.filter((style) => style.quantity > 0);
@@ -98,7 +84,7 @@ function AddToCart({
           </select>
         )}
 
-      {styleQuantities === 0 ? null : <button type="submit">Add to Cart</button>}
+      {styleQuantities === 0 ? null : <button className="cart" type="submit">Add to Cart</button>}
     </form>
   );
 }

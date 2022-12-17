@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+
 import React, { useRef } from 'react';
 
 function MainImage({
@@ -18,15 +21,11 @@ function MainImage({
 
   const handleMouseMove = (event) => {
     if (zoomed === true) {
-      // const maxWidth = window.innerWidth;
       const minX = zoomedImageAreaRef.current.offsetWidth;
       const minY = zoomedImageAreaRef.current.offsetHeight;
-      // console.log('minX:', minX);
 
       const { clientX } = event;
       const { clientY } = event;
-      // console.log('clientX:', clientX);
-      // console.log('clientY:', clientY);
 
       const mWidth = zoomedImageAreaRef.current.offsetWidth;
       const mHeight = zoomedImageAreaRef.current.offsetHeight;
@@ -37,22 +36,12 @@ function MainImage({
       const yPercentage = ((clientY - minY) / mHeight);
       const yTransform = (yPercentage * 100) + 25;
 
-      // console.log('xTransform:', xTransform);
-      // console.log('xPercentage:', xPercentage);
-      // console.log('yTransform:', yTransform);
-      // console.log('yPercentage:', yPercentage);
-      // console.log('clientX percentage:', clientX);
-      // console.log('clientY percentage:', clientY);
-      // console.log('mWidth:', mWidth);
-      // console.log('mHeight:', mHeight);
-
       zoomedImageRef.current.style.transform = `translate(${xTransform * -1}%, ${yTransform * -1}%) scale(2.5)`;
     }
   };
 
   const handleMouseLeave = (event) => {
     if (zoomed === true) {
-      // alert('Mouse was moved!');
       zoomedImageRef.current.style.transform = 'translate(0%, 0%) scale(1)';
     }
   };
@@ -76,8 +65,6 @@ function MainImage({
   }
 
   return (
-    // eslint-disable-next-line max-len
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       className={containerClass}
       ref={zoomedImageAreaRef}

@@ -29,10 +29,12 @@ function HelpfulQuestionLink({ question, helpfulQuestions, setHelpfulQuestions }
     <div>
       <div className="helpful-question-button" onClick={helpfulClicked}>
         Helpful?&nbsp;&nbsp;
-        <div className="yes-question-helpful">
+        {' '}
+        <span className="yes-question-helpful">
           Yes
-          {' ('}
-        </div>
+        </span>
+        &nbsp;
+        {' ('}
         <span className="helpful-number">
           {questionHelpfulness}
         </span>

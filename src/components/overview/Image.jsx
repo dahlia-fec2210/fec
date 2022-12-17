@@ -13,8 +13,6 @@ function Image({
   setSelectedThumbnail, currentMainImageIndex, setCurrentMainImageIndex,
   selectedDot, setSelectedDot, left,
 }) {
-  // console.log('current style photos in Image comp:', currentStylePhotos);
-
   const { length } = currentStylePhotos;
   const [imageSetCarousel, setImageSetCarousel] = useState([0, 1, 2, 3, 4, 5]);
 
@@ -55,7 +53,6 @@ function Image({
   };
 
   const handleThumbnailClick = (index) => {
-    // console.log('index in handleThumbnailClick:', index);
     setSelectedThumbnail(index);
     setSelectedDot(index);
     setCurrentMainImageIndex(index);
@@ -95,10 +92,6 @@ function Image({
   } else {
     styleImagesClass = 'expand-style-images';
   }
-
-  // console.log('==================================================');
-  // console.log('selectedThumbnail:', selectedThumbnail);
-  // console.log('currentMainImageIndex:', currentMainImageIndex);
 
   return (
     <div className={styleImagesClass}>

@@ -1,5 +1,4 @@
 import React from 'react';
-import dateFormat from 'dateformat';
 // import './individual_answers.css';
 
 function AnswerSubmitInfo({ answer }) {
@@ -13,9 +12,6 @@ function AnswerSubmitInfo({ answer }) {
         />
       ))}
     </div>
-    // <span>
-    //   {`${user} - ${dateFormat(date, 'mmmm d, yyyy ')}`}
-    // </span>
   );
 }
 
