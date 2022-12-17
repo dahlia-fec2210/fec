@@ -61,3 +61,8 @@ USE WITH CAUTION:
 
 Delete branch - <br>
 `git push origin --delete {branch}`
+
+<br>
+RELATED PRODUCTS
+
+![](https://github.com/dahlia-fec2210/fec/blob/related-products/public/FEC_GIF_Responsive.gif)
