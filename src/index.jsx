@@ -103,5 +103,3 @@ function App() {
     </div>
   );
 }
-
-root.render(<App />);
