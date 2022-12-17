@@ -1,6 +1,6 @@
-# FEC
+# 🖥 FEC
 
-## Table of Contents
+## 🧾 Table of Contents
 - [Git Workflow](#git-workflow)
 - [FEC Project Overview & Demos](#project-overview--demos)
   - [Overview](#overview)
@@ -8,7 +8,7 @@
   - [Questions](#questions)
   - [Ratings and Reviews](#ratings-and-reviews)
 
-## Git Workflow
+## 👩‍💻 Git Workflow
 1. Add a feature in individual branch
 2. Push to individual github branch
 2. Make pull request to testing branch
@@ -72,7 +72,7 @@ Delete branch - <br>
 
 <br>
 
-## Project Overview & Demos
+## 📽 Project Overview & Demos
 
 <br>
 
