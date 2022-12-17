@@ -65,15 +65,18 @@ Delete branch - <br>
 <br>
 RELATED PRODUCTS
 
-Users can toggle between light mode and dark mode...
+Users can toggle between light mode and dark mode:
 
-<img src="https://user-images.githubusercontent.com/109521820/208253120-802c4d88-b518-4cfb-985e-7a0f69cf55cf.gif" width="500" />
+<img src="https://user-images.githubusercontent.com/109521820/208253120-802c4d88-b518-4cfb-985e-7a0f69cf55cf.gif" width="600" />
 
-Users can navegate through the related products carousel...
+Users can navigate through the related products carousel:
 
-<img src="https://user-images.githubusercontent.com/109521820/208253635-6b2a2cfe-5a1e-44f8-bb02-f4eddb3c40b1.gif" width="500" />
+<img src="https://user-images.githubusercontent.com/109521820/208253635-6b2a2cfe-5a1e-44f8-bb02-f4eddb3c40b1.gif" width="600" />
 
-Users can compare product features...
+Users can compare product features:
 
-<img src="https://user-images.githubusercontent.com/109521820/208254116-bc1c5173-48d3-459e-9584-57e81c89ae6e.gif" width="500" />
+<img src="https://user-images.githubusercontent.com/109521820/208254116-bc1c5173-48d3-459e-9584-57e81c89ae6e.gif" width="600" />
 
+Users can view all product photos through the related project card carousel:
+
+<img src="https://user-images.githubusercontent.com/109521820/208256281-3d382b63-e846-452f-a73e-188a083d966e.gif" width="600 />
