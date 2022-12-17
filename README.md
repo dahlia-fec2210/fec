@@ -84,3 +84,7 @@ Users can view all product photos through the related project card carousel:
 Users can add and remove products to their outfit list (data will persist on refresh):
 
 <img src="https://user-images.githubusercontent.com/109521820/208256430-2ec59561-f6ee-4902-b494-c3e556324fde.gif" width="600" />
+
+Users can view widget on any device:
+
+<img src="https://user-images.githubusercontent.com/109521820/208256611-45f6e356-3bd2-42d3-b610-06ce61d5865e.gif" width="600" />
