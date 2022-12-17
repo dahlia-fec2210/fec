@@ -67,9 +67,9 @@ RELATED PRODUCTS
 
 Users can toggle between light mode and dark mode...
 
-![Screen_Recording_2022-12-17_at_12_02_10_PM_AdobeExpress](https://user-images.githubusercontent.com/109521820/208253120-802c4d88-b518-4cfb-985e-7a0f69cf55cf.gif)
+<img src="https://user-images.githubusercontent.com/109521820/208253120-802c4d88-b518-4cfb-985e-7a0f69cf55cf.gif" width="600" />
 
 Users can navegate through the related products carousel...
 
-![Screen_Recording_2022-12-17_at_12_11_41_PM_AdobeExpress (1)](https://user-images.githubusercontent.com/109521820/208253635-6b2a2cfe-5a1e-44f8-bb02-f4eddb3c40b1.gif)
+<img src="https://user-images.githubusercontent.com/109521820/208253635-6b2a2cfe-5a1e-44f8-bb02-f4eddb3c40b1.gif" width="600" />
 
