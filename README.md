@@ -63,6 +63,4 @@ Delete branch - <br>
 `git push origin --delete {branch}`
 
 ![Bulbastore-questions-widget-1](https://user-images.githubusercontent.com/97549146/208252209-2a4f4e2e-9809-4805-85ce-9077768e59bf.gif)
-![Bulbastore-questions-widget-2](https://user-images.githubusercontent.com/97549146/208252208-a3605516-62f3-47b6-99c7-28fa371d6be5.gif)
-![Bulbastore-questions-widget-3](https://user-images.githubusercontent.com/97549146/208252207-ea57ff22-987f-4281-b058-629292fa4f3a.gif)
 
