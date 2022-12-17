@@ -62,4 +62,5 @@ USE WITH CAUTION:
 Delete branch - <br>
 `git push origin --delete {branch}`
 
-![Bulbastore-questions-widget](https://user-images.githubusercontent.com/97549146/208252921-5d1bf64f-5efd-4a4f-9b08-4f5501708d06.gif)
+![Screen_Recording_2022-12-17_at_12_11_13_PM_AdobeExpress](https://user-images.githubusercontent.com/97549146/208253414-56d9d9b8-24b2-4f82-9053-7d3d2f369aa1.gif)
+
