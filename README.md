@@ -80,3 +80,7 @@ Users can compare product features:
 Users can view all product photos through the related project card carousel:
 
 <img src="https://user-images.githubusercontent.com/109521820/208256281-3d382b63-e846-452f-a73e-188a083d966e.gif" width="600" />
+
+Users can add and remove products to their outfit list (data will persist on refresh):
+
+<img src="https://user-images.githubusercontent.com/109521820/208256430-2ec59561-f6ee-4902-b494-c3e556324fde.gif" width="600" />
