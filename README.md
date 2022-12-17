@@ -71,4 +71,5 @@ Users can toggle between light mode and dark mode...
 
 Users can navegate through the related products carousel...
 
-![Screen_Recording_2022-12-17_at_12_11_41_PM_AdobeExpress](https://user-images.githubusercontent.com/109521820/208253545-24d35f12-2d49-49e7-9c34-c1f782ba5822.gif)
+![Screen_Recording_2022-12-17_at_12_11_41_PM_AdobeExpress (1)](https://user-images.githubusercontent.com/109521820/208253635-6b2a2cfe-5a1e-44f8-bb02-f4eddb3c40b1.gif)
+
