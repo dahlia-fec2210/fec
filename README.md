@@ -67,8 +67,4 @@ RELATED PRODUCTS
 
 Users can toggle between light mode and dark mode...
 
-
-
-![Screen_Recording_2022-12-17_at_11_22_56_AM_AdobeExpress](https://user-images.githubusercontent.com/109521820/208253007-9362feab-0e40-41aa-991b-9d69fa007e5a.gif)
-
-![Uploading Screen_Recording_2022-12-17_at_12_02_10_PM_AdobeExpress.gif…]()
+![Screen_Recording_2022-12-17_at_12_02_10_PM_AdobeExpress](https://user-images.githubusercontent.com/109521820/208253120-802c4d88-b518-4cfb-985e-7a0f69cf55cf.gif)
