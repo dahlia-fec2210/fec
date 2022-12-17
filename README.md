@@ -79,4 +79,4 @@ Users can compare product features:
 
 Users can view all product photos through the related project card carousel:
 
-<img src="https://user-images.githubusercontent.com/109521820/208256281-3d382b63-e846-452f-a73e-188a083d966e.gif" width="600 />
+<img src="https://user-images.githubusercontent.com/109521820/208256281-3d382b63-e846-452f-a73e-188a083d966e.gif" width="600" />
