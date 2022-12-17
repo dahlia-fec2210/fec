@@ -65,9 +65,6 @@ Delete branch - <br>
 <br>
 RELATED PRODUCTS
 
-
-
-
-<video src="https://user-images.githubusercontent.com/109521820/208252704-44a7eddf-dfa0-4219-be6e-7fe14854411f.mov" width="180" />
-
+Users can toggle between light mode and dark mode...
+https://user-images.githubusercontent.com/109521820/208252911-f6afb7e9-07c7-4cb0-9f60-0b96461f2cc8.mov
 
