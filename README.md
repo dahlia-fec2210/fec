@@ -78,6 +78,35 @@ A user can also share the product on social media by tweeting on Twitter, sharin
 
 At the top of the product details is the average star rating (out of 5) of the product by other users and a link that scrolls the user's page down to the Reviews section.
 
+/* Related Products & Outfit List ************************************************************************************* */
+
+RELATED PRODUCTS & OUTFIT LIST
+
+When the user scrolls down to the related products section, they will see all products that are related to the current product shown in the overview section. Each related product card is clickable and will load the clicked product into the overview section.
+
+Users can view this section in light or dark mode by clicking the toggle button in the top right corner.
+
+<img src="https://user-images.githubusercontent.com/109521820/208253120-802c4d88-b518-4cfb-985e-7a0f69cf55cf.gif" width="600" />
+
+When viewed on a desktop, only 4 related products will show at a time. Users can view more related products by using the right and left arrows on the related products carousel. The arrows will only show if there is a product available to scroll to.
+
+<img src="https://user-images.githubusercontent.com/109521820/208253635-6b2a2cfe-5a1e-44f8-bb02-f4eddb3c40b1.gif" width="600" />
+
+Users can view this widget on any device. The amount of related product cards visible with change depending on the size of the screen.
+
+<img src="https://user-images.githubusercontent.com/109521820/208256611-45f6e356-3bd2-42d3-b610-06ce61d5865e.gif" width="600" />
+
+To compare a related product with the current product shown in the overview section, users can click the star icon on a related product card. A modal will appear that compares product features.
+
+<img src="https://user-images.githubusercontent.com/109521820/208254116-bc1c5173-48d3-459e-9584-57e81c89ae6e.gif" width="600" />
+
+When hovering over the related product card, thumbnails of additional product photos will appear. Clicking on a thumbnail will change the main related product card photo. Right and left arrows will also appear and allow users to navigate through all available thumbnail photos for that product.
+
+<img src="https://user-images.githubusercontent.com/109521820/208256281-3d382b63-e846-452f-a73e-188a083d966e.gif" width="600" />
+
+Users can add products to their outfit list by clicking the plus icon on the 'add to outfit' card. Then, to remove a product from their outfit list, they can click the X icon on the product card they'd like to remove. User-specific outfit lists persist on refresh.
+
+<img src="https://user-images.githubusercontent.com/109521820/208256430-2ec59561-f6ee-4902-b494-c3e556324fde.gif" width="600" />
 
 /* Questions Widget ************************************************************************************* */
 1. Search function that will search relevant questions when there are more then 3 characters in the search query
