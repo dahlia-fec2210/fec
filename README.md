@@ -63,13 +63,17 @@ Delete branch - <br>
 `git push origin --delete {branch}`
 
 1. Search function that will search relevant questions when there are more then 3 characters in the search query
+
 ![Screen_Recording_2022-12-17_at_12_11_13_PM_AdobeExpress](https://user-images.githubusercontent.com/97549146/208253414-56d9d9b8-24b2-4f82-9053-7d3d2f369aa1.gif)
 
 2. Load more questions and answers when button is clicked; auto scrolls down to the bottom of the newly loaded questions and answers
+
 ![Screen_Recording_2022-12-17_at_12_21_34_PM_AdobeExpress](https://user-images.githubusercontent.com/97549146/208253810-f5365823-1d7d-4d18-98e1-1a577f1ddc87.gif)
 
 3. User cannot click helpful more than once on questions and answers
+
 ![Screen_Recording_2022-12-17_at_12_23_39_PM_AdobeExpress](https://user-images.githubusercontent.com/97549146/208253901-33c6d47f-14b0-4c46-95a8-1a27608e75fb.gif)
 
 4. User can add questions. If there are no valid inputs in mandatory slots, it will show an error message
+
 ![Screen_Recording_2022-12-17_at_12_29_15_PM_AdobeExpress](https://user-images.githubusercontent.com/97549146/208254065-fa60bf5f-813a-4c74-8e1f-ffea3b40fb3b.gif)
