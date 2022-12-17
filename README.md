@@ -1,4 +1,14 @@
-# fec
+# FEC
+
+## Table of Contents
+- [Git Workflow](#git-workflow)
+- [FEC Project Overview & Demos](#project-overview--demos)
+  - [Overview](#overview)
+  - [Related Products & Outfit List](#related-products--outfit-list)
+  - [Questions](#questions)
+  - [Ratings and Reviews](#ratings-and-reviews)
+
+## Git Workflow
 1. Add a feature in individual branch
 2. Push to individual github branch
 2. Make pull request to testing branch
@@ -15,9 +25,7 @@ Jake said, just fix it and move on. Otherwise, talk to the developer
 you conflicted with. If you can't decide between the two of you, call
 in rest of team.
 
-
-<br>
-GIT COMMAND WORKFLOW
+### GIT COMMAND WORKFLOW
 
 Create branch - <br>
 `git checkout -b {branch-name}`
@@ -62,41 +70,49 @@ USE WITH CAUTION:
 Delete branch - <br>
 `git push origin --delete {branch}`
 
-/* Overview ************************************************************************************* */
+<br>
 
-The Overview section features the product information, description and images. 
+## Project Overview & Demos
 
-The user can see the description and features of the product undeneath the images and the product details on the right.
+<br>
 
-A user can use the two image carousels on the left to scroll the main image into view by clicking on any of the arrows or the image thumbnails. And by clicking on the displayed image, see an expanded view of it.
+### OVERVIEW
+
+<br>
+
+> The Overview section features the product information, description and images. The user can see the description and features of the product undeneath the images and the product details on the right.
+
+> A user can use the two image carousels on the left to scroll the main image into view by clicking on any of the arrows or the image thumbnails. And by clicking on the displayed image, see an expanded view of it.
 
 <img src="https://user-images.githubusercontent.com/87157356/208263052-082796d8-3794-4bb3-afce-18aadaedac97.gif" width="700" />
 
-Clicking on a style thumbnail will update the images and information for that particular style.
+> Clicking on a style thumbnail will update the images and information for that particular style.
 
 <img src="https://user-images.githubusercontent.com/87157356/208263290-79f31ec8-ace1-438e-8306-3343d63fa940.gif" width="700" />
 
-Under the style selector a user can select an available size for the selected product style and the quantity they wish to add to their cart. Attempting to add-to-cart without selecting a size will pop up a message instructing them to do so.
+> Under the style selector a user can select an available size for the selected product style and the quantity they wish to add to their cart. Attempting to add-to-cart without selecting a size will pop up a message instructing them to do so.
 
 <img src="https://user-images.githubusercontent.com/87157356/208263498-e0d2f204-5da0-452a-9f32-860df9dcd921.gif" width="700" />
 
-A user can also share the product on social media by tweeting on Twitter, sharing on Facebook, or adding the product images to Pinterest.
+> A user can also share the product on social media by tweeting on Twitter, sharing on Facebook, or adding the product images to Pinterest.
 
 <img src="https://user-images.githubusercontent.com/87157356/208263766-124d43f2-57f5-4ed9-8be9-c1e1c2071382.gif" width="700" />
 
 <img src="https://user-images.githubusercontent.com/87157356/208263816-9519c82c-929b-40bc-97f1-23ed9cbe52aa.gif" width="700" />
 
-At the top of the product details is the average star rating (out of 5) of the product by other users and a link that scrolls the user's page down to the Reviews section.
+> At the top of the product details is the average star rating (out of 5) of the product by other users and a link that scrolls the user's page down to the Reviews section.
 
 <img src="https://user-images.githubusercontent.com/87157356/208263986-d01793e1-753d-4c11-88c0-18a08e66cedf.gif" width="700" />
 
-A user can also toggle the dark mode in the site header.
+> A user can also toggle the dark mode in the site header.
 
 <img src="https://user-images.githubusercontent.com/87157356/208264105-50eba7b3-29d4-4595-9a16-81922b2533a9.gif" width="700" />
 
-/* Related Products & Outfit List ************************************************************************************* */
+<br><br>
 
-RELATED PRODUCTS & OUTFIT LIST
+### RELATED PRODUCTS & OUTFIT LIST
+
+<br>
 
 When the user scrolls down to the related products section, they will see all products that are related to the current product shown in the overview section. Each related product card is clickable and will load the clicked product into the overview section.
 
@@ -124,7 +140,12 @@ Users can add products to their outfit list by clicking the plus icon on the 'ad
 
 <img src="https://user-images.githubusercontent.com/109521820/208256430-2ec59561-f6ee-4902-b494-c3e556324fde.gif" width="600" />
 
-/* Questions Widget ************************************************************************************* */
+<br><br>
+
+### QUESTIONS
+
+<br>
+
 1. Search function that will search relevant questions when there are more then 3 characters in the search query
 
 <img src="https://user-images.githubusercontent.com/97549146/208253414-56d9d9b8-24b2-4f82-9053-7d3d2f369aa1.gif" width="500" />
@@ -153,10 +174,11 @@ Users can add products to their outfit list by clicking the plus icon on the 'ad
 6. Sellers can add answers. If an answer is made by seller, despite helpfulness, it will show up at the top of the answers list for that question.
 
 <img src="https://user-images.githubusercontent.com/97549146/208254283-7a563e94-0bbd-4290-b06d-bcfc2f00f3ba.gif" width="500" />
-<br><br><br><br>
 
-RATINGS AND REVIEWS
 <br><br>
+
+### RATINGS AND REVIEWS
+<br>
 When the user scrolls down the reviews section, they are met with the product breakdown on the left and the list of reviews for the current product on the right. 
 <br>
 <br>
