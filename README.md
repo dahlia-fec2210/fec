@@ -61,3 +61,33 @@ USE WITH CAUTION:
 
 Delete branch - <br>
 `git push origin --delete {branch}`
+
+/* Questions Widget ************************************************************************************* */
+1. Search function that will search relevant questions when there are more then 3 characters in the search query
+
+<img src="https://user-images.githubusercontent.com/97549146/208253414-56d9d9b8-24b2-4f82-9053-7d3d2f369aa1.gif" width="500" />
+
+
+2. Load more questions and answers when button is clicked; auto scrolls down to the bottom of the newly loaded questions and answers
+
+<img src="https://user-images.githubusercontent.com/97549146/208253810-f5365823-1d7d-4d18-98e1-1a577f1ddc87.gif" width="500" />
+
+
+3. User cannot click helpful more than once on questions and answers
+
+<img src="https://user-images.githubusercontent.com/97549146/208253901-33c6d47f-14b0-4c46-95a8-1a27608e75fb.gif" width="500" />
+
+
+4. User can add questions. If there are invalid inputs in mandatory slots, it will show an error message
+
+<img src="https://user-images.githubusercontent.com/97549146/208254065-fa60bf5f-813a-4c74-8e1f-ffea3b40fb3b.gif" width="500" />
+
+
+5. User can add answers. If there are invalid inputs in mandatory slots, it will show an error message
+
+<img src="https://user-images.githubusercontent.com/97549146/208254206-620b4caa-2d54-4db9-bcf4-7e3d804dd0f5.gif" width="500" />
+
+
+6. Sellers can add answers. If an answer is made by seller, despite helpfulness, it will show up at the top of the answers list for that question.
+
+<img src="https://user-images.githubusercontent.com/97549146/208254283-7a563e94-0bbd-4290-b06d-bcfc2f00f3ba.gif" width="500" />
