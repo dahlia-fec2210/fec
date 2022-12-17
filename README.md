@@ -67,7 +67,7 @@ RELATED PRODUCTS
 
 Users can toggle between light mode and dark mode...
 
-<img src="https://user-images.githubusercontent.com/109521820/208253120-802c4d88-b518-4cfb-985e-7a0f69cf55cf.gif" width="500" />
+<img src="https://user-images.githubusercontent.com/109521820/208253120-802c4d88-b518-4cfb-985e-7a0f69cf55cf.gif" width="500" style="margin:0 auto" />
 
 Users can navegate through the related products carousel...
 
