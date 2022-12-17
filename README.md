@@ -66,5 +66,7 @@ Delete branch - <br>
 RELATED PRODUCTS
 
 Users can toggle between light mode and dark mode...
-https://user-images.githubusercontent.com/109521820/208252911-f6afb7e9-07c7-4cb0-9f60-0b96461f2cc8.mov
 
+
+
+![Screen_Recording_2022-12-17_at_11_22_56_AM_AdobeExpress](https://user-images.githubusercontent.com/109521820/208253007-9362feab-0e40-41aa-991b-9d69fa007e5a.gif)
