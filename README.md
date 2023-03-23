@@ -185,41 +185,41 @@ When the user scrolls down the reviews section, they are met with the product br
 When the user clicks the "More Reviews" section, two more reviews will display at the bottom of the list, and the list will automatically scroll down to show the user. 
 <br><br>
 MORE REVIEWS BUTTON & HELPFUL<br>
-<img src="https://res.cloudinary.com/dqaynsuqp/image/upload/v1671294039/more-reviews-sort-by_dlrmb7.gif" width="600" />
+<img src="http://g.recordit.co/qBGsmFn58L.gif" width="600" />
 
 
 <br>
 The user can also sort the reviews by three categories: newest, relevance, and helpfulness. When one of those sort options are clicked, the list length persists in size, but sorts all the reviews by this sort option.
 <br><br>
 SORT BY DROPDOWN<br>
-<img src="https://res.cloudinary.com/dqaynsuqp/image/upload/v1671294038/sort-by_xidjjg.gif" width="600" />
+<img src="http://g.recordit.co/zfV7cDHaVD.gif" width="600" />
 
 <br>
 On the left, in the product breakdown, the user is greeted by the overall rating of the product, the rating breakdown, as well as the product characteristics breakdown. If the user clicks one of the star rating tags, then the reviews list will be sorted to display only reviews of the selected rating. The ratings filters are additive, and a "clear all filters" button will appear after 2 or more filters are selected.
 <br><br>
 STAR FILTERS<br>
-<img src="https://res.cloudinary.com/dqaynsuqp/image/upload/v1671294038/filter-by-stars_qrghja.gif" width="600" />
+<img src="http://g.recordit.co/jH74ZObu2k.gif" width="600" />
 
 <br>
 When the "Add Review" button is selected, a modal will open with a form to fill out in order to submit a new review. When the text boxes are clicked, they will expand to allow user input, and persist with the text when the user clicks away. If the user does not enter text, the box will collapse back to its original state.
 <br><br>
 NAME INPUT<br>
-<img src="https://res.cloudinary.com/dqaynsuqp/image/upload/v1671294046/Name-input_zf7lol.gif" width="600" />
+<img src="http://g.recordit.co/44ufS41Uxd.gif" width="600" />
 
 <br>
 When the user hovers over the overall rating selector, the stars fill in to match the user's mouse hover. If the user clicks a rating, the star filler will persist to match the rating -- except when hovering over another star rating. The user then will select their ratings for each characteristic of the current product. 
 <br><br>
 OVERALL RATING & TOGGLES<br>
-<img src="https://res.cloudinary.com/dqaynsuqp/image/upload/v1671294039/Overall-and-toggles_g7xeih.gif" width="600" />
+<img src="http://g.recordit.co/IjuDtdgmOQ.gif" width="600" />
 
 <br>
 When the user is typing out their review body, they are met with a character count at the bottom. Once they have met the minimum requirement, the message will change to let them know, and no longer show them their count.
 <br><br>
 BODY INPUT<br>
-<img src="https://res.cloudinary.com/dqaynsuqp/image/upload/v1671294042/body-input_pbnv9k.gif" width="600" />
+<img src="http://g.recordit.co/Mr3fKx5OCK.gif" width="600" />
 
 <br>
 Upon submission, their will be verification checks run in the background to assure that all required fields have been filled out properly. If any of the required fields have been left empty (or minimum requirements not met), the user will be prompted by an error message next to the submit button, telling them which fields need to be fixed.
 <br><br>
 SUBMIT VERIFICATION<br>
-<img src="https://res.cloudinary.com/dqaynsuqp/image/upload/v1671294044/new-review-verification_rhvxrd.gif" width="600" />
+<img src="http://g.recordit.co/fIvEMiQelK.gif" width="600" />
