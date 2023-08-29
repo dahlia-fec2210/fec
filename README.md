@@ -80,7 +80,7 @@ Delete branch - <br>
 
 <br>
 
-> The Overview section features the product information, description and images. The user can see the description and features of the product undeneath the images and the product details on the right.
+> The Overview section features the product information, description and images. The user can see the description and features of the product underneath the images and the product details on the right.
 
 > A user can use the two image carousels on the left to scroll the main image into view by clicking on any of the arrows or the image thumbnails. And by clicking on the displayed image, see an expanded view of it.
 
